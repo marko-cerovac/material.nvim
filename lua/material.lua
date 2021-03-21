@@ -4,16 +4,14 @@ local c = require('colorbuddy.color').colors
 local s = require('colorbuddy.style').styles
 local b = s.bold
 local i = s.italic
-local n = s.inverse
 local uc = s.undercurl
 local ul = s.underline
 local r = s.reverse
-local sto = s.standout
 local no = s.NONE
 local v = vim.g
 
 v.colors_name = 'material'
-v.material_style = 'deep ocean'
+--v.material_style = 'deep ocean'
 
 -- Universal colors
 
@@ -111,23 +109,9 @@ elseif v.material_style == 'oceanic' then
 	Color.new('line_highlight',		'#0A0C12')
 	Color.new('accent',				'#009688')
 
-elseif v.material_style =='default' then
-	-- Default theme style
-
-	Color.new('bg',					'#263238')
-	Color.new('fg1',				'#EEFFFF')
-	Color.new('invisibles',			'#80869E')
-	Color.new('comments',			'#464B5D')
-	Color.new('selection',			'#1F2233')
-	Color.new('guides',				'#3B3F51')
-	Color.new('line_numbers',		'#3B3F51')
-	Color.new('line_highlight',		'#0A0C12')
-
-else
+elseif v.material_style == 'deep ocean' then
 	-- Deep ocean theme style
 
-    v.material_style = 'deep_ocean'
-	Color.new('accent',				'#009688')
 	Color.new('bg',					'#0F111A')
 	Color.new('fg1',				'#8F93A2')
 	Color.new('invisibles',			'#80869E')
@@ -137,6 +121,19 @@ else
 	Color.new('line_numbers',		'#3B3F51')
 	Color.new('line_highlight',		'#0A0C12')
 	Color.new('accent',				'#84FFFF')
+
+else
+    --v.material_style = 'default'
+	-- Default theme style
+	Color.new('bg',					'#263238')
+	Color.new('fg1',				'#EEFFFF')
+	Color.new('invisibles',			'#80869E')
+	Color.new('comments',			'#464B5D')
+	Color.new('selection',			'#1F2233')
+	Color.new('guides',				'#3B3F51')
+	Color.new('line_numbers',		'#3B3F51')
+	Color.new('line_highlight',		'#0A0C12')
+	Color.new('accent',				'#009688')
 
 end
 
