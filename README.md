@@ -13,7 +13,7 @@ Plug 'marko-cerovac/material.nvim'
 ```
 
 ```lua
-" If you are using Packer
+-- If you are using Packer
 use 'tjdevries/colorbuddy.nvim'
 use 'marko-cerovac/material.nvim'
 ```
