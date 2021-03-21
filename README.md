@@ -25,11 +25,11 @@ colorscheme material
 ## Configuration
 
 There are 6 different styles available:
-    default
-    darker
-    lighter
-    oceanic
-    deep ocean
+    default,
+    darker,
+    lighter,
+    oceanic,
+    deep ocean,
     palenight
 
 Set the desired style using:
