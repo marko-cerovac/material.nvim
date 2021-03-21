@@ -1,7 +1,8 @@
 # material.nvim
 A port or [Material](https://material-theme.site) colorscheme for NeoVim written in lua using [colorbuddy.nvim](https://github.com/tjdevries/colorbuddy.nvim)
+Theme is inspired by https://github.com/kaicataldo/material.vim
 
-![screen](/media/screenshot1.webp)
+![screen](/media/Material.png)
 
 ## Installation
 
