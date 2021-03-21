@@ -238,8 +238,8 @@ Group.new('StatusLineNC', c.comments, c.selection, no) -- status lines of not-cu
 --Group.new('StatusLineTerm', g.StatusLine, g.StatusLine, g.StatusLine) -- status line of current :terminal window
 Group.new('StatusLineTerm', c.bg, c.green, g.StatusLine) -- status line of current :terminal window
 Group.new('StatusLineTermNC', g.StatusLineNC, g.StatusLineNC, g.StatusLineNC) -- status line of non-current :terminal window
-Group.new('TabLineFill', c.purple, c.bg, no)
-Group.new('TabLineSel', c.green, c.bg, no)
+Group.new('TabLineFill', c.fg1, c.selection, no)
+Group.new('TabLineSel', c.bg, c.accent, no)
 Group.new('TabLine', g.TabLineFill, g.TabLineFill, g.TabLineFill)
 Group.new('Title', c.green, c.none, b) -- titles for output from ":set all", ":autocmd" etc.
 Group.new('Visual', c.selection, c.blue, no) -- Visual mode selection
