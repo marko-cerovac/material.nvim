@@ -13,6 +13,7 @@ local no = s.NONE
 local v = vim.g
 
 v.colors_name = 'material'
+v.material_style = 'deep ocean'
 
 -- Universal colors
 
@@ -110,9 +111,23 @@ elseif v.material_style == 'oceanic' then
 	Color.new('line_highlight',		'#0A0C12')
 	Color.new('accent',				'#009688')
 
-elseif v.material_style == 'deep_ocean' then
+elseif v.material_style =='default' then
+	-- Default theme style
+
+	Color.new('bg',					'#263238')
+	Color.new('fg1',				'#EEFFFF')
+	Color.new('invisibles',			'#80869E')
+	Color.new('comments',			'#464B5D')
+	Color.new('selection',			'#1F2233')
+	Color.new('guides',				'#3B3F51')
+	Color.new('line_numbers',		'#3B3F51')
+	Color.new('line_highlight',		'#0A0C12')
+
+else
 	-- Deep ocean theme style
 
+    v.material_style = 'deep_ocean'
+	Color.new('accent',				'#009688')
 	Color.new('bg',					'#0F111A')
 	Color.new('fg1',				'#8F93A2')
 	Color.new('invisibles',			'#80869E')
@@ -123,23 +138,7 @@ elseif v.material_style == 'deep_ocean' then
 	Color.new('line_highlight',		'#0A0C12')
 	Color.new('accent',				'#84FFFF')
 
-else
-	-- Default theme style
-
-	v.material_style = 'default'
-
-	Color.new('bg',					'#263238')
-	Color.new('fg1',				'#EEFFFF')
-	Color.new('invisibles',			'#80869E')
-	Color.new('comments',			'#464B5D')
-	Color.new('selection',			'#1F2233')
-	Color.new('guides',				'#3B3F51')
-	Color.new('line_numbers',		'#3B3F51')
-	Color.new('line_highlight',		'#0A0C12')
-	Color.new('accent',				'#009688')
-
 end
-
 
 -- Terminal colors
 
@@ -212,13 +211,13 @@ Group.new('DiffDelete', c.red, c.none, r) -- diff mode: Deleted line
 Group.new('DiffText', c.yellow, c.none, r) -- diff mode: Changed text within a changed line
 Group.new('EndOfBuffer', c.purple, c.none, no) -- filler lines (~) after the last line in the buffer
 Group.new('ErrorMsg', c.none, c.bg, no) -- error messages on the command line
-Group.new('VertSplit', c.cyan, c.none, no) -- the column separating verti-- cally split windows
+Group.new('VertSplit', c.fg3, c.none, no) -- the column separating verti-- cally split windows
 Group.new('Folded', c.purple, c.bg, i) -- line used for closed folds
 Group.new('FoldColumn', c.blue, c.none, no) -- 'foldcolumn'
 Group.new('SignColumn', c.fg, c.none, no) -- column where signs are displayed
 Group.new('IncSearch', c.selection, c.none, b + r) -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
 Group.new('LineNr', c.line_numbers, c.none, no) -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-Group.new('CursorLineNr', c.blue, c.none, no) -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+Group.new('CursorLineNr', c.accent, c.none, no) -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
 Group.new('MatchParen', c.cyan, c.none, b + ul) -- The character under the cursor or just before it, if it is a paired bracket, and its match.
 Group.new('ModeMsg', c.green, c.none, no) -- 'showmode' message (e.g., "-- INSERT --")
 Group.new('MoreMsg', g.ModeMsg, g.ModeMsg, g.ModeMsg) -- more-prompt
@@ -237,9 +236,10 @@ Group.new('SpellBad', c.red, c.none, i + uc) -- Word that is not recognized by t
 Group.new('SpellCap', c.blue, c.none, i + uc) -- Word that should start with a capital. This will be combined with the highlighting used otherwise.
 Group.new('SpellLocal', c.cyan, c.none, i + uc) -- Word that is recognized by the spellchecker as one that is used in another region. This will be combined with the highlighting used otherwise.
 Group.new('SpellRare', c.purple, c.none, i + uc) -- Word that is recognized by the spellchecker as one that is hardly ever used. spell This will be combined with the highlighting used otherwise.
-Group.new('StatusLine', c.fg1, c.cyan, no) -- status line of current window
-Group.new('StatusLineNC', c.purple, c.blue, no) -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
-Group.new('StatusLineTerm', g.StatusLine, g.StatusLine, g.StatusLine) -- status line of current :terminal window
+Group.new('StatusLine', c.fg1, c.selection, no) -- status line of current window
+Group.new('StatusLineNC', c.comments, c.selection, no) -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+--Group.new('StatusLineTerm', g.StatusLine, g.StatusLine, g.StatusLine) -- status line of current :terminal window
+Group.new('StatusLineTerm', c.bg, c.green, g.StatusLine) -- status line of current :terminal window
 Group.new('StatusLineTermNC', g.StatusLineNC, g.StatusLineNC, g.StatusLineNC) -- status line of non-current :terminal window
 Group.new('TabLineFill', c.purple, c.bg, no)
 Group.new('TabLineSel', c.green, c.bg, no)
@@ -381,12 +381,12 @@ Group.new('htmlTagN', c.fg1, c.none, no)
 Group.new('htmlSpecialTagName', c.cyan, c.none, b)
 Group.new('htmlLink', c.blue, c.none, ul)
 Group.new('htmlSpecialChar', c.orange, c.none, no)
-Group.new('htmlBold', fg1, c.none, b)
-Group.new('htmlBoldUnderline', fg2, c.none, b, underline)
-Group.new('htmlBoldItalic', fg1, c.none, b + i)
-Group.new('htmlBoldUnderlineItalic', fg2, c.none, b + i + ul)
-Group.new('htmlUnderline', fg1, c.none, ul)
-Group.new('htmlUnderlineItalic', fg2, c.none, i + ul)
+Group.new('htmlBold', c.fg1, c.none, b)
+Group.new('htmlBoldUnderline', c.fg2, c.none, b, ul)
+Group.new('htmlBoldItalic', c.fg1, c.none, b + i)
+Group.new('htmlBoldUnderlineItalic', c.fg2, c.none, b + i + ul)
+Group.new('htmlUnderline', c.fg1, c.none, ul)
+Group.new('htmlUnderlineItalic', c.fg2, c.none, i + ul)
 Group.new('htmlItalic', c.blue, c.none, i)
 Group.new('htmlH1', c.blue, c.none, b)
 Group.new('htmlH2', c.cyan, c.none, b)
@@ -643,7 +643,7 @@ Group.new('GitGutterChangeDelete', c.red1, c.none, b)
 Group.new('gitmessengerPopupNormal', g.CursorLine, g.CursorLine, g.CursorLine) -- Normal color in popup window
 Group.new('gitmessengerHeader', g.CursorLine, g.CursorLine, g.CursorLine) -- Header such as 'Commit:', 'Author:'
 Group.new('gitmessengerHash', g.CursorLine, g.CursorLine, g.CursorLine) -- Commit hash at 'Commit:' header
-Group.new('gitmessengerHistory', g.CursorLine, g.CursorLine, g.CursorLine) -- History number at 'History:' header    
+Group.new('gitmessengerHistory', g.CursorLine, g.CursorLine, g.CursorLine) -- History number at 'History:' header
 -- NerdTree (preservim/nerdtree)
 Group.new('NERDTreeDir', c.blue, c.none, b)
 Group.new('NERDTreeDirSlash', c.blue, c.none, no)
@@ -702,7 +702,7 @@ Group.new('WhichKeyDesc', g.Operator, g.Operator, g.Operator)
 -- Nvim Treesitter Groups (descriptions and ordering from `:h nvim-treesitter-highlights`)
 Group.new("TSError", g.Error, c.none, b) -- For syntax/parser errors
 Group.new("TSPunctDelimiter", g.Delimiter, c.none) -- For delimiters ie: `.
--- Group.new("TSPunctBracket"       , c.fg     , nil) -- For brackets and parens
+Group.new("TSPunctBracket", c.fg3, nil) -- For brackets and parens
 -- Group.new("TSPunctSpecial"       , c.fg     , nil) -- For special punctutation that does not fall in the catagories before
 Group.new("TSConstant", g.Constant, c.none) -- For constants
 Group.new("TSConstBuiltin", g.Constant, c.none) -- For constant that are built in the language: `nil` in Lua
