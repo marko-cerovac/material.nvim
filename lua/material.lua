@@ -206,12 +206,12 @@ Group.new('DiffAdd', c.green, c.none, r) -- diff mode: Added line
 Group.new('DiffChange', c.orange, c.none, r) --  diff mode: Changed line
 Group.new('DiffDelete', c.red, c.none, r) -- diff mode: Deleted line
 Group.new('DiffText', c.yellow, c.none, r) -- diff mode: Changed text within a changed line
-Group.new('EndOfBuffer', c.purple, c.none, no) -- filler lines (~) after the last line in the buffer
+Group.new('EndOfBuffer', c.invisibles, c.none, no) -- filler lines (~) after the last line in the buffer
 Group.new('ErrorMsg', c.none, c.bg, no) -- error messages on the command line
-Group.new('VertSplit', c.fg3, c.none, no) -- the column separating verti-- cally split windows
+Group.new('VertSplit', c.selection, c.none, no) -- the column separating verti-- cally split windows
 Group.new('Folded', c.purple, c.bg, i) -- line used for closed folds
 Group.new('FoldColumn', c.blue, c.none, no) -- 'foldcolumn'
-Group.new('SignColumn', c.fg, c.none, no) -- column where signs are displayed
+Group.new('SignColumn', c.fg1, c.none, no) -- column where signs are displayed
 Group.new('IncSearch', c.selection, c.none, b + r) -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
 Group.new('LineNr', c.line_numbers, c.none, no) -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
 Group.new('CursorLineNr', c.accent, c.none, no) -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
@@ -220,14 +220,14 @@ Group.new('ModeMsg', c.green, c.none, no) -- 'showmode' message (e.g., "-- INSER
 Group.new('MoreMsg', g.ModeMsg, g.ModeMsg, g.ModeMsg) -- more-prompt
 Group.new('NonText', c.gray, c.none, no) -- '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line).
 Group.new('Normal', c.fg1, c.bg, no) -- normal text
-Group.new('Pmenu', c.fg2, c.purple, no) -- Popup menu: normal item.
-Group.new('PmenuSel', c.fg3, c.fg1, no) -- Popup menu: selected item.
-Group.new('PmenuSbar', c.fg1, c.bg, no) -- Popup menu: scrollbar.
-Group.new('PmenuThumb', c.fg1, c.blue, no) -- Popup menu: Thumb of the scrollbar.
+Group.new('Pmenu', c.fg2, c.selection, no) -- Popup menu: normal item.
+Group.new('PmenuSel', c.blue, c.disabled, no) -- Popup menu: selected item.
+Group.new('PmenuSbar', c.fg2, c.fg1, no) -- Popup menu: scrollbar.
+Group.new('PmenuThumb', c.fg1, c.accent, no) -- Popup menu: Thumb of the scrollbar.
 Group.new('Question', c.green, c.none, b) -- hit-enter prompt and yes/no questions
 Group.new('QuickFixLine', g.Search, g.Search, g.Search) -- Current quickfix item in the quickfix window.
 Group.new('qfLineNr', g.Type, g.Type, g.Type)
-Group.new('Search', c.purple, c.none, b + r) -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
+Group.new('Search', c.comments, c.white, b + r) -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
 Group.new('SpecialKey', c.purple, c.none, no) -- Meta and special keys listed with ":map", also for text used to show unprintable characters in the text, 'listchars'. Generally: text that is displayed differently from what it really is.
 Group.new('SpellBad', c.red, c.none, i + uc) -- Word that is not recognized by the spellchecker. This will be combined with the highlighting used otherwise.
 Group.new('SpellCap', c.blue, c.none, i + uc) -- Word that should start with a capital. This will be combined with the highlighting used otherwise.
