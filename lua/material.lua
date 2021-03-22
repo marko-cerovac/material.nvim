@@ -212,7 +212,7 @@ Group.new('VertSplit', c.selection, c.none, no) -- the column separating verti--
 Group.new('Folded', c.purple, c.bg, i) -- line used for closed folds
 Group.new('FoldColumn', c.blue, c.none, no) -- 'foldcolumn'
 Group.new('SignColumn', c.fg1, c.none, no) -- column where signs are displayed
-Group.new('IncSearch', c.selection, c.none, b + r) -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+Group.new('IncSearch', c.selection, c.white, b + r) -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
 Group.new('LineNr', c.line_numbers, c.none, no) -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
 Group.new('CursorLineNr', c.accent, c.none, no) -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
 Group.new('MatchParen', c.cyan, c.none, b + ul) -- The character under the cursor or just before it, if it is a paired bracket, and its match.
@@ -227,7 +227,7 @@ Group.new('PmenuThumb', c.fg1, c.accent, no) -- Popup menu: Thumb of the scrollb
 Group.new('Question', c.green, c.none, b) -- hit-enter prompt and yes/no questions
 Group.new('QuickFixLine', g.Search, g.Search, g.Search) -- Current quickfix item in the quickfix window.
 Group.new('qfLineNr', g.Type, g.Type, g.Type)
-Group.new('Search', c.comments, c.white, b + r) -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
+Group.new('Search', c.selection, c.white, b + r) -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
 Group.new('SpecialKey', c.purple, c.none, no) -- Meta and special keys listed with ":map", also for text used to show unprintable characters in the text, 'listchars'. Generally: text that is displayed differently from what it really is.
 Group.new('SpellBad', c.red, c.none, i + uc) -- Word that is not recognized by the spellchecker. This will be combined with the highlighting used otherwise.
 Group.new('SpellCap', c.blue, c.none, i + uc) -- Word that should start with a capital. This will be combined with the highlighting used otherwise.
@@ -242,15 +242,15 @@ Group.new('TabLineFill', c.fg1, c.selection, no)
 Group.new('TabLineSel', c.bg, c.accent, no)
 Group.new('TabLine', g.TabLineFill, g.TabLineFill, g.TabLineFill)
 Group.new('Title', c.green, c.none, b) -- titles for output from ":set all", ":autocmd" etc.
-Group.new('Visual', c.selection, c.blue, no) -- Visual mode selection
+Group.new('Visual', c.fg2, c.selection, no) -- Visual mode selection
 Group.new('VisualNOS', g.Visual, g.Visual, g.Visual) -- Visual mode selection when vim is "Not Owning the Selection". Only X11 Gui's gui-x11 and xterm-clipboard supports this.
 Group.new('WarningMsg', c.red, c.none, no) --  warning messages
 Group.new('WildMenu', c.orange, c.bg, b) --  current match in 'wildmenu' completion
-Group.new('CursorColumn', c.none, c.bg, no)
-Group.new('CursorLine', c.none, c.selection, no)
+Group.new('CursorColumn', c.none, c.selection, no) -- Current cursor column highlight
+Group.new('CursorLine', c.none, c.selection, no) -- Current cursor line highlight
 Group.new('ToolbarLine', c.fg1, c.disabled, no)
 Group.new('ToolbarButton', c.fg1, c.bg, b)
-Group.new('NormalMode', c.cyan, c.none, r)
+Group.new('NormalMode', c.accent, c.none, r)
 Group.new('InsertMode', c.green, c.none, r)
 Group.new('ReplaceMode', c.red, c.none, r)
 Group.new('VisualMode', c.purple, c.none, r)
@@ -614,7 +614,7 @@ Group.new('vimCommentTitle', c.blue, c.none, b)
 Group.new('vimNotation', c.orange, c.none, no)
 Group.new('vimBracket', c.orange, c.none, no)
 Group.new('vimMapModKey', c.orange, c.none, no)
-Group.new('vimCommand', c.blue, c.none, b)
+Group.new('vimCommand', c.accent, c.none, b)
 Group.new('vimLet', c.blue, c.none, no)
 Group.new('vimNorm', c.blue, c.none, no)
 Group.new('vimFuncSID', g.Function, g.Function, g.Function)
@@ -705,8 +705,8 @@ Group.new("TSConstant", g.Constant, c.none) -- For constants
 Group.new("TSConstBuiltin", g.Constant, c.none) -- For constant that are built in the language: `nil` in Lua
 Group.new("TSConstMacro", g.Constant, c.none) -- For constants that are defined by macros: `NULL` in C
 Group.new("TSString", g.String, c.none) -- For strings
--- Group.new("TSStringRegex"        , c.fg_escape_char_construct , nil) -- For regexes
--- Group.new("TSStringEscape"       , c.fg_escape_char_backslash , nil) -- For escape characters within a string
+Group.new("TSStringRegex",c.red , nil) -- For regexes
+Group.new("TSStringEscape",c.red, nil) -- For escape characters within a string
 Group.new("TSCharacter", g.Character, c.none) -- For characters
 Group.new("TSNumber", g.Number, c.none) -- For integers
 Group.new("TSBoolean", g.Boolean, c.none) -- For booleans
@@ -714,10 +714,10 @@ Group.new("TSFloat", g.Float, c.none) -- For floats
 Group.new("TSFunction", g.Function, c.none) -- For function (calls and definitions
 Group.new("TSFuncBuiltin", g.Function, c.none) -- For builtin functions: `table.insert` in Lua
 Group.new("TSFuncMacro", g.Function, c.none) -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
--- Group.new("TSParameter"          , c.cyan              , c.none  , s.none) -- For parameters of a function.
+Group.new("TSParameter", c.red, c.none, s.none) -- For parameters of a function.
 -- Group.new("TSParameterReference" , g.TSParameter     , nil) -- For references to parameters of a function.
 Group.new("TSMethod", g.Function, c.none) -- For method calls and definitions.
--- Group.new("TSField"    , c.magenta_alt_other , c.none  , s.none) -- For fields.
+Group.new("TSField", c.red , c.none  , s.none) -- For fields.
 -- Group.new("TSProperty"    , TSField , c.none  , s.none) -- Same as `TSField`.
 -- Group.new("TSConstructor"        , c.magenta_alt       , c.none)  -- For constructor calls and definitions: `{}` in Lua, and Java constructors
 Group.new("TSConditional", g.Conditional, c.none) -- For keywords related to conditionnals
