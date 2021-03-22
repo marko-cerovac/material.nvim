@@ -216,12 +216,12 @@ Group.new('IncSearch', c.selection, c.none, b + r) -- 'incsearch' highlighting; 
 Group.new('LineNr', c.line_numbers, c.none, no) -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
 Group.new('CursorLineNr', c.accent, c.none, no) -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
 Group.new('MatchParen', c.cyan, c.none, b + ul) -- The character under the cursor or just before it, if it is a paired bracket, and its match.
-Group.new('ModeMsg', c.green, c.none, no) -- 'showmode' message (e.g., "-- INSERT --")
+Group.new('ModeMsg', c.accent, c.none, no) -- 'showmode' message (e.g., "-- INSERT --")
 Group.new('MoreMsg', g.ModeMsg, g.ModeMsg, g.ModeMsg) -- more-prompt
 Group.new('NonText', c.gray, c.none, no) -- '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line).
 Group.new('Normal', c.fg1, c.bg, no) -- normal text
 Group.new('Pmenu', c.fg2, c.selection, no) -- Popup menu: normal item.
-Group.new('PmenuSel', c.blue, c.disabled, no) -- Popup menu: selected item.
+Group.new('PmenuSel', c.accent, c.disabled, no) -- Popup menu: selected item.
 Group.new('PmenuSbar', c.fg2, c.fg1, no) -- Popup menu: scrollbar.
 Group.new('PmenuThumb', c.fg1, c.accent, no) -- Popup menu: Thumb of the scrollbar.
 Group.new('Question', c.green, c.none, b) -- hit-enter prompt and yes/no questions
@@ -247,7 +247,7 @@ Group.new('VisualNOS', g.Visual, g.Visual, g.Visual) -- Visual mode selection wh
 Group.new('WarningMsg', c.red, c.none, no) --  warning messages
 Group.new('WildMenu', c.orange, c.bg, b) --  current match in 'wildmenu' completion
 Group.new('CursorColumn', c.none, c.bg, no)
-Group.new('CursorLine', c.none, c.bg, no)
+Group.new('CursorLine', c.selection, c.bg, no)
 Group.new('ToolbarLine', c.fg1, c.disabled, no)
 Group.new('ToolbarButton', c.fg1, c.bg, b)
 Group.new('NormalMode', c.cyan, c.none, r)
