@@ -677,7 +677,7 @@ Group.new('WhichKeyDesc', g.Operator, g.Operator, g.Operator)
  Group.new("healthError",c.error, c.fg2)
  Group.new("healthSuccess",c.green, c.bg)
  Group.new("healthWarning",c.yellow, c.bg)
- Group.new("TermCursorNC",c.nord_1, c.nord_1)
+ Group.new("TermCursorNC",c.fg1, c.bg)
 
 -- LSP Groups (descriptions and ordering from `:h lsp-highlight`)
 Group.new("LspDiagnosticsError", c.error, c.none) -- used for "Error" diagnostic virtual text
