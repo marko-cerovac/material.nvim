@@ -247,7 +247,7 @@ Group.new('VisualNOS', g.Visual, g.Visual, g.Visual) -- Visual mode selection wh
 Group.new('WarningMsg', c.red, c.none, no) --  warning messages
 Group.new('WildMenu', c.orange, c.bg, b) --  current match in 'wildmenu' completion
 Group.new('CursorColumn', c.none, c.bg, no)
-Group.new('CursorLine', c.selection, c.bg, no)
+Group.new('CursorLine', c.none, c.selection, no)
 Group.new('ToolbarLine', c.fg1, c.disabled, no)
 Group.new('ToolbarButton', c.fg1, c.bg, b)
 Group.new('NormalMode', c.cyan, c.none, r)
