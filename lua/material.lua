@@ -159,29 +159,35 @@ end
 
 -- Syntax groups
 
-Group.new('Comment', c.comments, c.none, i) -- any comment
+-- Choose italic comments
+if v.material_italics == 1 then
+    Group.new('Comment', c.comments, c.none, i) -- italic comments
+else
+    Group.new('Comment', c.comments, c.none, no) -- normal comments
+end
+
 Group.new('Constant', c.yellow, c.none, no) -- any constant
 Group.new('String', c.green, c.none, i) -- this is a string
 Group.new('Character', c.orange, c.none, no) -- a character constant: 'c', '\n'
 Group.new('Boolean', c.orange, c.none, no) -- a boolean constant: TRUE, false
 Group.new('Float', c.orange, c.none, no) -- a floating point constant: 2.3e10
 Group.new('Identifier', c.blue, c.none, no) -- any variable name
-Group.new('Function', c.blue, c.none, b) -- function name (also: methods for classes)
+Group.new('Function', c.blue, c.none, no) -- function name (also: methods for classes)
 Group.new('Statement', c.purple, c.none, no) -- any statement
-Group.new('Conditional', c.purple, c.none, b) -- if, then, else, endif, switch, etc.
-Group.new('Repeat', c.purple, c.none, b) -- for, do, while, etc.
+Group.new('Conditional', c.purple, c.none, no) -- if, then, else, endif, switch, etc.
+Group.new('Repeat', c.purple, c.none, no) -- for, do, while, etc.
 Group.new('Label', c.yellow, c.none, no) -- case, default, etc.
 Group.new('Operator', c.yellow, c.none, no) -- sizeof", "+", "*", etc.
-Group.new('Keyword', c.cyan, c.none, b) -- any other keyword
+Group.new('Keyword', c.cyan, c.none, no) -- any other keyword
 Group.new('Exception', c.red, c.none, no) -- try, catch, throw
 Group.new('PreProc', c.purple, c.none, no) -- generic Preprocessor
 Group.new('Include', c.blue, c.none, no) -- preprocessor #include
 Group.new('Define', c.cyan, c.none, no) -- preprocessor #define
-Group.new('Macro', c.cyan, c.none, b) -- same as Define
+Group.new('Macro', c.cyan, c.none, no) -- same as Define
 Group.new('PreCondit', c.purple, c.none, no) -- preprocessor #if, #else, #endif, etc.
 Group.new('Type', c.yellow, c.none, no) -- int, long, char, etc.
-Group.new('StorageClass', c.yellow, c.none, b) -- static, register, volatile, etc.
-Group.new('Structure', c.purple, c.none, b) -- struct, union, enum, etc.
+Group.new('StorageClass', c.yellow, c.none, no) -- static, register, volatile, etc.
+Group.new('Structure', c.purple, c.none, no) -- struct, union, enum, etc.
 Group.new('Typedef', c.cyan, c.none, no) -- A typedef
 Group.new('Special', c.yellow, c.none, i) -- any special symbol
 Group.new('SpecialChar', c.blue, c.none, no) -- special character in a constant
@@ -191,7 +197,7 @@ Group.new('SpecialComment', c.gray, c.none, no) -- special things inside a comme
 Group.new('Debug', c.red, c.none, no) -- debugging statements
 Group.new('Underlined', c.blue, c.none, ul) -- text that stands out, HTML links
 Group.new('Ignore', c.disabled, c.none, no) -- left blank, hidden
-Group.new('Error', c.red, c.none, b + r) -- any erroneous construct
+Group.new('Error', c.red, c.none, b + ul) -- any erroneous construct
 Group.new('Todo', c.yellow, c.none, b + i) -- anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
 
@@ -207,15 +213,15 @@ Group.new('DiffChange', c.orange, c.none, r) --  diff mode: Changed line
 Group.new('DiffDelete', c.red, c.none, r) -- diff mode: Deleted line
 Group.new('DiffText', c.yellow, c.none, r) -- diff mode: Changed text within a changed line
 Group.new('EndOfBuffer', c.invisibles, c.none, no) -- filler lines (~) after the last line in the buffer
-Group.new('ErrorMsg', c.none, c.bg, no) -- error messages on the command line
+Group.new('ErrorMsg', c.fg1, c.bg, no) -- error messages on the command line
 Group.new('VertSplit', c.selection, c.none, no) -- the column separating verti-- cally split windows
 Group.new('Folded', c.purple, c.bg, i) -- line used for closed folds
 Group.new('FoldColumn', c.blue, c.none, no) -- 'foldcolumn'
 Group.new('SignColumn', c.fg1, c.none, no) -- column where signs are displayed
-Group.new('IncSearch', c.selection, c.white, b + r) -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+Group.new('IncSearch', c.selection, c.white, r) -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
 Group.new('LineNr', c.line_numbers, c.none, no) -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
 Group.new('CursorLineNr', c.accent, c.none, no) -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-Group.new('MatchParen', c.cyan, c.none, b + ul) -- The character under the cursor or just before it, if it is a paired bracket, and its match.
+Group.new('MatchParen', c.cyan, c.none, b) -- The character under the cursor or just before it, if it is a paired bracket, and its match.
 Group.new('ModeMsg', c.accent, c.none, no) -- 'showmode' message (e.g., "-- INSERT --")
 Group.new('MoreMsg', g.ModeMsg, g.ModeMsg, g.ModeMsg) -- more-prompt
 Group.new('NonText', c.gray, c.none, no) -- '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line).
@@ -227,7 +233,7 @@ Group.new('PmenuThumb', c.fg1, c.accent, no) -- Popup menu: Thumb of the scrollb
 Group.new('Question', c.green, c.none, b) -- hit-enter prompt and yes/no questions
 Group.new('QuickFixLine', g.Search, g.Search, g.Search) -- Current quickfix item in the quickfix window.
 Group.new('qfLineNr', g.Type, g.Type, g.Type)
-Group.new('Search', c.selection, c.white, b + r) -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
+Group.new('Search', c.selection, c.white, r) -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
 Group.new('SpecialKey', c.purple, c.none, no) -- Meta and special keys listed with ":map", also for text used to show unprintable characters in the text, 'listchars'. Generally: text that is displayed differently from what it really is.
 Group.new('SpellBad', c.red, c.none, i + uc) -- Word that is not recognized by the spellchecker. This will be combined with the highlighting used otherwise.
 Group.new('SpellCap', c.blue, c.none, i + uc) -- Word that should start with a capital. This will be combined with the highlighting used otherwise.
