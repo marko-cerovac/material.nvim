@@ -166,7 +166,7 @@ else
     Group.new('Comment', c.comments, c.none, no) -- normal comments
 end
 
-Group.new('Constant', c.yellow, c.none, no) -- any constant
+Group.new('Constant', c.orange, c.none, no) -- any constant
 Group.new('String', c.green, c.none, i) -- this is a string
 Group.new('Character', c.orange, c.none, no) -- a character constant: 'c', '\n'
 Group.new('Boolean', c.orange, c.none, no) -- a boolean constant: TRUE, false
@@ -244,7 +244,7 @@ Group.new('StatusLineNC', c.comments, c.selection, no) -- status lines of not-cu
 --Group.new('StatusLineTerm', g.StatusLine, g.StatusLine, g.StatusLine) -- status line of current :terminal window
 Group.new('StatusLineTerm', c.bg, c.green, g.StatusLine) -- status line of current :terminal window
 Group.new('StatusLineTermNC', g.StatusLineNC, g.StatusLineNC, g.StatusLineNC) -- status line of non-current :terminal window
-Group.new('TabLineFill', c.fg1, c.selection, no)
+Group.new('TabLineFill', c.fg1, c.bg, no)
 Group.new('TabLineSel', c.bg, c.accent, no)
 Group.new('TabLine', g.TabLineFill, g.TabLineFill, g.TabLineFill)
 Group.new('Title', c.green, c.none, b) -- titles for output from ":set all", ":autocmd" etc.
@@ -707,7 +707,6 @@ Group.new('WhichKeySeperator', c.purple, c.none, no)
 Group.new('WhichKeyGroup', g.Identifier, g.Identifier, g.Identifier)
 Group.new('WhichKeyDesc', g.Operator, g.Operator, g.Operator)
 
-
 -- NeoVim built in
 
 -- +- Neovim Support -+
@@ -720,18 +719,52 @@ Group.new('WhichKeyDesc', g.Operator, g.Operator, g.Operator)
 Group.new("LspDiagnosticsError", c.error, c.none) -- used for "Error" diagnostic virtual text
 Group.new("LspDiagnosticsErrorSign", c.error, c.none) -- used for "Error" diagnostic signs in sign column
 Group.new("LspDiagnosticsErrorFloating", c.error, c.none) -- used for "Error" diagnostic messages in the diagnostics float
-Group.new("LspDiagnosticsWarning", c.orange, c.none) -- used for "Warning" diagnostic virtual text
-Group.new("LspDiagnosticsWarningSign", c.orange, c.none) -- used for "Warning" diagnostic signs in sign column
-Group.new("LspDiagnosticsWarningFloating", c.orange, c.none) -- used for "Warning" diagnostic messages in the diagnostics float
+Group.new("LspDiagnosticsWarning", c.yellow, c.none) -- used for "Warning" diagnostic virtual text
+Group.new("LspDiagnosticsWarningSign", c.yellow, c.none) -- used for "Warning" diagnostic signs in sign column
+Group.new("LspDiagnosticsWarningFloating", c.yellow, c.none) -- used for "Warning" diagnostic messages in the diagnostics float
 Group.new("LSPDiagnosticsInformation", c.blue, c.none) -- used for "Information" diagnostic virtual text
 Group.new("LspDiagnosticsInformationSign", c.blue, c.none)  -- used for "Information" diagnostic signs in sign column
 Group.new("LspDiagnosticsInformationFloating", c.blue, c.none) -- used for "Information" diagnostic messages in the diagnostics float
-Group.new("LspDiagnosticsHint", c.yellow, c.none)  -- used for "Hint" diagnostic virtual text
-Group.new("LspDiagnosticsHintSign", c.yellow, c.none) -- used for "Hint" diagnostic signs in sign column
-Group.new("LspDiagnosticsHintFloating", c.yellow, c.none) -- used for "Hint" diagnostic messages in the diagnostics float
+Group.new("LspDiagnosticsHint", c.purple, c.none)  -- used for "Hint" diagnostic virtual text
+Group.new("LspDiagnosticsHintSign", c.purple, c.none) -- used for "Hint" diagnostic signs in sign column
+Group.new("LspDiagnosticsHintFloating", c.purple, c.none) -- used for "Hint" diagnostic messages in the diagnostics float
 Group.new("LspReferenceText", c.purple, c.none) -- used for highlighting "text" references
 Group.new("LspReferenceRead", c.purple, c.none) -- used for highlighting "read" references
 Group.new("LspReferenceWrite", c.purple, c.none) -- used for highlighting "write" references
+
+-- LSP Saga
+Group.new("DiagnosticError	", c.error, c.none)
+Group.new("DiagnosticWarning	", c.yellow, c.none)
+Group.new("DiagnosticInformation	", c.blue, c.none)
+Group.new("DiagnosticHint	", c.purple, c.none)
+Group.new("LspSagaRenameBorder	", c.green, c.none)
+Group.new("LspSagaRenamePromptPrefix	", c.green, c.none)
+Group.new("LspSagaHoverBorder	", c.accent, c.none)
+Group.new("DefinitionPreviewTitle	", c.yellow, c.none)
+Group.new("LspSagaDefPreviewBorder	", c.yellow, c.none)
+--Group.new("LspFloatWinBorder	", c.none, c.none)
+--Group.new("LspSagaFinderSelection", c.none, c.none)
+--Group.new("LspSagaBorderTitle	", c.none, c.none)
+--Group.new("TargetWord	", c.none, c.none)
+--Group.new("ReferencesCount	", c.none, c.none)
+--Group.new("DefinitionCount	", c.none, c.none)
+--Group.new("TargetFileName	", c.none, c.none)
+--Group.new("DefinitionIcon	", c.none, c.none)
+--Group.new("ReferencesIcon	", c.none, c.none)
+--Group.new("ProviderTruncateLine	", c.none, c.none)
+--Group.new("SagaShadow	", c.none, c.none)
+--Group.new("LspSagaFinderSelection	", c.none, c.none)
+--Group.new("DiagnosticTruncateLine	", c.none, c.none)
+--Group.new("LspSagaShTruncateLine	", c.none, c.none)
+--Group.new("LspSagaDocTruncateLine	", c.none, c.none)
+--Group.new("LineDiagTuncateLine	", c.none, c.none)
+--Group.new("LspSagaCodeActionTitle	", c.none, c.none)
+--Group.new("LspSagaCodeActionTruncateLine	", c.none, c.none)
+--Group.new("LspSagaCodeActionContent	", c.none, c.none)
+--Group.new("LspSagaSignatureHelpBorder	", c.none, c.none)
+--Group.new("LspSagaCodeActionBorder	", c.none, c.none)
+--Group.new("LspSagaAutoPreview	", c.none, c.none)
+--Group.new("LspLinesDiagBorder", c.none, c.none)
 
 -- Nvim Treesitter Groups (descriptions and ordering from `:h nvim-treesitter-highlights`)
 Group.new("TSError", g.Error, c.none, b) -- For syntax/parser errors
