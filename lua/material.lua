@@ -11,7 +11,6 @@ local no = s.NONE
 local v = vim.g
 
 v.colors_name = 'material'
---v.material_style = 'deep ocean'
 
 -- Universal colors
 
@@ -76,12 +75,12 @@ elseif v.material_style == 'lighter' then
 	Color.new('green',				'#91B859')
 	Color.new('cyan',				'#39ADB5')
 	Color.new('blue',				'#6182B8')
-	Color.new('paleblue',			'#8796B0')
 	Color.new('purple',				'#7C4DFF')
-	Color.new('brown',				'#C17E70')
-	Color.new('pink',				'#FF5370')
-	Color.new('violet',				'#945EB8')
 	Color.new('accent',				'#00BCD4')
+	--Color.new('paleblue',			'#8796B0')
+	--Color.new('brown',            '#C17E70')
+	--Color.new('pink',				'#FF5370')
+	--Color.new('violet',           '#945EB8')
 
 elseif v.material_style == 'palenight' then
 	-- Palenight theme style
@@ -248,7 +247,7 @@ Group.new('TabLineFill', c.fg1, c.bg, no)
 Group.new('TabLineSel', c.bg, c.accent, no)
 Group.new('TabLine', g.TabLineFill, g.TabLineFill, g.TabLineFill)
 Group.new('Title', c.green, c.none, b) -- titles for output from ":set all", ":autocmd" etc.
-Group.new('Visual', c.fg2, c.selection, no) -- Visual mode selection
+Group.new('Visual', c.accent, c.selection, no) -- Visual mode selection
 Group.new('VisualNOS', g.Visual, g.Visual, g.Visual) -- Visual mode selection when vim is "Not Owning the Selection". Only X11 Gui's gui-x11 and xterm-clipboard supports this.
 Group.new('WarningMsg', c.red, c.none, no) --  warning messages
 Group.new('WildMenu', c.orange, c.bg, b) --  current match in 'wildmenu' completion
