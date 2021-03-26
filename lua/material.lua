@@ -1,3 +1,20 @@
+--         ___           ___
+--        /\  \         /\__\
+--       |::\  \       /:/  /
+--       |:|:\  \     /:/  /
+--     __|:|\:\  \   /:/  /  ___
+--    /::::|_\:\__\ /:/__/  /\__\
+--    \:\~~\  \/__/ \:\  \ /:/  /
+--     \:\  \        \:\  /:/  /
+--      \:\  \        \:\/:/  /
+--       \:\__\        \::/  /
+--        \/__/         \/__/
+--
+-- Colorscheme name:        material.nvim
+-- Description:             Colorscheme for NeoVim based on the material pallete
+-- Author:                  Marko Cerovac <marko.cerovac16@gmail.com>
+-- Website:                 https://github.com/marko-cerovac/material.nvim
+
 local Color, colors, Group, groups, styles = require('colorbuddy').setup()
 local g = require('colorbuddy.group').groups
 local c = require('colorbuddy.color').colors
@@ -66,7 +83,6 @@ elseif v.material_style == 'lighter' then
 	Color.new('line_numbers',		'#CFD8DC')
 	Color.new('line_highlight',		'#ECF0F1')
 	Color.new('white',				'#FFFFFF')
-	Color.new('black',				'#000000')
 	Color.new('red',				'#E53935')
 	Color.new('orange',				'#F76D47')
 	Color.new('yellow',				'#FFB62C')
@@ -132,22 +148,22 @@ end
 
 -- Terminal colors
 
---v.terminal_color_0 = c.black
---v.terminal_color_1 = c.red
---v.terminal_color_2 = c.green
---v.terminal_color_3 = c.yellow
---v.terminal_color_4 = c.blue
---v.terminal_color_5 = c.purple
---v.terminal_color_6 = c.cyan
---v.terminal_color_7 = c.white
---v.terminal_color_8 = c.black
---v.terminal_color_9 = c.red
---v.terminal_color_10 = c.green
---v.terminal_color_11 = c.yellow
---v.terminal_color_12 = c.blue
---v.terminal_color_13 = c.purple
---v.terminal_color_14 = c.cyan
---v.terminal_color_15 = c.white
+v.terminal_color_0 = '#000000'
+v.terminal_color_1 = '#F07178'
+v.terminal_color_2 = '#C3E88D'
+v.terminal_color_3 = '#FFCB6B'
+v.terminal_color_4 = '#82AAFF'
+v.terminal_color_5 = '#C792EA'
+v.terminal_color_6 = '#89DDFF'
+v.terminal_color_7 = '#EEFFFF'
+v.terminal_color_8 = '#000000'
+v.terminal_color_9 = '#F07178'
+v.terminal_color_10 = '#C3E88D'
+v.terminal_color_11 = '#FFCB6B'
+v.terminal_color_12 = '#82AAFF'
+v.terminal_color_13 = '#C792EA'
+v.terminal_color_14 = '#89DDFF'
+v.terminal_color_15 = '#EEFFFF'
 
 
 -- Syntax groups
