@@ -53,10 +53,32 @@ vim.g.material_style = "deep ocean"
 To enable italic comments use:
 ```vim 
 "Vim-Script:
-let g:material_italics=1
+let g:material_italic_comments=1
 ```
 
 ```lua
 --Lua:
-vim.g.material_italics = 1
+vim.g.material_italic_comments = 1
+```
+
+To enable italic keywords like: if, then, else, switch, for, do ,while ...
+```vim 
+"Vim-Script:
+let g:material_italic_keywords=1
+```
+
+```lua
+--Lua:
+vim.g.material_italic_keywords = 1
+```
+
+To enable italic function names use:
+```vim 
+"Vim-Script:
+let g:material_italic_functions=1
+```
+
+```lua
+--Lua:
+vim.g.material_italic_functions = 1
 ```

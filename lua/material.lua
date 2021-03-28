@@ -31,12 +31,10 @@ v.colors_name = 'material'
 
 -- Universal colors
 
-Color.new('fg1',			'#A6ACCD')
 Color.new('fg2',			'#607D8B')
 Color.new('fg3',			'#8F93A2')
 Color.new('disabled',       '#464B5D')
-Color.new('line_numbers',   '#525975')
-Color.new('selection',      '#1F2233')
+Color.new('comments',		'#464B5D')
 
 Color.new('white',          '#EEFFFF')
 Color.new('gray',           '#717CB4')
@@ -48,13 +46,11 @@ Color.new('blue',           '#82AAFF')
 Color.new('cyan',           '#89DDFF')
 Color.new('purple',         '#C792EA')
 Color.new('orange',         '#F78C6C')
+Color.new('pink',           '#FF9CAC')
 
-Color.new('comments',       '#464B5D')
 Color.new('error',          '#FF5370')
 Color.new('link',           '#80CBC4')
-Color.new('type',           '#FFCB6B')
-Color.new('function',       '#82AAFF')
-Color.new('green',          '#C3E88D')
+Color.new('variable',       '#A6ACCD')
 
 
 -- Style specific colors
@@ -91,9 +87,9 @@ elseif v.material_style == 'lighter' then
 	Color.new('blue',				'#6182B8')
 	Color.new('purple',				'#7C4DFF')
 	Color.new('accent',				'#00BCD4')
+	Color.new('pink',				'#FF5370')
 	--Color.new('paleblue',			'#8796B0')
 	--Color.new('brown',            '#C17E70')
-	--Color.new('pink',				'#FF5370')
 	--Color.new('violet',           '#945EB8')
 
 elseif v.material_style == 'palenight' then
@@ -169,39 +165,52 @@ v.terminal_color_15 = '#EEFFFF'
 -- Syntax groups
 
 -- Choose italic comments
-if v.material_italics == 1 then
+if v.material_italic_comments == 1 or v.material_italics == 1 then
     Group.new('Comment', c.comments, c.none, i) -- italic comments
 else
     Group.new('Comment', c.comments, c.none, no) -- normal comments
 end
 
+if v.material_italic_keywords == 1 then
+    Group.new('Conditional', c.purple, c.none, i) -- italic if, then, else, endif, switch, etc.
+    Group.new('Repeat', c.cyan, c.none, i) -- italic for, do, while, etc.
+    Group.new('Keyword', c.cyan, c.none, i) -- italic any other keyword
+else
+    Group.new('Conditional', c.purple, c.none, no) -- normal if, then, else, endif, switch, etc.
+    Group.new('Repeat', c.cyan, c.none, no) -- normal for, do, while, etc.
+    Group.new('Keyword', c.cyan, c.none, no) -- normal any other keyword
+end
+
+if v.material_italic_functions == 1 then
+    Group.new('Function', c.blue, c.none, i) -- italic funtion names
+else
+    Group.new('Function', c.blue, c.none, no) -- normal function names
+end
+
 Group.new('Constant', c.orange, c.none, no) -- any constant
 Group.new('String', c.green, c.none, i) -- this is a string
 Group.new('Character', c.orange, c.none, no) -- a character constant: 'c', '\n'
-Group.new('Boolean', c.orange, c.none, no) -- a boolean constant: TRUE, false
+Group.new('Number', c.orange, c.none, no) -- a number constant: 5
+Group.new('Boolean', c.pink, c.none, no) -- a boolean constant: TRUE, false
 Group.new('Float', c.orange, c.none, no) -- a floating point constant: 2.3e10
-Group.new('Identifier', c.blue, c.none, no) -- any variable name
-Group.new('Function', c.blue, c.none, no) -- function name (also: methods for classes)
+Group.new('Identifier', c.pink, c.none, no) -- any variable name
 Group.new('Statement', c.purple, c.none, no) -- any statement
-Group.new('Conditional', c.purple, c.none, no) -- if, then, else, endif, switch, etc.
-Group.new('Repeat', c.purple, c.none, no) -- for, do, while, etc.
 Group.new('Label', c.yellow, c.none, no) -- case, default, etc.
 Group.new('Operator', c.yellow, c.none, no) -- sizeof", "+", "*", etc.
-Group.new('Keyword', c.cyan, c.none, no) -- any other keyword
 Group.new('Exception', c.red, c.none, no) -- try, catch, throw
 Group.new('PreProc', c.purple, c.none, no) -- generic Preprocessor
-Group.new('Include', c.blue, c.none, no) -- preprocessor #include
-Group.new('Define', c.cyan, c.none, no) -- preprocessor #define
+Group.new('Include', c.cyan, c.none, no) -- preprocessor #include
+Group.new('Define', c.pink, c.none, no) -- preprocessor #define
 Group.new('Macro', c.cyan, c.none, no) -- same as Define
 Group.new('PreCondit', c.purple, c.none, no) -- preprocessor #if, #else, #endif, etc.
-Group.new('Type', c.yellow, c.none, no) -- int, long, char, etc.
-Group.new('StorageClass', c.yellow, c.none, no) -- static, register, volatile, etc.
+Group.new('Type', c.purple, c.none, no) -- int, long, char, etc.
+Group.new('StorageClass', c.cyan, c.none, no) -- static, register, volatile, etc.
 Group.new('Structure', c.purple, c.none, no) -- struct, union, enum, etc.
 Group.new('Typedef', c.cyan, c.none, no) -- A typedef
 Group.new('Special', c.yellow, c.none, i) -- any special symbol
 Group.new('SpecialChar', c.blue, c.none, no) -- special character in a constant
 Group.new('Tag', c.orange, c.none, no) -- you can use CTRL-] on this
-Group.new('Delimiter', c.green, c.none, no) -- character that needs attention
+Group.new('Delimiter', c.cyan, c.none, no) -- character that needs attention
 Group.new('SpecialComment', c.gray, c.none, no) -- special things inside a comment
 Group.new('Debug', c.red, c.none, no) -- debugging statements
 Group.new('Underlined', c.blue, c.none, ul) -- text that stands out, HTML links
@@ -781,29 +790,29 @@ Group.new("LspSagaDefPreviewBorder	", c.yellow, c.none)
 -- Nvim Treesitter Groups (descriptions and ordering from `:h nvim-treesitter-highlights`)
 Group.new("TSError", g.Error, c.none, b) -- For syntax/parser errors
 Group.new("TSPunctDelimiter", g.Delimiter, c.none) -- For delimiters ie: `.
-Group.new("TSPunctBracket", c.fg3, nil) -- For brackets and parens
+Group.new("TSPunctBracket", c.cyan, nil) -- For brackets and parens
 -- Group.new("TSPunctSpecial"       , c.fg     , nil) -- For special punctutation that does not fall in the catagories before
 Group.new("TSConstant", g.Constant, c.none) -- For constants
-Group.new("TSConstBuiltin", g.Constant, c.none) -- For constant that are built in the language: `nil` in Lua
-Group.new("TSConstMacro", g.Constant, c.none) -- For constants that are defined by macros: `NULL` in C
+Group.new("TSConstBuiltin", c.pink, c.none) -- For constant that are built in the language: `nil` in Lua
+Group.new("TSConstMacro", c.pink, c.none) -- For constants that are defined by macros: `NULL` in C
 Group.new("TSString", g.String, c.none) -- For strings
 Group.new("TSStringRegex",c.red , nil) -- For regexes
-Group.new("TSStringEscape",c.red, nil) -- For escape characters within a string
+Group.new("TSStringEscape",c.fg1, nil) -- For escape characters within a string
 Group.new("TSCharacter", g.Character, c.none) -- For characters
 Group.new("TSNumber", g.Number, c.none) -- For integers
 Group.new("TSBoolean", g.Boolean, c.none) -- For booleans
 Group.new("TSFloat", g.Float, c.none) -- For floats
-Group.new("TSFunction", g.Function, c.none) -- For function (calls and definitions
-Group.new("TSFuncBuiltin", g.Function, c.none) -- For builtin functions: `table.insert` in Lua
-Group.new("TSFuncMacro", g.Function, c.none) -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
-Group.new("TSParameter", c.red, c.none, s.none) -- For parameters of a function.
+Group.new("TSFunction", g.Function, c.none, g.Function) -- For function (calls and definitions
+Group.new("TSFuncBuiltin", g.Function, c.none, g.Function) -- For builtin functions: `table.insert` in Lua
+Group.new("TSFuncMacro", g.Function, c.none, g.Function) -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
+Group.new("TSParameter", c.variable, c.none, s.none) -- For parameters of a function.
 -- Group.new("TSParameterReference" , g.TSParameter     , nil) -- For references to parameters of a function.
-Group.new("TSMethod", g.Function, c.none) -- For method calls and definitions.
+Group.new("TSMethod", g.Function, c.none, g.Function) -- For method calls and definitions.
 Group.new("TSField", c.red , c.none  , s.none) -- For fields.
 -- Group.new("TSProperty"    , TSField , c.none  , s.none) -- Same as `TSField`.
 -- Group.new("TSConstructor"        , c.magenta_alt       , c.none)  -- For constructor calls and definitions: `{}` in Lua, and Java constructors
-Group.new("TSConditional", g.Conditional, c.none) -- For keywords related to conditionnals
-Group.new("TSRepeat", g.Repeat, c.none) -- For keywords related to loops
+Group.new("TSConditional", g.Conditional, c.none, g.Conditional) -- For keywords related to conditionnals
+Group.new("TSRepeat", g.Repeat, c.none, g.Repeat) -- For keywords related to loops
 Group.new("TSLabel", g.Label, c.none) -- For labels: `label:` in C and `:label:` in Lua
 Group.new("TSOperator", g.Operator, c.none) -- For any operator: `+`, but also `->` and `*` in C
 Group.new("TSKeyword", g.Keyword, c.none) -- For keywords that don't fall in previous categories.
@@ -821,5 +830,5 @@ Group.new("TSInclude", g.Include, c.none) -- For includes: `#include` in C, `use
 -- Group.new("TSTitle"              , c.cyan_nuanced    , c.none) -- Text that is part of a title.
 -- Group.new("TSLiteral"            , c.blue_alt          , c.none  , b) -- Literal text.
 -- Group.new("TSURI"           , c.cyan              , c.none  , s.none) -- Any URI like a link or email.
- Group.new("TSVariable", c.cyan, c.none, s.none) -- Any URI like a link or email.
--- Group.new("TSVariableBuiltin" , g.magenta_alt_other     , nil) -- Variable names that are defined by the languages, like `this` or `self`.
+ Group.new("TSVariable", c.variable, c.none, s.none) -- Any URI like a link or email.
+ Group.new("TSVariableBuiltin",c.pink, c.none, s.none) -- Variable names that are defined by the languages, like `this` or `self`.
