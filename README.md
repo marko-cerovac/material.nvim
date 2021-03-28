@@ -20,7 +20,13 @@ use 'marko-cerovac/material.nvim'
 ```
 Enable the colorscheme:
 ```vim 
+"Vim-Script:
 colorscheme material
+```
+
+```lua
+--Lua:
+require('colorbuddy').colorscheme('material')
 ```
 
 ## Configuration

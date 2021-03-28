@@ -75,7 +75,7 @@ elseif v.material_style == 'lighter' then
 	-- Lighter theme style
 
 	Color.new('bg',					'#FAFAFA')
-	Color.new('fg1',				'#90A4AE')
+	Color.new('fg1',				'#546E7A')
 	Color.new('invisibles',			'#E7EAEC')
 	Color.new('comments',			'#90A4AE')
 	Color.new('caret',				'#272727')
@@ -85,7 +85,7 @@ elseif v.material_style == 'lighter' then
 	Color.new('white',				'#FFFFFF')
 	Color.new('red',				'#E53935')
 	Color.new('orange',				'#F76D47')
-	Color.new('yellow',				'#FFB62C')
+	Color.new('yellow',				'#F6A434')
 	Color.new('green',				'#91B859')
 	Color.new('cyan',				'#39ADB5')
 	Color.new('blue',				'#6182B8')
@@ -715,6 +715,9 @@ Group.new('WhichKey', g.Function, g.Function, g.Function)
 Group.new('WhichKeySeperator', c.purple, c.none, no)
 Group.new('WhichKeyGroup', g.Identifier, g.Identifier, g.Identifier)
 Group.new('WhichKeyDesc', g.Operator, g.Operator, g.Operator)
+-- Indent blankline (lukas-reineke/indent-blankline.nvim)
+Group.new('IndentBlanklineChar', g.LineNr, c.none, no)
+Group.new('IndentBlanklineContextChar', c.accent, c.none, no)
 
 -- NeoVim built in
 
@@ -737,9 +740,9 @@ Group.new("LspDiagnosticsInformationFloating", c.blue, c.none) -- used for "Info
 Group.new("LspDiagnosticsHint", c.purple, c.none)  -- used for "Hint" diagnostic virtual text
 Group.new("LspDiagnosticsHintSign", c.purple, c.none) -- used for "Hint" diagnostic signs in sign column
 Group.new("LspDiagnosticsHintFloating", c.purple, c.none) -- used for "Hint" diagnostic messages in the diagnostics float
-Group.new("LspReferenceText", c.purple, c.none) -- used for highlighting "text" references
-Group.new("LspReferenceRead", c.purple, c.none) -- used for highlighting "read" references
-Group.new("LspReferenceWrite", c.purple, c.none) -- used for highlighting "write" references
+Group.new("LspReferenceText", c.accent, c.fg3) -- used for highlighting "text" references
+Group.new("LspReferenceRead", c.accent, c.fg3) -- used for highlighting "read" references
+Group.new("LspReferenceWrite", c.accent, c.fg3) -- used for highlighting "write" references
 
 -- LSP Saga
 Group.new("DiagnosticError	", c.error, c.none)
