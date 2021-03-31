@@ -51,6 +51,7 @@ let g:material_style = 'darker'
 vim.g.material_style = "deep ocean"
 ```
 
+
 + To enable italic comments use:
 ```vim 
 "Vim-Script:
@@ -61,6 +62,7 @@ let g:material_italic_comments=1
 --Lua:
 vim.g.material_italic_comments = 1
 ```
+
 
 + To enable italic keywords like: if, then, else, switch, for, do ,while ...
 ```vim 
@@ -73,6 +75,7 @@ let g:material_italic_keywords=1
 vim.g.material_italic_keywords = 1
 ```
 
+
 + To enable italic function names use:
 ```vim 
 "Vim-Script:
@@ -83,6 +86,8 @@ let g:material_italic_functions=1
 --Lua:
 vim.g.material_italic_functions = 1
 ```
+
+## Functions
 
 + Toggle the style live without the need to exit NeoVim using the function toggle_style()
 
@@ -112,6 +117,7 @@ nnoremap <C-m> :lua require('material').toggle_style()<CR>
 --Lua:
 vim.api.nvim_set_keymap('n', '<C-m>', [[<Cmd>lua require('material').toggle_style()<CR>]], { noremap = true, silent = true }
 ```
+
 
 + Change the style to a desired one using the function change_style("desired style")
 ```vim
