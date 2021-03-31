@@ -33,12 +33,12 @@ require('colorbuddy').colorscheme('material')
 ## Configuration
 
 + There are 6 different styles available:
-    + darker,
-    + lighter,
-    + default,
-    + oceanic,
+    + darker
+    + lighter
+    + default
+    + oceanic
     + palenight
-    + deep ocean,
+    + deep ocean
 
 Set the desired style using:
 ```vim 
