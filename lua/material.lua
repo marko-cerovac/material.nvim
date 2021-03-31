@@ -835,6 +835,13 @@ Group.new("TSInclude", g.Include, c.none) -- For includes: `#include` in C, `use
 
 -- Functions
 
+-- Define style_switch
+if vim.g.style_switch == nil then
+    vim.g.style_switch = 0
+else
+    vim.g.style_switch = vim.g.style_switch + 1
+end
+
 -- change_style takes a style name as a parameter and switches to that style
  local change_style = function (style)
      vim.g.material_style = style
