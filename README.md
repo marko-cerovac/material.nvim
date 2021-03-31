@@ -85,7 +85,8 @@ vim.g.material_italic_functions = 1
 ```
 
 + Toggle the style live without the need to exit NeoVim using the function toggle_style()
-![screen](/media/toggle_style.mp4)
+
+![screen](/media/toggle_style.gif)
 
 To do this, a global variable called style_switch should be set to zero 
 ```vim
