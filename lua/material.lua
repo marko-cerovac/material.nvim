@@ -172,12 +172,12 @@ else
 end
 
 if v.material_italic_keywords == 1 then
-    Group.new('Conditional', c.purple, c.none, i) -- italic if, then, else, endif, switch, etc.
-    Group.new('Repeat', c.cyan, c.none, i) -- italic for, do, while, etc.
+    Group.new('Conditional', c.cyan, c.none, i) -- italic if, then, else, endif, switch, etc.
+    Group.new('Repeat', c.purple, c.none, i) -- italic for, do, while, etc.
     Group.new('Keyword', c.cyan, c.none, i) -- italic any other keyword
 else
-    Group.new('Conditional', c.purple, c.none, no) -- normal if, then, else, endif, switch, etc.
-    Group.new('Repeat', c.cyan, c.none, no) -- normal for, do, while, etc.
+    Group.new('Conditional', c.cyan, c.none, no) -- normal if, then, else, endif, switch, etc.
+    Group.new('Repeat', c.purple, c.none, no) -- normal for, do, while, etc.
     Group.new('Keyword', c.cyan, c.none, no) -- normal any other keyword
 end
 
@@ -223,7 +223,7 @@ Group.new('Todo', c.yellow, c.none, b + i) -- anything that needs extra attentio
 
 Group.new('ColorColumn', c.fg3, c.bg, no) --  used for the columns set with 'colorcolumn'
 Group.new('Conceal', c.blue, c.bg, no) -- placeholder characters substituted for concealed text (see 'conceallevel')
-Group.new('Cursor', c.bg, c.fg1, b + r) -- the character under the cursor
+Group.new('Cursor', c.none, c.none, r) -- the character under the cursor
 Group.new('CursorIM', c.fg, c.none, r) -- like Cursor, but used when in IME mode
 Group.new('Directory', c.blue, c.none, b) -- directory names (and other special names in listings)
 Group.new('DiffAdd', c.green, c.none, r) -- diff mode: Added line
@@ -790,7 +790,7 @@ Group.new("LspSagaDefPreviewBorder	", c.yellow, c.none)
 -- Nvim Treesitter Groups (descriptions and ordering from `:h nvim-treesitter-highlights`)
 Group.new("TSError", g.Error, c.none, b) -- For syntax/parser errors
 Group.new("TSPunctDelimiter", g.Delimiter, c.none) -- For delimiters ie: `.
-Group.new("TSPunctBracket", c.cyan, nil) -- For brackets and parens
+Group.new("TSPunctBracket", c.cyan, c.none) -- For brackets and parens
 -- Group.new("TSPunctSpecial"       , c.fg     , nil) -- For special punctutation that does not fall in the catagories before
 Group.new("TSConstant", g.Constant, c.none) -- For constants
 Group.new("TSConstBuiltin", c.pink, c.none) -- For constant that are built in the language: `nil` in Lua
@@ -832,3 +832,25 @@ Group.new("TSInclude", g.Include, c.none) -- For includes: `#include` in C, `use
 -- Group.new("TSURI"           , c.cyan              , c.none  , s.none) -- Any URI like a link or email.
  Group.new("TSVariable", c.variable, c.none, s.none) -- Any URI like a link or email.
  Group.new("TSVariableBuiltin",c.pink, c.none, s.none) -- Variable names that are defined by the languages, like `this` or `self`.
+
+-- Functions
+
+-- change_style takes a style name as a parameter and switches to that style
+ local change_style = function (style)
+     vim.g.material_style = style
+     package.loaded['colorbuddy'] = nil
+     package.loaded['material'] = nil
+     require('colorbuddy').colorscheme('material')
+ end
+
+-- toggle_style takes no parameters toggles the style on every function call
+ local toggle_style = function ()
+    local styles = { "darker", "lighter", "palenight", "default", "oceanic", "deep ocean" } 
+    vim.g.style_switch = (vim.g.style_switch + 1) % 7
+    change_style(styles[vim.g.style_switch])
+ end
+
+ return {
+     change_style = change_style,
+     toggle_style = toggle_style
+}
