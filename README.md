@@ -100,7 +100,7 @@ Just call the function for style switching
 "This command toggles the style
 ```
 
-The command can then be mapped to key for fast theme switching
+The command can then be mapped to a key for fast theme switching
 ```vim
 "Vim-Script:
 nnoremap <C-m> :lua require('material').toggle_style()<CR>
@@ -119,7 +119,7 @@ vim.api.nvim_set_keymap('n', '<C-m>', [[<Cmd>lua require('material').toggle_styl
 "This command changes the style to palenight
 ```
 
-The command can then be mapped to key for fast theme switching
+The command can then be mapped to a key for fast theme switching
 ```vim
 "Vim-Script:
 nnoremap <C-9> :lua require('material').change_style('lighter')<CR>
