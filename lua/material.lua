@@ -727,6 +727,11 @@ Group.new('WhichKeyDesc', g.Operator, g.Operator, g.Operator)
 -- Indent blankline (lukas-reineke/indent-blankline.nvim)
 Group.new('IndentBlanklineChar', g.LineNr, c.none, no)
 Group.new('IndentBlanklineContextChar', c.accent, c.none, no)
+-- Telescope (nvim-telescope/telescope.nvim)
+Group.new('TelescopeBorder', c.gray, c.none, no)
+Group.new('TelescopeNormal', g.Normal, g.Normal, no)
+Group.new('TelescopeMatching', c.green, c.none, no)
+Group.new('TelescopePromptPrefix', c.accent, c.none, no)
 
 -- NeoVim built in
 
@@ -749,9 +754,9 @@ Group.new("LspDiagnosticsInformationFloating", c.blue, c.none) -- used for "Info
 Group.new("LspDiagnosticsHint", c.purple, c.none)  -- used for "Hint" diagnostic virtual text
 Group.new("LspDiagnosticsHintSign", c.purple, c.none) -- used for "Hint" diagnostic signs in sign column
 Group.new("LspDiagnosticsHintFloating", c.purple, c.none) -- used for "Hint" diagnostic messages in the diagnostics float
-Group.new("LspReferenceText", c.accent, c.fg3) -- used for highlighting "text" references
-Group.new("LspReferenceRead", c.accent, c.fg3) -- used for highlighting "read" references
-Group.new("LspReferenceWrite", c.accent, c.fg3) -- used for highlighting "write" references
+Group.new("LspReferenceText", c.accent, c.disabled) -- used for highlighting "text" references
+Group.new("LspReferenceRead", c.accent, c.disabled) -- used for highlighting "read" references
+Group.new("LspReferenceWrite", c.accent, c.disabled) -- used for highlighting "write" references
 
 -- LSP Saga
 Group.new("DiagnosticError	", c.error, c.none)
@@ -806,7 +811,7 @@ Group.new("TSFunction", g.Function, c.none, g.Function) -- For function (calls a
 Group.new("TSFuncBuiltin", g.Function, c.none, g.Function) -- For builtin functions: `table.insert` in Lua
 Group.new("TSFuncMacro", g.Function, c.none, g.Function) -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
 Group.new("TSParameter", c.variable, c.none, s.none) -- For parameters of a function.
--- Group.new("TSParameterReference" , g.TSParameter     , nil) -- For references to parameters of a function.
+Group.new("TSParameterReference", c.yellow, nil) -- For references to parameters of a function.
 Group.new("TSMethod", g.Function, c.none, g.Function) -- For method calls and definitions.
 Group.new("TSField", c.red , c.none  , s.none) -- For fields.
 -- Group.new("TSProperty"    , TSField , c.none  , s.none) -- Same as `TSField`.
@@ -852,7 +857,7 @@ end
 
 -- toggle_style takes no parameters toggles the style on every function call
  local toggle_style = function ()
-    local styles = { "darker", "lighter", "palenight", "default", "oceanic", "deep ocean" } 
+    local styles = { "darker", "lighter", "palenight", "default", "oceanic", "deep ocean" }
     vim.g.style_switch = (vim.g.style_switch + 1) % 7
     change_style(styles[vim.g.style_switch])
  end
