@@ -108,7 +108,7 @@ nnoremap <C-m> :lua require('material').toggle_style()<CR>
 
 ```lua
 --Lua:
-vim.api.nvim_set_keymap('n', '<C-m>', [[<Cmd>lua require('material').toggle_style()<CR>]], { noremap = true, silent = true }
+vim.api.nvim_set_keymap('n', '<C-m>', [[<Cmd>lua require('material').toggle_style()<CR>]], { noremap = true, silent = true })
 ```
 
 
@@ -128,6 +128,6 @@ nnoremap <C-0> :lua require('material').change_style('darker')<CR>
 
 ```lua
 --Lua:
-vim.api.nvim_set_keymap('n', '<C-9>', [[<Cmd>lua require('material').change_style('lighter')<CR>]], { noremap = true, silent = true }
-vim.api.nvim_set_keymap('n', '<C-0>', [[<Cmd>lua require('material').change_style('darker')<CR>]], { noremap = true, silent = true }
+vim.api.nvim_set_keymap('n', '<C-9>', [[<Cmd>lua require('material').change_style('lighter')<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-0>', [[<Cmd>lua require('material').change_style('darker')<CR>]], { noremap = true, silent = true })
 ```
