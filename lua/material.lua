@@ -43,6 +43,7 @@ Color.new('red',            '#F07178')
 Color.new('green',          '#C3E88D')
 Color.new('yellow',         '#FFCB6B')
 Color.new('blue',           '#82AAFF')
+Color.new('paleblue',       '#B0C9FF')
 Color.new('cyan',           '#89DDFF')
 Color.new('purple',         '#C792EA')
 Color.new('orange',         '#F78C6C')
@@ -50,7 +51,6 @@ Color.new('pink',           '#FF9CAC')
 
 Color.new('error',          '#FF5370')
 Color.new('link',           '#80CBC4')
-Color.new('variable',       '#A6ACCD')
 
 
 -- Style specific colors
@@ -88,7 +88,7 @@ elseif v.material_style == 'lighter' then
 	Color.new('purple',				'#7C4DFF')
 	Color.new('accent',				'#00BCD4')
 	Color.new('pink',				'#FF5370')
-	--Color.new('paleblue',			'#8796B0')
+	Color.new('paleblue',			'#8796B0')
 	--Color.new('brown',            '#C17E70')
 	--Color.new('violet',           '#945EB8')
 
@@ -193,11 +193,11 @@ Group.new('Character', c.orange, c.none, no) -- a character constant: 'c', '\n'
 Group.new('Number', c.orange, c.none, no) -- a number constant: 5
 Group.new('Boolean', c.pink, c.none, no) -- a boolean constant: TRUE, false
 Group.new('Float', c.orange, c.none, no) -- a floating point constant: 2.3e10
-Group.new('Identifier', c.pink, c.none, no) -- any variable name
+Group.new('Identifier', c.gray, c.none, no) -- any variable name
 Group.new('Statement', c.purple, c.none, no) -- any statement
 Group.new('Label', c.yellow, c.none, no) -- case, default, etc.
 Group.new('Operator', c.yellow, c.none, no) -- sizeof", "+", "*", etc.
-Group.new('Exception', c.red, c.none, no) -- try, catch, throw
+Group.new('Exception', c.pink, c.none, no) -- try, catch, throw
 Group.new('PreProc', c.purple, c.none, no) -- generic Preprocessor
 Group.new('Include', c.cyan, c.none, no) -- preprocessor #include
 Group.new('Define', c.pink, c.none, no) -- preprocessor #define
@@ -213,7 +213,7 @@ Group.new('Tag', c.orange, c.none, no) -- you can use CTRL-] on this
 Group.new('Delimiter', c.cyan, c.none, no) -- character that needs attention
 Group.new('SpecialComment', c.gray, c.none, no) -- special things inside a comment
 Group.new('Debug', c.red, c.none, no) -- debugging statements
-Group.new('Underlined', c.blue, c.none, ul) -- text that stands out, HTML links
+Group.new('Underlined', c.link, c.none, ul) -- text that stands out, HTML links
 Group.new('Ignore', c.disabled, c.none, no) -- left blank, hidden
 Group.new('Error', c.red, c.none, b + ul) -- any erroneous construct
 Group.new('Todo', c.yellow, c.none, b + i) -- anything that needs extra attention; mostly the keywords TODO FIXME and XXX
@@ -400,7 +400,7 @@ Group.new('htmlArg', c.cyan, c.none, no)
 Group.new('htmlScriptTag', c.purple, c.none, no)
 Group.new('htmlTagN', c.fg1, c.none, no)
 Group.new('htmlSpecialTagName', c.cyan, c.none, b)
-Group.new('htmlLink', c.blue, c.none, ul)
+Group.new('htmlLink', c.link, c.none, ul)
 Group.new('htmlSpecialChar', c.orange, c.none, no)
 Group.new('htmlBold', c.fg1, c.none, b)
 Group.new('htmlBoldUnderline', c.fg2, c.none, b, ul)
@@ -453,7 +453,7 @@ Group.new('javascriptArrayStaticMethod', c.fg1, c.none, no)
 Group.new('javascriptCacheMethod', c.fg1, c.none, no)
 Group.new('javascriptDateMethod', c.fg1, c.none, no)
 Group.new('javascriptMathStaticMethod', c.fg1, c.none, no)
-Group.new('javascriptURLUtilsProp', c.fg1, c.none, no)
+Group.new('javascriptURLUtilsProp', c.link, c.none, no)
 Group.new('javascriptBOMNavigatorProp', c.fg1, c.none, no)
 Group.new('javascriptDOMDocMethod', c.fg1, c.none, no)
 Group.new('javascriptDOMDocProp', c.fg1, c.none, no)
@@ -549,9 +549,9 @@ Group.new('markdownUrlDelimiter', c.fg3, c.none, no)
 Group.new('markdownLinkDelimiter', c.fg3, c.none, no)
 Group.new('markdownLinkTextDelimiter', c.fg3, c.none, no)
 Group.new('markdownHeadingDelimiter', c.orange, c.none, no)
-Group.new('markdownUrl', c.purple, c.none, no)
+Group.new('markdownUrl', c.link, c.none, no)
 Group.new('markdownUrlTitleDelimiter', c.green, c.none, no)
-Group.new('markdownLinkText', g.htmlLink, g.htmlLink, g.htmlLink)
+Group.new('markdownLinkText', c.link, g.htmlLink, g.htmlLink)
 Group.new('markdownIdDeclaration', g.markdownLinkText, g.markdownLinkText, g.markdownLinkText)
 -- MoonScript
 Group.new('moonSpecialOp', c.fg3, c.none, no)
@@ -711,7 +711,7 @@ Group.new('NERDTreeToggleOff', c.red, c.none, no)
 -- Netrw (vim builtin)
 Group.new('netrwDir', c.blue, c.none, no)
 Group.new('netrwClassify', c.blue, c.none, no)
-Group.new('netrwLink', c.grey, c.none, no)
+Group.new('netrwLink', c.link, c.none, no)
 Group.new('netrwSymLink', c.fg1, c.none, no)
 Group.new('netrwExe', c.yellow, c.none, no)
 Group.new('netrwComment', c.grey, c.none, no)
@@ -810,7 +810,7 @@ Group.new("TSFloat", g.Float, c.none) -- For floats
 Group.new("TSFunction", g.Function, c.none, g.Function) -- For function (calls and definitions
 Group.new("TSFuncBuiltin", g.Function, c.none, g.Function) -- For builtin functions: `table.insert` in Lua
 Group.new("TSFuncMacro", g.Function, c.none, g.Function) -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
-Group.new("TSParameter", c.variable, c.none, s.none) -- For parameters of a function.
+Group.new("TSParameter", c.red, c.none, s.none) -- For parameters of a function.
 Group.new("TSParameterReference", c.yellow, nil) -- For references to parameters of a function.
 Group.new("TSMethod", g.Function, c.none, g.Function) -- For method calls and definitions.
 Group.new("TSField", c.red , c.none  , s.none) -- For fields.
@@ -821,7 +821,7 @@ Group.new("TSRepeat", g.Repeat, c.none, g.Repeat) -- For keywords related to loo
 Group.new("TSLabel", g.Label, c.none) -- For labels: `label:` in C and `:label:` in Lua
 Group.new("TSOperator", g.Operator, c.none) -- For any operator: `+`, but also `->` and `*` in C
 Group.new("TSKeyword", g.Keyword, c.none) -- For keywords that don't fall in previous categories.
--- Group.new("TSKeywordFunction"    , c.magenta_alt       , c.none  , s.none) -- For keywords used to define a fuction.
+--Group.new("TSKeywordFunction",c.yellow, c.none, s.none) -- For keywords used to define a fuction.
 Group.new("TSException", g.Exception, c.none) -- For exception related keywords.
 Group.new("TSType", g.Type, c.none, s.none) -- For types.
 Group.new("TSTypeBuiltin", g.Type, c.none, s.none) -- For builtin types (you guessed it, right ?).
@@ -834,9 +834,9 @@ Group.new("TSInclude", g.Include, c.none) -- For includes: `#include` in C, `use
 -- Group.new("TSUnderline"            , c.blue_alt          , c.none  , b) -- TSUnderline
 -- Group.new("TSTitle"              , c.cyan_nuanced    , c.none) -- Text that is part of a title.
 -- Group.new("TSLiteral"            , c.blue_alt          , c.none  , b) -- Literal text.
--- Group.new("TSURI"           , c.cyan              , c.none  , s.none) -- Any URI like a link or email.
- Group.new("TSVariable", c.variable, c.none, s.none) -- Any URI like a link or email.
- Group.new("TSVariableBuiltin",c.pink, c.none, s.none) -- Variable names that are defined by the languages, like `this` or `self`.
+Group.new("TSURI", c.link, c.none, ul) -- Any URI like a link or email.
+Group.new("TSVariable", c.paleblue, c.none, s.none) -- Any URI like a link or email.
+Group.new("TSVariableBuiltin",c.paleblue, c.none, s.none) -- Variable names that are defined by the languages, like `this` or `self`.
 
 -- Functions
 
