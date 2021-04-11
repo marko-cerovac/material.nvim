@@ -5,6 +5,22 @@ Theme is inspired by https://github.com/kaicataldo/material.vim
 
 ![screen](/media/Material.png)
 
+## Features
+
+material.nvim is meant to be a modern colorscheme written in lua for NeoVim that supports a lot of the new features
+added to NeoVim like built-in lsp and [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
+
++ Supported plugins:
+    + [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
+    + [lspsaga](https://github.com/glepnir/lspsaga.nvim)
+    + [gitgutter](https://github.com/airblade/vim-gitgutter)
+    + [git-messenger](https://github.com/rhysd/git-messenger.vim)
+    + [Telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+    + [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
+    + [NERDTree](https://github.com/preservim/nerdtree)
+    + [vim-which-key](https://github.com/liuchengxu/vim-which-key)
+    + [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
+
 ## Installation
 
 Install via your favourite package manager:

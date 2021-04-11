@@ -48,6 +48,7 @@ Color.new('cyan',           '#89DDFF')
 Color.new('purple',         '#C792EA')
 Color.new('orange',         '#F78C6C')
 Color.new('pink',           '#FF9CAC')
+--Color.new('violet',         '#B66FFD')
 
 Color.new('error',          '#FF5370')
 Color.new('link',           '#80CBC4')
@@ -89,8 +90,8 @@ elseif v.material_style == 'lighter' then
 	Color.new('accent',				'#00BCD4')
 	Color.new('pink',				'#FF5370')
 	Color.new('paleblue',			'#8796B0')
-	--Color.new('brown',            '#C17E70')
-	--Color.new('violet',           '#945EB8')
+	--Color.new('violet',             '#945EB8')
+	--Color.new('brown',              '#C17E70')
 
 elseif v.material_style == 'palenight' then
 	-- Palenight theme style
@@ -199,7 +200,7 @@ Group.new('Label', c.yellow, c.none, no) -- case, default, etc.
 Group.new('Operator', c.yellow, c.none, no) -- sizeof", "+", "*", etc.
 Group.new('Exception', c.pink, c.none, no) -- try, catch, throw
 Group.new('PreProc', c.purple, c.none, no) -- generic Preprocessor
-Group.new('Include', c.cyan, c.none, no) -- preprocessor #include
+Group.new('Include', c.red, c.none, no) -- preprocessor #include
 Group.new('Define', c.pink, c.none, no) -- preprocessor #define
 Group.new('Macro', c.cyan, c.none, no) -- same as Define
 Group.new('PreCondit', c.purple, c.none, no) -- preprocessor #if, #else, #endif, etc.
@@ -210,12 +211,12 @@ Group.new('Typedef', c.cyan, c.none, no) -- A typedef
 Group.new('Special', c.yellow, c.none, i) -- any special symbol
 Group.new('SpecialChar', c.blue, c.none, no) -- special character in a constant
 Group.new('Tag', c.orange, c.none, no) -- you can use CTRL-] on this
-Group.new('Delimiter', c.cyan, c.none, no) -- character that needs attention
+Group.new('Delimiter', c.cyan, c.none, no) -- character that needs attention like ; or .
 Group.new('SpecialComment', c.gray, c.none, no) -- special things inside a comment
 Group.new('Debug', c.red, c.none, no) -- debugging statements
 Group.new('Underlined', c.link, c.none, ul) -- text that stands out, HTML links
 Group.new('Ignore', c.disabled, c.none, no) -- left blank, hidden
-Group.new('Error', c.red, c.none, b + ul) -- any erroneous construct
+Group.new('Error', c.error, c.none, b + ul) -- any erroneous construct
 Group.new('Todo', c.yellow, c.none, b + i) -- anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
 
@@ -285,8 +286,8 @@ Group.new('Warnings', c.orange, c.none, r)
 -- Language-specific highlighting
 
 -- C
-Group.new('cOperator', c.cyan, c.none, no)
-Group.new('cStructure', c.yellow, c.none, no)
+Group.new('cOperator', c.yellow, c.none, no)
+Group.new('cStructure', c.pink, c.none, no)
 -- CoffeeScript
 Group.new('coffeeExtendedOp', c.fg1, c.none, no)
 Group.new('coffeeSpecialOp', c.fg2, c.none, no)
@@ -659,7 +660,7 @@ Group.new('gitcommitDiscardedFile', c.red, c.none, no)
 Group.new('GitGutterAdd', c.green, c.none, b)
 Group.new('GitGutterChange', c.orange, c.none, b)
 Group.new('GitGutterDelete', c.red, c.none, b)
-Group.new('GitGutterChangeDelete', c.red1, c.none, b)
+Group.new('GitGutterChangeDelete', c.red, c.none, b)
 -- Git Messenger (rhysd/git-messenger.vim)
 Group.new('gitmessengerPopupNormal', g.CursorLine, g.CursorLine, g.CursorLine) -- Normal color in popup window
 Group.new('gitmessengerHeader', g.CursorLine, g.CursorLine, g.CursorLine) -- Header such as 'Commit:', 'Author:'
@@ -814,20 +815,20 @@ Group.new("TSParameter", c.red, c.none, s.none) -- For parameters of a function.
 Group.new("TSParameterReference", c.yellow, nil) -- For references to parameters of a function.
 Group.new("TSMethod", g.Function, c.none, g.Function) -- For method calls and definitions.
 Group.new("TSField", c.red , c.none  , s.none) -- For fields.
--- Group.new("TSProperty"    , TSField , c.none  , s.none) -- Same as `TSField`.
--- Group.new("TSConstructor"        , c.magenta_alt       , c.none)  -- For constructor calls and definitions: `{}` in Lua, and Java constructors
+Group.new("TSProperty", c.gray, c.none, s.none) -- Same as `TSField`.
+Group.new("TSConstructor", c.green, c.none)  -- For constructor calls and definitions: `{}` in Lua, and Java constructors
 Group.new("TSConditional", g.Conditional, c.none, g.Conditional) -- For keywords related to conditionnals
 Group.new("TSRepeat", g.Repeat, c.none, g.Repeat) -- For keywords related to loops
 Group.new("TSLabel", g.Label, c.none) -- For labels: `label:` in C and `:label:` in Lua
 Group.new("TSOperator", g.Operator, c.none) -- For any operator: `+`, but also `->` and `*` in C
 Group.new("TSKeyword", g.Keyword, c.none) -- For keywords that don't fall in previous categories.
---Group.new("TSKeywordFunction",c.yellow, c.none, s.none) -- For keywords used to define a fuction.
+Group.new("TSKeywordFunction",c.paleblue, c.none, s.none) -- For keywords used to define a fuction.
 Group.new("TSException", g.Exception, c.none) -- For exception related keywords.
 Group.new("TSType", g.Type, c.none, s.none) -- For types.
 Group.new("TSTypeBuiltin", g.Type, c.none, s.none) -- For builtin types (you guessed it, right ?).
 Group.new("TSStructure", g.Structure, c.none) -- This is left as an exercise for the reader.
-Group.new("TSInclude", g.Include, c.none) -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
--- Group.new("TSAnnotation"         , c.blue_nuanced_bg , c.none) -- For C++/Dart attributes, annotations that can be attached to the code to denote some kind of meta information.
+Group.new("TSInclude", c.cyan, c.none) -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
+-- Group.new("TSAnnotation", c.error, c.none) -- For C++/Dart attributes, annotations that can be attached to the code to denote some kind of meta information.
 -- Group.new("TSText"             , c.fg              , c.bg           , b) -- For strings considered text in a markup language.
 -- Group.new("TSStrong"             , c.fg              , c.bg           , b) -- For text to be represented with strong.
 -- Group.new("TSEmphasis"            , c.blue_alt          , c.none  , b) -- For text to be represented with emphasis.
@@ -835,8 +836,8 @@ Group.new("TSInclude", g.Include, c.none) -- For includes: `#include` in C, `use
 -- Group.new("TSTitle"              , c.cyan_nuanced    , c.none) -- Text that is part of a title.
 -- Group.new("TSLiteral"            , c.blue_alt          , c.none  , b) -- Literal text.
 Group.new("TSURI", c.link, c.none, ul) -- Any URI like a link or email.
-Group.new("TSVariable", c.paleblue, c.none, s.none) -- Any URI like a link or email.
-Group.new("TSVariableBuiltin",c.paleblue, c.none, s.none) -- Variable names that are defined by the languages, like `this` or `self`.
+Group.new("TSVariable", c.paleblue, c.none, s.none) -- Variable names
+Group.new("TSVariableBuiltin",c.gray, c.none, s.none) -- Variable names that are defined by the languages, like `this` or `self`.
 
 -- Functions
 
