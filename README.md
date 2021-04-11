@@ -21,9 +21,9 @@ added to NeoVim like built-in lsp and [TreeSitter](https://github.com/nvim-trees
     + [vim-which-key](https://github.com/liuchengxu/vim-which-key)
     + [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
 
-6 styles to choose from
++ 6 styles to choose from
 
-Added functions for live theme switching without the need to restart NeoVim
++ Added functions for live theme switching without the need to restart NeoVim
 
 ## Installation
 
