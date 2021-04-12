@@ -743,21 +743,37 @@ Group.new('TelescopePromptPrefix', c.accent, c.none, no)
  Group.new("TermCursorNC",c.fg1, c.bg)
 
 -- LSP Groups (descriptions and ordering from `:h lsp-highlight`)
-Group.new("LspDiagnosticsError", c.error, c.none) -- used for "Error" diagnostic virtual text
-Group.new("LspDiagnosticsErrorSign", c.error, c.none) -- used for "Error" diagnostic signs in sign column
-Group.new("LspDiagnosticsErrorFloating", c.error, c.none) -- used for "Error" diagnostic messages in the diagnostics float
-Group.new("LspDiagnosticsWarning", c.yellow, c.none) -- used for "Warning" diagnostic virtual text
-Group.new("LspDiagnosticsWarningSign", c.yellow, c.none) -- used for "Warning" diagnostic signs in sign column
-Group.new("LspDiagnosticsWarningFloating", c.yellow, c.none) -- used for "Warning" diagnostic messages in the diagnostics float
-Group.new("LSPDiagnosticsInformation", c.blue, c.none) -- used for "Information" diagnostic virtual text
-Group.new("LspDiagnosticsInformationSign", c.blue, c.none)  -- used for "Information" diagnostic signs in sign column
-Group.new("LspDiagnosticsInformationFloating", c.blue, c.none) -- used for "Information" diagnostic messages in the diagnostics float
-Group.new("LspDiagnosticsHint", c.purple, c.none)  -- used for "Hint" diagnostic virtual text
-Group.new("LspDiagnosticsHintSign", c.purple, c.none) -- used for "Hint" diagnostic signs in sign column
-Group.new("LspDiagnosticsHintFloating", c.purple, c.none) -- used for "Hint" diagnostic messages in the diagnostics float
+Group.new("LspDiagnosticsDefaultError", c.error, c.none) -- used for "Error" diagnostic virtual text
+Group.new("LspDiagnosticsSignError", c.error, c.none) -- used for "Error" diagnostic signs in sign column
+Group.new("LspDiagnosticsFloatingError", c.error, c.none) -- used for "Error" diagnostic messages in the diagnostics float
+Group.new("LspDiagnosticsVirtualTextError", c.error, c.none) -- Virtual text "Error"
+Group.new("LspDiagnosticsDefaultWarning", c.yellow, c.none) -- used for "Warning" diagnostic signs in sign column
+Group.new("LspDiagnosticsSignWarning", c.yellow, c.none) -- used for "Warning" diagnostic signs in sign column
+Group.new("LspDiagnosticsFloatingWarning", c.yellow, c.none) -- used for "Warning" diagnostic messages in the diagnostics float
+Group.new("LspDiagnosticsVirtualTextWarning", c.yellow, c.none) -- Virtual text "Warning"
+Group.new("LSPDiagnosticsDefaultInformation", c.paleblue, c.none) -- used for "Information" diagnostic virtual text
+Group.new("LspDiagnosticsSignInformation", c.paleblue, c.none)  -- used for "Information" diagnostic signs in sign column
+Group.new("LspDiagnosticsFloatingInformation", c.paleblue, c.none) -- used for "Information" diagnostic messages in the diagnostics float
+Group.new("LspDiagnosticsVirtualTextInformation", c.paleblue, c.none) -- Virtual text "Information"
+Group.new("LspDiagnosticsDefaultHint", c.purple, c.none)  -- used for "Hint" diagnostic virtual text
+Group.new("LspDiagnosticsSignHint", c.purple, c.none) -- used for "Hint" diagnostic signs in sign column
+Group.new("LspDiagnosticsFloatingHint", c.purple, c.none) -- used for "Hint" diagnostic messages in the diagnostics float
+Group.new("LspDiagnosticsVirtualTextHint", c.purple, c.none) -- Virtual text "Hint"
 Group.new("LspReferenceText", c.accent, c.disabled) -- used for highlighting "text" references
 Group.new("LspReferenceRead", c.accent, c.disabled) -- used for highlighting "read" references
 Group.new("LspReferenceWrite", c.accent, c.disabled) -- used for highlighting "write" references
+
+if vim.g.material_lsp_underline == 1 then
+    Group.new("LspDiagnosticsUnderlineError", c.error, c.none, ul) -- used to underline "Error" diagnostics.
+    Group.new("LspDiagnosticsUnderlineWarning", c.yellow, c.none, ul) -- used to underline "Warning" diagnostics.
+    Group.new("LspDiagnosticsUnderlineInformation", c.paleblue, c.none, ul) -- used to underline "Information" diagnostics.
+    Group.new("LspDiagnosticsUnderlineHint", c.purple, c.none, ul) -- used to underline "Hint" diagnostics.
+else
+    Group.new("LspDiagnosticsUnderlineError", c.error, c.none) -- used to underline "Error" diagnostics.
+    Group.new("LspDiagnosticsUnderlineWarning", c.yellow, c.none) -- used to underline "Warning" diagnostics.
+    Group.new("LspDiagnosticsUnderlineInformation", c.paleblue, c.none) -- used to underline "Information" diagnostics.
+    Group.new("LspDiagnosticsUnderlineHint", c.purple, c.none) -- used to underline "Hint" diagnostics.
+end
 
 -- LSP Saga
 Group.new("DiagnosticError	", c.error, c.none)
