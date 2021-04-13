@@ -797,17 +797,14 @@ Group.new("LspReferenceText", c.accent, c.disabled) -- used for highlighting "te
 Group.new("LspReferenceRead", c.accent, c.disabled) -- used for highlighting "read" references
 Group.new("LspReferenceWrite", c.accent, c.disabled) -- used for highlighting "write" references
 
-if vim.g.material_lsp_underline == 1 then
-    vim.api.nvim_command([[highlight LspDiagnosticsUnderlineError gui=undercurl guisp=#F07178]]) -- used to underline "Error" diagnostics.
-    vim.api.nvim_command([[highlight LspDiagnosticsUnderlineWarning gui=undercurl guisp=#FFCB6B]]) -- used to underline "Warning" diagnostics.
-    vim.api.nvim_command([[highlight LspDiagnosticsUnderlineInformation gui=undercurl guisp=#B0C9FF]]) -- used to underline "Information" diagnostics.
-    vim.api.nvim_command([[highlight LspDiagnosticsUnderlineHint gui=undercurl guisp=#C792EA]]) -- used to underline "Hint" diagnostics.
-else
-    Group.new("LspDiagnosticsUnderlineError", c.error, c.none) -- used to underline "Error" diagnostics.
-    Group.new("LspDiagnosticsUnderlineWarning", c.yellow, c.none) -- used to underline "Warning" diagnostics.
-    Group.new("LspDiagnosticsUnderlineInformation", c.paleblue, c.none) -- used to underline "Information" diagnostics.
-    Group.new("LspDiagnosticsUnderlineHint", c.purple, c.none) -- used to underline "Hint" diagnostics.
-end
+vim.api.nvim_command([[highlight LspDiagnosticsUnderlineError gui=undercurl guisp=#F07178]]) -- used to underline "Error" diagnostics.
+vim.api.nvim_command([[highlight LspDiagnosticsUnderlineWarning gui=undercurl guisp=#FFCB6B]]) -- used to underline "Warning" diagnostics.
+vim.api.nvim_command([[highlight LspDiagnosticsUnderlineInformation gui=undercurl guisp=#B0C9FF]]) -- used to underline "Information" diagnostics.
+vim.api.nvim_command([[highlight LspDiagnosticsUnderlineHint gui=undercurl guisp=#C792EA]]) -- used to underline "Hint" diagnostics.
+--    Group.new("LspDiagnosticsUnderlineError", c.error, c.none) -- used to underline "Error" diagnostics.
+--    Group.new("LspDiagnosticsUnderlineWarning", c.yellow, c.none) -- used to underline "Warning" diagnostics.
+--    Group.new("LspDiagnosticsUnderlineInformation", c.paleblue, c.none) -- used to underline "Information" diagnostics.
+--    Group.new("LspDiagnosticsUnderlineHint", c.purple, c.none) -- used to underline "Hint" diagnostics.
 
 -- Nvim Treesitter Groups (descriptions and ordering from `:h nvim-treesitter-highlights`)
 Group.new("TSError", g.Error, c.none, b) -- For syntax/parser errors

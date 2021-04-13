@@ -107,17 +107,6 @@ let g:material_italic_functions=1
 vim.g.material_italic_functions = 1
 ```
 
-+ To enable native Lsp to underline Errors, Warnings, Info and Hints use:
-```vim 
-"Vim-Script:
-let g:material_lsp_underline=1
-```
-
-```lua
---Lua:
-vim.g.material_lsp_underline = 1
-```
-
 ## Functions
 
 + Toggle the style live without the need to exit NeoVim
