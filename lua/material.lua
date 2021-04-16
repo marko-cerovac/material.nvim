@@ -797,14 +797,14 @@ Group.new("LspReferenceText", c.accent, c.disabled) -- used for highlighting "te
 Group.new("LspReferenceRead", c.accent, c.disabled) -- used for highlighting "read" references
 Group.new("LspReferenceWrite", c.accent, c.disabled) -- used for highlighting "write" references
 
-vim.api.nvim_command([[highlight LspDiagnosticsUnderlineError gui=undercurl guisp=#F07178]]) -- used to underline "Error" diagnostics.
-vim.api.nvim_command([[highlight LspDiagnosticsUnderlineWarning gui=undercurl guisp=#FFCB6B]]) -- used to underline "Warning" diagnostics.
-vim.api.nvim_command([[highlight LspDiagnosticsUnderlineInformation gui=undercurl guisp=#B0C9FF]]) -- used to underline "Information" diagnostics.
-vim.api.nvim_command([[highlight LspDiagnosticsUnderlineHint gui=undercurl guisp=#C792EA]]) -- used to underline "Hint" diagnostics.
---    Group.new("LspDiagnosticsUnderlineError", c.error, c.none) -- used to underline "Error" diagnostics.
---    Group.new("LspDiagnosticsUnderlineWarning", c.yellow, c.none) -- used to underline "Warning" diagnostics.
---    Group.new("LspDiagnosticsUnderlineInformation", c.paleblue, c.none) -- used to underline "Information" diagnostics.
---    Group.new("LspDiagnosticsUnderlineHint", c.purple, c.none) -- used to underline "Hint" diagnostics.
+--vim.api.nvim_command([[highlight LspDiagnosticsUnderlineError gui=undercurl guisp=#F07178]]) -- used to underline "Error" diagnostics.
+--vim.api.nvim_command([[highlight LspDiagnosticsUnderlineWarning gui=undercurl guisp=#FFCB6B]]) -- used to underline "Warning" diagnostics.
+--vim.api.nvim_command([[highlight LspDiagnosticsUnderlineInformation gui=undercurl guisp=#B0C9FF]]) -- used to underline "Information" diagnostics.
+--vim.api.nvim_command([[highlight LspDiagnosticsUnderlineHint gui=undercurl guisp=#C792EA]]) -- used to underline "Hint" diagnostics.
+Group.new("LspDiagnosticsUnderlineError", c.none, c.none, uc, c.error) -- used to underline "Error" diagnostics.
+Group.new("LspDiagnosticsUnderlineWarning", c.none, c.none, uc, c.yellow) -- used to underline "Warning" diagnostics.
+Group.new("LspDiagnosticsUnderlineInformation", c.none, c.none, uc, c.paleblue) -- used to underline "Information" diagnostics.
+Group.new("LspDiagnosticsUnderlineHint", c.none, c.none, uc, c.purple) -- used to underline "Hint" diagnostics.
 
 -- Nvim Treesitter Groups (descriptions and ordering from `:h nvim-treesitter-highlights`)
 Group.new("TSError", g.Error, c.none, b) -- For syntax/parser errors
@@ -815,8 +815,8 @@ Group.new("TSConstant", g.Constant, c.none) -- For constants
 Group.new("TSConstBuiltin", c.pink, c.none) -- For constant that are built in the language: `nil` in Lua
 Group.new("TSConstMacro", c.pink, c.none) -- For constants that are defined by macros: `NULL` in C
 Group.new("TSString", g.String, c.none) -- For strings
-Group.new("TSStringRegex",c.red , nil) -- For regexes
-Group.new("TSStringEscape",c.fg1, nil) -- For escape characters within a string
+Group.new("TSStringRegex",c.red , c.none) -- For regexes
+Group.new("TSStringEscape",c.fg1, c.none) -- For escape characters within a string
 Group.new("TSCharacter", g.Character, c.none) -- For characters
 Group.new("TSNumber", g.Number, c.none) -- For integers
 Group.new("TSBoolean", g.Boolean, c.none) -- For booleans
@@ -825,7 +825,7 @@ Group.new("TSFunction", g.Function, c.none, g.Function) -- For function (calls a
 Group.new("TSFuncBuiltin", g.Function, c.none, g.Function) -- For builtin functions: `table.insert` in Lua
 Group.new("TSFuncMacro", g.Function, c.none, g.Function) -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
 Group.new("TSParameter", c.red, c.none, s.none) -- For parameters of a function.
-Group.new("TSParameterReference", c.yellow, nil) -- For references to parameters of a function.
+Group.new("TSParameterReference", c.yellow, c.none) -- For references to parameters of a function.
 Group.new("TSMethod", g.Function, c.none, g.Function) -- For method calls and definitions.
 Group.new("TSField", c.red , c.none  , s.none) -- For fields.
 Group.new("TSProperty", c.gray, c.none, s.none) -- Same as `TSField`.
@@ -871,9 +871,9 @@ end
 
 -- toggle_style takes no parameters toggles the style on every function call
  local toggle_style = function ()
-    local styles = { "darker", "lighter", "palenight", "default", "oceanic", "deep ocean" }
+    local switch = { "darker", "lighter", "palenight", "default", "oceanic", "deep ocean" }
     vim.g.style_switch = (vim.g.style_switch + 1) % 7
-    change_style(styles[vim.g.style_switch])
+    change_style(switch[vim.g.style_switch])
  end
 
  return {
