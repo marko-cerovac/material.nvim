@@ -227,7 +227,7 @@ Group.new('ColorColumn', c.fg3, c.bg, no) --  used for the columns set with 'col
 Group.new('Conceal', c.blue, c.bg, no) -- placeholder characters substituted for concealed text (see 'conceallevel')
 Group.new('Cursor', c.none, c.none, r) -- the character under the cursor
 Group.new('CursorIM', c.fg, c.none, r) -- like Cursor, but used when in IME mode
-Group.new('Directory', c.blue, c.none, b) -- directory names (and other special names in listings)
+Group.new('Directory', c.blue, c.none, no) -- directory names (and other special names in listings)
 Group.new('DiffAdd', c.green, c.none, r) -- diff mode: Added line
 Group.new('DiffChange', c.orange, c.none, r) --  diff mode: Changed line
 Group.new('DiffDelete', c.red, c.none, r) -- diff mode: Deleted line
