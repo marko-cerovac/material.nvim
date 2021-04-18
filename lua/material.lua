@@ -262,9 +262,9 @@ Group.new('PmenuSel', c.accent, c.disabled, no) -- Popup menu: selected item.
 Group.new('PmenuSbar', c.Fg2, c.Fg1, no) -- Popup menu: scrollbar.
 Group.new('PmenuThumb', c.Fg1, c.accent, no) -- Popup menu: Thumb of the scrollbar.
 Group.new('Question', c.green, c.none, b) -- hit-enter prompt and yes/no questions
-Group.new('QuickFixLine', g.Search, g.Search, g.Search) -- Current quickfix item in the quickfix window.
 Group.new('qfLineNr', g.Type, g.Type, g.Type)
 Group.new('Search', c.selection, c.white, r) -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
+Group.new('QuickFixLine', g.Search, g.Search, g.Search) -- Current quickfix item in the quickfix window.
 Group.new('SpecialKey', c.purple, c.none, no) -- Meta and special keys listed with ":map", also for text used to show unprintable characters in the text, 'listchars'. Generally: text that is displayed differently from what it really is.
 Group.new('SpellBad', c.red, c.none, i + uc) -- Word that is not recognized by the spellchecker. This will be combined with the highlighting used otherwise.
 Group.new('SpellCap', c.blue, c.none, i + uc) -- Word that should start with a capital. This will be combined with the highlighting used otherwise.
