@@ -272,8 +272,7 @@ Group.new('SpellLocal', c.cyan, c.none, i + uc) -- Word that is recognized by th
 Group.new('SpellRare', c.purple, c.none, i + uc) -- Word that is recognized by the spellchecker as one that is hardly ever used. spell This will be combined with the highlighting used otherwise.
 Group.new('StatusLine', c.Fg1, c.selection, no) -- status line of current window
 Group.new('StatusLineNC', c.comments, c.selection, no) -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
---Group.new('StatusLineTerm', g.StatusLine, g.StatusLine, g.StatusLine) -- status line of current :terminal window
-Group.new('StatusLineTerm', c.Bg, c.green, g.StatusLine) -- status line of current :terminal window
+Group.new('StatusLineTerm', g.StatusLine, g.StatusLine, g.StatusLine) -- status line of current :terminal window
 Group.new('StatusLineTermNC', g.StatusLineNC, g.StatusLineNC, g.StatusLineNC) -- status line of non-current :terminal window
 Group.new('TabLineFill', c.Fg1, c.Bg, no)
 Group.new('TabLineSel', c.Bg, c.accent, no)
@@ -319,8 +318,8 @@ Group.new('clojureException', c.red, c.none, no)
 Group.new('clojureRegexp', c.cyan, c.none, no)
 Group.new('clojureRegexpEscape', c.cyan, c.none, no)
 Group.new('clojureRegexpCharClass', c.Fg3, c.none, b)
-Group.new('clojureRegexpMod', g.clojureRegexpCharClass, g.clojureRegexpCharClass, g.clojureRegexpCharClass)
-Group.new('clojureRegexpQuantifier', g.clojureRegexpCharClass, g.clojureRegexpCharClass, g.clojureRegexpCharClass)
+Group.new('clojureRegexpMod', c.Fg3, c.none, b)
+Group.new('clojureRegexpQuantifier',  c.Fg3, c.none, b)
 Group.new('clojureParen', c.Fg3, c.none, no)
 Group.new('clojureAnonArg', c.yellow, c.none, no)
 Group.new('clojureVariable', c.blue, c.none, no)
@@ -431,7 +430,7 @@ Group.new('htmlH6', c.yellow, c.none, no)
 -- Java
 Group.new('javaAnnotation', c.blue, c.none, no)
 Group.new('javaDocTags', c.cyan, c.none, no)
-Group.new('javaCommentTitle', g.vimCommentTitle, g.vimCommentTitle, g.vimCommentTitle)
+Group.new('javaCommentTitle', c.blue, c.none, no)
 Group.new('javaParen', c.Fg3, c.none, no)
 Group.new('javaParen1', c.Fg3, c.none, no)
 Group.new('javaParen2', c.Fg3, c.none, no)
@@ -542,12 +541,12 @@ Group.new('luaFunction', c.cyan, c.none, no)
 Group.new('luaTable', c.orange, c.none, no)
 -- Markdown (keep consistent with HTML, above
 Group.new('markdownItalic', c.Fg3, c.none, i)
-Group.new('markdownH1', g.htmlH1, g.htmlH1, g.htmlH1)
-Group.new('markdownH2', g.htmlH2, g.htmlH2, g.htmlH2)
-Group.new('markdownH3', g.htmlH3, g.htmlH3, g.htmlH3)
-Group.new('markdownH4', g.htmlH4, g.htmlH4, g.htmlH4)
-Group.new('markdownH5', g.htmlH5, g.htmlH5, g.htmlH5)
-Group.new('markdownH6', g.htmlH6, g.htmlH6, g.htmlH6)
+Group.new('markdownH1', c.blue, c.none, b)
+Group.new('markdownH2', c.cyan, c.none, b)
+Group.new('markdownH3', c.green, c.none, b)
+Group.new('markdownH4', c.yellow, c.none, b)
+Group.new('markdownH5', c.yellow, c.none, b)
+Group.new('markdownH6', c.yellow, c.none, b)
 Group.new('markdownCode', c.purple, c.none, no)
 Group.new('mkdCode', g.markdownCode, g.markdownCode, g.markdownCode)
 Group.new('markdownCodeBlock', c.cyan, c.none, no)
@@ -564,7 +563,7 @@ Group.new('markdownLinkTextDelimiter', c.Fg3, c.none, no)
 Group.new('markdownHeadingDelimiter', c.orange, c.none, no)
 Group.new('markdownUrl', c.link, c.none, no)
 Group.new('markdownUrlTitleDelimiter', c.green, c.none, no)
-Group.new('markdownLinkText', c.link, g.htmlLink, g.htmlLink)
+Group.new('markdownLinkText', c.link, c.none, ul)
 Group.new('markdownIdDeclaration', g.markdownLinkText, g.markdownLinkText, g.markdownLinkText)
 -- MoonScript
 Group.new('moonSpecialOp', c.Fg3, c.none, no)
@@ -624,7 +623,7 @@ Group.new('typeScriptAjaxMethods', g.Function, g.Function, g.Function)
 Group.new('typeScriptLogicSymbols', c.Fg1, c.none, no)
 Group.new('typeScriptDocSeeTag', g.Comment, g.Comment, g.Comment)
 Group.new('typeScriptDocParam', g.Comment, g.Comment, g.Comment)
-Group.new('typeScriptDocTags', g.vimCommentTitle, g.vimCommentTitle, g.vimCommentTitle)
+Group.new('typeScriptDocTags', c.blue, c.none, no)
 Group.new('typeScriptGlobalObjects', g.Keyword, g.Keyword, g.Keyword)
 Group.new('typeScriptParens', c.blue1, c.none, no)
 Group.new('typeScriptOpSymbols', g.Operator, g.Operator, g.Operator)
@@ -792,30 +791,26 @@ Group.new("LspDiagnosticsDefaultError", c.error, c.none) -- used for "Error" dia
 Group.new("LspDiagnosticsSignError", c.error, c.none) -- used for "Error" diagnostic signs in sign column
 Group.new("LspDiagnosticsFloatingError", c.error, c.none) -- used for "Error" diagnostic messages in the diagnostics float
 Group.new("LspDiagnosticsVirtualTextError", c.error, c.none) -- Virtual text "Error"
+Group.new("LspDiagnosticsUnderlineError", c.none, c.none, uc, c.error) -- used to underline "Error" diagnostics.
 Group.new("LspDiagnosticsDefaultWarning", c.warning, c.none) -- used for "Warning" diagnostic signs in sign column
 Group.new("LspDiagnosticsSignWarning", c.warning, c.none) -- used for "Warning" diagnostic signs in sign column
 Group.new("LspDiagnosticsFloatingWarning", c.warning, c.none) -- used for "Warning" diagnostic messages in the diagnostics float
 Group.new("LspDiagnosticsVirtualTextWarning", c.warning, c.none) -- Virtual text "Warning"
+Group.new("LspDiagnosticsUnderlineWarning", c.none, c.none, uc, c.warning) -- used to underline "Warning" diagnostics.
 Group.new("LSPDiagnosticsDefaultInformation", c.paleblue, c.none) -- used for "Information" diagnostic virtual text
 Group.new("LspDiagnosticsSignInformation", c.paleblue, c.none)  -- used for "Information" diagnostic signs in sign column
 Group.new("LspDiagnosticsFloatingInformation", c.paleblue, c.none) -- used for "Information" diagnostic messages in the diagnostics float
 Group.new("LspDiagnosticsVirtualTextInformation", c.paleblue, c.none) -- Virtual text "Information"
+Group.new("LspDiagnosticsUnderlineInformation", c.none, c.none, uc, c.paleblue) -- used to underline "Information" diagnostics.
 Group.new("LspDiagnosticsDefaultHint", c.purple, c.none)  -- used for "Hint" diagnostic virtual text
 Group.new("LspDiagnosticsSignHint", c.purple, c.none) -- used for "Hint" diagnostic signs in sign column
 Group.new("LspDiagnosticsFloatingHint", c.purple, c.none) -- used for "Hint" diagnostic messages in the diagnostics float
 Group.new("LspDiagnosticsVirtualTextHint", c.purple, c.none) -- Virtual text "Hint"
+Group.new("LspDiagnosticsUnderlineHint", c.none, c.none, uc, c.purple) -- used to underline "Hint" diagnostics.
 Group.new("LspReferenceText", c.accent, c.disabled) -- used for highlighting "text" references
 Group.new("LspReferenceRead", c.accent, c.disabled) -- used for highlighting "read" references
 Group.new("LspReferenceWrite", c.accent, c.disabled) -- used for highlighting "write" references
 
---vim.api.nvim_command([[highlight LspDiagnosticsUnderlineError gui=undercurl guisp=#F07178]]) -- used to underline "Error" diagnostics.
---vim.api.nvim_command([[highlight LspDiagnosticsUnderlineWarning gui=undercurl guisp=#FFCB6B]]) -- used to underline "Warning" diagnostics.
---vim.api.nvim_command([[highlight LspDiagnosticsUnderlineInformation gui=undercurl guisp=#B0C9FF]]) -- used to underline "Information" diagnostics.
---vim.api.nvim_command([[highlight LspDiagnosticsUnderlineHint gui=undercurl guisp=#C792EA]]) -- used to underline "Hint" diagnostics.
-Group.new("LspDiagnosticsUnderlineError", c.none, c.none, uc, c.error) -- used to underline "Error" diagnostics.
-Group.new("LspDiagnosticsUnderlineWarning", c.none, c.none, uc, c.warning) -- used to underline "Warning" diagnostics.
-Group.new("LspDiagnosticsUnderlineInformation", c.none, c.none, uc, c.paleblue) -- used to underline "Information" diagnostics.
-Group.new("LspDiagnosticsUnderlineHint", c.none, c.none, uc, c.purple) -- used to underline "Hint" diagnostics.
 
 -- Nvim Treesitter Groups (descriptions and ordering from `:h nvim-treesitter-highlights`)
 Group.new("TSError", g.Error, c.none, b) -- For syntax/parser errors
