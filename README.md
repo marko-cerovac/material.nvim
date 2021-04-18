@@ -72,6 +72,21 @@ vim.g.material_style = "deep ocean"
 ```
 
 
++ To enable flat and minimalist UI by removing the lines between split widows use:
+
+![screen](/media/flat-ui.png)
+
+```vim 
+"Vim-Script:
+let g:material_flat_ui=1
+```
+
+```lua
+--Lua:
+vim.g.material_flat_ui = 1
+```
+
+
 + To enable italic comments use:
 ```vim 
 "Vim-Script:

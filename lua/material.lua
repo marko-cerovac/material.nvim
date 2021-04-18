@@ -34,23 +34,24 @@ v.colors_name = 'material'
 Color.new('Fg2',			'#607D8B')
 Color.new('Fg3',			'#8F93A2')
 Color.new('disabled',       '#464B5D')
-Color.new('comments',		'#464B5D')
 
 Color.new('white',          '#EEFFFF')
 Color.new('gray',           '#717CB4')
 Color.new('black',          '#000000')
 Color.new('red',            '#F07178')
 Color.new('green',          '#C3E88D')
+--Color.new('lime',           '#98EE64')
 Color.new('yellow',         '#FFCB6B')
 Color.new('blue',           '#82AAFF')
 Color.new('paleblue',       '#B0C9FF')
 Color.new('cyan',           '#89DDFF')
 Color.new('purple',         '#C792EA')
+--Color.new('violet',         '#B66FFD')
 Color.new('orange',         '#F78C6C')
 Color.new('pink',           '#FF9CAC')
---Color.new('violet',         '#B66FFD')
 
 Color.new('error',          '#FF5370')
+Color.new('warning',        '#FFD353')
 Color.new('link',           '#80CBC4')
 
 
@@ -60,8 +61,9 @@ if v.material_style == 'darker' then
 	-- Darker theme style
 
 	Color.new('Bg',					'#212121')
-	Color.new('Fg1',				'#EEFFFF')
+	Color.new('Fg1',				'#B0BEC5')
 	Color.new('invisibles',			'#65737E')
+	Color.new('text',			    '#727272')
 	Color.new('comments',			'#545454')
 	Color.new('selection',			'#2C2C2C')
 	Color.new('line_numbers',		'#424242')
@@ -74,6 +76,7 @@ elseif v.material_style == 'lighter' then
 	Color.new('Bg',					'#FAFAFA')
 	Color.new('Fg1',				'#546E7A')
 	Color.new('invisibles',			'#E7EAEC')
+	Color.new('text',			    '#94A7B0')
 	Color.new('comments',			'#90A4AE')
 	Color.new('caret',				'#272727')
 	Color.new('selection',			'#EBF4F3')
@@ -88,9 +91,9 @@ elseif v.material_style == 'lighter' then
 	Color.new('cyan',				'#39ADB5')
 	Color.new('blue',				'#6182B8')
 	Color.new('purple',				'#7C4DFF')
-	Color.new('accent',				'#00BCD4')
 	Color.new('pink',				'#FF5370')
 	Color.new('paleblue',			'#8796B0')
+	Color.new('accent',				'#00BCD4')
 	--Color.new('violet',             '#945EB8')
 	--Color.new('brown',              '#C17E70')
 
@@ -100,6 +103,7 @@ elseif v.material_style == 'palenight' then
 	Color.new('Bg',					'#292D3E')
 	Color.new('Fg1',				'#A6ACCD')
 	Color.new('invisibles',			'#4E5579')
+	Color.new('text',			    '#676E95')
 	Color.new('comments',			'#676E95')
 	Color.new('selection',			'#343B51')
 	Color.new('line_numbers',		'#3A3F58')
@@ -112,6 +116,7 @@ elseif v.material_style == 'oceanic' then
 	Color.new('Bg',					'#0F2330')
 	Color.new('Fg1',				'#EEFFFF')
 	Color.new('invisibles',			'#80869E')
+	Color.new('text',			    '#676E95')
 	Color.new('comments',			'#464B5D')
 	Color.new('selection',			'#272D48')
 	Color.new('line_numbers',		'#3B3F51')
@@ -124,6 +129,7 @@ elseif v.material_style == 'deep ocean' then
 	Color.new('Bg',					'#0F111A')
 	Color.new('Fg1',				'#8F93A2')
 	Color.new('invisibles',			'#80869E')
+	Color.new('text',			    '#4B526D')
 	Color.new('comments',			'#464B5D')
 	Color.new('selection',			'#1F2233')
 	Color.new('line_numbers',		'#3B3F51')
@@ -133,8 +139,9 @@ elseif v.material_style == 'deep ocean' then
 else v.material_style = 'default'
 	-- Default theme style
 	Color.new('Bg',					'#263238')
-	Color.new('Fg1',				'#EEFFFF')
+	Color.new('Fg1',				'#B0BEC5')
 	Color.new('invisibles',			'#80869E')
+	Color.new('text',			    '#607D8B')
 	Color.new('comments',			'#464B5D')
 	Color.new('selection',			'#1F2233')
 	Color.new('line_numbers',		'#3B3F51')
@@ -222,18 +229,23 @@ Group.new('Todo', c.yellow, c.none, b + i) -- anything that needs extra attentio
 
 -- Highlight groups
 
+if v.material_flat_ui == 1 then
+    Group.new('VertSplit', c.Bg, c.none, no) -- the column separating vertically split windows
+else
+    Group.new('VertSplit', c.selection, c.none, no) -- the column separating vertically split windows
+end
+
 Group.new('ColorColumn', c.Fg3, c.Bg, no) --  used for the columns set with 'colorcolumn'
 Group.new('Conceal', c.blue, c.Bg, no) -- placeholder characters substituted for concealed text (see 'conceallevel')
 Group.new('Cursor', c.none, c.none, r) -- the character under the cursor
-Group.new('CursorIM', c.Fg1, c.none, r) -- like Cursor, but used when in IME mode
+Group.new('CursorIM', c.text, c.none, r) -- like Cursor, but used when in IME mode
 Group.new('Directory', c.blue, c.none, no) -- directory names (and other special names in listings)
 Group.new('DiffAdd', c.green, c.none, r) -- diff mode: Added line
 Group.new('DiffChange', c.orange, c.none, r) --  diff mode: Changed line
 Group.new('DiffDelete', c.red, c.none, r) -- diff mode: Deleted line
 Group.new('DiffText', c.yellow, c.none, r) -- diff mode: Changed text within a changed line
 Group.new('EndOfBuffer', c.invisibles, c.none, no) -- filler lines (~) after the last line in the buffer
-Group.new('ErrorMsg', c.Fg1, c.Bg, no) -- error messages on the command line
-Group.new('VertSplit', c.selection, c.none, no) -- the column separating verti-- cally split windows
+Group.new('ErrorMsg', c.error, c.Bg, no) -- error messages on the command line
 Group.new('Folded', c.purple, c.Bg, i) -- line used for closed folds
 Group.new('FoldColumn', c.blue, c.none, no) -- 'foldcolumn'
 Group.new('SignColumn', c.Fg1, c.none, no) -- column where signs are displayed
@@ -244,7 +256,7 @@ Group.new('MatchParen', c.cyan, c.none, b) -- The character under the cursor or 
 Group.new('ModeMsg', c.accent, c.none, no) -- 'showmode' message (e.g., "-- INSERT --")
 Group.new('MoreMsg', g.ModeMsg, g.ModeMsg, g.ModeMsg) -- more-prompt
 Group.new('NonText', c.gray, c.none, no) -- '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line).
-Group.new('Normal', c.Fg1, c.Bg, no) -- normal text
+Group.new('Normal', c.text, c.Bg, no) -- normal text
 Group.new('Pmenu', c.Fg2, c.selection, no) -- Popup menu: normal item.
 Group.new('PmenuSel', c.accent, c.disabled, no) -- Popup menu: selected item.
 Group.new('PmenuSbar', c.Fg2, c.Fg1, no) -- Popup menu: scrollbar.
@@ -269,7 +281,7 @@ Group.new('TabLine', g.TabLineFill, g.TabLineFill, g.TabLineFill)
 Group.new('Title', c.green, c.none, b) -- titles for output from ":set all", ":autocmd" etc.
 Group.new('Visual', c.accent, c.selection, no) -- Visual mode selection
 Group.new('VisualNOS', g.Visual, g.Visual, g.Visual) -- Visual mode selection when vim is "Not Owning the Selection". Only X11 Gui's gui-x11 and xterm-clipboard supports this.
-Group.new('WarningMsg', c.red, c.none, no) --  warning messages
+Group.new('WarningMsg', c.warning, c.none, no) --  warning messages
 Group.new('WildMenu', c.orange, c.Bg, b) --  current match in 'wildmenu' completion
 Group.new('CursorColumn', c.none, c.selection, no) -- Current cursor column highlight
 Group.new('CursorLine', c.none, c.selection, no) -- Current cursor line highlight
@@ -280,7 +292,7 @@ Group.new('InsertMode', c.green, c.none, r)
 Group.new('ReplaceMode', c.red, c.none, r)
 Group.new('VisualMode', c.purple, c.none, r)
 Group.new('CommandMode', c.gray, c.none, r)
-Group.new('Warnings', c.orange, c.none, r)
+Group.new('Warnings', c.warning, c.none, r)
 
 
 -- Language-specific highlighting
@@ -735,7 +747,7 @@ Group.new('TelescopeMatching', c.green, c.none, no)
 Group.new('TelescopePromptPrefix', c.accent, c.none, no)
 -- LSP Saga
 Group.new("DiagnosticError	", c.error, c.none)
-Group.new("DiagnosticWarning	", c.yellow, c.none)
+Group.new("DiagnosticWarning	", c.warning, c.none)
 Group.new("DiagnosticInformation	", c.blue, c.none)
 Group.new("DiagnosticHint	", c.purple, c.none)
 Group.new("LspSagaRenameBorder	", c.green, c.none)
@@ -772,7 +784,7 @@ Group.new("LspSagaDefPreviewBorder	", c.yellow, c.none)
 -- +- Neovim Support -+
  Group.new("healthError",c.error, c.Fg2)
  Group.new("healthSuccess",c.green, c.Bg)
- Group.new("healthWarning",c.yellow, c.Bg)
+ Group.new("healthWarning",c.warning, c.Bg)
  Group.new("TermCursorNC",c.Fg1, c.Bg)
 
 -- LSP Groups (descriptions and ordering from `:h lsp-highlight`)
@@ -780,10 +792,10 @@ Group.new("LspDiagnosticsDefaultError", c.error, c.none) -- used for "Error" dia
 Group.new("LspDiagnosticsSignError", c.error, c.none) -- used for "Error" diagnostic signs in sign column
 Group.new("LspDiagnosticsFloatingError", c.error, c.none) -- used for "Error" diagnostic messages in the diagnostics float
 Group.new("LspDiagnosticsVirtualTextError", c.error, c.none) -- Virtual text "Error"
-Group.new("LspDiagnosticsDefaultWarning", c.yellow, c.none) -- used for "Warning" diagnostic signs in sign column
-Group.new("LspDiagnosticsSignWarning", c.yellow, c.none) -- used for "Warning" diagnostic signs in sign column
-Group.new("LspDiagnosticsFloatingWarning", c.yellow, c.none) -- used for "Warning" diagnostic messages in the diagnostics float
-Group.new("LspDiagnosticsVirtualTextWarning", c.yellow, c.none) -- Virtual text "Warning"
+Group.new("LspDiagnosticsDefaultWarning", c.warning, c.none) -- used for "Warning" diagnostic signs in sign column
+Group.new("LspDiagnosticsSignWarning", c.warning, c.none) -- used for "Warning" diagnostic signs in sign column
+Group.new("LspDiagnosticsFloatingWarning", c.warning, c.none) -- used for "Warning" diagnostic messages in the diagnostics float
+Group.new("LspDiagnosticsVirtualTextWarning", c.warning, c.none) -- Virtual text "Warning"
 Group.new("LSPDiagnosticsDefaultInformation", c.paleblue, c.none) -- used for "Information" diagnostic virtual text
 Group.new("LspDiagnosticsSignInformation", c.paleblue, c.none)  -- used for "Information" diagnostic signs in sign column
 Group.new("LspDiagnosticsFloatingInformation", c.paleblue, c.none) -- used for "Information" diagnostic messages in the diagnostics float
@@ -801,7 +813,7 @@ Group.new("LspReferenceWrite", c.accent, c.disabled) -- used for highlighting "w
 --vim.api.nvim_command([[highlight LspDiagnosticsUnderlineInformation gui=undercurl guisp=#B0C9FF]]) -- used to underline "Information" diagnostics.
 --vim.api.nvim_command([[highlight LspDiagnosticsUnderlineHint gui=undercurl guisp=#C792EA]]) -- used to underline "Hint" diagnostics.
 Group.new("LspDiagnosticsUnderlineError", c.none, c.none, uc, c.error) -- used to underline "Error" diagnostics.
-Group.new("LspDiagnosticsUnderlineWarning", c.none, c.none, uc, c.yellow) -- used to underline "Warning" diagnostics.
+Group.new("LspDiagnosticsUnderlineWarning", c.none, c.none, uc, c.warning) -- used to underline "Warning" diagnostics.
 Group.new("LspDiagnosticsUnderlineInformation", c.none, c.none, uc, c.paleblue) -- used to underline "Information" diagnostics.
 Group.new("LspDiagnosticsUnderlineHint", c.none, c.none, uc, c.purple) -- used to underline "Hint" diagnostics.
 
