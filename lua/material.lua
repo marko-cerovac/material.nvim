@@ -27,6 +27,12 @@ local r = s.reverse
 local no = s.NONE
 local v = vim.g
 
+-- Clear highlights and reset syntax
+vim.api.nvim_command([[highlight clear]])
+if vim.fn.exists('syntax_on') then
+    vim.api.nvim_command('syntax reset')
+end
+
 v.colors_name = 'material'
 
 -- Universal colors
@@ -678,12 +684,12 @@ Group.new('gitmessengerHeader', g.CursorLine, g.CursorLine, g.CursorLine) -- Hea
 Group.new('gitmessengerHash', g.CursorLine, g.CursorLine, g.CursorLine) -- Commit hash at 'Commit:' header
 Group.new('gitmessengerHistory', g.CursorLine, g.CursorLine, g.CursorLine) -- History number at 'History:' header
 -- NvimTree (kyazdani42/nvim-tree.lua)
-Group.new('NvimTreeFolderName', c.Fg1, c.none, no)
-Group.new('NvimTreeFolderIcon', c.accent, c.none, no)
+Group.new('NvimTreeFolderName', c.text, c.none, no)
+Group.new('NvimTreeFolderIcon', c.cyan, c.none, no)
 Group.new('NvimTreeExecFile', c.green, c.none, no)
 Group.new('NvimTreeImageFile', c.yellow, c.none, no)
-Group.new('NvimTreeEmptyFolderName', c.Fg1, c.none, no)
-Group.new('NvimTreeIndentMarker', c.white, c.none, no)
+Group.new('NvimTreeEmptyFolderName', c.text, c.none, no)
+Group.new('NvimTreeIndentMarker', c.Fg2, c.none, no)
 --Group.new('NvimTreeMarkdownFile', c.blue, c.none, no)
 --Group.new('NvimTreeSpecialFile', c.red, c.none, no)
 --Group.new('NvimTreeRootFolder', c.blue, c.none, no)
@@ -754,7 +760,11 @@ Group.new("LspSagaRenamePromptPrefix	", c.green, c.none)
 Group.new("LspSagaHoverBorder	", c.accent, c.none)
 Group.new("DefinitionPreviewTitle	", c.yellow, c.none)
 Group.new("LspSagaDefPreviewBorder	", c.yellow, c.none)
---Group.new("LspFloatWinBorder	", c.none, c.none)
+Group.new("LspFloatWinBorder	", c.gray, c.none)
+Group.new("LspSagaCodeActionTitle	", c.purple, c.none)
+Group.new("LspSagaCodeActionContent	", c.green, c.none)
+Group.new("LspSagaCodeActionBorder	", c.purple, c.none)
+Group.new("LspSagaSignatureHelpBorder", c.green, c.none)
 --Group.new("LspSagaFinderSelection", c.none, c.none)
 --Group.new("LspSagaBorderTitle	", c.none, c.none)
 --Group.new("TargetWord	", c.none, c.none)
@@ -770,11 +780,7 @@ Group.new("LspSagaDefPreviewBorder	", c.yellow, c.none)
 --Group.new("LspSagaShTruncateLine	", c.none, c.none)
 --Group.new("LspSagaDocTruncateLine	", c.none, c.none)
 --Group.new("LineDiagTuncateLine	", c.none, c.none)
---Group.new("LspSagaCodeActionTitle	", c.none, c.none)
 --Group.new("LspSagaCodeActionTruncateLine	", c.none, c.none)
---Group.new("LspSagaCodeActionContent	", c.none, c.none)
---Group.new("LspSagaSignatureHelpBorder	", c.none, c.none)
---Group.new("LspSagaCodeActionBorder	", c.none, c.none)
 --Group.new("LspSagaAutoPreview	", c.none, c.none)
 --Group.new("LspLinesDiagBorder", c.none, c.none)
 
@@ -816,7 +822,7 @@ Group.new("LspReferenceWrite", c.accent, c.disabled) -- used for highlighting "w
 Group.new("TSError", g.Error, c.none, b) -- For syntax/parser errors
 Group.new("TSPunctDelimiter", g.Delimiter, c.none) -- For delimiters ie: `.
 Group.new("TSPunctBracket", c.cyan, c.none) -- For brackets and parens
--- Group.new("TSPunctSpecial"       , c.Fg     , nil) -- For special punctutation that does not fall in the catagories before
+Group.new("TSPunctSpecial", c.red, c.none) -- For special punctutation that does not fall in the catagories before
 Group.new("TSConstant", g.Constant, c.none) -- For constants
 Group.new("TSConstBuiltin", c.pink, c.none) -- For constant that are built in the language: `nil` in Lua
 Group.new("TSConstMacro", c.pink, c.none) -- For constants that are defined by macros: `NULL` in C
