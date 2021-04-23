@@ -683,6 +683,16 @@ Group.new('gitmessengerPopupNormal', g.CursorLine, g.CursorLine, g.CursorLine) -
 Group.new('gitmessengerHeader', g.CursorLine, g.CursorLine, g.CursorLine) -- Header such as 'Commit:', 'Author:'
 Group.new('gitmessengerHash', g.CursorLine, g.CursorLine, g.CursorLine) -- Commit hash at 'Commit:' header
 Group.new('gitmessengerHistory', g.CursorLine, g.CursorLine, g.CursorLine) -- History number at 'History:' header
+-- GitSigns (lewis6991/gitsigns.nvim)
+Group.new('GitSignsAdd', c.green, c.none, no)
+Group.new('GitSignsAddNr', c.green, c.none, no)
+Group.new('GitSignsAddLn', c.green, c.none, no)
+Group.new('GitSignsChange', c.yellow, c.none, no)
+Group.new('GitSignsChangeNr', c.yellow, c.none, no)
+Group.new('GitSignsChangeLn', c.yellow, c.none, no)
+Group.new('GitSignsDelete', c.red, c.none, no)
+Group.new('GitSignsDeleteNr', c.red, c.none, no)
+Group.new('GitSignsDeleteLn', c.red, c.none, no)
 -- NvimTree (kyazdani42/nvim-tree.lua)
 Group.new('NvimTreeFolderName', c.text, c.none, no)
 Group.new('NvimTreeFolderIcon', c.cyan, c.none, no)
