@@ -1,20 +1,3 @@
---         ___           ___
---        /\  \         /\__\
---       |::\  \       /:/  /
---       |:|:\  \     /:/  /
---     __|:|\:\  \   /:/  /  ___
---    /::::|_\:\__\ /:/__/  /\__\
---    \:\~~\  \/__/ \:\  \ /:/  /
---     \:\  \        \:\  /:/  /
---      \:\  \        \:\/:/  /
---       \:\__\        \::/  /
---        \/__/         \/__/
---
--- Colorscheme name:        material.nvim
--- Description:             Colorscheme for NeoVim based on the material pallete
--- Author:                  Marko Cerovac <marko.cerovac16@gmail.com>
--- Website:                 https://github.com/marko-cerovac/material.nvim
-
 local material = {
 	-- Common colors
 
@@ -119,7 +102,7 @@ elseif vim.g.material_style == 'deep ocean' then
 	material.selection = 	'#1F2233'
 	material.contrast =		'#090B10'
 	material.active =		'#1A1C25'
-	material.border =		'#0F111A'
+	material.border =		'#1f2233'
 	material.line_numbers =	'#3B3F51'
 	material.highlight =	'#1F2233'
 	material.disabled =		'#464B5D'

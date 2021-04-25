@@ -20,4 +20,4 @@ vim.g.material_italic_keywords    | false          | <- for setting italic keywo
 vim.g.material_italic_functions   | false          | <- for setting italic functions
 vim.g.material_italic_variables   | false          | <- for setting italic variables
 vim.g.material_contrast           | true           | <- for setting a darker background on sidebars and floating windows
-vim.g.material_borders            | false          | <- for removing borders of vert-split windows
+vim.g.material_borders            | false          | <- for setting borders between vert-split windows

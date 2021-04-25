@@ -3,11 +3,12 @@ local material = require("material.colors")
 local theme = {}
 
 theme.loadSyntax = function ()
+    -- Syntax highlight groups
 
 	local syntax = {
 		Type =						{ fg = material.purple }, -- int, long, char, etc.
 		StorageClass =				{ fg = material.cyan }, -- static, register, volatile, etc.
-		Structure =					{ fg = material.purple }, -- struct, union, enum, etc.
+		Structure =					{ fg = material.puple }, -- struct, union, enum, etc.
 		Constant =					{ fg = material.yellow }, -- any constant
 		String =					{ fg = material.green, bg = material.none, style= 'italic' }, -- Any string
 		Character =					{ fg = material.orange }, -- any character constant: 'c', '\n'
@@ -82,6 +83,7 @@ end
 
 
 theme.loadEditor = function ()
+    -- Editor highlight groups
 
 	local editor = {
 		Normal =				{ fg = material.fg, bg = material.bg }, -- normal text and background color
@@ -104,7 +106,7 @@ theme.loadEditor = function ()
 		IncSearch =				{ fg = material.highlight, bg = material.white, style = 'reverse' },
 		LineNr =				{ fg = material.line_numbers },
 		CursorLineNr =			{ fg = material.accent },
-		MatchParen =			{ fg = material.cyan, bg = material.bg, style = 'reverse' },
+		MatchParen =			{ fg = material.cyan, bg = material.none },
 		ModeMsg =				{ fg = material.accent },
 		MoreMsg =				{ fg = material.accent },
 		NonText =				{ fg = material.disabled },
@@ -129,8 +131,8 @@ theme.loadEditor = function ()
 		TablineSel =			{ fg = material.bg, bg = material.accent },
 		Tabline =				{ fg = material.fg },
 		Title =					{ fg = material.green, bg = material.none, style = 'bold' },
-		Visual =				{ fg = material.accent, bg = material.selection },
-		VisualNOS =				{ fg = material.accent, bg = material.selection },
+		Visual =				{ fg = material.none, bg = material.selection },
+		VisualNOS =				{ fg = material.none, bg = material.selection },
 		WarningMsg =			{ fg = material.warning },
 		WildMenu =				{ fg = material.orange, bg = material.none, style = 'bold' },
 		CursorColumn =			{ fg = material.none, bg = material.active },
@@ -153,10 +155,10 @@ theme.loadEditor = function ()
     -- Options:
 
     -- Remove window split borders
-    if vim.g.material_borders == false then
-		editor.VertSplit =				{ fg = material.bg }
-    else
+    if vim.g.material_borders == true then
 		editor.VertSplit =				{ fg = material.border }
+    else
+		editor.VertSplit =				{ fg = material.bg }
     end
 
     return editor
@@ -184,6 +186,7 @@ theme.loadTerminal = function ()
 end
 
 theme.loadTreeSitter = function ()
+    -- TreeSitter highlight groups
 
     local treesitter = {
         TSAnnotation =              { fg = material.red },    -- For C++/Dart attributes, annotations that can be attached to the code to denote some kind of meta information.
@@ -207,7 +210,7 @@ theme.loadTreeSitter = function ()
         TSOperator =                { fg = material.cyan }, -- For any operator: `+`, but also `->` and `*` in C.
         TSParameter =               { fg = material.paleblue }, -- For parameters of a function.
         TSParameterReference=       { fg = material.paleblue },    -- For references to parameters of a function.
-        TSProperty =                { fg = material.gray }, -- Same as `TSField`.
+        TSProperty =                { fg = material.paleblue }, -- Same as `TSField`.
         TSPunctDelimiter =          { fg = material.cyan }, -- For delimiters ie: `.`
         TSPunctBracket =            { fg = material.cyan }, -- For brackets and parens.
         TSPunctSpecial =            { fg = material.cyan }, -- For special punctutation that does not fall in the catagories before.
@@ -273,6 +276,7 @@ theme.loadTreeSitter = function ()
 end
 
 theme.loadLSP = function ()
+    -- Lsp highlight groups
 
     local lsp = {
         LspDiagnosticsDefaultError =            { fg = material.error }, -- used for "Error" diagnostic virtual text
@@ -305,6 +309,7 @@ theme.loadLSP = function ()
 end
 
 theme.loadPlugins = function()
+    -- Plugins highlight groups
 
     local plugins = {
 
