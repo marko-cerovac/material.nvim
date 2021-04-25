@@ -145,7 +145,15 @@ else vim.g.material_style = 'oceanic'
 end
 
 -- Optional colors
-material.sidebar = vim.g.material_contrast and material.bg_alt or material.bg
-material.float = vim.g.material_contrast and material.bg_alt or material.bg
+if vim.g.material_contrast == false then
+    material.sidebar = material.bg
+    material.float = material.bg
+else
+    material.sidebar = material.bg_alt
+    material.float = material.bg_alt
+end
+
+--material.sidebar = vim.g.material_contrast and material.bg_alt or material.bg
+--material.float = vim.g.material_contrast and material.bg_alt or material.bg
 
 return material
