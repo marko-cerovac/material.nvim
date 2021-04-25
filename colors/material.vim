@@ -1,3 +1,7 @@
-lua package.loaded['material'] = nil
+let g:material_style='deep ocean'
+lua << EOF
+package.loaded['material'] = nil
+package.loaded['material.util'] = nil
 
-lua require('material')
+require('material').colorscheme()
+EOF

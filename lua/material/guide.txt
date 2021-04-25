@@ -1,0 +1,23 @@
+Comments Color: #717CB4
+Variables Color:
+Links Color: #80cbc4
+Functions Color: #82aaff
+Keywords Color: #c792ea
+Tags Color: #f07178
+Strings Color: #c3e88d
+Operators Color: #89ddff
+Attributes Color: #ffcb6b
+Numbers Color: #f78c6c
+Parameters Color: #f78c6c
+
+Options:
+
+Name                              | Default value  | Description
+__________________________________|________________|____________________________________________________________
+vim.g.material_style              | oceanic        | <- for setting the theme style
+vim.g.material_italic_comments    | false          | <- for setting italic comments
+vim.g.material_italic_keywords    | false          | <- for setting italic keywords
+vim.g.material_italic_functions   | false          | <- for setting italic functions
+vim.g.material_italic_variables   | false          | <- for setting italic variables
+vim.g.material_contrast           | true           | <- for setting a darker background on sidebars and floating windows
+vim.g.material_borders            | false          | <- for removing borders of vert-split windows
