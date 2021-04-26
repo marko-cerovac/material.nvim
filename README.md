@@ -48,7 +48,7 @@ added to NeoVim like built-in LSP and [TreeSitter](https://github.com/nvim-trees
 
 + Neovim >= 0.5.0
 
-## 📦 Installation
+## ⚓ Installation
 
 Install via your favourite package manager:
 ```vim
@@ -61,7 +61,7 @@ Plug 'marko-cerovac/material.nvim'
 use 'marko-cerovac/material.nvim'
 ```
 
-## 🚀 Usage
+## 🐬 Usage
 
 Enable the colorscheme:
 ```vim 
