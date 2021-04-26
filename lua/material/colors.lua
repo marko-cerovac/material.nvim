@@ -85,7 +85,7 @@ elseif vim.g.material_style == 'palenight' then
 	material.selection = 	'#717CB4'
 	material.contrast =		'#202331'
 	material.active =		'#414863'
-	material.border =		'#2B2A3E'
+	material.border =		'#414863'
 	material.line_numbers =	'#3A3F58'
 	material.highlight =	'#444267'
 	material.disabled =		'#515772'

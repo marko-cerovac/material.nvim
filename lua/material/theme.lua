@@ -299,9 +299,9 @@ theme.loadLSP = function ()
         LspDiagnosticsFloatingHint =            { fg = material.purple  }, -- used for "Hint" diagnostic messages in the diagnostics float
         LspDiagnosticsVirtualTextHint =         { fg = material.purple  }, -- Virtual text "Hint"
         LspDiagnosticsUnderlineHint =           { style = 'undercurl', sp = material.paleblue }, -- used to underline "Hint" diagnostics.
-        LspReferenceText =                      { fg = material.accent, bg = material.active }, -- used for highlighting "text" references
-        LspReferenceRead =                      { fg = material.accent, bg = material.active }, -- used for highlighting "read" references
-        LspReferenceWrite =                     { fg = material.accent, bg = material.active }, -- used for highlighting "write" references
+        LspReferenceText =                      { fg = material.accent, bg = material.highlight }, -- used for highlighting "text" references
+        LspReferenceRead =                      { fg = material.accent, bg = material.highlight }, -- used for highlighting "read" references
+        LspReferenceWrite =                     { fg = material.accent, bg = material.highlight }, -- used for highlighting "write" references
     }
 
     return lsp
@@ -344,8 +344,14 @@ theme.loadPlugins = function()
 
         -- GitSigns
         GitSignsAdd =                           { fg = material.green }, -- diff mode: Added line |diff.txt|
+        GitSignsAddNr =                         { fg = material.green }, -- diff mode: Added line |diff.txt|
+        GitSignsAddLn =                         { fg = material.green }, -- diff mode: Added line |diff.txt|
         GitSignsChange =                        { fg = material.yellow }, -- diff mode: Changed line |diff.txt|
+        GitSignsChangeNr =                      { fg = material.yellow }, -- diff mode: Changed line |diff.txt|
+        GitSignsChangeLn =                      { fg = material.yellow }, -- diff mode: Changed line |diff.txt|
         GitSignsDelete =                        { fg = material.red }, -- diff mode: Deleted line |diff.txt|
+        GitSignsDeleteNr =                      { fg = material.red }, -- diff mode: Deleted line |diff.txt|
+        GitSignsDeleteLn =                      { fg = material.red }, -- diff mode: Deleted line |diff.txt|
 
         -- Telescope
         TelescopeBorder =                       { fg = material.border },
