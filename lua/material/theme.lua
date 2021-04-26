@@ -92,7 +92,6 @@ theme.loadEditor = function ()
     -- Editor highlight groups
 
 	local editor = {
-		Normal =				{ fg = material.fg, bg = material.bg }, -- normal text and background color
 		NormalFloat =			{ fg = material.fg, bg = material.float }, -- normal text and background color
 		ColorColumn =			{ fg = material.active }, --  used for the columns set with 'colorcolumn'
 		Conceal =				{ fg = material.disabled }, -- placeholder characters substituted for concealed text (see 'conceallevel')
@@ -107,8 +106,6 @@ theme.loadEditor = function ()
 		ErrorMsg =				{ fg = material.error },
 		Folded =				{ fg = material.disabled, material.none, style = 'italic' },
 		FoldColumn =			{ fg = material.blue },
-		SignColumn =			{ fg = material.fg, bg = material.bg },
-		SignColumnSb =			{ fg = material.fg, bg = material.sidebar },
 		IncSearch =				{ fg = material.highlight, bg = material.white, style = 'reverse' },
 		LineNr =				{ fg = material.line_numbers },
 		CursorLineNr =			{ fg = material.accent },
@@ -116,9 +113,9 @@ theme.loadEditor = function ()
 		ModeMsg =				{ fg = material.accent },
 		MoreMsg =				{ fg = material.accent },
 		NonText =				{ fg = material.disabled },
-		Pmenu =					{ fg = material.text, bg = material.float },
+		Pmenu =					{ fg = material.text, bg = material.popup },
 		PmenuSel =				{ fg = material.accent, bg = material.active },
-		PmenuSbar =				{ fg = material.text, bg = material.float },
+		PmenuSbar =				{ fg = material.text, bg = material.popup },
 		PmenuThumb =			{ fg = material.fg, bg = material.accent },
 		Question =				{ fg = material.green },
 		QuickFixLine =			{ fg = material.highlight, material.white, style = 'reverse' },
@@ -159,6 +156,17 @@ theme.loadEditor = function ()
 	}
 
     -- Options:
+
+    --Set transparent background
+    if vim.g.material_no_background == true then
+		editor.Normal =				{ fg = material.fg, bg = material.none } -- normal text and background color
+		editor.SignColumn =			{ fg = material.fg, bg = material.none }
+		editor.SignColumnSb =			{ fg = material.fg, bg = material.none }
+    else
+		editor.Normal =				{ fg = material.fg, bg = material.bg } -- normal text and background color
+		editor.SignColumn =			{ fg = material.fg, bg = material.bg }
+		editor.SignColumnSb =			{ fg = material.fg, bg = material.sidebar }
+    end
 
     -- Remove window split borders
     if vim.g.material_borders == true then
@@ -363,7 +371,6 @@ theme.loadPlugins = function()
         TelescopeBorder =                       { fg = material.border },
 
         -- NvimTree
-        NvimTreeNormal =                        { fg = material.fg , bg = material.sidebar },
         NvimTreeRootFolder =                    { fg = material.blue, style = "bold" },
         NvimTreeGitDirty =                      { fg = material.yellow },
         NvimTreeGitNew =                        { fg = material.green },
@@ -406,6 +413,11 @@ theme.loadPlugins = function()
         Sneak =                                 { fg = material.bg, bg = material.accent },
         SneakScope =                            { bg = material.selection },
     }
+        if vim.g.material_no_background == true then
+            plugins.NvimTreeNormal =                        { fg = material.fg, bg = material.none }
+        else
+            plugins.NvimTreeNormal =                        { fg = material.fg, bg = material.sidebar }
+        end
 
     return plugins
 

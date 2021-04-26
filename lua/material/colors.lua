@@ -6,13 +6,13 @@ local material = {
 	black = 		'#000000',
 	red =   		'#F07178',
 	green = 		'#C3E88D',
-	lime =			'#98EE64',
+	--lime =		'#98EE64',
 	yellow =		'#FFCB6B',
 	blue =  		'#82AAFF',
 	paleblue =		'#B0C9FF',
 	cyan =  		'#89DDFF',
 	purple =		'#C792EA',
-	violet =		'#B66FFD',
+	--violet =		'#B66FFD',
 	orange =		'#F78C6C',
 	pink =  		'#FF9CAC',
 
@@ -131,9 +131,11 @@ end
 if vim.g.material_contrast == false then
     material.sidebar = material.bg
     material.float = material.bg
+	material.popup = material.contrast
 else
     material.sidebar = material.bg_alt
     material.float = material.bg_alt
+    material.popup = material.bg_alt
 end
 
 --material.sidebar = vim.g.material_contrast and material.bg_alt or material.bg
