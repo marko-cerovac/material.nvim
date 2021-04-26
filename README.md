@@ -134,7 +134,7 @@ require('material').set()
 ```
 
 ```vim
-" Example config in lua
+" Example config in Vim-Script
 let g:material_style = 'deep ocean'         
 let g:material_italic_comments = true
 let g:material_italic_keywords = true
