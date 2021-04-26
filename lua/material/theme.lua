@@ -158,7 +158,7 @@ theme.loadEditor = function ()
     -- Options:
 
     --Set transparent background
-    if vim.g.material_no_background == true then
+    if vim.g.material_disable_background == true then
 		editor.Normal =				{ fg = material.fg, bg = material.none } -- normal text and background color
 		editor.SignColumn =			{ fg = material.fg, bg = material.none }
 		editor.SignColumnSb =			{ fg = material.fg, bg = material.none }
@@ -413,7 +413,7 @@ theme.loadPlugins = function()
         Sneak =                                 { fg = material.bg, bg = material.accent },
         SneakScope =                            { bg = material.selection },
     }
-        if vim.g.material_no_background == true then
+        if vim.g.material_disable_background == true then
             plugins.NvimTreeNormal =                        { fg = material.fg, bg = material.none }
         else
             plugins.NvimTreeNormal =                        { fg = material.fg, bg = material.sidebar }

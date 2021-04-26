@@ -116,7 +116,7 @@ vim.g.material_style = "deep ocean"
 | material_italic_variables           | `false`     | Make variables and identifiers italic                                                                                                                           |
 | material_contrast                   | `true`      | Make sidebars and popup menus like nvim-tree and telescope have a different background                                                                                       |
 | material_borders                    | `false`     | Enable the border between verticaly split windows visable
-| material_no_background              | `false`     | Disable the setting of background color so that NeoVim can use your terminal background
+| material_disable_background         | `false`     | Disable the setting of background color so that NeoVim can use your terminal background
 
 ```lua
 -- Example config in lua
@@ -127,7 +127,7 @@ vim.g.material_italic_functions = true
 vim.g.material_italic_variables = false
 vim.g.material_contrast = true
 vim.g.material_borders = false 
-vim.g.material_no_background = false
+vim.g.material_disable_background = false
 
 -- Load the colorscheme
 require('material').set()
@@ -142,7 +142,7 @@ let g:material_italic_functions = true
 let g:material_italic_variables = false
 let g:material_contrast = true
 let g:material_borders = false 
-let g:material_no_background = false
+let g:material_disable_background = false
 
 -- Load the colorsheme
 colorscheme material
