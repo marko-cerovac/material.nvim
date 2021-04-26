@@ -1,3 +1,6 @@
+local function text_color(color)
+	return vim.g.material_text_color or color
+end
 local material = {
 	-- Common colors
 
@@ -32,7 +35,7 @@ if vim.g.material_style == 'darker' then
 	material.bg =			'#212121'
 	material.bg_alt =		'#1A1A1A'
 	material.fg =			'#B0BEC5'
-	material.text =			'#727272'
+	material.text =			text_color('#727272')
 	material.comments =		'#616161'
 	material.selection = 	'#404040'
 	material.contrast =		'#1A1A1A'
@@ -49,7 +52,7 @@ elseif vim.g.material_style == 'lighter' then
 	material.bg =			'#FAFAFA'
 	material.bg_alt =		'#FFFFFF'
 	material.fg =			'#546E7A'
-	material.text =			'#94A7B0'
+	material.text =			text_color('#94A7B0')
 	material.comments =		'#AABFC9'
 	material.selection = 	'#80CBC4'
 	material.contrast =		'#EEEEEE'
@@ -80,7 +83,7 @@ elseif vim.g.material_style == 'palenight' then
 	material.bg =			'#292D3E'
 	material.bg_alt =		'#1B1E2B'
 	material.fg =			'#A6ACCD'
-	material.text =			'#676E95'
+	material.text =			text_color('#676E95')
 	material.comments =		'#676E95'
 	material.selection = 	'#717CB4'
 	material.contrast =		'#202331'
@@ -97,7 +100,7 @@ elseif vim.g.material_style == 'deep ocean' then
 	material.bg =			'#0F111A'
 	material.bg_alt =		'#090B10'
 	material.fg =			'#8F93A2'
-	material.text =			'#717CB4'
+	material.text =			text_color('#717CB4')
 	material.comments =		'#464B5D'
 	material.selection = 	'#1F2233'
 	material.contrast =		'#090B10'
@@ -114,7 +117,7 @@ else vim.g.material_style = 'oceanic'
 	material.bg =			'#263238'
 	material.bg_alt =		'#192227'
 	material.fg =			'#B0BEC5'
-	material.text =			'#607D8B'
+	material.text =			text_color('#607D8B')
 	material.comments =		'#464B5D'
 	material.selection = 	'#546E7A'
 	material.contrast =		'#1E272C'
