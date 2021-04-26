@@ -1,11 +1,11 @@
-# material.nvim
+# 🌊 material.nvim
 A port or [Material](https://material-theme.site) colorscheme for NeoVim written in lua
 
 Theme is inspired by https://github.com/kaicataldo/material.vim
 
 ![screen](/media/Material.png)
 
-## Info
+## 🔱 Info
 
 This is the lua branch that doesn't rely on colorbuddy.nvim anymore
 Soon, this will replace the main branch after some more debugging
@@ -148,7 +148,7 @@ let g:material_borders = false
 colorscheme material
 ```
 
-## Functions
+## ⛵ Functions
 
 + Toggle the style live without the need to exit NeoVim
 
@@ -193,5 +193,6 @@ vim.api.nvim_set_keymap('n', '<C-9>', [[<Cmd>lua require('material.functions').c
 vim.api.nvim_set_keymap('n', '<C-0>', [[<Cmd>lua require('material.functions').change_style('darker')<CR>]], { noremap = true, silent = true })
 ```
 
-+ Importaint note: the functions do not play well with lualine
+## ⚠️ Importaint note: 
+The functions do not play well with lualine.
 I'm currently working on fixing this, but until I do, lualine will not look right after a call to these functions
