@@ -36,12 +36,18 @@ theme.loadSyntax = function ()
 		Error =						{ fg = material.error, bg = material.none, style = 'bold,underline' }, -- any erroneous construct
 		Todo =						{ fg = material.yellow, bg = material.none, style = 'bold,italic' }, -- anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
-        htmlH1 = { fg = material.link, style = "bold" },
-        markdownH1 = { fg = material.link, style = "bold" },
-        markdownH1Delimiter = { fg = material.link },
-        htmlH2 = { fg = material.blue, style = "bold" },
-        markdownH2 = { fg = material.blue, style = "bold" },
-        markdownH2Delimiter = { fg = material.blue },
+        htmlLink = { fg = material.link, style = "underline" },
+        htmlH1 = { fg = material.cyan, style = "bold" },
+        htmlH2 = { fg = material.red, style = "bold" },
+        htmlH3 = { fg = material.green, style = "bold" },
+        htmlH4 = { fg = material.yellow, style = "bold" },
+        htmlH5 = { fg = material.purple, style = "bold" },
+        markdownH1 = { fg = material.cyan, style = "bold" },
+        markdownH2 = { fg = material.red, style = "bold" },
+        markdownH3 = { fg = material.green, style = "bold" },
+        markdownH1Delimiter = { fg = material.cyan },
+        markdownH2Delimiter = { fg = material.red },
+        markdownH3Delimiter = { fg = material.green },
 	}
 
 	-- Options:

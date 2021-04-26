@@ -8,12 +8,12 @@ Theme is inspired by https://github.com/kaicataldo/material.vim
 ## 🔱 Info
 
 This is the lua branch that doesn't rely on colorbuddy.nvim anymore
-Soon, this will replace the main branch after some more debugging
+If you want the version that uses colorbuddy.nvim, you can find it [here](https://github.com/marko-cerovac/material.nvim/tree/colorbuddy)
 
 ## ✨ Features
 
 material.nvim is meant to be a modern colorscheme written in lua for NeoVim that supports a lot of the new features
-added to NeoVim like built-in lsp and [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
+added to NeoVim like built-in LSP and [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
 
 + 6 styles to choose from
     + Deep ocean ![screen](/media/deep-ocean.png)
@@ -53,15 +53,12 @@ added to NeoVim like built-in lsp and [TreeSitter](https://github.com/nvim-trees
 Install via your favourite package manager:
 ```vim
 " If you are using Vim-Plug
-Plug 'marko-cerovac/material.nvim', { 'branch' : 'pure-lua' }
+Plug 'marko-cerovac/material.nvim'
 ```
 
 ```lua
 -- If you are using Packer
-use {
-      'marko-cerovac/material.nvim',
-      branch = 'pure-lua'
-}
+use 'marko-cerovac/material.nvim'
 ```
 
 ## 🚀 Usage
