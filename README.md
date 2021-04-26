@@ -67,7 +67,7 @@ use {
 ## 🚀 Usage
 
 Enable the colorscheme:
-```vim 
+```vim
 "Vim-Script:
 colorscheme material
 ```
@@ -100,7 +100,7 @@ require('lualine').setup {
     + deep ocean
 
 Set the desired style using:
-```vim 
+```vim
 "Vim-Script:
 let g:material_style = 'darker'
 ```
@@ -118,17 +118,19 @@ vim.g.material_style = "deep ocean"
 | material_italic_functions           | `false`     | Make functions italic                                                                                                                                           |
 | material_italic_variables           | `false`     | Make variables and identifiers italic                                                                                                                           |
 | material_contrast                   | `true`      | Make sidebars and popup menus like nvim-tree and telescope have a different background                                                                                       |
-| material_borders                    | `false`     | Enable the border between verticaly split windows visable
+| material_borders                    | `false`     | Enable the border between verticaly split windows visable                                     |
+| material_text_color                 | ` `         | Changed the default text colors (variables)
 
 ```lua
 -- Example config in lua
-vim.g.material_style = 'deep ocean'         
+vim.g.material_style = 'deep ocean'
 vim.g.material_italic_comments = true
 vim.g.material_italic_keywords = true
 vim.g.material_italic_functions = true
 vim.g.material_italic_variables = false
 vim.g.material_contrast = true
-vim.g.material_borders = false 
+vim.g.material_borders = false
+vim.g.material_text_color = '#D3E1E8'
 
 -- Load the colorscheme
 require('material').set()
@@ -136,13 +138,14 @@ require('material').set()
 
 ```vim
 " Example config in lua
-let g:material_style = 'deep ocean'         
+let g:material_style = 'deep ocean'
 let g:material_italic_comments = true
 let g:material_italic_keywords = true
 let g:material_italic_functions = true
 let g:material_italic_variables = false
 let g:material_contrast = true
-let g:material_borders = false 
+let g:material_borders = false
+let g:material_text_color = '#D3E1E8'
 
 -- Load the colorsheme
 colorscheme material
@@ -193,6 +196,6 @@ vim.api.nvim_set_keymap('n', '<C-9>', [[<Cmd>lua require('material.functions').c
 vim.api.nvim_set_keymap('n', '<C-0>', [[<Cmd>lua require('material.functions').change_style('darker')<CR>]], { noremap = true, silent = true })
 ```
 
-## ⚠️ Importaint note: 
+## ⚠️ Importaint note:
 The functions do not play well with lualine.
 I'm currently working on fixing this, but until I do, lualine will not look right after a call to these functions
