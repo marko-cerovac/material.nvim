@@ -93,7 +93,6 @@ theme.loadEditor = function ()
 
 	local editor = {
 		NormalFloat =			{ fg = material.fg, bg = material.float }, -- normal text and background color
-		NormalContrast =		{ fg = material.fg, bg = material.bg_alt }, -- normal text and background color for contrasted windows
 		ColorColumn =			{ fg = material.active }, --  used for the columns set with 'colorcolumn'
 		Conceal =				{ fg = material.disabled }, -- placeholder characters substituted for concealed text (see 'conceallevel')
 		Cursor =				{ fg = material.cursor, bg = material.none, style = 'reverse' }, -- the character under the cursor

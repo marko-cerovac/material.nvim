@@ -27,14 +27,9 @@ util.contrast = function ()
     vim.cmd [[augroup Material]]
     vim.cmd [[  autocmd!]]
     vim.cmd [[  autocmd ColorScheme * lua require("material.util").onColorScheme()]]
-    for _, contrast in ipairs(vim.g.material_contrast_windows) do
-        if contrast == "terminal" then
-            vim.cmd [[  autocmd TermOpen * setlocal winhighlight=Normal:NormalContrast,SignColumn:NormalContrast]]
-        else
-            vim.cmd([[  autocmd FileType ]] .. contrast ..
-                [[ setlocal winhighlight=Normal:NormalContrast,SignColumn:SignColumnContrast]])
-        end
-    end
+    vim.cmd [[  autocmd TermOpen * setlocal winhighlight=Normal:NormalFloat,SignColumn:NormalFloat]]
+    vim.cmd [[  autocmd FileType packer setlocal winhighlight=Normal:NormalFloat,SignColumn:NormalFloat]]
+    vim.cmd [[  autocmd FileType qf setlocal winhighlight=Normal:NormalFloat,SignColumn:NormalFloat]]
     vim.cmd [[augroup end]]
 end
 
@@ -68,10 +63,9 @@ function util.load()
         for group, colors in pairs(lsp) do
             util.highlight(group, colors)
         end
-        if vim.g.material_contrast_windows == nil then
-            vim.g.material_contrast_windows = {}
+        if vim.g.material_contrast == true then
+            util.contrast()
         end
-        util.contrast()
         async:close()
 
     end))
