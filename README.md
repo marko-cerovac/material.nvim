@@ -7,7 +7,8 @@ Theme is inspired by https://github.com/kaicataldo/material.vim
 
 ## 🔱 Info
 
-This is the lua branch that doesn't rely on colorbuddy.nvim anymore
+This is the lua branch that doesn't rely on colorbuddy.nvim anymore.
+
 If you want the version that uses colorbuddy.nvim, you can find it [here](https://github.com/marko-cerovac/material.nvim/tree/colorbuddy)
 
 ## ✨ Features
