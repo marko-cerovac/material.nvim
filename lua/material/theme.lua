@@ -93,6 +93,7 @@ theme.loadEditor = function ()
 
 	local editor = {
 		NormalFloat =			{ fg = material.fg, bg = material.float }, -- normal text and background color
+		NormalContrast =		{ fg = material.fg, bg = material.bg_alt }, -- normal text and background color for contrasted windows
 		ColorColumn =			{ fg = material.active }, --  used for the columns set with 'colorcolumn'
 		Conceal =				{ fg = material.disabled }, -- placeholder characters substituted for concealed text (see 'conceallevel')
 		Cursor =				{ fg = material.cursor, bg = material.none, style = 'reverse' }, -- the character under the cursor
@@ -113,9 +114,9 @@ theme.loadEditor = function ()
 		ModeMsg =				{ fg = material.accent },
 		MoreMsg =				{ fg = material.accent },
 		NonText =				{ fg = material.disabled },
-		Pmenu =					{ fg = material.text, bg = material.popup },
+		Pmenu =					{ fg = material.text, bg = material.contrast },
 		PmenuSel =				{ fg = material.accent, bg = material.active },
-		PmenuSbar =				{ fg = material.text, bg = material.popup },
+		PmenuSbar =				{ fg = material.text, bg = material.contrast },
 		PmenuThumb =			{ fg = material.fg, bg = material.accent },
 		Question =				{ fg = material.green },
 		QuickFixLine =			{ fg = material.highlight, material.white, style = 'reverse' },
@@ -161,11 +162,9 @@ theme.loadEditor = function ()
     if vim.g.material_disable_background == true then
 		editor.Normal =				{ fg = material.fg, bg = material.none } -- normal text and background color
 		editor.SignColumn =			{ fg = material.fg, bg = material.none }
-		editor.SignColumnSb =			{ fg = material.fg, bg = material.none }
     else
 		editor.Normal =				{ fg = material.fg, bg = material.bg } -- normal text and background color
 		editor.SignColumn =			{ fg = material.fg, bg = material.bg }
-		editor.SignColumnSb =			{ fg = material.fg, bg = material.sidebar }
     end
 
     -- Remove window split borders
@@ -303,7 +302,7 @@ theme.loadLSP = function ()
         LspDiagnosticsFloatingWarning =         { fg = material.warning}, -- used for "Warning" diagnostic messages in the diagnostics float
         LspDiagnosticsVirtualTextWarning =      { fg = material.warning}, -- Virtual text "Warning"
         LspDiagnosticsUnderlineWarning =        { style = 'undercurl', sp = material.warning }, -- used to underline "Warning" diagnostics.
-        LSPDiagnosticsDefaultInformation =      { fg = material.paleblue }, -- used for "Information" diagnostic virtual text
+        LspDiagnosticsDefaultInformation =      { fg = material.paleblue }, -- used for "Information" diagnostic virtual text
         LspDiagnosticsSignInformation =         { fg = material.paleblue },  -- used for "Information" diagnostic signs in sign column
         LspDiagnosticsFloatingInformation =     { fg = material.paleblue }, -- used for "Information" diagnostic messages in the diagnostics float
         LspDiagnosticsVirtualTextInformation =  { fg = material.paleblue }, -- Virtual text "Information"
@@ -404,6 +403,23 @@ theme.loadPlugins = function()
         DiagnosticWarning =                     { fg = material.warning },
         DiagnosticInformation =                 { fg = material.paleblue },
         DiagnosticHint =                        { fg = material.purple },
+        DiagnosticTruncateLine =                { fg = material.fg },
+        LspFloatWinNormal =                     { bg = material.contrast },
+        LspFloatWinBorder =                     { fg = material.purple },
+        LspSagaBorderTitle =                    { fg = material.cyan },
+        LspSagaHoverBorder =                    { fg = material.paleblue },
+        LspSagaRenameBorder =                   { fg = material.green },
+        LspSagaDefPreviewBorder =               { fg = material.green },
+        LspSagaCodeActionBorder =               { fg = material.blue },
+        LspSagaFinderSelection =                { fg = material.green },
+        LspSagaCodeActionTitle =                { fg = material.paleblue },
+        LspSagaCodeActionContent =              { fg = material.purple },
+        LspSagaSignatureHelpBorder =            { fg = material.pink },
+        ReferencesCount =                       { fg = material.purple },
+        DefinitionCount =                       { fg = material.purple },
+        DefinitionIcon =                        { fg = material.blue },
+        ReferencesIcon =                        { fg = material.blue },
+        TargetWord =                            { fg = material.cyan },
 
         -- BufferLine
         BufferLineIndicatorSelected =           { fg = material.accent },

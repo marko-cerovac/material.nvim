@@ -128,17 +128,14 @@ else vim.g.material_style = 'oceanic'
 end
 
 -- Optional colors
+
+-- Enable contrast sidebars, floating windows and popup menus
 if vim.g.material_contrast == false then
     material.sidebar = material.bg
     material.float = material.bg
-	material.popup = material.contrast
 else
     material.sidebar = material.bg_alt
     material.float = material.bg_alt
-    material.popup = material.bg_alt
 end
-
---material.sidebar = vim.g.material_contrast and material.bg_alt or material.bg
---material.float = vim.g.material_contrast and material.bg_alt or material.bg
 
 return material

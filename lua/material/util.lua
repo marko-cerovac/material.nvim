@@ -14,6 +14,30 @@ util.highlight = function (group, color)
     if color.link then vim.cmd("highlight! link " .. group .. " " .. color.link) end
 end
 
+-- Only define Material if it's the active colorshceme
+function util.onColorScheme()
+  if vim.g.colors_name ~= "material" then
+    vim.cmd [[autocmd! Material]]
+    vim.cmd [[augroup! Material]]
+  end
+end
+
+-- Change the background for the terminal and packer windows
+util.contrast = function ()
+    vim.cmd [[augroup Material]]
+    vim.cmd [[  autocmd!]]
+    vim.cmd [[  autocmd ColorScheme * lua require("material.util").onColorScheme()]]
+    for _, contrast in ipairs(vim.g.material_contrast_windows) do
+        if contrast == "terminal" then
+            vim.cmd [[  autocmd TermOpen * setlocal winhighlight=Normal:NormalContrast,SignColumn:NormalContrast]]
+        else
+            vim.cmd([[  autocmd FileType ]] .. contrast ..
+                [[ setlocal winhighlight=Normal:NormalContrast,SignColumn:SignColumnContrast]])
+        end
+    end
+    vim.cmd [[augroup end]]
+end
+
 -- Load the theme
 function util.load()
     -- Set the theme environment
@@ -44,6 +68,10 @@ function util.load()
         for group, colors in pairs(lsp) do
             util.highlight(group, colors)
         end
+        if vim.g.material_contrast_windows == nil then
+            vim.g.material_contrast_windows = {}
+        end
+        util.contrast()
         async:close()
 
     end))
