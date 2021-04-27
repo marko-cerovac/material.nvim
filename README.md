@@ -117,7 +117,6 @@ vim.g.material_style = "deep ocean"
 | material_italic_functions           | `false`     | Make functions italic                                                                                                                                           |
 | material_italic_variables           | `false`     | Make variables and identifiers italic                                                                                                                           |
 | material_contrast                   | `true`      | Make sidebars and popup menus like nvim-tree and telescope have a different background                                                                                       |
-| material_contrast_windows           | `{}`        | Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`                                                      |
 | material_borders                    | `false`     | Enable the border between verticaly split windows visable
 | material_disable_background         | `false`     | Disable the setting of background color so that NeoVim can use your terminal background
 
@@ -129,7 +128,6 @@ vim.g.material_italic_keywords = true
 vim.g.material_italic_functions = true
 vim.g.material_italic_variables = false
 vim.g.material_contrast = true
-vim.g.material_contrast_windows = { "qf", "vista_kind", "terminal", "packer" }
 vim.g.material_borders = false 
 vim.g.material_disable_background = false
 
@@ -146,7 +144,6 @@ let g:material_italic_functions = true
 let g:material_italic_variables = false
 let g:material_contrast = true
 let g:material_borders = false 
-let g:material_contrast_windows = [ "qf", "vista_kind", "terminal", "packer" ]
 let g:material_disable_background = false
 
 -- Load the colorsheme
