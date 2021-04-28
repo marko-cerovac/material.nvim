@@ -366,7 +366,13 @@ theme.loadPlugins = function()
         GitSignsDeleteLn =                      { fg = material.red }, -- diff mode: Deleted line |diff.txt|
 
         -- Telescope
-        TelescopeBorder =                       { fg = material.border },
+        TelescopePromptBorder =                 { fg = material.cyan },
+        TelescopeResultsBorder =                { fg = material.purple },
+        TelescopePreviewBorder =                { fg = material.green },
+        TelescopeSelectionCaret =               { fg = material.purple },
+        TelescopeSelection =                    { fg = material.purple },
+        TelescopeMatching =                     { fg = material.cyan },
+        TelescopeNormal =                       { fg = material.fg, bg = material.float },
 
         -- NvimTree
         NvimTreeRootFolder =                    { fg = material.blue, style = "bold" },
@@ -428,6 +434,10 @@ theme.loadPlugins = function()
         Sneak =                                 { fg = material.bg, bg = material.accent },
         SneakScope =                            { bg = material.selection },
     }
+
+    -- Options:
+
+    -- Disable nvim-tree background
         if vim.g.material_disable_background == true then
             plugins.NvimTreeNormal =                        { fg = material.fg, bg = material.none }
         else
