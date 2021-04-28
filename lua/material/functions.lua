@@ -17,10 +17,13 @@ end
  end
 
 -- Toggle_style takes no parameters toggles the style on every function call
- local toggle_style = function ()
+ local toggle_style = function (print_info)
     local switch = { "darker", "lighter", "palenight", "oceanic", "deep ocean" }
-    vim.g.material_style_switch = (vim.g.material_style_switch + 1) % 7
-    change_style(switch[vim.g.material_style_switch])
+    vim.g.material_style_switch = (vim.g.material_style_switch % 5) + 1
+  change_style(switch[vim.g.material_style_switch])
+  if (print_info == true) then
+      print(vim.g.material_style)
+  end
  end
 
  return {
