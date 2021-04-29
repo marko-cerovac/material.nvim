@@ -328,7 +328,7 @@ theme.loadPlugins = function()
         -- LspTrouble
         LspTroubleText =                        { fg = material.text },
         LspTroubleCount =                       { fg = material.purple, bg = material.active },
-        LspTroubleNormal =                      { fg = material.fg, bg = material.bg_alt },
+        LspTroubleNormal =                      { fg = material.fg, bg = material.sidebar },
 
         -- Diff
         diffAdded =                             { fg = material.green },
@@ -397,11 +397,12 @@ theme.loadPlugins = function()
         DashboardFooter =                       { fg = material.yellow, style = "italic" },
 
         -- WhichKey
-        WhichKey =                              { fg = material.fg },
-        WhichKeyGroup =                         { fg = material.accent },
-        WhichKeyDesc =                          { fg = material.purple },
-        WhichKeySeperator =                     { fg = material.paleblue },
-        WhichKeyFloating =                      { bg = material.sidebar },
+        WhichKey =                              { fg = material.accent , style = 'bold'},
+        WhichKeyGroup =                         { fg = material.text },
+        WhichKeyDesc =                          { fg = material.blue, style = 'italic' },
+        WhichKeySeperator =                     { fg = material.fg },
+        WhichKeyFloating =                      { bg = material.float },
+        WhichKeyFloat =                         { bg = material.float },
 
         -- LspSaga
         DiagnosticError =                       { fg = material.error },
