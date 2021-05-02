@@ -391,10 +391,10 @@ theme.loadPlugins = function()
         LspDiagnosticsHint =                    { fg = material.purple },
 
         -- Dashboard
-        DashboardShortCut =                     { fg = material.cyan },
-        DashboardHeader =                       { fg = material.accent },
-        DashboardCenter =                       { fg = material.purple },
-        DashboardFooter =                       { fg = material.yellow, style = "italic" },
+        DashboardShortCut =                     { fg = material.red },
+        DashboardHeader =                       { fg = material.fg },
+        DashboardCenter =                       { fg = material.accent },
+        DashboardFooter =                       { fg = material.green, style = "italic" },
 
         -- WhichKey
         WhichKey =                              { fg = material.accent , style = 'bold'},
