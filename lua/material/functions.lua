@@ -6,13 +6,14 @@ end
 -- Change_style takes a style name as a parameter and switches to that style
  local change_style = function (style)
      vim.g.material_style = style
-     print(style)
-     package.loaded['material'] = nil
+     print("Material style: ", style)
+     --[[ package.loaded['material'] = nil
      package.loaded['material.util'] = nil
      package.loaded['material.theme'] = nil
      package.loaded['material.colors'] = nil
      package.loaded['material.functions'] = nil
-     require('material').set()
+     require('material').set() ]]
+     vim.cmd[[colorscheme material]]
  end
 
 -- Toggle_style takes no parameters toggles the style on every function call
@@ -26,5 +27,3 @@ end
      change_style = change_style,
      toggle_style = toggle_style
 }
-
--- NOT WORKING

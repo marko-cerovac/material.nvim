@@ -392,7 +392,7 @@ theme.loadPlugins = function()
 
         -- Dashboard
         DashboardShortCut =                     { fg = material.red },
-        DashboardHeader =                       { fg = material.fg },
+        DashboardHeader =                       { fg = material.comments },
         DashboardCenter =                       { fg = material.accent },
         DashboardFooter =                       { fg = material.green, style = "italic" },
 
@@ -434,6 +434,10 @@ theme.loadPlugins = function()
         -- Sneak
         Sneak =                                 { fg = material.bg, bg = material.accent },
         SneakScope =                            { bg = material.selection },
+
+        -- Indent Blankline
+        IndentBlanklineChar =                   { fg = material.highlight },
+        IndentBlanklineContextChar =            { fg = material.disabled },
     }
 
     -- Options:

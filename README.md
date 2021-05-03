@@ -195,7 +195,3 @@ nnoremap <C-0> :lua require('material.functions').change_style('darker')<CR>
 vim.api.nvim_set_keymap('n', '<C-9>', [[<Cmd>lua require('material.functions').change_style('lighter')<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-0>', [[<Cmd>lua require('material.functions').change_style('darker')<CR>]], { noremap = true, silent = true })
 ```
-
-## ⚠️ Importaint note: 
-The functions do not play well with lualine.
-I'm currently working on fixing this, but until I do, lualine will not look right after a call to these functions
