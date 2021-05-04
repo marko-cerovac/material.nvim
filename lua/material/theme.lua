@@ -109,7 +109,7 @@ theme.loadEditor = function ()
 		IncSearch =				{ fg = material.highlight, bg = material.white, style = 'reverse' },
 		LineNr =				{ fg = material.line_numbers },
 		CursorLineNr =			{ fg = material.accent },
-		MatchParen =			{ fg = material.cyan, bg = material.none },
+		MatchParen =			{ fg = material.yellow, bg = material.none, style = 'bold' },
 		ModeMsg =				{ fg = material.accent },
 		MoreMsg =				{ fg = material.accent },
 		NonText =				{ fg = material.disabled },
@@ -227,8 +227,8 @@ theme.loadTreeSitter = function ()
         TSPunctBracket =            { fg = material.cyan }, -- For brackets and parens.
         TSPunctSpecial =            { fg = material.cyan }, -- For special punctutation that does not fall in the catagories before.
         TSString =                  { fg = material.green },    -- For strings.
-        TSStringRegex =             { fg = material.blue6 }, -- For regexes.
-        TSStringEscape =            { fg = material.orange }, -- For escape characters within a string.
+        TSStringRegex =             { fg = material.blue }, -- For regexes.
+        TSStringEscape =            { fg = material.disabled }, -- For escape characters within a string.
         TSSymbol =                  { fg = material.yellow },    -- For identifiers referring to symbols or atoms.
         TSType =                    { fg = material.purple },    -- For types.
         TSTypeBuiltin =             { fg = material.purple },    -- For builtin types.
@@ -325,6 +325,12 @@ theme.loadPlugins = function()
 
     local plugins = {
 
+        -- Dashboard
+        DashboardShortCut =                     { fg = material.red },
+        DashboardHeader =                       { fg = material.comments },
+        DashboardCenter =                       { fg = material.accent },
+        DashboardFooter =                       { fg = material.green, style = "italic" },
+
         -- LspTrouble
         LspTroubleText =                        { fg = material.text },
         LspTroubleCount =                       { fg = material.purple, bg = material.active },
@@ -389,12 +395,6 @@ theme.loadPlugins = function()
         LspDiagnosticsWarning =                 { fg = material.warning },
         LspDiagnosticsInformation =             { fg = material.paleblue },
         LspDiagnosticsHint =                    { fg = material.purple },
-
-        -- Dashboard
-        DashboardShortCut =                     { fg = material.red },
-        DashboardHeader =                       { fg = material.comments },
-        DashboardCenter =                       { fg = material.accent },
-        DashboardFooter =                       { fg = material.green, style = "italic" },
 
         -- WhichKey
         WhichKey =                              { fg = material.accent , style = 'bold'},
