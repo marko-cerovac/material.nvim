@@ -17,7 +17,6 @@ local material = {
 	pink =  		'#FF9CAC',
 
 	error =			'#FF5370',
-	warning =		'#FFD353',
 	link =			'#80CBC4',
 	cursor =		'#FFCC00',
 

@@ -136,7 +136,7 @@ theme.loadEditor = function ()
 		Title =					{ fg = material.green, bg = material.none, style = 'bold' },
 		Visual =				{ fg = material.none, bg = material.selection },
 		VisualNOS =				{ fg = material.none, bg = material.selection },
-		WarningMsg =			{ fg = material.warning },
+		WarningMsg =			{ fg = material.yellow },
 		WildMenu =				{ fg = material.orange, bg = material.none, style = 'bold' },
 		CursorColumn =			{ fg = material.none, bg = material.active },
 		CursorLine =			{ fg = material.none, bg = material.active },
@@ -147,11 +147,17 @@ theme.loadEditor = function ()
 		ReplacelMode =			{ fg = material.red, bg = material.none, style = 'reverse' },
 		VisualMode =			{ fg = material.purple, bg = material.none, style = 'reverse' },
 		CommandMode =			{ fg = material.gray, bg = material.none, style = 'reverse' },
-		Warnings =				{ fg = material.warning },
+		Warnings =				{ fg = material.yellow },
 
         healthError =           { fg = material.error },
         healthSuccess =         { fg = material.green },
-        healthWarning =         { fg = material.warning },
+        healthWarning =         { fg = material.yellow },
+
+        -- Dashboard
+        DashboardShortCut =                     { fg = material.red },
+        DashboardHeader =                       { fg = material.comments },
+        DashboardCenter =                       { fg = material.accent },
+        DashboardFooter =                       { fg = material.green, style = "italic" },
 
 	}
 
@@ -296,11 +302,11 @@ theme.loadLSP = function ()
         LspDiagnosticsFloatingError =           { fg = material.error }, -- used for "Error" diagnostic messages in the diagnostics float
         LspDiagnosticsVirtualTextError =        { fg = material.error }, -- Virtual text "Error"
         LspDiagnosticsUnderlineError =          { style = 'undercurl', sp = material.error }, -- used to underline "Error" diagnostics.
-        LspDiagnosticsDefaultWarning =          { fg = material.warning}, -- used for "Warning" diagnostic signs in sign column
-        LspDiagnosticsSignWarning =             { fg = material.warning}, -- used for "Warning" diagnostic signs in sign column
-        LspDiagnosticsFloatingWarning =         { fg = material.warning}, -- used for "Warning" diagnostic messages in the diagnostics float
-        LspDiagnosticsVirtualTextWarning =      { fg = material.warning}, -- Virtual text "Warning"
-        LspDiagnosticsUnderlineWarning =        { style = 'undercurl', sp = material.warning }, -- used to underline "Warning" diagnostics.
+        LspDiagnosticsDefaultWarning =          { fg = material.yellow}, -- used for "Warning" diagnostic signs in sign column
+        LspDiagnosticsSignWarning =             { fg = material.yellow}, -- used for "Warning" diagnostic signs in sign column
+        LspDiagnosticsFloatingWarning =         { fg = material.yellow}, -- used for "Warning" diagnostic messages in the diagnostics float
+        LspDiagnosticsVirtualTextWarning =      { fg = material.yellow}, -- Virtual text "Warning"
+        LspDiagnosticsUnderlineWarning =        { style = 'undercurl', sp = material.yellow }, -- used to underline "Warning" diagnostics.
         LspDiagnosticsDefaultInformation =      { fg = material.paleblue }, -- used for "Information" diagnostic virtual text
         LspDiagnosticsSignInformation =         { fg = material.paleblue },  -- used for "Information" diagnostic signs in sign column
         LspDiagnosticsFloatingInformation =     { fg = material.paleblue }, -- used for "Information" diagnostic messages in the diagnostics float
@@ -324,12 +330,6 @@ theme.loadPlugins = function()
     -- Plugins highlight groups
 
     local plugins = {
-
-        -- Dashboard
-        DashboardShortCut =                     { fg = material.red },
-        DashboardHeader =                       { fg = material.comments },
-        DashboardCenter =                       { fg = material.accent },
-        DashboardFooter =                       { fg = material.green, style = "italic" },
 
         -- LspTrouble
         LspTroubleText =                        { fg = material.text },
@@ -392,7 +392,7 @@ theme.loadPlugins = function()
         NvimTreeFolderIcon=                     { fg = material.accent },
         NvimTreeIndentMarker =                  { fg  = material.border },
         LspDiagnosticsError =                   { fg = material.error },
-        LspDiagnosticsWarning =                 { fg = material.warning },
+        LspDiagnosticsWarning =                 { fg = material.yellow },
         LspDiagnosticsInformation =             { fg = material.paleblue },
         LspDiagnosticsHint =                    { fg = material.purple },
 
@@ -406,7 +406,7 @@ theme.loadPlugins = function()
 
         -- LspSaga
         DiagnosticError =                       { fg = material.error },
-        DiagnosticWarning =                     { fg = material.warning },
+        DiagnosticWarning =                     { fg = material.yellow },
         DiagnosticInformation =                 { fg = material.paleblue },
         DiagnosticHint =                        { fg = material.purple },
         DiagnosticTruncateLine =                { fg = material.fg },
