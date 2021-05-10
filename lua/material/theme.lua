@@ -2,6 +2,8 @@ local material = require("material.colors")
 
 local theme = {}
 
+local gray = vim.g.material_variable_color or material.gray
+
 theme.loadSyntax = function ()
     -- Syntax highlight groups
 
@@ -78,9 +80,9 @@ theme.loadSyntax = function ()
 	end
 
 	if vim.g.material_italic_variables == true then
-		Identifier =				{fg = material.gray, bg = material.none, style = 'italic'}; -- any variable name
+		Identifier =				{fg = gray, bg = material.none, style = 'italic'}; -- any variable name
     else
-		Identifier =				{fg = material.gray}; -- any variable name
+		Identifier =				{fg = gray}; -- any variable name
     end
 
     return syntax
@@ -217,7 +219,7 @@ theme.loadTreeSitter = function ()
         TSConstMacro =              { fg = material.blue },    -- For constants that are defined by macros: `NULL` in C.
         TSError =                   { fg = material.error },    -- For syntax/parser errors.
         TSException =               { fg = material.yellow },    -- For exception related keywords.
-        TSField =                   { fg = material.gray }, -- For fields.
+        TSField =                   { fg = gray }, -- For fields.
         TSFloat =                   { fg = material.red },    -- For floats.
         TSFuncMacro =               { fg = material.blue },    -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
         TSInclude =                 { fg = material.cyan },    -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
@@ -282,11 +284,11 @@ theme.loadTreeSitter = function ()
     end
 
     if vim.g.material_italic_variables == true then
-        treesitter.TSVariable =                { fg = material.gray, style = 'italic' } -- Any variable name that does not have another highlight.
-        treesitter.TSVariableBuiltin =         { fg = material.gray, style = 'italic' } -- Variable names that are defined by the languages, like `this` or `self`.
+        treesitter.TSVariable =                { fg = gray, style = 'italic' } -- Any variable name that does not have another highlight.
+        treesitter.TSVariableBuiltin =         { fg = gray, style = 'italic' } -- Variable names that are defined by the languages, like `this` or `self`.
     else
-        treesitter.TSVariable =                { fg = material.gray } -- Any variable name that does not have another highlight.
-        treesitter.TSVariableBuiltin =         { fg = material.gray } -- Variable names that are defined by the languages, like `this` or `self`.
+        treesitter.TSVariable =                { fg = gray } -- Any variable name that does not have another highlight.
+        treesitter.TSVariableBuiltin =         { fg = gray } -- Variable names that are defined by the languages, like `this` or `self`.
     end
 
     return treesitter
