@@ -1,26 +1,26 @@
 local material = {
 	-- Common colors
 
-	white =			'#EEFFFF',
-	gray =  		'#717CB4',
-	black = 		'#000000',
-	red =   		'#F07178',
-	green = 		'#C3E88D',
-	--lime =		'#98EE64',
-	yellow =		'#FFCB6B',
-	blue =  		'#82AAFF',
+	white    =		'#EEFFFF',
+	gray     =  vim.g.material_variable_color or '#717CB4',
+	black    = 		'#000000',
+	red      =   	'#F07178',
+	green    = 		'#C3E88D',
+	--lime   =		'#98EE64',
+	yellow   =		'#FFCB6B',
+	blue     =  	'#82AAFF',
 	paleblue =		'#B0C9FF',
-	cyan =  		'#89DDFF',
-	purple =		'#C792EA',
+	cyan     =  	'#89DDFF',
+	purple   =		'#C792EA',
 	--violet =		'#B66FFD',
-	orange =		'#F78C6C',
-	pink =  		'#FF9CAC',
+	orange   =		'#F78C6C',
+	pink     =  	'#FF9CAC',
 
-	error =			'#FF5370',
-	link =			'#80CBC4',
-	cursor =		'#FFCC00',
+	error    =		'#FF5370',
+	link     =		'#80CBC4',
+	cursor   =		'#FFCC00',
 
-	none =			'NONE'
+	none     =      'NONE'
 }
 
 -- Style specific colors
