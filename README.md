@@ -35,15 +35,19 @@ added to NeoVim like built-in LSP and [TreeSitter](https://github.com/nvim-trees
     + [Nvim-Tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
     + [NERDTree](https://github.com/preservim/nerdtree)
     + [vim-which-key](https://github.com/liuchengxu/vim-which-key)
-    + [Indent-Blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
+    + [Indent-Blankline.nvim](https://github.com/lukas-reineke/indenhttps://github.com/liuchengxu/vim-which-keyt-blankline.nvim)
     + [WhichKey](https://github.com/liuchengxu/vim-which-key)
+    + [WhichKey.nvim](https://github.com/folke/which-key.nvim)
     + [Dashboard](https://github.com/glepnir/dashboard-nvim)
     + [BufferLine](https://github.com/akinsho/nvim-bufferline.lua)
     + [Lualine](https://github.com/hoob3rt/lualine.nvim)
     + [Neogit](https://github.com/TimUntersberger/neogit)
     + [vim-sneak](https://github.com/justinmk/vim-sneak)
+    + [nvim-dap](https://github.com/mfussenegger/nvim-dap)
 
 + Ability to change background on sidebar-like windows like Nvim-Tree, Packer, terminal etc.
+
++ Asynchronous highlight loading which makes the theme extremely fast
 
 + Added functions for live theme switching without the need to restart NeoVim
 
