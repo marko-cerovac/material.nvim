@@ -67,7 +67,7 @@ use 'marko-cerovac/material.nvim'
 ## 🐬 Usage
 
 Enable the colorscheme:
-```vim 
+```vim
 "Vim-Script:
 colorscheme material
 ```
@@ -100,7 +100,7 @@ require('lualine').setup {
     + deep ocean
 
 Set the desired style using:
-```vim 
+```vim
 "Vim-Script:
 let g:material_style = 'darker'
 ```
@@ -119,17 +119,18 @@ vim.g.material_style = "deep ocean"
 | material_italic_variables           | `false`     | Make variables and identifiers italic                                                                                                                           |
 | material_contrast                   | `true`      | Make sidebars and popup menus like nvim-tree and telescope have a different background                                                                                       |
 | material_borders                    | `false`     | Enable the border between verticaly split windows visable
-| material_disable_background         | `false`     | Disable the setting of background color so that NeoVim can use your terminal background
+| material_disable_background         | `false`     | Disable the setting of background color so that NeoVim can use your terminal background |
+| material_variable_color         | ``     | Set a custom color for variables,etc
 
 ```lua
 -- Example config in lua
-vim.g.material_style = 'deep ocean'         
+vim.g.material_style = 'deep ocean'
 vim.g.material_italic_comments = true
 vim.g.material_italic_keywords = true
 vim.g.material_italic_functions = true
 vim.g.material_italic_variables = false
 vim.g.material_contrast = true
-vim.g.material_borders = false 
+vim.g.material_borders = false
 vim.g.material_disable_background = false
 
 -- Load the colorscheme
@@ -138,13 +139,13 @@ require('material').set()
 
 ```vim
 " Example config in Vim-Script
-let g:material_style = 'deep ocean'         
+let g:material_style = 'deep ocean'
 let g:material_italic_comments = true
 let g:material_italic_keywords = true
 let g:material_italic_functions = true
 let g:material_italic_variables = false
 let g:material_contrast = true
-let g:material_borders = false 
+let g:material_borders = false
 let g:material_disable_background = false
 
 -- Load the colorsheme
