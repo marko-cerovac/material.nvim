@@ -137,4 +137,17 @@ else
     material.float = material.bg_alt
 end
 
+-- Enable custom variable colors
+if vim.g.material_variable_color == nil then
+    material.variable = material.gray
+else
+    material.variable = vim.g.material_variable_color
+end
+
+if vim.g.material_style == 'lighter' then
+    material.title = material.black
+else
+    material.title = material.white
+end
+
 return material

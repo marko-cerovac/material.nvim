@@ -120,7 +120,7 @@ vim.g.material_style = "deep ocean"
 | material_contrast                   | `true`      | Make sidebars and popup menus like nvim-tree and telescope have a different background                                                                                       |
 | material_borders                    | `false`     | Enable the border between verticaly split windows visable
 | material_disable_background         | `false`     | Disable the setting of background color so that NeoVim can use your terminal background |
-| material_variable_color         | ``     | Set a custom color for variables,etc
+| material_variable_color             | ``          | Set a custom color for variables and fields
 
 ```lua
 -- Example config in lua
