@@ -2,7 +2,7 @@ local material = {
 	-- Common colors
 
 	white    =		'#EEFFFF',
-	gray     =  vim.g.material_variable_color or '#717CB4',
+	gray     =      '#717CB4',
 	black    = 		'#000000',
 	red      =   	'#F07178',
 	green    = 		'#C3E88D',
