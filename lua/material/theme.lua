@@ -438,6 +438,10 @@ theme.loadPlugins = function()
         -- Indent Blankline
         IndentBlanklineChar =                   { fg = material.highlight },
         IndentBlanklineContextChar =            { fg = material.disabled },
+
+        -- Nvim dap
+        DapBreakpoint =                         { fg = material.red },
+        DapStopped =                            { fg = material.green },
     }
 
     -- Options:
