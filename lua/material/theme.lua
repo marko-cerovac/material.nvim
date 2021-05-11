@@ -351,7 +351,7 @@ theme.loadPlugins = function()
         NeogitRemote =                          { fg = material.purple },
         NeogitHunkHeader =                      { fg = material.fg, bg = material.highlight },
         NeogitHunkHeaderHighlight =             { fg = material.blue, bg = material.contrast },
-        NeogitDiffContextHighlight =            { fg = material.bg_alt, bg = material.contrast },
+        NeogitDiffContextHighlight =            { fg = material.text, bg = material.contrast },
         NeogitDiffDeleteHighlight =             { fg = material.red },
         NeogitDiffAddHighlight =                { fg = material.green },
 
