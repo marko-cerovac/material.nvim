@@ -1,9 +1,9 @@
 # 🌊 material.nvim
+![screen](/media/logo.jpg)
+
 A port or [Material](https://material-theme.site) colorscheme for NeoVim written in lua
 
 Theme is inspired by https://github.com/kaicataldo/material.vim
-
-![screen](/media/logo.jpg)
 
 ## 🔱 Info
 
