@@ -3,7 +3,7 @@ A port or [Material](https://material-theme.site) colorscheme for NeoVim written
 
 Theme is inspired by https://github.com/kaicataldo/material.vim
 
-![screen](/media/Material.png)
+![screen](/media/logo.png)
 
 ## 🔱 Info
 
