@@ -382,7 +382,7 @@ theme.loadPlugins = function()
 
         -- NvimTree
         NvimTreeRootFolder =                    { fg = material.title, style = "italic" },
-        NvimTreeGitDirty =                      { fg = material.yellow },
+        NvimTreeGitDirty =                      { fg = material.blue },
         NvimTreeGitNew =                        { fg = material.green },
         NvimTreeImageFile =                     { fg = material.yellow },
         NvimTreeExecFile =                      { fg = material.green },
