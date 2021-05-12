@@ -99,9 +99,9 @@ theme.loadEditor = function ()
 		CursorIM =				{ fg = material.cursor, bg = material.none, style = 'reverse' }, -- like Cursor, but used when in IME mode
 		Directory =				{ fg = material.blue, bg = material.none }, -- directory names (and other special names in listings)
 		DiffAdd =				{ fg = material.green, bg = material.none, style = 'reverse' }, -- diff mode: Added line
-		DiffChange =			{ fg = material.orange, bg = material.none, style = 'reverse' }, --  diff mode: Changed line
+		DiffChange =			{ fg = material.blue, bg = material.none, style = 'reverse' }, --  diff mode: Changed line
 		DiffDelete =			{ fg = material.red, bg = material.none, style = 'reverse' }, -- diff mode: Deleted line
-		DiffText =				{ fg = material.yellow, bg = material.none, style = 'reverse' }, -- diff mode: Changed text within a changed line
+		DiffText =				{ fg = material.fg, bg = material.none, style = 'reverse' }, -- diff mode: Changed text within a changed line
 		EndOfBuffer =			{ fg = material.disabled }, -- ~ lines at the end of a buffer
 		ErrorMsg =				{ fg = material.error }, -- error messages
 		Folded =				{ fg = material.disabled, material.none, style = 'italic' },
@@ -339,11 +339,11 @@ theme.loadPlugins = function()
         -- Diff
         diffAdded =                             { fg = material.green },
         diffRemoved =                           { fg = material.red },
-        diffChanged =                           { fg = material.yellow },
-        diffOldFile =                           { fg = material.yelow },
-        diffNewFile =                           { fg = material.orange },
-        diffFile =                              { fg = material.blue },
-        diffLine =                              { fg = material.comments },
+        diffChanged =                           { fg = material.blue },
+        diffOldFile =                           { fg = material.text },
+        diffNewFile =                           { fg = material.white },
+        diffFile =                              { fg = material.gray },
+        diffLine =                              { fg = material.cyan },
         diffIndexLine =                         { fg = material.purple },
 
         -- Neogit
@@ -357,16 +357,16 @@ theme.loadPlugins = function()
 
         -- GitGutter
         GitGutterAdd =                          { fg = material.green }, -- diff mode: Added line |diff.txt|
-        GitGutterChange =                       { fg = material.yellow }, -- diff mode: Changed line |diff.txt|
+        GitGutterChange =                       { fg = material.blue }, -- diff mode: Changed line |diff.txt|
         GitGutterDelete =                       { fg = material.red }, -- diff mode: Deleted line |diff.txt|
 
         -- GitSigns
         GitSignsAdd =                           { fg = material.green }, -- diff mode: Added line |diff.txt|
         GitSignsAddNr =                         { fg = material.green }, -- diff mode: Added line |diff.txt|
         GitSignsAddLn =                         { fg = material.green }, -- diff mode: Added line |diff.txt|
-        GitSignsChange =                        { fg = material.yellow }, -- diff mode: Changed line |diff.txt|
-        GitSignsChangeNr =                      { fg = material.yellow }, -- diff mode: Changed line |diff.txt|
-        GitSignsChangeLn =                      { fg = material.yellow }, -- diff mode: Changed line |diff.txt|
+        GitSignsChange =                        { fg = material.blue }, -- diff mode: Changed line |diff.txt|
+        GitSignsChangeNr =                      { fg = material.blue }, -- diff mode: Changed line |diff.txt|
+        GitSignsChangeLn =                      { fg = material.blue }, -- diff mode: Changed line |diff.txt|
         GitSignsDelete =                        { fg = material.red }, -- diff mode: Deleted line |diff.txt|
         GitSignsDeleteNr =                      { fg = material.red }, -- diff mode: Deleted line |diff.txt|
         GitSignsDeleteLn =                      { fg = material.red }, -- diff mode: Deleted line |diff.txt|

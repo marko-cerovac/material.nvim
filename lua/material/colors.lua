@@ -6,13 +6,11 @@ local material = {
 	black    = 		'#000000',
 	red      =   	'#F07178',
 	green    = 		'#C3E88D',
-	--lime   =		'#98EE64',
 	yellow   =		'#FFCB6B',
 	blue     =  	'#82AAFF',
 	paleblue =		'#B0C9FF',
 	cyan     =  	'#89DDFF',
 	purple   =		'#C792EA',
-	--violet =		'#B66FFD',
 	orange   =		'#F78C6C',
 	pink     =  	'#FF9CAC',
 
@@ -139,7 +137,7 @@ end
 
 -- Enable custom variable colors
 if vim.g.material_variable_color == nil then
-    material.variable = material.gray
+    material.variable = material.fg
 else
     material.variable = vim.g.material_variable_color
 end
