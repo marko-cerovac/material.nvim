@@ -78,12 +78,12 @@ theme.loadSyntax = function ()
 	end
 
 	if vim.g.material_italic_variables == true then
-		Identifier =				{fg = material.variable, bg = material.none, style = 'italic'}; -- any variable name
-    else
-		Identifier =				{fg = material.variable}; -- any variable name
-    end
+		syntax.Identifier =		{fg = material.variable, bg = material.none, style = 'italic'}; -- any variable name
+	else
+		syntax.Identifier =		{fg = material.variable}; -- any variable name
+	end
 
-    return syntax
+	return syntax
 
 end
 
