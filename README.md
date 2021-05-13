@@ -11,7 +11,7 @@ If you want the old version that uses colorbuddy.nvim, you can find it [here](ht
 
 ## ✨ Features
 
-+ 6 styles to choose from
++ 5 styles to choose from
     + Deep ocean ![screen](/media/deep-ocean.png)
     + Oceanic ![screen](/media/oceanic.png)
     + Palenight ![screen](/media/palenight.png)
