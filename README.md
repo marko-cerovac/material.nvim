@@ -1,22 +1,17 @@
 # 🌊 material.nvim
 ![screen](/media/logo.jpg)
 
-A port or [Material](https://material-theme.site) colorscheme for NeoVim written in lua
-
-Theme is inspired by https://github.com/kaicataldo/material.vim
-
 ## 🔱 Info
+A port or [Material](https://material-theme.site) colorscheme for NeoVim written in Lua
 
-This is the lua branch that doesn't rely on colorbuddy.nvim anymore.
+Material.nvim is meant to be a fast and modern colorscheme written in Lua that supports a lot of the new features
+added to NeoVim like built-in LSP and [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
 
-If you want the version that uses colorbuddy.nvim, you can find it [here](https://github.com/marko-cerovac/material.nvim/tree/colorbuddy)
+If you want the old version that uses colorbuddy.nvim, you can find it [here](https://github.com/marko-cerovac/material.nvim/tree/colorbuddy)
 
 ## ✨ Features
 
-material.nvim is meant to be a modern colorscheme written in lua for NeoVim that supports a lot of the new features
-added to NeoVim like built-in LSP and [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
-
-+ 6 styles to choose from
++ 5 styles to choose from
     + Deep ocean ![screen](/media/deep-ocean.png)
     + Oceanic ![screen](/media/oceanic.png)
     + Palenight ![screen](/media/palenight.png)
@@ -124,7 +119,7 @@ vim.g.material_style = "deep ocean"
 | material_contrast                   | `true`      | Make sidebars and popup menus like nvim-tree and telescope have a different background                                                                                       |
 | material_borders                    | `false`     | Enable the border between verticaly split windows visable
 | material_disable_background         | `false`     | Disable the setting of background color so that NeoVim can use your terminal background |
-| material_variable_color             | ``          | Set a custom color for variables and fields
+| material_variable_color             | `#717CB4`     | Set a custom color for variables and fields
 
 ```lua
 -- Example config in lua

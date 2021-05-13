@@ -168,7 +168,7 @@ end
 
 -- Enable custom variable colors
 if vim.g.material_variable_color == nil then
-    material.variable = material.fg
+    material.variable = material.gray
 else
     material.variable = vim.g.material_variable_color
 end
