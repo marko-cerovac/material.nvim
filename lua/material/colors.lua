@@ -71,6 +71,37 @@ elseif vim.g.material_style == 'lighter' then
 	material.orange =		'#F76D47'
 	material.pink = 		'#FF5370'
 
+elseif vim.g.material_style == 'lighter high contrast' then
+	-- Lighter high contrast theme style (based on 'lighter', see below)
+
+	material.bg =			'#FAFAFA'
+	material.bg_alt =		'#FFFFFF'
+	material.fg =			'#213B47' -- 20% darkened
+	material.text =			'#61747D' -- 20% darkened
+	material.comments =		'#778C96' -- 20% darkened
+	material.selection = 	'#e2e9e9' -- 15% saturation, 10% lightness
+	material.contrast =		'#EEEEEE'
+	material.active =		'#E7E7E8'
+	material.border =		'#D3E1E8'
+	material.line_numbers =	'#B6BFC3' -- 10% darkened
+	material.highlight =	'#E7E7E8'
+	material.disabled =		'#868889' -- 30% darkened
+	material.cursor =		'#272727'
+	material.accent =		'#0089A1' -- 20% darkened
+
+	material.white =		'#FFFFFF'
+	material.gray = 		'#717CB4'
+	material.black =		'#000000'
+	material.red =  		'#B20602' -- 20% darkened
+	material.green =		'#5E8526' -- 20% darkened
+	material.yellow =		'#C37101' -- 20% darkened
+	material.blue = 		'#2E4F85' -- 20% darkened
+	material.paleblue =		'#54637D' -- 20% darkened
+	material.cyan = 		'#067A82' -- 20% darkened
+	material.purple =		'#491ACC' -- 20% darkened
+	material.orange =		'#C43A14' -- 20% darkened
+	material.pink = 		'#CC203D' -- 20% darkened
+
 elseif vim.g.material_style == 'palenight' then
 	-- Palenight theme style
 
@@ -142,7 +173,7 @@ else
     material.variable = vim.g.material_variable_color
 end
 
-if vim.g.material_style == 'lighter' then
+if vim.g.material_style == 'lighter' or vim.g.material_style == 'lighter high contrast' then
     material.title = material.black
 else
     material.title = material.white
