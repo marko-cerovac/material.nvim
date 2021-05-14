@@ -104,7 +104,7 @@ theme.loadEditor = function ()
 		DiffText =				{ fg = material.fg, bg = material.none, style = 'reverse' }, -- diff mode: Changed text within a changed line
 		EndOfBuffer =			{ fg = material.disabled }, -- ~ lines at the end of a buffer
 		ErrorMsg =				{ fg = material.error }, -- error messages
-		Folded =				{ fg = material.disabled, material.none, style = 'italic' },
+		Folded =				{ fg = material.disabled, bg = material.none, style = 'italic' },
 		FoldColumn =			{ fg = material.blue },
 		IncSearch =				{ fg = material.highlight, bg = material.white, style = 'reverse' },
 		LineNr =				{ fg = material.line_numbers },
@@ -118,8 +118,8 @@ theme.loadEditor = function ()
 		PmenuSbar =				{ fg = material.text, bg = material.contrast },
 		PmenuThumb =			{ fg = material.fg, bg = material.accent },
 		Question =				{ fg = material.green },
-		QuickFixLine =			{ fg = material.highlight, material.white, style = 'reverse' },
-		qfLineNr =				{ fg = material.highlight, material.white, style = 'reverse' },
+		QuickFixLine =			{ fg = material.highlight, bg = material.white, style = 'reverse' },
+		qfLineNr =				{ fg = material.highlight, bg = material.white, style = 'reverse' },
 		Search =				{ fg = material.highlight, bg = material.white, style = 'reverse' },
 		SpecialKey =			{ fg = material.purple },
 		SpellBad =				{ fg = material.red, bg = material.none, style = 'italic,undercurl' },
