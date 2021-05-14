@@ -113,7 +113,7 @@ vim.g.material_style = "deep ocean"
 | ----------------------------------- | ----------- | ------------------------------------------------------------------------------------------------ |
 | material_style                      | `"oceanic"` | The theme comes in five styles, 'darker', 'lighter', 'palenight', 'oceanic' and 'deep ocean'     |
 | material_contrast                   | `true`      | Make sidebars and popup menus like nvim-tree and telescope have a different background           |
-| material_lighter_contrast           | 'false'     | Increase the contrast for the 'lighter' variant of the theme                                     |
+| material_lighter_contrast           | `false`     | Increase the contrast for the 'lighter' variant of the theme                                     |
 | material_italic_comments            | `false`     | Make comments italic                                                                             |
 | material_italic_keywords            | `false`     | Make keywords like if, for, while etc. italic                                                    |
 | material_italic_functions           | `false`     | Make function calls and names italic                                                             |
