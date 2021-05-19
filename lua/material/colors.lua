@@ -56,7 +56,7 @@ elseif vim.g.material_style == 'lighter' then
         material.border =		'#D3E1E8'
         material.line_numbers =	'#B6BFC3' -- 10% darkened
         material.highlight =	'#E7E7E8'
-        material.disabled =		'#868889' -- 30% darkened
+        material.disabled =		'#D2D4D5'
         material.cursor =		'#272727'
         material.accent =		'#0089A1' -- 20% darkened
 
