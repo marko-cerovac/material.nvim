@@ -376,7 +376,7 @@ theme.loadPlugins = function()
         TelescopeResultsBorder =                { fg = material.purple },
         TelescopePreviewBorder =                { fg = material.green },
         TelescopeSelectionCaret =               { fg = material.purple },
-        TelescopeSelection =                    { fg = material.purple },
+        TelescopeSelection =                    { fg = material.fg, bg = material.selection},
         TelescopeMatching =                     { fg = material.cyan },
         TelescopeNormal =                       { fg = material.fg, bg = material.float },
 
