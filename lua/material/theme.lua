@@ -442,6 +442,10 @@ theme.loadPlugins = function()
         -- Nvim dap
         DapBreakpoint =                         { fg = material.red },
         DapStopped =                            { fg = material.green },
+
+		-- Illuminate
+		illuminatedWord =						{ bg = material.highight },
+		illuminatedCurWord =					{ bg = material.highight },
     }
 
     -- Options:

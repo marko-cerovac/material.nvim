@@ -121,6 +121,7 @@ vim.g.material_style = "deep ocean"
 | material_borders                    | `false`     | Enable the border between verticaly split windows visable                                        |
 | material_disable_background         | `false`     | Disable the setting of background color so that NeoVim can use your terminal background          |
 | material_variable_color             | `#717CB4`   | Set a custom color for variables and fields                                                      |
+| material_custom_colors              |    {}       | Override the default colors and use your own                                                     |
 
 ```lua
 -- Example config in lua
@@ -132,6 +133,7 @@ vim.g.material_italic_variables = false
 vim.g.material_contrast = true
 vim.g.material_borders = false
 vim.g.material_disable_background = false
+--vim.g.material_custom_colors = { black = "#000000", bg = "#0F111A" }
 
 -- Load the colorscheme
 require('material').set()
