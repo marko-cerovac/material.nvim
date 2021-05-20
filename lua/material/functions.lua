@@ -19,5 +19,5 @@ end
 
  return {
      change_style = change_style,
-     toggle_style = toggle_style
+     toggle_style = toggle_style,
 }
