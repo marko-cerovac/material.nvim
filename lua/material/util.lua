@@ -42,21 +42,16 @@ function util.load()
     vim.o.termguicolors = true
     vim.g.colors_name = "material"
 
-    -- Load plugins, treesitter and lsp async
+    -- Load plugins and lsp async
     local async
     async = vim.loop.new_async(vim.schedule_wrap(function ()
         material.loadTerminal()
 
-        -- imort tables for plugins, treesitter and lsp
+        -- imort tables for plugins and lsp
         local plugins = material.loadPlugins()
-        local treesitter = material.loadTreeSitter()
         local lsp = material.loadLSP()
 
         for group, colors in pairs(plugins) do
-            util.highlight(group, colors)
-        end
-
-        for group, colors in pairs(treesitter) do
             util.highlight(group, colors)
         end
 
@@ -73,12 +68,17 @@ function util.load()
     -- load base theme
     local editor = material.loadEditor()
     local syntax = material.loadSyntax()
+    local treesitter = material.loadTreeSitter()
 
     for group, colors in pairs(editor) do
         util.highlight(group, colors)
     end
 
     for group, colors in pairs(syntax) do
+        util.highlight(group, colors)
+    end
+
+    for group, colors in pairs(treesitter) do
         util.highlight(group, colors)
     end
     async:send()
