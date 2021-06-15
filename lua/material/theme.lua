@@ -104,49 +104,50 @@ theme.loadEditor = function ()
 		DiffText =				{ fg = material.fg, bg = material.none, style = 'reverse' }, -- diff mode: Changed text within a changed line
 		EndOfBuffer =			{ fg = material.disabled }, -- ~ lines at the end of a buffer
 		ErrorMsg =				{ fg = material.error }, -- error messages
-		Folded =				{ fg = material.disabled, bg = material.none, style = 'italic' },
-		FoldColumn =			{ fg = material.blue },
-		IncSearch =				{ fg = material.highlight, bg = material.title, style = 'reverse' },
-		LineNr =				{ fg = material.line_numbers },
-		CursorLineNr =			{ fg = material.accent },
-		MatchParen =			{ fg = material.yellow, bg = material.none, style = 'bold' },
-		ModeMsg =				{ fg = material.accent },
-		MoreMsg =				{ fg = material.accent },
-		NonText =				{ fg = material.disabled },
-		Pmenu =					{ fg = material.text, bg = material.contrast },
-		PmenuSel =				{ fg = material.accent, bg = material.active },
-		PmenuSbar =				{ fg = material.text, bg = material.contrast },
-		PmenuThumb =			{ fg = material.fg, bg = material.accent },
-		Question =				{ fg = material.green },
-		QuickFixLine =			{ fg = material.highlight, bg = material.title, style = 'reverse' },
-		qfLineNr =				{ fg = material.highlight, bg = material.title, style = 'reverse' },
-		Search =				{ fg = material.highlight, bg = material.title, style = 'reverse' },
-		SpecialKey =			{ fg = material.purple },
-		SpellBad =				{ fg = material.red, bg = material.none, style = 'italic,undercurl' },
-		SpellCap =				{ fg = material.blue, bg = material.none, style = 'italic,undercurl' },
-		SpellLocal =			{ fg = material.cyan, bg = material.none, style = 'italic,undercurl' },
-		SpellRare =				{ fg = material.purple, bg = material.none, style = 'italic,undercurl' },
-		StatusLine =			{ fg = material.accent, bg = material.active },
-		StatusLineNC =  		{ fg = material.fg, bg = material.bg },
-		StatusLineTerm =		{ fg = material.fg, bg = material.active },
-		StatusLineTermNC =		{ fg = material.text, bg = material.bg },
-		TabLineFill =			{ fg = material.fg },
-		TablineSel =			{ fg = material.bg, bg = material.accent },
+		Folded =				{ fg = material.disabled, bg = material.none, style = 'italic' }, -- line used for closed folds
+		FoldColumn =			{ fg = material.blue }, -- 'foldcolumn'
+		IncSearch =				{ fg = material.highlight, bg = material.title, style = 'reverse' }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+		LineNr =				{ fg = material.line_numbers }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+		CursorLineNr =			{ fg = material.accent }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+		MatchParen =			{ fg = material.yellow, bg = material.none, style = 'bold' }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+		ModeMsg =				{ fg = material.accent }, -- 'showmode' message (e.g., "-- INSERT -- ")
+		MoreMsg =				{ fg = material.accent }, -- |more-prompt|
+		NonText =				{ fg = material.disabled }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+		Pmenu =					{ fg = material.text, bg = material.contrast }, -- Popup menu: normal item.
+		PmenuSel =				{ fg = material.accent, bg = material.active }, -- Popup menu: selected item.
+		PmenuSbar =				{ fg = material.text, bg = material.contrast }, -- Popup menu: scrollbar.
+		PmenuThumb =			{ fg = material.fg, bg = material.border }, -- Popup menu: Thumb of the scrollbar.
+		Question =				{ fg = material.green }, -- |hit-enter| prompt and yes/no questions
+		QuickFixLine =			{ fg = material.highlight, bg = material.title, style = 'reverse' }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
+		qfLineNr =				{ fg = material.highlight, bg = material.title, style = 'reverse' }, -- Line numbers for quickfix lists
+		Search =				{ fg = material.highlight, bg = material.title, style = 'reverse' }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+		SpecialKey =			{ fg = material.purple }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
+		SpellBad =				{ fg = material.red, bg = material.none, style = 'italic,undercurl' }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
+		SpellCap =				{ fg = material.blue, bg = material.none, style = 'italic,undercurl' }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
+		SpellLocal =			{ fg = material.cyan, bg = material.none, style = 'italic,undercurl' }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
+		SpellRare =				{ fg = material.purple, bg = material.none, style = 'italic,undercurl' }, -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
+		StatusLine =			{ fg = material.accent, bg = material.active }, -- status line of current window
+		StatusLineNC =  		{ fg = material.fg, bg = material.bg }, -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+		StatusLineTerm =		{ fg = material.fg, bg = material.active }, -- status line of current terminal window
+		StatusLineTermNC =		{ fg = material.text, bg = material.bg }, -- status lines of not-current terminal windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+		TabLineFill =			{ fg = material.fg }, -- tab pages line, where there are no labels
+		TablineSel =			{ fg = material.bg, bg = material.accent }, -- tab pages line, active tab page label
 		Tabline =				{ fg = material.fg },
-		Title =					{ fg = material.title, bg = material.none, style = 'bold' },
-		Visual =				{ fg = material.none, bg = material.selection },
-		VisualNOS =				{ fg = material.none, bg = material.selection },
-		WarningMsg =			{ fg = material.yellow },
-		WildMenu =				{ fg = material.orange, bg = material.none, style = 'bold' },
-		CursorColumn =			{ fg = material.none, bg = material.active },
-		CursorLine =			{ fg = material.none, bg = material.active },
-		ToolbarLine =			{ fg = material.fg, bg = material.bg_alt },
-		ToolbarButton =			{ fg = material.fg, bg = material.none, style = 'bold' },
-		NormalMode =			{ fg = material.accent, bg = material.none, style = 'reverse' },
-		InsertMode =			{ fg = material.green, bg = material.none, style = 'reverse' },
-		ReplacelMode =			{ fg = material.red, bg = material.none, style = 'reverse' },
-		VisualMode =			{ fg = material.purple, bg = material.none, style = 'reverse' },
-		CommandMode =			{ fg = material.gray, bg = material.none, style = 'reverse' },
+		Title =					{ fg = material.title, bg = material.none, style = 'bold' }, -- titles for output from ":set all", ":autocmd" etc.
+		Visual =				{ fg = material.none, bg = material.selection }, -- Visual mode selection
+		VisualNOS =				{ fg = material.none, bg = material.selection }, -- Visual mode selection when vim is "Not Owning the Selection".
+		WarningMsg =			{ fg = material.yellow }, -- warning messages
+		Whitespace =			{ fg = material.fg }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
+		WildMenu =				{ fg = material.orange, bg = material.none, style = 'bold' }, -- current match in 'wildmenu' completion
+		CursorColumn =			{ fg = material.none, bg = material.active }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
+		CursorLine =			{ fg = material.none, bg = material.active }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
+		-- ToolbarLine =			{ fg = material.fg, bg = material.bg_alt },
+		-- ToolbarButton =			{ fg = material.fg, bg = material.none, style = 'bold' },
+		NormalMode =			{ fg = material.accent, bg = material.none, style = 'reverse' }, -- Normal mode message in the cmdline
+		InsertMode =			{ fg = material.green, bg = material.none, style = 'reverse' }, -- Insert mode message in the cmdline
+		ReplacelMode =			{ fg = material.red, bg = material.none, style = 'reverse' }, -- Replace mode message in the cmdline
+		VisualMode =			{ fg = material.purple, bg = material.none, style = 'reverse' }, -- Visual mode message in the cmdline
+		CommandMode =			{ fg = material.gray, bg = material.none, style = 'reverse' }, -- Command mode message in the cmdline
 		Warnings =				{ fg = material.yellow },
 
         healthError =           { fg = material.error },
@@ -174,9 +175,9 @@ theme.loadEditor = function ()
 
     -- Remove window split borders
     if vim.g.material_borders == true then
-		editor.VertSplit =				{ fg = material.border }
+		editor.VertSplit =				{ fg = material.border } -- the column separating vertically split windows
     else
-		editor.VertSplit =				{ fg = material.bg }
+		editor.VertSplit =				{ fg = material.bg } -- the column separating vertically split windows
     end
 
     return editor
@@ -335,6 +336,9 @@ theme.loadPlugins = function()
         LspTroubleText =                        { fg = material.text },
         LspTroubleCount =                       { fg = material.purple, bg = material.active },
         LspTroubleNormal =                      { fg = material.fg, bg = material.sidebar },
+
+		-- Nvim-Compe
+		CompeDocumentation =					{ fg = material.text, bg = material.contrast },
 
         -- Diff
         diffAdded =                             { fg = material.green },
