@@ -120,6 +120,7 @@ vim.g.material_style = "deep ocean"
 | material_italic_variables           | `false`     | Make variable names and identifiers italic                                                       |
 | material_borders                    | `false`     | Enable the border between verticaly split windows visable                                        |
 | material_disable_background         | `false`     | Disable the setting of background color so that NeoVim can use your terminal background          |
+| material_hide_eob                   | `false`     | Hide the end of buffer lines ( ~ )                                                               |
 | material_variable_color             | `#717CB4`   | Set a custom color for variables and fields                                                      |
 | material_custom_colors              |    {}       | Override the default colors and use your own                                                     |
 
@@ -167,14 +168,35 @@ Just call the function for style switching
 The command can also be mapped to a key for fast style switching
 ```vim
 "Vim-Script:
-nnoremap <C-m> :lua require('material.functions').toggle_style()<CR>
+nnoremap <leader>mm :lua require('material.functions').toggle_style()<CR>
 ```
 
 ```lua
 --Lua:
-vim.api.nvim_set_keymap('n', '<C-m>', [[<Cmd>lua require('material.functions').toggle_style()<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>mm', [[<Cmd>lua require('material.functions').toggle_style()<CR>]], { noremap = true, silent = true })
 ```
 
++ Toggle the end of buffer lines ( ~ )
+
+Call the built in function for toggling buffer lines
+
+```vim
+"Vim-Script
+:lua require('material.functions').toggle_eob()
+"This command toggles the end of buffer lines
+```
+
+
+The command can also be mapped to a key to toggle the lines live
+```vim
+"Vim-Script:
+nnoremap <leader>me :lua require('material.functions').toggle_eob()<CR>
+```
+
+```lua
+--Lua:
+vim.api.nvim_set_keymap('n', '<leader>me', [[<Cmd>lua require('material.functions').toggle_eob()<CR>]], { noremap = true, silent = true })
+```
 
 + Change the style to a desired one using the function change_style("desired style")
 ```vim
@@ -186,12 +208,12 @@ vim.api.nvim_set_keymap('n', '<C-m>', [[<Cmd>lua require('material.functions').t
 The command can also be mapped to a key for fast style switching
 ```vim
 "Vim-Script:
-nnoremap <C-9> :lua require('material.functions').change_style('lighter')<CR>
-nnoremap <C-0> :lua require('material.functions').change_style('darker')<CR>
+nnoremap <leader>ml :lua require('material.functions').change_style('lighter')<CR>
+nnoremap <leader>md :lua require('material.functions').change_style('darker')<CR>
 ```
 
 ```lua
 --Lua:
-vim.api.nvim_set_keymap('n', '<C-9>', [[<Cmd>lua require('material.functions').change_style('lighter')<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-0>', [[<Cmd>lua require('material.functions').change_style('darker')<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>ml', [[<Cmd>lua require('material.functions').change_style('lighter')<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>md', [[<Cmd>lua require('material.functions').change_style('darker')<CR>]], { noremap = true, silent = true })
 ```

@@ -17,7 +17,17 @@ end
   change_style(switch[vim.g.material_style_switch])
  end
 
+ local toggle_eob = function ()
+    if vim.g.material_hide_eob == nil then
+        vim.g.material_hide_eob = true
+    else
+        vim.g.material_hide_eob = nil
+    end
+    vim.cmd[[colorscheme material]]
+ end
+
  return {
      change_style = change_style,
      toggle_style = toggle_style,
+     toggle_eob = toggle_eob
 }

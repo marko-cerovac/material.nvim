@@ -102,7 +102,6 @@ theme.loadEditor = function ()
 		DiffChange =			{ fg = material.blue, bg = material.none, style = 'reverse' }, --  diff mode: Changed line
 		DiffDelete =			{ fg = material.red, bg = material.none, style = 'reverse' }, -- diff mode: Deleted line
 		DiffText =				{ fg = material.fg, bg = material.none, style = 'reverse' }, -- diff mode: Changed text within a changed line
-		EndOfBuffer =			{ fg = material.disabled }, -- ~ lines at the end of a buffer
 		ErrorMsg =				{ fg = material.error }, -- error messages
 		Folded =				{ fg = material.disabled, bg = material.none, style = 'italic' }, -- line used for closed folds
 		FoldColumn =			{ fg = material.blue }, -- 'foldcolumn'
@@ -178,6 +177,13 @@ theme.loadEditor = function ()
 		editor.VertSplit =				{ fg = material.border } -- the column separating vertically split windows
     else
 		editor.VertSplit =				{ fg = material.bg } -- the column separating vertically split windows
+    end
+
+    --Set End of Buffer lines (~)
+    if vim.g.material_hide_eob == true then
+		editor.EndOfBuffer =			{ fg = material.bg } -- ~ lines at the end of a buffer
+    else
+		editor.EndOfBuffer =			{ fg = material.disabled } -- ~ lines at the end of a buffer
     end
 
     return editor
