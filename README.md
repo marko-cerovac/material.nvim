@@ -22,6 +22,7 @@ If you want the old version that uses colorbuddy.nvim, you can find it [here](ht
     + [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
     + [LSP Diagnostics](https://neovim.io/doc/user/lsp.html)
     + [Lsp Saga](https://github.com/glepnir/lspsaga.nvim)
+    + [Nvim-Compe](https://github.com/hrsh7th/nvim-compe)
     + [LSP Trouble](https://github.com/folke/lsp-trouble.nvim)
     + [Git Gutter](https://github.com/airblade/vim-gitgutter)
     + [git-messenger](https://github.com/rhysd/git-messenger.vim)
@@ -38,6 +39,7 @@ If you want the old version that uses colorbuddy.nvim, you can find it [here](ht
     + [Neogit](https://github.com/TimUntersberger/neogit)
     + [vim-sneak](https://github.com/justinmk/vim-sneak)
     + [nvim-dap](https://github.com/mfussenegger/nvim-dap)
+    + [vim-illuminate](https://github.com/RRethy/vim-illuminate)
 
 + Ability to change background on sidebar-like windows like Nvim-Tree, Packer, terminal etc.
 
