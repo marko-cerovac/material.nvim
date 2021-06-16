@@ -382,13 +382,13 @@ theme.loadPlugins = function()
         GitSignsDeleteLn =                      { fg = material.red }, -- diff mode: Deleted line |diff.txt|
 
         -- Telescope
+        TelescopeNormal =                       { fg = material.fg, bg = material.bg },
         TelescopePromptBorder =                 { fg = material.cyan },
         TelescopeResultsBorder =                { fg = material.purple },
         TelescopePreviewBorder =                { fg = material.green },
         TelescopeSelectionCaret =               { fg = material.purple },
         TelescopeSelection =                    { fg = material.purple, bg = material.active },
         TelescopeMatching =                     { fg = material.cyan },
-        TelescopeNormal =                       { fg = material.fg, bg = material.float },
 
         -- NvimTree
         NvimTreeRootFolder =                    { fg = material.title, style = "italic" },
