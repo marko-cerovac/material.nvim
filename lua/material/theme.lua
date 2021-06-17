@@ -392,15 +392,20 @@ theme.loadPlugins = function()
 
         -- NvimTree
         NvimTreeRootFolder =                    { fg = material.title, style = "italic" },
+        NvimTreeFolderName=                     { fg = material.text },
+        NvimTreeFolderIcon=                     { fg = material.accent },
+        NvimTreeEmptyFolderName=                { fg = material.disabled },
+        NvimTreeOpenedFolderName=               { fg = material.accent, style = "italic" },
+        NvimTreeIndentMarker =                  { fg = material.disabled },
         NvimTreeGitDirty =                      { fg = material.blue },
         NvimTreeGitNew =                        { fg = material.green },
+        NvimTreeGitStaged =                     { fg = material.comments },
+        NvimTreeGitDeleted =                    { fg = material.red },
+        NvimTreeOpenedFile =                    { fg = material.accent },
         NvimTreeImageFile =                     { fg = material.yellow },
+        NvimTreeMarkdownFile =                  { fg = material.pink },
         NvimTreeExecFile =                      { fg = material.green },
         NvimTreeSpecialFile =                   { fg = material.purple , style = "underline" },
-        NvimTreeFolderName=                     { fg = material.paleblue },
-        NvimTreeEmptyFolderName=                { fg = material.disabled },
-        NvimTreeFolderIcon=                     { fg = material.accent },
-        NvimTreeIndentMarker =                  { fg = material.disabled },
         LspDiagnosticsError =                   { fg = material.error },
         LspDiagnosticsWarning =                 { fg = material.yellow },
         LspDiagnosticsInformation =             { fg = material.paleblue },
@@ -472,9 +477,9 @@ theme.loadPlugins = function()
 
     -- Disable nvim-tree background
         if vim.g.material_disable_background == true then
-            plugins.NvimTreeNormal =                        { fg = material.fg, bg = material.none }
+            plugins.NvimTreeNormal =                        { fg = material.comments, bg = material.none }
         else
-            plugins.NvimTreeNormal =                        { fg = material.fg, bg = material.sidebar }
+            plugins.NvimTreeNormal =                        { fg = material.comments, bg = material.sidebar }
         end
 
     return plugins

@@ -1,5 +1,3 @@
--- local applyCustomColors = require('material.functions').applyCustomColors
-
 local material = {
 	-- Common colors
 
