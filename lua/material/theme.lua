@@ -113,7 +113,7 @@ theme.loadEditor = function ()
 		MoreMsg =				{ fg = material.accent }, -- |more-prompt|
 		NonText =				{ fg = material.disabled }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
 		Pmenu =					{ fg = material.text, bg = material.contrast }, -- Popup menu: normal item.
-		PmenuSel =				{ fg = material.accent, bg = material.active }, -- Popup menu: selected item.
+		PmenuSel =				{ fg = material.accent, bg = material.active, style = 'italic' }, -- Popup menu: selected item.
 		PmenuSbar =				{ fg = material.text, bg = material.contrast }, -- Popup menu: scrollbar.
 		PmenuThumb =			{ fg = material.fg, bg = material.border }, -- Popup menu: Thumb of the scrollbar.
 		Question =				{ fg = material.green }, -- |hit-enter| prompt and yes/no questions
@@ -223,7 +223,7 @@ theme.loadTreeSitter = function ()
         TSConstBuiltin =            { fg = material.blue },    -- For constant that are built in the language: `nil` in Lua.
         TSConstMacro =              { fg = material.blue },    -- For constants that are defined by macros: `NULL` in C.
         TSError =                   { fg = material.error },    -- For syntax/parser errors.
-        TSException =               { fg = material.yellow },    -- For exception related keywords.
+        TSException =               { fg = material.red },    -- For exception related keywords.
         TSField =                   { fg = material.variable }, -- For fields.
         TSFloat =                   { fg = material.red },    -- For floats.
         TSFuncMacro =               { fg = material.blue },    -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
@@ -234,7 +234,7 @@ theme.loadTreeSitter = function ()
         TSOperator =                { fg = material.cyan }, -- For any operator: `+`, but also `->` and `*` in C.
         TSParameter =               { fg = material.paleblue }, -- For parameters of a function.
         TSParameterReference=       { fg = material.paleblue },    -- For references to parameters of a function.
-        TSProperty =                { fg = material.paleblue }, -- Same as `TSField`.
+        TSProperty =                { fg = material.paleblue }, -- Same as `TSField`,accesing for struct members in C.
         TSPunctDelimiter =          { fg = material.cyan }, -- For delimiters ie: `.`
         TSPunctBracket =            { fg = material.cyan }, -- For brackets and parens.
         TSPunctSpecial =            { fg = material.cyan }, -- For special punctutation that does not fall in the catagories before.
@@ -242,10 +242,10 @@ theme.loadTreeSitter = function ()
         TSStringRegex =             { fg = material.blue }, -- For regexes.
         TSStringEscape =            { fg = material.disabled }, -- For escape characters within a string.
         TSSymbol =                  { fg = material.yellow },    -- For identifiers referring to symbols or atoms.
-        TSType =                    { fg = material.purple },    -- For types.
+        TSType =                    { fg = material.yellow },    -- For types.
         TSTypeBuiltin =             { fg = material.purple },    -- For builtin types.
         TSTag =                     { fg = material.red },    -- Tags like html tag names.
-        TSTagDelimiter =            { fg = material.yellow },    -- Tag delimiter like `<` `>` `/`
+        TSTagDelimiter =            { fg = material.cyan },    -- Tag delimiter like `<` `>` `/`
         TSText =                    { fg = material.text },    -- For strings considered text in a markup language.
         TSTextReference =           { fg = material.yellow }, -- FIXME
         TSEmphasis =                { fg = material.paleblue },    -- For text to be represented with emphasis.
@@ -270,12 +270,12 @@ theme.loadTreeSitter = function ()
         treesitter.TSConditional =             { fg = material.purple, style = 'italic' }    -- For keywords related to conditionnals.
         treesitter.TSKeyword =                 { fg = material.purple, style = 'italic' } -- For keywords that don't fall in previous categories.
         treesitter.TSRepeat =                  { fg = material.purple, style = 'italic' }    -- For keywords related to loops.
-        treesitter.TSKeywordFunction =         { fg = material.purple, style = 'italic' } -- For keywords used to define a fuction.
+        treesitter.TSKeywordFunction =         { fg = material.yellow, style = 'italic' } -- For keywords used to define a fuction.
     else
         treesitter.TSConditional =             { fg = material.purple }    -- For keywords related to conditionnals.
         treesitter.TSKeyword =                 { fg = material.purple } -- For keywords that don't fall in previous categories.
         treesitter.TSRepeat =                  { fg = material.purple }    -- For keywords related to loops.
-        treesitter.TSKeywordFunction =         { fg = material.purple } -- For keywords used to define a fuction.
+        treesitter.TSKeywordFunction =         { fg = material.yellow } -- For keywords used to define a fuction.
     end
 
     if vim.g.material_italic_functions == true then
@@ -420,20 +420,20 @@ theme.loadPlugins = function()
         WhichKeyFloat =                         { bg = material.float },
 
         -- LspSaga
+        LspFloatWinNormal =                     { fg = material.text, bg = material.bg },
+        LspFloatWinBorder =                     { fg = material.purple },
         DiagnosticError =                       { fg = material.error },
         DiagnosticWarning =                     { fg = material.yellow },
         DiagnosticInformation =                 { fg = material.paleblue },
         DiagnosticHint =                        { fg = material.purple },
 		LspSagaDiagnosticBorder =				{ fg = material.gray },
-		LspSagaDiagnosticTruncateLine =			{ fg = material.gray },
-		LspSagaDiagnosticHeader =				{ fg = material.paleblue },
+		LspSagaDiagnosticHeader =				{ fg = material.blue },
+		LspSagaDiagnosticTruncateLine =			{ fg = material.border },
 		LspLinesDiagBorder =					{ fg = material.contrast },
-		-- ProviderTruncateLine =					{ fg = material.red },
-		-- LspSagaShTruncateLine =					{ fg = material.red },
-		-- LspSagaDocTruncateLine =				{ fg = material.red },
-		-- LineDiagTruncateLine =					{ fg = material.red },
-        LspFloatWinNormal =                     { bg = material.bg },
-        LspFloatWinBorder =                     { fg = material.purple },
+		ProviderTruncateLine =					{ fg = material.border },
+		LspSagaShTruncateLine =					{ fg = material.border },
+		LspSagaDocTruncateLine =				{ fg = material.border },
+		LineDiagTruncateLine =					{ fg = material.border },
         LspSagaBorderTitle =                    { fg = material.cyan },
         LspSagaHoverBorder =                    { fg = material.paleblue },
         LspSagaRenameBorder =                   { fg = material.green },
@@ -441,7 +441,7 @@ theme.loadPlugins = function()
         LspSagaCodeActionTitle =                { fg = material.paleblue },
         LspSagaCodeActionContent =              { fg = material.purple },
         LspSagaCodeActionBorder =               { fg = material.blue },
-		LspSagaCodeActionTruncateLine =			{ fg = material.blue },
+		LspSagaCodeActionTruncateLine =			{ fg = material.border },
         LspSagaSignatureHelpBorder =            { fg = material.pink },
         LspSagaFinderSelection =                { fg = material.green },
 		-- LspSagaAutoPreview =					{ fg = material.red },
