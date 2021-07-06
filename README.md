@@ -2,7 +2,7 @@
 ![screen](/media/logo.jpg)
 
 ## 🔱 Info
-A port or [Material](https://material-theme.site) colorscheme for NeoVim written in Lua
+A port of [Material](https://material-theme.site) colorscheme for NeoVim written in Lua
 
 Material.nvim is meant to be a fast and modern colorscheme written in Lua that supports a lot of the new features
 added to NeoVim like built-in LSP and [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
