@@ -220,8 +220,8 @@ theme.loadTreeSitter = function ()
         TSCharacter=                { fg = material.orange }, -- For characters.
         TSConstructor =             { fg = material.purple }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
         TSConstant =                { fg = material.yellow }, -- For constants
-        TSConstBuiltin =            { fg = material.blue }, -- For constant that are built in the language: `nil` in Lua.
-        TSConstMacro =              { fg = material.blue }, -- For constants that are defined by macros: `NULL` in C.
+        TSConstBuiltin =            { fg = material.red }, -- For constant that are built in the language: `nil` in Lua.
+        TSConstMacro =              { fg = material.red }, -- For constants that are defined by macros: `NULL` in C.
         TSError =                   { fg = material.error }, -- For syntax/parser errors.
         TSException =               { fg = material.red }, -- For exception related keywords.
         TSField =                   { fg = material.variable }, -- For fields.
@@ -268,12 +268,12 @@ theme.loadTreeSitter = function ()
 
     if vim.g.material_italic_keywords == true then
         treesitter.TSConditional =             { fg = material.purple, style = 'italic' } -- For keywords related to conditionnals.
-        treesitter.TSKeyword =                 { fg = material.yellow, style = 'italic' } -- For keywords that don't fall in previous categories.
+        treesitter.TSKeyword =                 { fg = material.cyan, style = 'italic' } -- For keywords that don't fall in previous categories.
         treesitter.TSRepeat =                  { fg = material.purple, style = 'italic' } -- For keywords related to loops.
         treesitter.TSKeywordFunction =         { fg = material.purple, style = 'italic' } -- For keywords used to define a fuction.
     else
         treesitter.TSConditional =             { fg = material.purple } -- For keywords related to conditionnals.
-        treesitter.TSKeyword =                 { fg = material.yellow } -- For keywords that don't fall in previous categories.
+        treesitter.TSKeyword =                 { fg = material.cyan } -- For keywords that don't fall in previous categories.
         treesitter.TSRepeat =                  { fg = material.purple } -- For keywords related to loops.
         treesitter.TSKeywordFunction =         { fg = material.purple } -- For keywords used to define a fuction.
     end
