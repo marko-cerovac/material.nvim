@@ -1,0 +1,233 @@
+================================================================================
+                                                                 *material.nvim*
+              __          _      __           _      ~
+  __ _  ___ _/ /____ ____(_)__ _/ / ___ _  __(_)_ _  ~
+ /  ' \/ _ `/ __/ -_) __/ / _ `/ / / _ \ |/ / /  ' \ ~
+/_/_/_/\_,_/\__/\__/_/ /_/\_,_/_(_)_//_/___/_/_/_/_/ ~
+                                                                                                                    
+
+Material.nvim is a colorscheme for NeoVim written in Lua with built in support
+for native LSP, TreeSitter and many more plugins.
+
+================================================================================
+CONTENTS
+
+    1. Features ................. |material.nvim-features|
+    2. Usage .................... |material.nvim-usage|
+    3. Styles ................... |material.nvim-styles|
+    4. Configuration ............ |material.nvim-configuration|
+    5. Functions ................ |material.nvim-functions|
+    6. Mappings ................. |material.nvim-mappings|
+
+================================================================================
+1. Features                                             *material.nvim-features*
+
+    + There are 5 styles to choose from: -oceanic
+                                         -deep ocean
+                                         -palenight
+                                         -darker
+                                         -lighter
+
+    + A wide array of supprted plugiuns like: -TreeSitter
+                                              -LSP Diagnostics
+                                              -LSP Saga
+                                              -LSP Trouble
+                                              -Nvim-Compe
+                                              -Git Gutter
+                                              -Git Messenger
+                                              -Git Signs
+                                              -Telescope.nvim
+                                              -Nvim-Tree.lua
+                                              -NERDTree
+                                              -Indent-Blankline.nvim
+                                              -Vim-Which-Key
+                                              -WhichKey.nvim
+                                              -Dashboard
+                                              -BufferLine
+                                              -Lualine
+                                              -Neogit
+                                              -Vim-Sneak
+                                              -Nvim-Dap
+                                              -Vim-Illuminate
+
+    + Ability to have a different background on sidebar windows like Nvim-Tree,
+      Terminal, Packer, Whichkey, QuickFix etc.
+
+    + Asynchronous highlight loading which makes the theme extremely fast
+
+    + Added functions for live style switching, without the need to reload
+      NeoVim
+
+================================================================================
+2. Usage                                                   *material.nvim-usage*
+
+    To use the default settings, just apply the theme
+
+    If you are using Vim-Script:
+        colorscheme material~
+
+    If you are using Lua:
+        require('material').set~
+
+
+    Material.nvim also includes a Lualine theme. Set it in your Lualine config
+        require('lualine').setup {~
+          options = {~
+            -- ... your lualine config
+            theme = 'material-nvim'~
+            -- ... your lualine config
+          }~
+        }~
+    Just make sure to set the theme to "material.nvim", as "material" already
+    exist built in to lualine
+
+================================================================================
+3. Styles                                                 *material.nvim-styles*
+
+    The theme comes in 5 styles to choose from
+
+    + Oceanic:~
+        This is the default style that will be apllied by default.
+        It uses a soft and darkish blue background, and a teal accent
+        color .
+
+    + Deep Ocean:~
+        This style comes with a really dark background and a cyan accent
+        color.
+
+    + Palenight:~
+        This style is based on the Palenight color theme, but with the
+        material color palette applied to it. It has a blueish gray background
+        and a purple accent color.
+
+    + Darker:~
+        This style is loosely based on the Gruvbox color theme. It has a brown
+        background and orange accent color.
+
+    + Lighter:~
+        This is the only light style in this colorscheme. It comes with a
+        white background and a light blue accent color. It is a bit low on
+        contrast, but there is an option to increase the contrast of this
+        style for those that want more visibilty.
+
+    The styles are set by setting the global variable 'material_style' to the
+    desired style name
+    
+    For example:
+
+        Vim-Script:
+            let g:material_style = "palenight"~
+        Lua:
+            vim.g.material_style = "deep ocean"~
+
+    Just make sure to set the style before applying the colorscheme
+
+================================================================================
+4. Configuration                                   *material.nvim-configuration*
+
+What sets material.nvim appart from most Vim/NeoVim themes is the wide array
+of options for customising the theme.
+
+All options are set using global variables.
+
+In order for these settings to take effect, they should be placed in your
+init.vim/init.lua before applying the colorscheme
+
+Options:
+
+    + material_style {string} (default = "oceanic")
+        This sets the style of the the theme, and can be initialized with one
+        of these five values: -oceanic
+                              -deep ocean
+                              -palenight
+                              -lighter
+                              -darker
+
+    + material_contrast {bool}  (default = true)
+          Make sidebars, floating windows and popup menus like nvim-tree and
+          telescope have a different background
+
+    + material_lighter_contrast {bool}  (default = false)
+          Increase the contrast on the lighter variant of the colorscheme for
+          more visibilty
+
+    + material_italic_comments  {bool}  (default = false)
+          Make comments italic
+
+    + material_italic_keywords  {bool}  (default = false)
+          Make keywords like if,for,while etc. italic
+
+    + material_italic_functions  {bool}  (default = false)
+          Make functions calls and names italic
+
+    + material_italic_variables  {bool}  (default = false)
+          Make variable names and identifiers italic
+
+    + material_borders  {bool}  (default = false)
+          Enable the border between verticaly split windows
+
+    + material_disable_background  {bool}  (default = false)
+          Set this to true if you want to prevent material.nvim from setting a
+          background color, so that NeoVim can use you terminal background
+          color
+
+    + material_hide_eob  {bool}  (default = false)
+          Hide the end of buffer lines (~)
+
+    + material_variable_color  {string}  (default = "#717CB4")
+          Set a custom color for variables and fields
+
+    + material_custom_colors  {table}  (default = {})
+          Use this to override any color that the theme has set. Just pass in
+          colors like this:
+          vim.g.material_custom_colors = {black = "#000000", bg = "#0F111A"}
+
+
+Example config in Lua:
+
+    -- Colorscheme settings
+    vim.g.material_style = 'deep ocean'
+    vim.g.material_italic_comments = true
+    vim.g.material_italic_keywords = true
+    vim.g.material_italic_functions = true
+
+    -- Apply the colorscheme
+    require('material').set()
+
+================================================================================
+5. Functions                                           *material.nvim-functions*
+
+Material.nvim has built in fuctions that you can call or bind to a key
+
+    + Toggle trough styles without the need to restart NeoVim
+          Just call the funciton and it will switch to the next style:
+          :lua require('material.functions').toggle_style()~
+
+    + Switch to a specific style
+          Call the function for switching and pass in the name of the style
+          that you want to switch to:
+          :lua require('material.functions').change_style('palenight')~
+
+    + Toggle the end of buffer lines
+          Call this function if you want to toggle the visibility of the lines at the end of
+          the buffer: 
+          :lua require('material.functions').toggle_eob()~
+
+================================================================================
+6. Mappings                                             *material.nvim-mappings*
+
+You can mapp the built-in functions to keys
+This will allow you to change the style and toggle the end-of-buffer lines
+at keypress
+
+Example:
+
+nnoremap <leader>mm :lua require('material.functions').toggle_style()<CR>
+
+nnoremap <leader>me :lua require('material.functions').toggle_eob()<CR>
+
+nnoremap <leader>md :luarequire('material.functions').change_style('darker')<CR>
+nnoremap <leader>ml :luarequire('material.functions').change_style('lighter')<CR>
+
+================================================================================
+vim:tw=78:ts=4:ft=help:norl:

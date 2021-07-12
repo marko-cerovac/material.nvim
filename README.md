@@ -90,6 +90,8 @@ require('lualine').setup {
 }
 ```
 
+Also, see ```:help material.nvim```
+
 ## ⚙️ Configuration
 
 + There are 5 different styles available:
@@ -109,6 +111,8 @@ let g:material_style = 'darker'
 --Lua:
 vim.g.material_style = "deep ocean"
 ```
+
+Available options:
 
 | Option                              | Default     | Description                                                                                      |
 | ----------------------------------- | ----------- | ------------------------------------------------------------------------------------------------ |
