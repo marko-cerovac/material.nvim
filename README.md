@@ -90,7 +90,7 @@ require('lualine').setup {
 }
 ```
 
-Also, see ```:help material.nvim```
+For a comlete guide on usage and Configuration of the theme, see ```:help material.nvim```.
 
 ## ⚙️ Configuration
 
