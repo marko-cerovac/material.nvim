@@ -471,6 +471,15 @@ theme.loadPlugins = function()
 		-- Illuminate
 		illuminatedWord =						{ bg = material.highight },
 		illuminatedCurWord =					{ bg = material.highight },
+
+		-- Hop
+		HopNextKey =							{ fg = material.accent, style = 'bold' },
+		HopNextKey1 =							{ fg = material.purple, style = 'bold' },
+		HopNextKey2 =							{ fg = material.blue },
+		HopUnmatched =							{ fg = material.comments },
+
+		-- Fern
+		FernBranchText =						{ fg = material.blue },
     }
 
     -- Options:
