@@ -10,7 +10,6 @@ theme.loadSyntax = function ()
 		StorageClass =				{ fg = material.cyan }, -- static, register, volatile, etc.
 		Structure =					{ fg = material.puple }, -- struct, union, enum, etc.
 		Constant =					{ fg = material.yellow }, -- any constant
-		String =					{ fg = material.green, bg = material.none, style= 'italic' }, -- Any string
 		Character =					{ fg = material.orange }, -- any character constant: 'c', '\n'
 		Number =					{ fg = material.orange }, -- a number constant: 5
 		Boolean =					{ fg = material.orange }, -- a boolean constant: TRUE, false
@@ -82,6 +81,12 @@ theme.loadSyntax = function ()
 	else
 		syntax.Identifier =		{fg = material.variable}; -- any variable name
 	end
+
+    if vim.g.material_italic_strings == true then
+        syntax.String = { fg = material.green, bg = material.none, style= 'italic' }
+    else
+        syntax.String = { fg = material.green}
+    end
 
 	return syntax
 
