@@ -82,7 +82,7 @@ theme.loadSyntax = function ()
 		syntax.Identifier =		{fg = material.variable}; -- any variable name
 	end
 
-    if vim.g.material_italic_string == true then
+    if vim.g.material_italic_strings == true then
         syntax.String = { fg = material.green, bg = material.none, style= 'italic' }
     else
         syntax.String = { fg = material.green}
