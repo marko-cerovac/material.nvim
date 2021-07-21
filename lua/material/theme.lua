@@ -35,15 +35,15 @@ theme.loadSyntax = function ()
 		Error =						{ fg = material.error, bg = material.none, style = 'bold,underline' }, -- any erroneous construct
 		Todo =						{ fg = material.yellow, bg = material.none, style = 'bold,italic' }, -- anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
-        htmlLink = { fg = material.link, style = "underline" },
-        htmlH1 = { fg = material.cyan, style = "bold" },
-        htmlH2 = { fg = material.red, style = "bold" },
-        htmlH3 = { fg = material.green, style = "bold" },
-        htmlH4 = { fg = material.yellow, style = "bold" },
-        htmlH5 = { fg = material.purple, style = "bold" },
-        markdownH1 = { fg = material.cyan, style = "bold" },
-        markdownH2 = { fg = material.red, style = "bold" },
-        markdownH3 = { fg = material.green, style = "bold" },
+        htmlLink = { fg = material.link, style = 'underline' },
+        htmlH1 = { fg = material.cyan, style = 'bold' },
+        htmlH2 = { fg = material.red, style = 'bold' },
+        htmlH3 = { fg = material.green, style = 'bold' },
+        htmlH4 = { fg = material.yellow, style = 'bold' },
+        htmlH5 = { fg = material.purple, style = 'bold' },
+        markdownH1 = { fg = material.cyan, style = 'bold' },
+        markdownH2 = { fg = material.red, style = 'bold' },
+        markdownH3 = { fg = material.green, style = 'bold' },
         markdownH1Delimiter = { fg = material.cyan },
         markdownH2Delimiter = { fg = material.red },
         markdownH3Delimiter = { fg = material.green },
@@ -53,39 +53,39 @@ theme.loadSyntax = function ()
 
 	-- Italic comments
 	if vim.g.material_italic_comments == true then
-		syntax.Comment =		{fg = material.comments, bg = material.none, style = 'italic'} -- italic comments
+		syntax.Comment =		{ fg = material.comments, bg = material.none, style = 'italic' } -- italic comments
 	else
 		syntax.Comment =		{fg = material.comments} -- normal comments
 	end
 
 	-- Italic Keywords
 	if vim.g.material_italic_keywords == true then
-		syntax.Conditional =		{fg = material.purple, bg = material.none, style = 'italic'} -- italic if, then, else, endif, switch, etc.
-		syntax.Keyword =			{fg = material.purple, bg = material.none, style = 'italic'} -- italic for, do, while, etc.
-		syntax.Repeat =				{fg = material.purple, bg = material.none, style = 'italic'} -- italic any other keyword
+		syntax.Conditional =		{ fg = material.purple, bg = material.none, style = 'italic' } -- italic if, then, else, endif, switch, etc.
+		syntax.Keyword =			{ fg = material.purple, bg = material.none, style = 'italic' } -- italic for, do, while, etc.
+		syntax.Repeat =				{ fg = material.purple, bg = material.none, style = 'italic' } -- italic any other keyword
 	else
-		syntax.Conditional =		{fg = material.purple} -- normal if, then, else, endif, switch, etc.
-		syntax.Keyword =			{fg = material.purple} -- normal for, do, while, etc.
-		syntax.Repeat =				{fg = material.purple} -- normal any other keyword
+		syntax.Conditional =		{ fg = material.purple } -- normal if, then, else, endif, switch, etc.
+		syntax.Keyword =			{ fg = material.purple } -- normal for, do, while, etc.
+		syntax.Repeat =				{ fg = material.purple } -- normal any other keyword
 	end
 
 	-- Italic Function names
 	if vim.g.material_italic_functions == true then
-		syntax.Function =		{fg = material.blue, bg = material.none, style = 'italic'} -- italic funtion names
+		syntax.Function =		{ fg = material.blue, bg = material.none, style = 'italic' } -- italic funtion names
 	else
-		syntax.Function =		{fg = material.blue} -- normal function names
+		syntax.Function =		{ fg = material.blue } -- normal function names
 	end
 
 	if vim.g.material_italic_variables == true then
-		syntax.Identifier =		{fg = material.variable, bg = material.none, style = 'italic'}; -- any variable name
+		syntax.Identifier =		{ fg = material.variable, bg = material.none, style = 'italic' }; -- any variable name
 	else
-		syntax.Identifier =		{fg = material.variable}; -- any variable name
+		syntax.Identifier =		{ fg = material.variable }; -- any variable name
 	end
 
     if vim.g.material_italic_strings == true then
-        syntax.String = { fg = material.green, bg = material.none, style= 'italic' }
+        syntax.String = { fg = material.green, bg = material.none, style= 'italic' } -- any string
     else
-        syntax.String = { fg = material.green}
+        syntax.String = { fg = material.green } -- any string
     end
 
 	return syntax
@@ -162,7 +162,7 @@ theme.loadEditor = function ()
         DashboardShortCut =                     { fg = material.red },
         DashboardHeader =                       { fg = material.comments },
         DashboardCenter =                       { fg = material.accent },
-        DashboardFooter =                       { fg = material.green, style = "italic" },
+        DashboardFooter =                       { fg = material.green, style = 'italic' },
 
 	}
 
@@ -243,7 +243,6 @@ theme.loadTreeSitter = function ()
         TSPunctDelimiter =          { fg = material.cyan }, -- For delimiters ie: `.`
         TSPunctBracket =            { fg = material.cyan }, -- For brackets and parens.
         TSPunctSpecial =            { fg = material.cyan }, -- For special punctutation that does not fall in the catagories before.
-        TSString =                  { fg = material.green }, -- For strings.
         TSStringRegex =             { fg = material.blue }, -- For regexes.
         TSStringEscape =            { fg = material.disabled }, -- For escape characters within a string.
         TSSymbol =                  { fg = material.yellow }, -- For identifiers referring to symbols or atoms.
@@ -264,13 +263,21 @@ theme.loadTreeSitter = function ()
 
     -- Options:
 
-    -- Italic comments
+    -- TreeSitter Italic comments
     if vim.g.material_italic_comments == true then
         treesitter.TSComment=                  { fg = material.comments , bg = material.none, style = 'italic' } -- For comment blocks.
     else
         treesitter.TSComment=                  { fg = material.comments } -- For comment blocks.
     end
 
+    -- TreeSitter Italic strings
+    if vim.g.material_italic_strings == true then
+        treesitter.TSString =                  { fg = material.green, bg = material.none, style = 'italic' } -- For strings.
+    else
+        treesitter.TSString =                  { fg = material.green } -- For strings.
+    end
+
+    -- TreeSitter Italic keywords
     if vim.g.material_italic_keywords == true then
         treesitter.TSConditional =             { fg = material.purple, style = 'italic' } -- For keywords related to conditionnals.
         treesitter.TSKeyword =                 { fg = material.cyan, style = 'italic' } -- For keywords that don't fall in previous categories.
@@ -283,6 +290,7 @@ theme.loadTreeSitter = function ()
         treesitter.TSKeywordFunction =         { fg = material.purple } -- For keywords used to define a fuction.
     end
 
+    -- TreeSitter Italic functions
     if vim.g.material_italic_functions == true then
         treesitter.TSFunction =                { fg = material.blue, style = 'italic' } -- For fuction (calls and definitions).
         treesitter.TSMethod =                  { fg = material.blue, style = 'italic' } -- For method calls and definitions.
@@ -293,6 +301,7 @@ theme.loadTreeSitter = function ()
         treesitter.TSFuncBuiltin =             { fg = material.cyan } -- For builtin functions: `table.insert` in Lua.
     end
 
+    -- TreeSitter Italic variables
     if vim.g.material_italic_variables == true then
         treesitter.TSVariable =                { fg = material.variable, style = 'italic' } -- Any variable name that does not have another highlight.
         treesitter.TSVariableBuiltin =         { fg = material.variable, style = 'italic' } -- Variable names that are defined by the languages, like `this` or `self`.
@@ -314,10 +323,10 @@ theme.loadLSP = function ()
         LspDiagnosticsFloatingError =           { fg = material.error }, -- used for "Error" diagnostic messages in the diagnostics float
         LspDiagnosticsVirtualTextError =        { fg = material.error }, -- Virtual text "Error"
         LspDiagnosticsUnderlineError =          { style = 'undercurl', sp = material.error }, -- used to underline "Error" diagnostics.
-        LspDiagnosticsDefaultWarning =          { fg = material.yellow}, -- used for "Warning" diagnostic signs in sign column
-        LspDiagnosticsSignWarning =             { fg = material.yellow}, -- used for "Warning" diagnostic signs in sign column
-        LspDiagnosticsFloatingWarning =         { fg = material.yellow}, -- used for "Warning" diagnostic messages in the diagnostics float
-        LspDiagnosticsVirtualTextWarning =      { fg = material.yellow}, -- Virtual text "Warning"
+        LspDiagnosticsDefaultWarning =          { fg = material.yellow }, -- used for "Warning" diagnostic signs in sign column
+        LspDiagnosticsSignWarning =             { fg = material.yellow }, -- used for "Warning" diagnostic signs in sign column
+        LspDiagnosticsFloatingWarning =         { fg = material.yellow }, -- used for "Warning" diagnostic messages in the diagnostics float
+        LspDiagnosticsVirtualTextWarning =      { fg = material.yellow }, -- Virtual text "Warning"
         LspDiagnosticsUnderlineWarning =        { style = 'undercurl', sp = material.yellow }, -- used to underline "Warning" diagnostics.
         LspDiagnosticsDefaultInformation =      { fg = material.paleblue }, -- used for "Information" diagnostic virtual text
         LspDiagnosticsSignInformation =         { fg = material.paleblue },  -- used for "Information" diagnostic signs in sign column
@@ -396,11 +405,11 @@ theme.loadPlugins = function()
         TelescopeMatching =                     { fg = material.cyan },
 
         -- NvimTree
-        NvimTreeRootFolder =                    { fg = material.title, style = "italic" },
+        NvimTreeRootFolder =                    { fg = material.title, style = 'italic' },
         NvimTreeFolderName=                     { fg = material.text },
         NvimTreeFolderIcon=                     { fg = material.accent },
         NvimTreeEmptyFolderName=                { fg = material.disabled },
-        NvimTreeOpenedFolderName=               { fg = material.accent, style = "italic" },
+        NvimTreeOpenedFolderName=               { fg = material.accent, style = 'italic' },
         NvimTreeIndentMarker =                  { fg = material.disabled },
         NvimTreeGitDirty =                      { fg = material.blue },
         NvimTreeGitNew =                        { fg = material.green },
@@ -410,7 +419,7 @@ theme.loadPlugins = function()
         NvimTreeImageFile =                     { fg = material.yellow },
         NvimTreeMarkdownFile =                  { fg = material.pink },
         NvimTreeExecFile =                      { fg = material.green },
-        NvimTreeSpecialFile =                   { fg = material.purple , style = "underline" },
+        NvimTreeSpecialFile =                   { fg = material.purple , style = 'underline' },
         LspDiagnosticsError =                   { fg = material.error },
         LspDiagnosticsWarning =                 { fg = material.yellow },
         LspDiagnosticsInformation =             { fg = material.paleblue },
