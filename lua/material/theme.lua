@@ -35,18 +35,18 @@ theme.loadSyntax = function ()
 		Error =						{ fg = material.error, bg = material.none, style = 'bold,underline' }, -- any erroneous construct
 		Todo =						{ fg = material.yellow, bg = material.none, style = 'bold,italic' }, -- anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
-        htmlLink = { fg = material.link, style = 'underline' },
-        htmlH1 = { fg = material.cyan, style = 'bold' },
-        htmlH2 = { fg = material.red, style = 'bold' },
-        htmlH3 = { fg = material.green, style = 'bold' },
-        htmlH4 = { fg = material.yellow, style = 'bold' },
-        htmlH5 = { fg = material.purple, style = 'bold' },
-        markdownH1 = { fg = material.cyan, style = 'bold' },
-        markdownH2 = { fg = material.red, style = 'bold' },
-        markdownH3 = { fg = material.green, style = 'bold' },
-        markdownH1Delimiter = { fg = material.cyan },
-        markdownH2Delimiter = { fg = material.red },
-        markdownH3Delimiter = { fg = material.green },
+		htmlLink = { fg = material.link, style = 'underline' },
+		htmlH1 = { fg = material.cyan, style = 'bold' },
+		htmlH2 = { fg = material.red, style = 'bold' },
+		htmlH3 = { fg = material.green, style = 'bold' },
+		htmlH4 = { fg = material.yellow, style = 'bold' },
+		htmlH5 = { fg = material.purple, style = 'bold' },
+		markdownH1 = { fg = material.cyan, style = 'bold' },
+		markdownH2 = { fg = material.red, style = 'bold' },
+		markdownH3 = { fg = material.green, style = 'bold' },
+		markdownH1Delimiter = { fg = material.cyan },
+		markdownH2Delimiter = { fg = material.red },
+		markdownH3Delimiter = { fg = material.green },
 	}
 
 	-- Options:
@@ -158,40 +158,40 @@ theme.loadEditor = function ()
         healthSuccess =         { fg = material.green },
         healthWarning =         { fg = material.yellow },
 
-        -- Dashboard
-        DashboardShortCut =                     { fg = material.red },
-        DashboardHeader =                       { fg = material.comments },
-        DashboardCenter =                       { fg = material.accent },
-        DashboardFooter =                       { fg = material.green, style = 'italic' },
+		-- Dashboard
+		DashboardShortCut =                     { fg = material.red },
+		DashboardHeader =                       { fg = material.comments },
+		DashboardCenter =                       { fg = material.accent },
+		DashboardFooter =                       { fg = material.green, style = 'italic' },
 
 	}
 
     -- Options:
 
     --Set transparent background
-    if vim.g.material_disable_background == true then
+	if vim.g.material_disable_background == true then
 		editor.Normal =				{ fg = material.fg, bg = material.none } -- normal text and background color
 		editor.SignColumn =			{ fg = material.fg, bg = material.none }
-    else
+	else
 		editor.Normal =				{ fg = material.fg, bg = material.bg } -- normal text and background color
 		editor.SignColumn =			{ fg = material.fg, bg = material.bg }
-    end
+	end
 
-    -- Remove window split borders
-    if vim.g.material_borders == true then
+	-- Remove window split borders
+	if vim.g.material_borders == true then
 		editor.VertSplit =				{ fg = material.border } -- the column separating vertically split windows
-    else
+	else
 		editor.VertSplit =				{ fg = material.bg } -- the column separating vertically split windows
-    end
+	end
 
-    --Set End of Buffer lines (~)
-    if vim.g.material_hide_eob == true then
+	--Set End of Buffer lines (~)
+	if vim.g.material_hide_eob == true then
 		editor.EndOfBuffer =			{ fg = material.bg } -- ~ lines at the end of a buffer
-    else
+	else
 		editor.EndOfBuffer =			{ fg = material.disabled } -- ~ lines at the end of a buffer
-    end
+	end
 
-    return editor
+	return editor
 end
 
 theme.loadTerminal = function ()
@@ -218,228 +218,228 @@ end
 theme.loadTreeSitter = function ()
     -- TreeSitter highlight groups
 
-    local treesitter = {
-        TSAnnotation =              { fg = material.red }, -- For C++/Dart attributes, annotations that can be attached to the code to denote some kind of meta information.
-        TSAttribute =               { fg = material.yellow }, -- (unstable) TODO: docs
-        TSBoolean=                  { fg = material.orange }, -- For booleans.
-        TSCharacter=                { fg = material.orange }, -- For characters.
-        TSConstructor =             { fg = material.purple }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
-        TSConstant =                { fg = material.yellow }, -- For constants
-        TSConstBuiltin =            { fg = material.red }, -- For constant that are built in the language: `nil` in Lua.
-        TSConstMacro =              { fg = material.red }, -- For constants that are defined by macros: `NULL` in C.
-        TSError =                   { fg = material.error }, -- For syntax/parser errors.
-        TSException =               { fg = material.red }, -- For exception related keywords.
-        TSField =                   { fg = material.variable }, -- For fields.
-        TSFloat =                   { fg = material.red }, -- For floats.
-        TSFuncMacro =               { fg = material.blue }, -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
-        TSInclude =                 { fg = material.cyan }, -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
-        TSLabel =                   { fg = material.red }, -- For labels: `label:` in C and `:label:` in Lua.
-        TSNamespace =               { fg = material.yellow }, -- For identifiers referring to modules and namespaces.
-        TSNumber =                  { fg = material.orange }, -- For all numbers
-        TSOperator =                { fg = material.cyan }, -- For any operator: `+`, but also `->` and `*` in C.
-        TSParameter =               { fg = material.paleblue }, -- For parameters of a function.
-        TSParameterReference=       { fg = material.paleblue }, -- For references to parameters of a function.
-        TSProperty =                { fg = material.paleblue }, -- Same as `TSField`,accesing for struct members in C.
-        TSPunctDelimiter =          { fg = material.cyan }, -- For delimiters ie: `.`
-        TSPunctBracket =            { fg = material.cyan }, -- For brackets and parens.
-        TSPunctSpecial =            { fg = material.cyan }, -- For special punctutation that does not fall in the catagories before.
-        TSStringRegex =             { fg = material.blue }, -- For regexes.
-        TSStringEscape =            { fg = material.disabled }, -- For escape characters within a string.
-        TSSymbol =                  { fg = material.yellow }, -- For identifiers referring to symbols or atoms.
-        TSType =                    { fg = material.purple }, -- For types.
-        TSTypeBuiltin =             { fg = material.purple }, -- For builtin types.
-        TSTag =                     { fg = material.red }, -- Tags like html tag names.
-        TSTagDelimiter =            { fg = material.cyan }, -- Tag delimiter like `<` `>` `/`
-        TSText =                    { fg = material.text }, -- For strings considered text in a markup language.
-        TSTextReference =           { fg = material.yellow }, -- FIXME
-        TSEmphasis =                { fg = material.paleblue }, -- For text to be represented with emphasis.
-        TSUnderline =               { fg = material.fg, bg = material.none, style = 'underline' }, -- For text to be represented with an underline.
-        TSStrike =                  { }, -- For strikethrough text.
-        TSTitle =                   { fg = material.title, bg = material.none, style = 'bold' }, -- Text that is part of a title.
-        TSLiteral =                 { fg = material.fg }, -- Literal text.
-        TSURI =                     { fg = material.link }, -- Any URI like a link or email.
-        --TSNone =                    { }, -- TODO: docs
+	local treesitter = {
+		TSAnnotation =              { fg = material.red }, -- For C++/Dart attributes, annotations that can be attached to the code to denote some kind of meta information.
+		TSAttribute =               { fg = material.yellow }, -- (unstable) TODO: docs
+		TSBoolean=                  { fg = material.orange }, -- For booleans.
+		TSCharacter=                { fg = material.orange }, -- For characters.
+		TSConstructor =             { fg = material.purple }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
+		TSConstant =                { fg = material.yellow }, -- For constants
+		TSConstBuiltin =            { fg = material.red }, -- For constant that are built in the language: `nil` in Lua.
+		TSConstMacro =              { fg = material.red }, -- For constants that are defined by macros: `NULL` in C.
+		TSError =                   { fg = material.error }, -- For syntax/parser errors.
+		TSException =               { fg = material.red }, -- For exception related keywords.
+		TSField =                   { fg = material.variable }, -- For fields.
+		TSFloat =                   { fg = material.red }, -- For floats.
+		TSFuncMacro =               { fg = material.blue }, -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
+		TSInclude =                 { fg = material.cyan }, -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
+		TSLabel =                   { fg = material.red }, -- For labels: `label:` in C and `:label:` in Lua.
+		TSNamespace =               { fg = material.yellow }, -- For identifiers referring to modules and namespaces.
+		TSNumber =                  { fg = material.orange }, -- For all numbers
+		TSOperator =                { fg = material.cyan }, -- For any operator: `+`, but also `->` and `*` in C.
+		TSParameter =               { fg = material.paleblue }, -- For parameters of a function.
+		TSParameterReference=       { fg = material.paleblue }, -- For references to parameters of a function.
+		TSProperty =                { fg = material.paleblue }, -- Same as `TSField`,accesing for struct members in C.
+		TSPunctDelimiter =          { fg = material.cyan }, -- For delimiters ie: `.`
+		TSPunctBracket =            { fg = material.cyan }, -- For brackets and parens.
+		TSPunctSpecial =            { fg = material.cyan }, -- For special punctutation that does not fall in the catagories before.
+		TSStringRegex =             { fg = material.blue }, -- For regexes.
+		TSStringEscape =            { fg = material.disabled }, -- For escape characters within a string.
+		TSSymbol =                  { fg = material.yellow }, -- For identifiers referring to symbols or atoms.
+		TSType =                    { fg = material.purple }, -- For types.
+		TSTypeBuiltin =             { fg = material.purple }, -- For builtin types.
+		TSTag =                     { fg = material.red }, -- Tags like html tag names.
+		TSTagDelimiter =            { fg = material.cyan }, -- Tag delimiter like `<` `>` `/`
+		TSText =                    { fg = material.text }, -- For strings considered text in a markup language.
+		TSTextReference =           { fg = material.yellow }, -- FIXME
+		TSEmphasis =                { fg = material.paleblue }, -- For text to be represented with emphasis.
+		TSUnderline =               { fg = material.fg, bg = material.none, style = 'underline' }, -- For text to be represented with an underline.
+		TSStrike =                  { }, -- For strikethrough text.
+		TSTitle =                   { fg = material.title, bg = material.none, style = 'bold' }, -- Text that is part of a title.
+		TSLiteral =                 { fg = material.fg }, -- Literal text.
+		TSURI =                     { fg = material.link }, -- Any URI like a link or email.
+		--TSNone =                    { }, -- TODO: docs
     }
 
-    -- Options:
+	-- Options:
 
-    -- TreeSitter Italic comments
-    if vim.g.material_italic_comments == true then
-        treesitter.TSComment=                  { fg = material.comments , bg = material.none, style = 'italic' } -- For comment blocks.
-    else
-        treesitter.TSComment=                  { fg = material.comments } -- For comment blocks.
-    end
+	-- TreeSitter Italic comments
+	if vim.g.material_italic_comments == true then
+	    treesitter.TSComment=                  { fg = material.comments , bg = material.none, style = 'italic' } -- For comment blocks.
+	else
+	    treesitter.TSComment=                  { fg = material.comments } -- For comment blocks.
+	end
 
-    -- TreeSitter Italic strings
-    if vim.g.material_italic_strings == true then
-        treesitter.TSString =                  { fg = material.green, bg = material.none, style = 'italic' } -- For strings.
-    else
-        treesitter.TSString =                  { fg = material.green } -- For strings.
-    end
+	-- TreeSitter Italic strings
+	if vim.g.material_italic_strings == true then
+	    treesitter.TSString =                  { fg = material.green, bg = material.none, style = 'italic' } -- For strings.
+	else
+	    treesitter.TSString =                  { fg = material.green } -- For strings.
+	end
 
-    -- TreeSitter Italic keywords
-    if vim.g.material_italic_keywords == true then
-        treesitter.TSConditional =             { fg = material.purple, style = 'italic' } -- For keywords related to conditionnals.
-        treesitter.TSKeyword =                 { fg = material.cyan, style = 'italic' } -- For keywords that don't fall in previous categories.
-        treesitter.TSRepeat =                  { fg = material.purple, style = 'italic' } -- For keywords related to loops.
-        treesitter.TSKeywordFunction =         { fg = material.purple, style = 'italic' } -- For keywords used to define a fuction.
-    else
-        treesitter.TSConditional =             { fg = material.purple } -- For keywords related to conditionnals.
-        treesitter.TSKeyword =                 { fg = material.cyan } -- For keywords that don't fall in previous categories.
-        treesitter.TSRepeat =                  { fg = material.purple } -- For keywords related to loops.
-        treesitter.TSKeywordFunction =         { fg = material.purple } -- For keywords used to define a fuction.
-    end
+	-- TreeSitter Italic keywords
+	if vim.g.material_italic_keywords == true then
+	    treesitter.TSConditional =             { fg = material.purple, style = 'italic' } -- For keywords related to conditionnals.
+	    treesitter.TSKeyword =                 { fg = material.cyan, style = 'italic' } -- For keywords that don't fall in previous categories.
+	    treesitter.TSRepeat =                  { fg = material.purple, style = 'italic' } -- For keywords related to loops.
+	    treesitter.TSKeywordFunction =         { fg = material.purple, style = 'italic' } -- For keywords used to define a fuction.
+	else
+	    treesitter.TSConditional =             { fg = material.purple } -- For keywords related to conditionnals.
+	    treesitter.TSKeyword =                 { fg = material.cyan } -- For keywords that don't fall in previous categories.
+	    treesitter.TSRepeat =                  { fg = material.purple } -- For keywords related to loops.
+	    treesitter.TSKeywordFunction =         { fg = material.purple } -- For keywords used to define a fuction.
+	end
 
-    -- TreeSitter Italic functions
-    if vim.g.material_italic_functions == true then
-        treesitter.TSFunction =                { fg = material.blue, style = 'italic' } -- For fuction (calls and definitions).
-        treesitter.TSMethod =                  { fg = material.blue, style = 'italic' } -- For method calls and definitions.
-        treesitter.TSFuncBuiltin =             { fg = material.cyan, style = 'italic' } -- For builtin functions: `table.insert` in Lua.
-    else
-        treesitter.TSFunction =                { fg = material.blue } -- For fuction (calls and definitions).
-        treesitter.TSMethod =                  { fg = material.blue } -- For method calls and definitions.
-        treesitter.TSFuncBuiltin =             { fg = material.cyan } -- For builtin functions: `table.insert` in Lua.
-    end
+	-- TreeSitter Italic functions
+	if vim.g.material_italic_functions == true then
+	    treesitter.TSFunction =                { fg = material.blue, style = 'italic' } -- For fuction (calls and definitions).
+	    treesitter.TSMethod =                  { fg = material.blue, style = 'italic' } -- For method calls and definitions.
+	    treesitter.TSFuncBuiltin =             { fg = material.cyan, style = 'italic' } -- For builtin functions: `table.insert` in Lua.
+	else
+	    treesitter.TSFunction =                { fg = material.blue } -- For fuction (calls and definitions).
+	    treesitter.TSMethod =                  { fg = material.blue } -- For method calls and definitions.
+	    treesitter.TSFuncBuiltin =             { fg = material.cyan } -- For builtin functions: `table.insert` in Lua.
+	end
 
-    -- TreeSitter Italic variables
-    if vim.g.material_italic_variables == true then
-        treesitter.TSVariable =                { fg = material.variable, style = 'italic' } -- Any variable name that does not have another highlight.
-        treesitter.TSVariableBuiltin =         { fg = material.variable, style = 'italic' } -- Variable names that are defined by the languages, like `this` or `self`.
-    else
-        treesitter.TSVariable =                { fg = material.variable } -- Any variable name that does not have another highlight.
-        treesitter.TSVariableBuiltin =         { fg = material.variable } -- Variable names that are defined by the languages, like `this` or `self`.
-    end
+	-- TreeSitter Italic variables
+	if vim.g.material_italic_variables == true then
+	    treesitter.TSVariable =                { fg = material.variable, style = 'italic' } -- Any variable name that does not have another highlight.
+	    treesitter.TSVariableBuiltin =         { fg = material.variable, style = 'italic' } -- Variable names that are defined by the languages, like `this` or `self`.
+	else
+	    treesitter.TSVariable =                { fg = material.variable } -- Any variable name that does not have another highlight.
+	    treesitter.TSVariableBuiltin =         { fg = material.variable } -- Variable names that are defined by the languages, like `this` or `self`.
+	end
 
-    return treesitter
+	return treesitter
 
 end
 
 theme.loadLSP = function ()
     -- Lsp highlight groups
 
-    local lsp = {
-        LspDiagnosticsDefaultError =            { fg = material.error }, -- used for "Error" diagnostic virtual text
-        LspDiagnosticsSignError =               { fg = material.error }, -- used for "Error" diagnostic signs in sign column
-        LspDiagnosticsFloatingError =           { fg = material.error }, -- used for "Error" diagnostic messages in the diagnostics float
-        LspDiagnosticsVirtualTextError =        { fg = material.error }, -- Virtual text "Error"
-        LspDiagnosticsUnderlineError =          { style = 'undercurl', sp = material.error }, -- used to underline "Error" diagnostics.
-        LspDiagnosticsDefaultWarning =          { fg = material.yellow }, -- used for "Warning" diagnostic signs in sign column
-        LspDiagnosticsSignWarning =             { fg = material.yellow }, -- used for "Warning" diagnostic signs in sign column
-        LspDiagnosticsFloatingWarning =         { fg = material.yellow }, -- used for "Warning" diagnostic messages in the diagnostics float
-        LspDiagnosticsVirtualTextWarning =      { fg = material.yellow }, -- Virtual text "Warning"
-        LspDiagnosticsUnderlineWarning =        { style = 'undercurl', sp = material.yellow }, -- used to underline "Warning" diagnostics.
-        LspDiagnosticsDefaultInformation =      { fg = material.paleblue }, -- used for "Information" diagnostic virtual text
-        LspDiagnosticsSignInformation =         { fg = material.paleblue },  -- used for "Information" diagnostic signs in sign column
-        LspDiagnosticsFloatingInformation =     { fg = material.paleblue }, -- used for "Information" diagnostic messages in the diagnostics float
-        LspDiagnosticsVirtualTextInformation =  { fg = material.paleblue }, -- Virtual text "Information"
-        LspDiagnosticsUnderlineInformation =    { style = 'undercurl', sp = material.paleblue }, -- used to underline "Information" diagnostics.
-        LspDiagnosticsDefaultHint =             { fg = material.purple  },  -- used for "Hint" diagnostic virtual text
-        LspDiagnosticsSignHint =                { fg = material.purple  }, -- used for "Hint" diagnostic signs in sign column
-        LspDiagnosticsFloatingHint =            { fg = material.purple  }, -- used for "Hint" diagnostic messages in the diagnostics float
-        LspDiagnosticsVirtualTextHint =         { fg = material.purple  }, -- Virtual text "Hint"
-        LspDiagnosticsUnderlineHint =           { style = 'undercurl', sp = material.paleblue }, -- used to underline "Hint" diagnostics.
-        LspReferenceText =                      { fg = material.accent, bg = material.highlight }, -- used for highlighting "text" references
-        LspReferenceRead =                      { fg = material.accent, bg = material.highlight }, -- used for highlighting "read" references
-        LspReferenceWrite =                     { fg = material.accent, bg = material.highlight }, -- used for highlighting "write" references
-    }
+	local lsp = {
+		LspDiagnosticsDefaultError =            { fg = material.error }, -- used for "Error" diagnostic virtual text
+		LspDiagnosticsSignError =               { fg = material.error }, -- used for "Error" diagnostic signs in sign column
+		LspDiagnosticsFloatingError =           { fg = material.error }, -- used for "Error" diagnostic messages in the diagnostics float
+		LspDiagnosticsVirtualTextError =        { fg = material.error }, -- Virtual text "Error"
+		LspDiagnosticsUnderlineError =          { style = 'undercurl', sp = material.error }, -- used to underline "Error" diagnostics.
+		LspDiagnosticsDefaultWarning =          { fg = material.yellow }, -- used for "Warning" diagnostic signs in sign column
+		LspDiagnosticsSignWarning =             { fg = material.yellow }, -- used for "Warning" diagnostic signs in sign column
+		LspDiagnosticsFloatingWarning =         { fg = material.yellow }, -- used for "Warning" diagnostic messages in the diagnostics float
+		LspDiagnosticsVirtualTextWarning =      { fg = material.yellow }, -- Virtual text "Warning"
+		LspDiagnosticsUnderlineWarning =        { style = 'undercurl', sp = material.yellow }, -- used to underline "Warning" diagnostics.
+		LspDiagnosticsDefaultInformation =      { fg = material.paleblue }, -- used for "Information" diagnostic virtual text
+		LspDiagnosticsSignInformation =         { fg = material.paleblue },  -- used for "Information" diagnostic signs in sign column
+		LspDiagnosticsFloatingInformation =     { fg = material.paleblue }, -- used for "Information" diagnostic messages in the diagnostics float
+		LspDiagnosticsVirtualTextInformation =  { fg = material.paleblue }, -- Virtual text "Information"
+		LspDiagnosticsUnderlineInformation =    { style = 'undercurl', sp = material.paleblue }, -- used to underline "Information" diagnostics.
+		LspDiagnosticsDefaultHint =             { fg = material.purple  },  -- used for "Hint" diagnostic virtual text
+		LspDiagnosticsSignHint =                { fg = material.purple  }, -- used for "Hint" diagnostic signs in sign column
+		LspDiagnosticsFloatingHint =            { fg = material.purple  }, -- used for "Hint" diagnostic messages in the diagnostics float
+		LspDiagnosticsVirtualTextHint =         { fg = material.purple  }, -- Virtual text "Hint"
+		LspDiagnosticsUnderlineHint =           { style = 'undercurl', sp = material.paleblue }, -- used to underline "Hint" diagnostics.
+		LspReferenceText =                      { fg = material.accent, bg = material.highlight }, -- used for highlighting "text" references
+		LspReferenceRead =                      { fg = material.accent, bg = material.highlight }, -- used for highlighting "read" references
+		LspReferenceWrite =                     { fg = material.accent, bg = material.highlight }, -- used for highlighting "write" references
+	}
 
-    return lsp
+	return lsp
 
 end
 
 theme.loadPlugins = function()
     -- Plugins highlight groups
 
-    local plugins = {
+	local plugins = {
 
-        -- LspTrouble
-        LspTroubleText =                        { fg = material.text },
-        LspTroubleCount =                       { fg = material.purple, bg = material.active },
-        LspTroubleNormal =                      { fg = material.fg, bg = material.sidebar },
+		-- LspTrouble
+		LspTroubleText =                        { fg = material.text },
+		LspTroubleCount =                       { fg = material.purple, bg = material.active },
+		LspTroubleNormal =                      { fg = material.fg, bg = material.sidebar },
 
 		-- Nvim-Compe
 		CompeDocumentation =					{ fg = material.text, bg = material.contrast },
 
-        -- Diff
-        diffAdded =                             { fg = material.green },
-        diffRemoved =                           { fg = material.red },
-        diffChanged =                           { fg = material.blue },
-        diffOldFile =                           { fg = material.text },
-        diffNewFile =                           { fg = material.title },
-        diffFile =                              { fg = material.gray },
-        diffLine =                              { fg = material.cyan },
-        diffIndexLine =                         { fg = material.purple },
+		-- Diff
+		diffAdded =                             { fg = material.green },
+		diffRemoved =                           { fg = material.red },
+		diffChanged =                           { fg = material.blue },
+		diffOldFile =                           { fg = material.text },
+		diffNewFile =                           { fg = material.title },
+		diffFile =                              { fg = material.gray },
+		diffLine =                              { fg = material.cyan },
+		diffIndexLine =                         { fg = material.purple },
 
-        -- Neogit
-        NeogitBranch =                          { fg = material.paleblue },
-        NeogitRemote =                          { fg = material.purple },
-        NeogitHunkHeader =                      { fg = material.fg, bg = material.highlight },
-        NeogitHunkHeaderHighlight =             { fg = material.blue, bg = material.contrast },
-        NeogitDiffContextHighlight =            { fg = material.text, bg = material.contrast },
-        NeogitDiffDeleteHighlight =             { fg = material.red },
-        NeogitDiffAddHighlight =                { fg = material.green },
+		-- Neogit
+		NeogitBranch =                          { fg = material.paleblue },
+		NeogitRemote =                          { fg = material.purple },
+		NeogitHunkHeader =                      { fg = material.fg, bg = material.highlight },
+		NeogitHunkHeaderHighlight =             { fg = material.blue, bg = material.contrast },
+		NeogitDiffContextHighlight =            { fg = material.text, bg = material.contrast },
+		NeogitDiffDeleteHighlight =             { fg = material.red },
+		NeogitDiffAddHighlight =                { fg = material.green },
 
-        -- GitGutter
-        GitGutterAdd =                          { fg = material.green }, -- diff mode: Added line |diff.txt|
-        GitGutterChange =                       { fg = material.blue }, -- diff mode: Changed line |diff.txt|
-        GitGutterDelete =                       { fg = material.red }, -- diff mode: Deleted line |diff.txt|
+		-- GitGutter
+		GitGutterAdd =                          { fg = material.green }, -- diff mode: Added line |diff.txt|
+		GitGutterChange =                       { fg = material.blue }, -- diff mode: Changed line |diff.txt|
+		GitGutterDelete =                       { fg = material.red }, -- diff mode: Deleted line |diff.txt|
 
-        -- GitSigns
-        GitSignsAdd =                           { fg = material.green }, -- diff mode: Added line |diff.txt|
-        GitSignsAddNr =                         { fg = material.green }, -- diff mode: Added line |diff.txt|
-        GitSignsAddLn =                         { fg = material.green }, -- diff mode: Added line |diff.txt|
-        GitSignsChange =                        { fg = material.blue }, -- diff mode: Changed line |diff.txt|
-        GitSignsChangeNr =                      { fg = material.blue }, -- diff mode: Changed line |diff.txt|
-        GitSignsChangeLn =                      { fg = material.blue }, -- diff mode: Changed line |diff.txt|
-        GitSignsDelete =                        { fg = material.red }, -- diff mode: Deleted line |diff.txt|
-        GitSignsDeleteNr =                      { fg = material.red }, -- diff mode: Deleted line |diff.txt|
-        GitSignsDeleteLn =                      { fg = material.red }, -- diff mode: Deleted line |diff.txt|
+		-- GitSigns
+		GitSignsAdd =                           { fg = material.green }, -- diff mode: Added line |diff.txt|
+		GitSignsAddNr =                         { fg = material.green }, -- diff mode: Added line |diff.txt|
+		GitSignsAddLn =                         { fg = material.green }, -- diff mode: Added line |diff.txt|
+		GitSignsChange =                        { fg = material.blue }, -- diff mode: Changed line |diff.txt|
+		GitSignsChangeNr =                      { fg = material.blue }, -- diff mode: Changed line |diff.txt|
+		GitSignsChangeLn =                      { fg = material.blue }, -- diff mode: Changed line |diff.txt|
+		GitSignsDelete =                        { fg = material.red }, -- diff mode: Deleted line |diff.txt|
+		GitSignsDeleteNr =                      { fg = material.red }, -- diff mode: Deleted line |diff.txt|
+		GitSignsDeleteLn =                      { fg = material.red }, -- diff mode: Deleted line |diff.txt|
 
-        -- Telescope
-        TelescopeNormal =                       { fg = material.fg, bg = material.bg },
-        TelescopePromptBorder =                 { fg = material.cyan },
-        TelescopeResultsBorder =                { fg = material.purple },
-        TelescopePreviewBorder =                { fg = material.green },
-        TelescopeSelectionCaret =               { fg = material.purple },
-        TelescopeSelection =                    { fg = material.purple, bg = material.active },
-        TelescopeMatching =                     { fg = material.cyan },
+		-- Telescope
+		TelescopeNormal =                       { fg = material.fg, bg = material.bg },
+		TelescopePromptBorder =                 { fg = material.cyan },
+		TelescopeResultsBorder =                { fg = material.purple },
+		TelescopePreviewBorder =                { fg = material.green },
+		TelescopeSelectionCaret =               { fg = material.purple },
+		TelescopeSelection =                    { fg = material.purple, bg = material.active },
+		TelescopeMatching =                     { fg = material.cyan },
 
-        -- NvimTree
-        NvimTreeRootFolder =                    { fg = material.title, style = 'italic' },
-        NvimTreeFolderName=                     { fg = material.text },
-        NvimTreeFolderIcon=                     { fg = material.accent },
-        NvimTreeEmptyFolderName=                { fg = material.disabled },
-        NvimTreeOpenedFolderName=               { fg = material.accent, style = 'italic' },
-        NvimTreeIndentMarker =                  { fg = material.disabled },
-        NvimTreeGitDirty =                      { fg = material.blue },
-        NvimTreeGitNew =                        { fg = material.green },
-        NvimTreeGitStaged =                     { fg = material.comments },
-        NvimTreeGitDeleted =                    { fg = material.red },
-        NvimTreeOpenedFile =                    { fg = material.accent },
-        NvimTreeImageFile =                     { fg = material.yellow },
-        NvimTreeMarkdownFile =                  { fg = material.pink },
-        NvimTreeExecFile =                      { fg = material.green },
-        NvimTreeSpecialFile =                   { fg = material.purple , style = 'underline' },
-        LspDiagnosticsError =                   { fg = material.error },
-        LspDiagnosticsWarning =                 { fg = material.yellow },
-        LspDiagnosticsInformation =             { fg = material.paleblue },
-        LspDiagnosticsHint =                    { fg = material.purple },
+		-- NvimTree
+		NvimTreeRootFolder =                    { fg = material.title, style = 'italic' },
+		NvimTreeFolderName=                     { fg = material.text },
+		NvimTreeFolderIcon=                     { fg = material.accent },
+		NvimTreeEmptyFolderName=                { fg = material.disabled },
+		NvimTreeOpenedFolderName=               { fg = material.accent, style = 'italic' },
+		NvimTreeIndentMarker =                  { fg = material.disabled },
+		NvimTreeGitDirty =                      { fg = material.blue },
+		NvimTreeGitNew =                        { fg = material.green },
+		NvimTreeGitStaged =                     { fg = material.comments },
+		NvimTreeGitDeleted =                    { fg = material.red },
+		NvimTreeOpenedFile =                    { fg = material.accent },
+		NvimTreeImageFile =                     { fg = material.yellow },
+		NvimTreeMarkdownFile =                  { fg = material.pink },
+		NvimTreeExecFile =                      { fg = material.green },
+		NvimTreeSpecialFile =                   { fg = material.purple , style = 'underline' },
+		LspDiagnosticsError =                   { fg = material.error },
+		LspDiagnosticsWarning =                 { fg = material.yellow },
+		LspDiagnosticsInformation =             { fg = material.paleblue },
+		LspDiagnosticsHint =                    { fg = material.purple },
 
-        -- WhichKey
-        WhichKey =                              { fg = material.accent , style = 'bold'},
-        WhichKeyGroup =                         { fg = material.text },
-        WhichKeyDesc =                          { fg = material.blue, style = 'italic' },
-        WhichKeySeperator =                     { fg = material.fg },
-        WhichKeyFloating =                      { bg = material.float },
-        WhichKeyFloat =                         { bg = material.float },
+		-- WhichKey
+		WhichKey =                              { fg = material.accent , style = 'bold'},
+		WhichKeyGroup =                         { fg = material.text },
+		WhichKeyDesc =                          { fg = material.blue, style = 'italic' },
+		WhichKeySeperator =                     { fg = material.fg },
+		WhichKeyFloating =                      { bg = material.float },
+		WhichKeyFloat =                         { bg = material.float },
 
-        -- LspSaga
-        LspFloatWinNormal =                     { fg = material.text, bg = material.bg },
-        LspFloatWinBorder =                     { fg = material.purple },
-        DiagnosticError =                       { fg = material.error },
-        DiagnosticWarning =                     { fg = material.yellow },
-        DiagnosticInformation =                 { fg = material.paleblue },
-        DiagnosticHint =                        { fg = material.purple },
+		-- LspSaga
+		LspFloatWinNormal =                     { fg = material.text, bg = material.bg },
+		LspFloatWinBorder =                     { fg = material.purple },
+		DiagnosticError =                       { fg = material.error },
+		DiagnosticWarning =                     { fg = material.yellow },
+		DiagnosticInformation =                 { fg = material.paleblue },
+		DiagnosticHint =                        { fg = material.purple },
 		LspSagaDiagnosticBorder =				{ fg = material.gray },
 		LspSagaDiagnosticHeader =				{ fg = material.blue },
 		LspSagaDiagnosticTruncateLine =			{ fg = material.border },
@@ -448,39 +448,39 @@ theme.loadPlugins = function()
 		LspSagaShTruncateLine =					{ fg = material.border },
 		LspSagaDocTruncateLine =				{ fg = material.border },
 		LineDiagTruncateLine =					{ fg = material.border },
-        LspSagaBorderTitle =                    { fg = material.cyan },
-        LspSagaHoverBorder =                    { fg = material.paleblue },
-        LspSagaRenameBorder =                   { fg = material.green },
-        LspSagaDefPreviewBorder =               { fg = material.green },
-        LspSagaCodeActionTitle =                { fg = material.paleblue },
-        LspSagaCodeActionContent =              { fg = material.purple },
-        LspSagaCodeActionBorder =               { fg = material.blue },
+		LspSagaBorderTitle =                    { fg = material.cyan },
+		LspSagaHoverBorder =                    { fg = material.paleblue },
+		LspSagaRenameBorder =                   { fg = material.green },
+		LspSagaDefPreviewBorder =               { fg = material.green },
+		LspSagaCodeActionTitle =                { fg = material.paleblue },
+		LspSagaCodeActionContent =              { fg = material.purple },
+		LspSagaCodeActionBorder =               { fg = material.blue },
 		LspSagaCodeActionTruncateLine =			{ fg = material.border },
-        LspSagaSignatureHelpBorder =            { fg = material.pink },
-        LspSagaFinderSelection =                { fg = material.green },
+		LspSagaSignatureHelpBorder =            { fg = material.pink },
+		LspSagaFinderSelection =                { fg = material.green },
 		-- LspSagaAutoPreview =					{ fg = material.red },
-        ReferencesCount =                       { fg = material.purple },
-        DefinitionCount =                       { fg = material.purple },
+		ReferencesCount =                       { fg = material.purple },
+		DefinitionCount =                       { fg = material.purple },
 		DefinitionPreviewTitle =				{ fg = material.green },
-        DefinitionIcon =                        { fg = material.blue },
-        ReferencesIcon =                        { fg = material.blue },
-        TargetWord =                            { fg = material.cyan },
+		DefinitionIcon =                        { fg = material.blue },
+		ReferencesIcon =                        { fg = material.blue },
+		TargetWord =                            { fg = material.cyan },
 
-        -- BufferLine
-        BufferLineIndicatorSelected =           { fg = material.accent },
-        BufferLineFill =                        { bg = material.bg_alt },
+		-- BufferLine
+		BufferLineIndicatorSelected =           { fg = material.accent },
+		BufferLineFill =                        { bg = material.bg_alt },
 
-        -- Sneak
-        Sneak =                                 { fg = material.bg, bg = material.accent },
-        SneakScope =                            { bg = material.selection },
+		-- Sneak
+		Sneak =                                 { fg = material.bg, bg = material.accent },
+		SneakScope =                            { bg = material.selection },
 
-        -- Indent Blankline
-        IndentBlanklineChar =                   { fg = material.highlight },
-        IndentBlanklineContextChar =            { fg = material.disabled },
+		-- Indent Blankline
+		IndentBlanklineChar =                   { fg = material.highlight },
+		IndentBlanklineContextChar =            { fg = material.disabled },
 
-        -- Nvim dap
-        DapBreakpoint =                         { fg = material.red },
-        DapStopped =                            { fg = material.green },
+		-- Nvim dap
+		DapBreakpoint =                         { fg = material.red },
+		DapStopped =                            { fg = material.green },
 
 		-- Illuminate
 		illuminatedWord =						{ bg = material.highight },
@@ -494,18 +494,18 @@ theme.loadPlugins = function()
 
 		-- Fern
 		FernBranchText =						{ fg = material.blue },
-    }
+	}
 
     -- Options:
 
     -- Disable nvim-tree background
-        if vim.g.material_disable_background == true then
-            plugins.NvimTreeNormal =                        { fg = material.comments, bg = material.none }
-        else
-            plugins.NvimTreeNormal =                        { fg = material.comments, bg = material.sidebar }
-        end
+	if vim.g.material_disable_background == true then
+		plugins.NvimTreeNormal =                        { fg = material.comments, bg = material.none }
+	else
+		plugins.NvimTreeNormal =                        { fg = material.comments, bg = material.sidebar }
+	end
 
-    return plugins
+	return plugins
 
 end
 
