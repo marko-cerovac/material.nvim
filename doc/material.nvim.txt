@@ -154,6 +154,9 @@ Options:
     + material_italic_comments  {bool}  (default = false)
           Make comments italic
 
+    + material_italic_strings  {bool}  (default = false)
+          Make strings italic
+
     + material_italic_keywords  {bool}  (default = false)
           Make keywords like if,for,while etc. italic
 
