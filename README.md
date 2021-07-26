@@ -149,10 +149,10 @@ require('material').set()
 ```vim
 " Example config in Vim-Script
 let g:material_style = 'deep ocean'
-let g:material_italic_comments = 1
-let g:material_italic_keywords = 1
-let g:material_italic_functions = 1
-let g:material_contrast = 1
+let g:material_italic_comments = v:true
+let g:material_italic_keywords = v:true
+let g:material_italic_functions = v:true
+let g:material_contrast = v:true
 
 " Load the colorsheme
 colorscheme material
