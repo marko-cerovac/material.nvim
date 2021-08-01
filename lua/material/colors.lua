@@ -26,19 +26,27 @@ local material = {
 if vim.g.material_style == 'darker' then
 	-- Darker theme style
 
-	material.bg =			'#212121'
-	material.bg_alt =		'#1A1A1A'
-	material.fg =			'#B0BEC5'
-	material.text =			'#727272'
-	material.comments =		'#616161'
-	material.selection = 	'#404040'
-	material.contrast =		'#1A1A1A'
-	material.active =		'#323232'
-	material.border =		'#292929'
-	material.line_numbers =	'#424242'
-	material.highlight =	'#3F3F3F'
-	material.disabled =		'#474747'
-	material.accent =		'#FF9800'
+    material.bg =			'#212121'
+    material.bg_alt =		'#1A1A1A'
+    material.fg =			'#B0BEC5'
+    material.text =			'#727272'
+    material.comments =		'#616161'
+    material.selection = 	'#404040'
+    material.contrast =		'#1A1A1A'
+    material.active =		'#323232'
+    material.border =		'#292929'
+    material.line_numbers =	'#424242'
+    material.highlight =	'#3F3F3F'
+    material.disabled =		'#474747'
+    material.accent =		'#FF9800'
+
+    if vim.g.material_darker_contrast == true then
+        -- Lighter theme style with high contrast
+
+        material.comments =		'#757575'
+        material.line_numbers =	'#5C5C5C'
+
+    end
 
 elseif vim.g.material_style == 'lighter' then
 
