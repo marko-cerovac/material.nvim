@@ -126,6 +126,7 @@ Available options:
 | material_italic_variables           | `false`     | Make variable names and identifiers italic                                                       |
 | material_borders                    | `false`     | Enable the border between verticaly split windows visable                                        |
 | material_disable_background         | `false`     | Disable the setting of background color so that NeoVim can use your terminal background          |
+| material_disable_terminal           | `false`     | Disable the setting of terminal colors                                                           |
 | material_hide_eob                   | `false`     | Hide the end of buffer lines ( ~ )                                                               |
 | material_variable_color             | `#717CB4`   | Set a custom color for variables and fields                                                      |
 | material_custom_colors              |    {}       | Override the default colors and use your own                                                     |

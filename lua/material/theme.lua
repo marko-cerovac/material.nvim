@@ -98,6 +98,7 @@ theme.loadEditor = function ()
 
 	local editor = {
 		NormalFloat =			{ fg = material.fg, bg = material.float }, -- normal text and background color for floating windows
+		FloatBorder =			{ fg = material.paleblue },
 		ColorColumn =			{ fg = material.none, bg = material.active }, --  used for the columns set with 'colorcolumn'
 		Conceal =				{ fg = material.disabled }, -- placeholder characters substituted for concealed text (see 'conceallevel')
 		Cursor =				{ fg = material.cursor, bg = material.none, style = 'reverse' }, -- the character under the cursor
@@ -359,6 +360,7 @@ theme.loadPlugins = function()
 
 		-- Nvim-Compe
 		CompeDocumentation =					{ fg = material.text, bg = material.contrast },
+		CompeDocumentationBorder =				{ fg = material.paleblue },
 
 		-- Diff
 		diffAdded =                             { fg = material.green },

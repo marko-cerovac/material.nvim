@@ -45,11 +45,13 @@ function util.load()
     -- Load plugins and lsp async
     local async
     async = vim.loop.new_async(vim.schedule_wrap(function ()
-        material.loadTerminal()
-
         -- imort tables for plugins and lsp
         local plugins = material.loadPlugins()
         local lsp = material.loadLSP()
+
+		if vim.g.material_disable_teminal == false then
+			material.loadTerminal()
+		end
 
         for group, colors in pairs(plugins) do
             util.highlight(group, colors)
