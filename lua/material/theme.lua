@@ -198,14 +198,14 @@ end
 theme.loadTerminal = function ()
 
 	vim.g.terminal_color_0 = material.black
-	vim.g.terminal_color_1 = material.red
-	vim.g.terminal_color_2 = material.green
-	vim.g.terminal_color_3 = material.yellow
-	vim.g.terminal_color_4 = material.blue
-	vim.g.terminal_color_5 = material.purple
-	vim.g.terminal_color_6 = material.cyan
+	vim.g.terminal_color_1 = material.darkred
+	vim.g.terminal_color_2 = material.darkgreen
+	vim.g.terminal_color_3 = material.darkyellow
+	vim.g.terminal_color_4 = material.darkblue
+	vim.g.terminal_color_5 = material.darkpurple
+	vim.g.terminal_color_6 = material.darkcyan
 	vim.g.terminal_color_7 = material.white
-	vim.g.terminal_color_8 = material.gray
+	vim.g.terminal_color_8 = material.fg
 	vim.g.terminal_color_9 = material.red
 	vim.g.terminal_color_10 = material.green
 	vim.g.terminal_color_11 = material.yellow

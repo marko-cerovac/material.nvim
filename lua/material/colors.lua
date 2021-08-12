@@ -14,6 +14,15 @@ local material = {
 	orange   =		'#F78C6C',
 	pink     =  	'#FF9CAC',
 
+	-- Dark colors
+	darkred =		'#dc6068',
+	darkgreen =		'#abcf76',
+	darkyellow =	'#e6b455',
+	darkblue =		'#6e98eb',
+	darkcyan =		'#71c6e7',
+	darkpurple =	'#b480d6',
+	darkorange =	'#e2795b',
+
 	error    =		'#FF5370',
 	link     =		'#80CBC4',
 	cursor   =		'#FFCC00',
