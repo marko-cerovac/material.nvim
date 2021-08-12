@@ -1,5 +1,5 @@
 # 🌊 material.nvim
-![screen](/media/logo.jpg)
+![logo](https://user-images.githubusercontent.com/76592799/129165712-7ca1a27a-b507-4bd3-8c7a-da718d7dcec9.jpg)
 
 ## 🔱 Info
 A port of [Material](https://material-theme.site) colorscheme for NeoVim written in Lua
@@ -12,11 +12,16 @@ If you want the old version that uses colorbuddy.nvim, you can find it [here](ht
 ## ✨ Features
 
 + 5 styles to choose from
-    + Deep ocean ![screen](/media/deep-ocean.png)
-    + Oceanic ![screen](/media/oceanic.png)
-    + Palenight ![screen](/media/palenight.png)
-    + Lighter ![screen](/media/lighter.png)
-    + Darker ![screen](/media/darker.png)
+    + Deep ocean ![deep-ocean](https://user-images.githubusercontent.com/76592799/129165476-6ec7c2bf-c81b-405e-83a2-f75674cf7a7f.png)
+
+    + Oceanic ![oceanic](https://user-images.githubusercontent.com/76592799/129165517-6048f242-b9d1-4d0c-912c-c53b76442e47.png)
+
+    + Palenight ![palenight](https://user-images.githubusercontent.com/76592799/129165551-b4ee76f1-6d95-4275-831f-6419a1f805eb.png)
+
+    + Lighter ![lighter](https://user-images.githubusercontent.com/76592799/129165583-9afa3f0a-97f0-4b01-ab96-31b8381baa84.png)
+
+    + Darker ![darker](https://user-images.githubusercontent.com/76592799/129165627-d43e4651-9206-427e-a31b-0962593ab550.png)
+
 
 + Supported plugins:
     + [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
@@ -163,7 +168,7 @@ colorscheme material
 
 + Toggle the style live without the need to exit NeoVim
 
-![screen](/media/toggle_style.gif)
+![toggle_style](https://user-images.githubusercontent.com/76592799/129165775-6a5a0114-5c1f-4e45-aae3-7cd612aa2c04.gif)
 
 Just call the function for style switching
 ```vim
