@@ -49,9 +49,9 @@ function util.load()
         local plugins = material.loadPlugins()
         local lsp = material.loadLSP()
 
-		if vim.g.material_disable_teminal == false then
-			material.loadTerminal()
-		end
+        if vim.g.material_disable_terminal == false then
+          material.loadTerminal()
+        end
 
         for group, colors in pairs(plugins) do
             util.highlight(group, colors)
