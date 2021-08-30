@@ -32,7 +32,7 @@ util.contrast = function ()
 		if sidebar == "terminal" then
 			vim.cmd [[  autocmd TermOpen * setlocal winhighlight=Normal:NormalFloat,SignColumn:NormalFloat]]
 		else
-			vim.cmd([[  autocmd FileType ]] .. sidebar .. [[ setlocal winhighlight=Normal:NormalSB,SignColumn:SignColumnSB]])
+			vim.cmd([[  autocmd FileType ]] .. sidebar .. [[ setlocal winhighlight=Normal:NormalFloat,SignColumn:SignColumnFloat]])
 		end
 	end
     vim.cmd [[augroup end]]
