@@ -5,5 +5,5 @@ package.loaded['material.colors'] = nil
 package.loaded['material.theme'] = nil
 package.loaded['material.functions'] = nil
 
-require('material').set()
+require('material.util').load()
 EOF

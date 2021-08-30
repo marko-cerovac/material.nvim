@@ -2,7 +2,7 @@ local Config = {}
 
 local defaults = {
 
-	contrast = true, -- Contrast for sidebars and floating windows
+	contrast = true, -- Enable contrast
 	borders = false, -- Split window borders
 
 	italics = {
@@ -11,6 +11,12 @@ local defaults = {
 		keywords = false, -- Italic keywords
 		functions = false, -- Italic functions
 		variables = false -- Italic variables
+	},
+
+	contrast_windows = { -- Select which windows get the contrast background
+		"terminal", -- Darker terminal
+		"packer", -- Darker packer background
+		"qf" -- Darker qf list background
 	},
 
 	text_contrast = {
