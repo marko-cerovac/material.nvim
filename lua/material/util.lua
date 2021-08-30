@@ -65,6 +65,11 @@ function util.load()
         for group, colors in pairs(lsp) do
             util.highlight(group, colors)
         end
+		if type(config.custom_highlights) == 'table' then
+			for group, colors in pairs(config.custom_highlights) do
+				util.highlight(group, colors)
+			end
+		end
 		util.contrast()
         async:close()
 

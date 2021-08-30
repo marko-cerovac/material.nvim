@@ -28,6 +28,7 @@ local material = {
 	error    =		'#FF5370',
 	link     =		'#80CBC4',
 	cursor   =		'#FFCC00',
+	variable =		'#717CB4',
 
 	none     =      'NONE'
 }
@@ -189,13 +190,6 @@ else
     material.float = material.bg_alt
 end
 
--- Enable custom variable colors
-if vim.g.material_variable_color == nil then
-    material.variable = material.gray
-else
-    material.variable = vim.g.material_variable_color
-end
-
 -- Set black titles for lighter style
 if vim.g.material_style == 'lighter' then
     material.title = material.black
@@ -204,16 +198,9 @@ else
 end
 
 -- Apply user defined colors
-
--- Check if config.custom_colors = is a table
 if type(config.custom_colors) == "table" then
-	-- Iterate trough the table
 	for key, value in pairs(config.custom_colors) do
-		-- If the key doesn't exist:
-		if not material[key] then
-			error("Color " .. key .. " does not exist")
-		end
-		-- If it exists and the sting starts with a "#"
+		-- If the color starts with a #
 		if string.sub(value, 1, 1) == "#" then
 			-- Hex override
 			material[key] = value

@@ -117,51 +117,67 @@ let g:material_style = 'darker'
 vim.g.material_style = "deep ocean"
 ```
 
-Available options:
-
-| Option                              | Default     | Description                                                                                      |
-| ----------------------------------- | ----------- | ------------------------------------------------------------------------------------------------ |
-| material_style                      | `"oceanic"` | The theme comes in five styles, 'darker', 'lighter', 'palenight', 'oceanic' and 'deep ocean'     |
-| material_contrast                   | `true`      | Make sidebars and popup menus like nvim-tree and telescope have a different background           |
-| material_lighter_contrast           | `false`     | Increase the contrast for the 'lighter' variant of the theme                                     |
-| material_italic_strings             | `false`     | Make strings italic                                                                              |
-| material_italic_comments            | `false`     | Make comments italic                                                                             |
-| material_italic_keywords            | `false`     | Make keywords like if, for, while etc. italic                                                    |
-| material_italic_functions           | `false`     | Make function calls and names italic                                                             |
-| material_italic_variables           | `false`     | Make variable names and identifiers italic                                                       |
-| material_borders                    | `false`     | Enable the border between verticaly split windows visable                                        |
-| material_disable_background         | `false`     | Disable the setting of background color so that NeoVim can use your terminal background          |
-| material_disable_terminal           | `false`     | Disable the setting of terminal colors                                                           |
-| material_hide_eob                   | `false`     | Hide the end of buffer lines ( ~ )                                                               |
-| material_variable_color             | `#717CB4`   | Set a custom color for variables and fields                                                      |
-| material_custom_colors              |    {}       | Override the default colors and use your own                                                     |
-
-```lua
--- Example config in lua
-vim.g.material_style = 'deep ocean'
-vim.g.material_italic_comments = true
-vim.g.material_italic_keywords = true
-vim.g.material_italic_functions = true
-vim.g.material_italic_variables = false
-vim.g.material_contrast = true
-vim.g.material_borders = false
-vim.g.material_disable_background = false
---vim.g.material_custom_colors = { black = "#000000", bg = "#0F111A" }
-
--- Load the colorscheme
-require('material').set()
+The configuration of different options is done trough a setup function
+```vim
+lua << EOF
+require('material').setup()
+EOF
 ```
 
-```vim
-" Example config in Vim-Script
-let g:material_style = 'deep ocean'
-let g:material_italic_comments = v:true
-let g:material_italic_keywords = v:true
-let g:material_italic_functions = v:true
-let g:material_contrast = v:true
+This is an example of the function with the default values
+```lua
+require('material').setup({
 
-" Load the colorsheme
+	contrast = true, -- Enable contrast for floating windows and NvimTree, LspTrouble etc...
+	borders = false, -- Enable borders between verticaly split windows
+
+	italics = {
+		comments = false, -- Enable italic comments
+		keywords = false, -- Enable italic keywords
+		functions = false, -- Enable italic functions
+		strings = false, -- Enable italic strings
+		variables = false -- Enable italic variables
+	},
+
+	contrast_windows = { -- Specify which windows get the contrasted (darker) background
+		"terminal", -- Darker terminal background
+		"packer", -- Darker packer background
+		"qf" -- Darker qf list background
+	},
+
+	text_contrast = {
+		lighter = false,a -- Enable higher contrast text for lighter style
+		darker = false -- Enable higher contrast text for darker style
+	},
+
+	disable = {
+		background = false, -- Prevent the theme from setting the background (NeoVim then uses your teminal background)
+		term_colors = false, -- Prevent the theme from setting terminal colors
+		eob_lines = false -- Hide the end-of-buffer lines
+	}
+
+	custom_highlights = {} -- Overwrite highlights with your own
+})
+```
+
+After passing the configuration to a setup function, make sure to enable the colorscheme:
+
+```vim
 colorscheme material
+```
+
+```lua
+vim.cmd[[colorscheme material]]
+```
+
+This is an example of overwriting the default highlights (most users will never need to do this):
+```lua
+require('material').setup{
+	custom_highlights = {
+		CursorLine = '#0000FF',
+		LineNr = '#FF0000'
+	}
+}
 ```
 
 ## ⛵ Functions
