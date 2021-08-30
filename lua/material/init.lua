@@ -24,6 +24,7 @@ material.set = function ()
     util.load()
 end
 
+-- Load the user configuration
 material.setup = function (options)
 	require('material.config').setup(options)
 end

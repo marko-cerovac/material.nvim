@@ -1,26 +1,31 @@
 local Config = {}
 
 local defaults = {
-	contrast = true,
-	borders = false,
+
+	contrast = true, -- Contrast for sidebars and floating windows
+	borders = false, -- Split window borders
+
 	italics = {
-		comments = false,
-		strings = false,
-		keywords = false,
-		functions = false,
-		variables = false
+		comments = false, -- Italic comments
+		strings = false, -- Italic strings
+		keywords = false, -- Italic keywords
+		functions = false, -- Italic functions
+		variables = false -- Italic variables
 	},
+
 	text_contrast = {
-		lighter = true,
-		darker = false
+		lighter = true, -- Higher contrast text for lighter style
+		darker = false -- Higher contrast text for darker style
 	},
+
 	disable = {
-		background = false,
-		term_colors = false,
-		eob_lines = false
+		background = false, -- Disable setting the background color
+		term_colors = false, -- Disable setting the terminal colors
+		eob_lines = false -- Make end-of-buffer lines invisible
 	},
-	custom_colors = {},
-	custom_highlights = {}
+
+	custom_colors = {}, -- TODO: define custom colors
+	custom_highlights = {} -- TODO: define custom highlights
 }
 
 Config.options = {}

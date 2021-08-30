@@ -50,7 +50,7 @@ function util.load()
         local plugins = material.loadPlugins()
         local lsp = material.loadLSP()
 
-        if config.disable.terminal == false then
+        if config.disable.term_colors == false then
           material.loadTerminal()
         end
 
