@@ -1,3 +1,5 @@
+local config = require('material.config').options
+
 -- Define style_switch
 if vim.g.material_style_switch == nil then
     vim.g.material_style_switch = 0
@@ -18,11 +20,11 @@ end
  end
 
  local toggle_eob = function ()
-    if vim.g.material_hide_eob == nil then
-        vim.g.material_hide_eob = true
-    else
-        vim.g.material_hide_eob = nil
-    end
+	if config.disable.eob_lines == true then
+		config.disable.eob_lines = false
+	else
+		config.disable.eob_lines = true
+	end
     vim.cmd[[colorscheme material]]
  end
 

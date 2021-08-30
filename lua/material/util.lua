@@ -1,5 +1,6 @@
 local util = {}
 local material = require('material.theme')
+local config = require('material.config').options
 
 -- Go trough the table and highlight the group with the color values
 util.highlight = function (group, color)
@@ -49,7 +50,7 @@ function util.load()
         local plugins = material.loadPlugins()
         local lsp = material.loadLSP()
 
-        if vim.g.material_disable_terminal == false then
+        if config.disable.terminal == false then
           material.loadTerminal()
         end
 
@@ -60,7 +61,7 @@ function util.load()
         for group, colors in pairs(lsp) do
             util.highlight(group, colors)
         end
-        if vim.g.material_contrast == true then
+        if config.contrast == true then
             util.contrast()
         end
         async:close()

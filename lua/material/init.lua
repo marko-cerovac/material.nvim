@@ -17,9 +17,15 @@
 
 local util = require('material.util')
 
+local material = {}
+
 -- Load the theme
-local set = function ()
+material.set = function ()
     util.load()
 end
 
-return { set = set }
+material.setup = function (options)
+	require('material.config').setup(options)
+end
+
+return material

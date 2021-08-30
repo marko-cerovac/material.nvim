@@ -1,4 +1,5 @@
-local material = require("material.colors")
+local material = require('material.colors')
+local config = require('material.config').options
 
 local theme = {}
 
@@ -52,14 +53,14 @@ theme.loadSyntax = function ()
 	-- Options:
 
 	-- Italic comments
-	if vim.g.material_italic_comments then
+	if config.italics.comments then
 		syntax.Comment =		{ fg = material.comments, bg = material.none, style = 'italic' } -- italic comments
 	else
 		syntax.Comment =		{fg = material.comments} -- normal comments
 	end
 
 	-- Italic Keywords
-	if vim.g.material_italic_keywords then
+	if config.italics.keywords then
 		syntax.Conditional =		{ fg = material.purple, bg = material.none, style = 'italic' } -- italic if, then, else, endif, switch, etc.
 		syntax.Keyword =			{ fg = material.purple, bg = material.none, style = 'italic' } -- italic for, do, while, etc.
 		syntax.Repeat =				{ fg = material.purple, bg = material.none, style = 'italic' } -- italic any other keyword
@@ -70,19 +71,19 @@ theme.loadSyntax = function ()
 	end
 
 	-- Italic Function names
-	if vim.g.material_italic_functions then
+	if config.italics.functions then
 		syntax.Function =		{ fg = material.blue, bg = material.none, style = 'italic' } -- italic funtion names
 	else
 		syntax.Function =		{ fg = material.blue } -- normal function names
 	end
 
-	if vim.g.material_italic_variables then
+	if config.italics.variables then
 		syntax.Identifier =		{ fg = material.variable, bg = material.none, style = 'italic' }; -- any variable name
 	else
 		syntax.Identifier =		{ fg = material.variable }; -- any variable name
 	end
 
-    if vim.g.material_italic_strings then
+    if config.italics.strings then
         syntax.String = { fg = material.green, bg = material.none, style= 'italic' } -- any string
     else
         syntax.String = { fg = material.green } -- any string
@@ -170,7 +171,7 @@ theme.loadEditor = function ()
     -- Options:
 
     --Set transparent background
-	if vim.g.material_disable_background then
+	if config.disable.background then
 		editor.Normal =				{ fg = material.fg, bg = material.none } -- normal text and background color
 		editor.SignColumn =			{ fg = material.fg, bg = material.none }
 	else
@@ -179,14 +180,14 @@ theme.loadEditor = function ()
 	end
 
 	-- Remove window split borders
-	if vim.g.material_borders then
+	if config.borders then
 		editor.VertSplit =				{ fg = material.border } -- the column separating vertically split windows
 	else
 		editor.VertSplit =				{ fg = material.bg } -- the column separating vertically split windows
 	end
 
 	--Set End of Buffer lines (~)
-	if vim.g.material_hide_eob then
+	if config.disable.eob_lines then
 		editor.EndOfBuffer =			{ fg = material.bg } -- ~ lines at the end of a buffer
 	else
 		editor.EndOfBuffer =			{ fg = material.disabled } -- ~ lines at the end of a buffer
@@ -265,21 +266,21 @@ theme.loadTreeSitter = function ()
 	-- Options:
 
 	-- TreeSitter Italic comments
-	if vim.g.material_italic_comments then
+	if config.italics.comments then
 	    treesitter.TSComment=                  { fg = material.comments , bg = material.none, style = 'italic' } -- For comment blocks.
 	else
 	    treesitter.TSComment=                  { fg = material.comments } -- For comment blocks.
 	end
 
 	-- TreeSitter Italic strings
-	if vim.g.material_italic_strings then
+	if config.italics.strings then
 	    treesitter.TSString =                  { fg = material.green, bg = material.none, style = 'italic' } -- For strings.
 	else
 	    treesitter.TSString =                  { fg = material.green } -- For strings.
 	end
 
 	-- TreeSitter Italic keywords
-	if vim.g.material_italic_keywords then
+	if config.italics.keywords then
 	    treesitter.TSConditional =             { fg = material.purple, style = 'italic' } -- For keywords related to conditionnals.
 	    treesitter.TSKeyword =                 { fg = material.cyan, style = 'italic' } -- For keywords that don't fall in previous categories.
 	    treesitter.TSRepeat =                  { fg = material.purple, style = 'italic' } -- For keywords related to loops.
@@ -292,7 +293,7 @@ theme.loadTreeSitter = function ()
 	end
 
 	-- TreeSitter Italic functions
-	if vim.g.material_italic_functions then
+	if config.italics.functions then
 	    treesitter.TSFunction =                { fg = material.blue, style = 'italic' } -- For fuction (calls and definitions).
 	    treesitter.TSMethod =                  { fg = material.blue, style = 'italic' } -- For method calls and definitions.
 	    treesitter.TSFuncBuiltin =             { fg = material.cyan, style = 'italic' } -- For builtin functions: `table.insert` in Lua.
@@ -303,7 +304,7 @@ theme.loadTreeSitter = function ()
 	end
 
 	-- TreeSitter Italic variables
-	if vim.g.material_italic_variables then
+	if config.italics.variables then
 	    treesitter.TSVariable =                { fg = material.variable, style = 'italic' } -- Any variable name that does not have another highlight.
 	    treesitter.TSVariableBuiltin =         { fg = material.variable, style = 'italic' } -- Variable names that are defined by the languages, like `this` or `self`.
 	else
@@ -501,7 +502,7 @@ theme.loadPlugins = function()
     -- Options:
 
     -- Disable nvim-tree background
-	if vim.g.material_disable_background then
+	if config.disable.background then
 		plugins.NvimTreeNormal =                        { fg = material.comments, bg = material.none }
 	else
 		plugins.NvimTreeNormal =                        { fg = material.comments, bg = material.sidebar }

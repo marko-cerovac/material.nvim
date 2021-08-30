@@ -1,3 +1,5 @@
+local config = require('material.config').options
+
 local material = {
 	-- Common colors
 
@@ -49,7 +51,7 @@ if vim.g.material_style == 'darker' then
     material.disabled =		'#474747'
     material.accent =		'#FF9800'
 
-    if vim.g.material_darker_contrast == true then
+    if config.text_contrast.darker == true then
         -- Lighter theme style with high contrast
 
         material.comments =		'#757575'
@@ -59,7 +61,7 @@ if vim.g.material_style == 'darker' then
 
 elseif vim.g.material_style == 'lighter' then
 
-    if vim.g.material_lighter_contrast == true then
+    if config.text_contrast.lighter == true then
         -- Lighter theme style with high contrast
 
         material.bg =			'#FAFAFA'
@@ -179,7 +181,7 @@ end
 -- Optional colors
 
 -- Enable contrast sidebars, floating windows and popup menus
-if vim.g.material_contrast == false then
+if config.contrast == false then
     material.sidebar = material.bg
     material.float = material.bg
 else
@@ -203,10 +205,10 @@ end
 
 -- Apply user defined colors
 
--- Check if vim.g.material_custom_colors = is a table
-if type(vim.g.material_custom_colors) == "table" then
+-- Check if config.custom_colors = is a table
+if type(config.custom_colors) == "table" then
 	-- Iterate trough the table
-	for key, value in pairs(vim.g.material_custom_colors) do
+	for key, value in pairs(config.custom_colors) do
 		-- If the key doesn't exist:
 		if not material[key] then
 			error("Color " .. key .. " does not exist")
