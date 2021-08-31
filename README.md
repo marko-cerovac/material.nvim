@@ -128,7 +128,7 @@ This is an example of the function with the default values
 ```lua
 require('material').setup({
 
-	contrast = true, -- Enable contrast for floating windows and NvimTree, LspTrouble etc...
+	contrast = true, -- Enable contrast for sidebars, floating windows and popup menus like Nvim-Tree
 	borders = false, -- Enable borders between verticaly split windows
 
 	italics = {

@@ -20,7 +20,7 @@ local defaults = {
 	},
 
 	text_contrast = {
-		lighter = true, -- Higher contrast text for lighter style
+		lighter = false, -- Higher contrast text for lighter style
 		darker = false -- Higher contrast text for darker style
 	},
 

@@ -128,14 +128,14 @@ CONTENTS
 What sets material.nvim appart from most Vim/NeoVim themes is the wide array
 of options for customising the theme.
 
-All options are set using global variables.
-
 In order for these settings to take effect, they should be placed in your
 init.vim/init.lua before applying the colorscheme
 
 Options:
 
-    + material_style {string} (default = "oceanic")
+The theme style is set using a global variable called material_style
+
+    + g:material_style {string} (default = "oceanic")
         This sets the style of the the theme, and can be initialized with one
         of these five values: -oceanic
                               -deep ocean
@@ -143,62 +143,99 @@ Options:
                               -lighter
                               -darker
 
-    + material_contrast {bool}  (default = true)
+All other options are passed to a setup function
+
+	+ require('material').setup()
+
+This is an example of the setup function with the default values:
+
+	require('material').setup({
+		contrast = true,
+		borders = false,
+		italics = {
+			comments = false,
+			strings = false,
+			keywords = false,
+			functions = false,
+			variables = false
+		},
+		contrast_windows = {
+			"terminal",
+			"packer",
+			"qf"
+		},
+		text_contrast = {
+			lighter = false,
+			darker = false
+		},
+		disable = {
+			background = false,
+			term_colors = false,
+			eob_lines = false
+		}
+		custom_highlights = {}
+	})
+
+    + contrast {bool}
           Make sidebars, floating windows and popup menus like nvim-tree and
           telescope have a different background
 
-    + material_lighter_contrast {bool}  (default = false)
-          Increase the contrast on the lighter variant of the colorscheme for
-          more visibilty
-
-    + material_italic_comments  {bool}  (default = false)
-          Make comments italic
-
-    + material_italic_strings  {bool}  (default = false)
-          Make strings italic
-
-    + material_italic_keywords  {bool}  (default = false)
-          Make keywords like if,for,while etc. italic
-
-    + material_italic_functions  {bool}  (default = false)
-          Make functions calls and names italic
-
-    + material_italic_variables  {bool}  (default = false)
-          Make variable names and identifiers italic
-
-    + material_borders  {bool}  (default = false)
+    + material_borders  {bool}
           Enable the border between verticaly split windows
 
-    + material_disable_background  {bool}  (default = false)
-          Set this to true if you want to prevent material.nvim from setting a
-          background color, so that NeoVim can use you terminal background
-          color
+	+ italics  {table}
+		  Select which code objects  are italic: -comments
+		                                         -strings
+		                                         -keywords
+		                                         -functions
+		                                         -variables
+		 Set the desired value to true to make it italic
 
-    + material_disable_terminal  {bool}  (default = false)
-		  Disable the setting of terminal colors
+	+ contrast_windows  {table}
+		  Pass in the names of windows to make their background darker (contrasted)
 
-    + material_hide_eob  {bool}  (default = false)
-          Hide the end of buffer lines (~)
+	+ text_contrast  {table}
+		  Set the darker or lighter variable to true in this table to give
+		  those styles more contrast for better visibility
 
-    + material_variable_color  {string}  (default = "#717CB4")
-          Set a custom color for variables and fields
-
-    + material_custom_colors  {table}  (default = {})
-          Use this to override any color that the theme has set. Just pass in
-          colors like this:
-          vim.g.material_custom_colors = {black = "#000000", bg = "#0F111A"}
-
+	+ disable  {table}
+		  This table allows you to disable the theme from setting the
+		  background, terminal colors and end-of-buffer lines
+	
+	+ custom_highlights  {table}
+		  If you want to change or set a certain highlight group to a value,
+		  you can pass the group name and the color value in this table
 
 Example config in Lua:
 
+	-- Theme style
+	vim.g.material_style = 'deep ocean'
+
     -- Colorscheme settings
-    vim.g.material_style = 'deep ocean'
-    vim.g.material_italic_comments = true
-    vim.g.material_italic_keywords = true
-    vim.g.material_italic_functions = true
+	require('material').setup({
+		contrast = true,
+		borders = false,
+		italics = {
+			comments = true,
+			strings = false,
+			keywords = true,
+			functions = true,
+			variables = false
+		},
+		contrast_windows = {
+			"terminal",
+			"packer",
+			"qf",
+		},
+		disable = {
+			background = false,
+			term_colors = false,
+			eob_lines = false
+		},
+	})
 
     -- Apply the colorscheme
-    require('material').set()
+    vim.cmd[[colorscheme material]]
 
 ================================================================================
 5. Functions                                           *material.nvim-functions*
