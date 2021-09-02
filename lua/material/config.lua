@@ -30,8 +30,8 @@ local defaults = {
 		eob_lines = false -- Make end-of-buffer lines invisible
 	},
 
-	custom_colors = {}, -- TODO: define custom colors
-	custom_highlights = {} -- TODO: define custom highlights
+	-- custom_colors = {}, -- TODO: define custom colors
+	custom_highlights = {} -- define custom highlights
 }
 
 Config.options = {}
