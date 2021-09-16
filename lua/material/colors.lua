@@ -208,9 +208,10 @@ if type(config.custom_colors) == "table" then
 		else
 			-- Another group
 			if not material[value] then
-			  error("Color " .. value .. " does not exist")
+				error("Color " .. value .. " does not exist")
+			else
+				material[key] = material[value]
 			end
-			material[key] = material[value]
 		end
 	end
 end
