@@ -55,8 +55,9 @@ function util.load()
 		vim.g.material_italic_functions or
 		vim.g.material_borders
 	then
-		print("Material.nvim configuration has moved to a setup function.")
-		print("For help with the new configuration please check the github README or see :help material.nvim-configuration")
+		print("Material.nvim no longer uses global variables for configuration.")
+		print("Instead, the configuration has moved to a setup function.")
+		print("For help with the new configuration please see ':help material.nvim-configuration' or check the github README")
 	end
 ---------------------------------REMOVE AS SOON AS POSSIBLE--------------------------------------------
 
