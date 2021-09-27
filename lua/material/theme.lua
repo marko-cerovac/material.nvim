@@ -343,6 +343,23 @@ theme.loadLSP = function ()
 		LspReferenceText =                      { fg = material.accent, bg = material.highlight }, -- used for highlighting "text" references
 		LspReferenceRead =                      { fg = material.accent, bg = material.highlight }, -- used for highlighting "read" references
 		LspReferenceWrite =                     { fg = material.accent, bg = material.highlight }, -- used for highlighting "write" references
+
+		DiagnosticVirtualTextWarn  = { link = "LspDiagnosticsVirtualTextWarning" },
+		DiagnosticUnderlineWarn    = { link = "LspDiagnosticsUnderlineWarning" },
+		DiagnosticFloatingWarn     = { link = "LspDiagnosticsFloatingWarning" },
+		DiagnosticSignWarn         = { link = "LspDiagnosticsSignWarning" },
+		DiagnosticVirtualTextError = { link = "LspDiagnosticsVirtualTextError" },
+		DiagnosticUnderlineError   = { link = "LspDiagnosticsUnderlineError" },
+		DiagnosticFloatingError    = { link = "LspDiagnosticsFloatingError" },
+		DiagnosticSignError        = { link = "LspDiagnosticsSignError" },
+		DiagnosticVirtualTextInfo  = { link = "LspDiagnosticsVirtualTextInformation" },
+		DiagnosticUnderlineInfo    = { link = "LspDiagnosticsUnderlineInformation" },
+		DiagnosticFloatingInfo     = { link = "LspDiagnosticsFloatingInformation" },
+		DiagnosticSignInfo         = { link = "LspDiagnosticsSignInformation" },
+		DiagnosticVirtualTextHint  = { link = "LspDiagnosticsVirtualTextHint" },
+		DiagnosticUnderlineHint    = { link = "LspDiagnosticsUnderlineHint" },
+		DiagnosticFloatingHint     = { link = "LspDiagnosticsFloatingHint" },
+		DiagnosticSignHint         = { link = "LspDiagnosticsSignHint" },
 	}
 
 	return lsp
