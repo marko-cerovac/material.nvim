@@ -47,20 +47,6 @@ function util.load()
     vim.o.termguicolors = true
     vim.g.colors_name = "material"
 
----------------------------------REMOVE AS SOON AS POSSIBLE--------------------------------------------
-	if vim.g.material_contrast or
-		vim.g.material_italic_comments or
-		vim.g.material_italic_functions or
-		vim.g.material_italic_keywords or
-		vim.g.material_italic_functions or
-		vim.g.material_borders
-	then
-		print("Material.nvim no longer uses global variables for configuration.")
-		print("Instead, the configuration has moved to a setup function.")
-		print("For help with the new configuration please see ':help material.nvim-configuration' or check the github README")
-	end
----------------------------------REMOVE AS SOON AS POSSIBLE--------------------------------------------
-
     -- Load plugins and lsp async
     local async
     async = vim.loop.new_async(vim.schedule_wrap(function ()

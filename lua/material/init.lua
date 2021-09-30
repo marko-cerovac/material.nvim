@@ -20,11 +20,4 @@ local setup = function (options)
 	require('material.config').setup(options)
 end
 
----------------------------------REMOVE AS SOON AS POSSIBLE--------------------------------------------
-local set = function ()
-	print([[The function "require('material').set()" is deprecated]])
-	print('Please use "colorscheme material" instead')
-end
----------------------------------REMOVE AS SOON AS POSSIBLE--------------------------------------------
-
-return { setup = setup, set = set }
+return { setup = setup }
