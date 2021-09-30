@@ -28,7 +28,6 @@ local material = {
 	error    =		'#FF5370',
 	link     =		'#80CBC4',
 	cursor   =		'#FFCC00',
-	variable =		'#717CB4',
 
 	none     =      'NONE'
 }
@@ -148,7 +147,7 @@ elseif vim.g.material_style == 'deep ocean' then
 
 	material.bg =			'#0F111A'
 	material.bg_alt =		'#090B10'
-	material.fg =			'#8F93A2'
+	material.fg =			'#A6ACCD'
 	material.text =			'#717CB4'
 	material.comments =		'#464B5D'
 	material.selection = 	'#1F2233'

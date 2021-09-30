@@ -78,9 +78,9 @@ theme.loadSyntax = function ()
 	end
 
 	if config.italics.variables then
-		syntax.Identifier =		{ fg = material.variable, bg = material.none, style = 'italic' }; -- any variable name
+		syntax.Identifier =		{ fg = material.fg, bg = material.none, style = 'italic' }; -- any variable name
 	else
-		syntax.Identifier =		{ fg = material.variable }; -- any variable name
+		syntax.Identifier =		{ fg = material.fg }; -- any variable name
 	end
 
     if config.italics.strings then
@@ -119,9 +119,9 @@ theme.loadEditor = function ()
 		ModeMsg =				{ fg = material.accent }, -- 'showmode' message (e.g., "-- INSERT -- ")
 		MoreMsg =				{ fg = material.accent }, -- |more-prompt|
 		NonText =				{ fg = material.disabled }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-		Pmenu =					{ fg = material.text, bg = material.contrast }, -- Popup menu: normal item.
+		Pmenu =					{ fg = material.paleblue, bg = material.contrast }, -- Popup menu: normal item.
 		PmenuSel =				{ fg = material.accent, bg = material.active, style = 'italic' }, -- Popup menu: selected item.
-		PmenuSbar =				{ fg = material.text, bg = material.contrast }, -- Popup menu: scrollbar.
+		PmenuSbar =				{ fg = material.paleblue, bg = material.contrast }, -- Popup menu: scrollbar.
 		PmenuThumb =			{ fg = material.fg, bg = material.border }, -- Popup menu: Thumb of the scrollbar.
 		Question =				{ fg = material.green }, -- |hit-enter| prompt and yes/no questions
 		QuickFixLine =			{ fg = material.highlight, bg = material.title, style = 'reverse' }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
@@ -231,7 +231,7 @@ theme.loadTreeSitter = function ()
 		TSConstMacro =              { fg = material.red }, -- For constants that are defined by macros: `NULL` in C.
 		TSError =                   { fg = material.error }, -- For syntax/parser errors.
 		TSException =               { fg = material.red }, -- For exception related keywords.
-		TSField =                   { fg = material.variable }, -- For fields.
+		TSField =                   { fg = material.fg }, -- For fields.
 		TSFloat =                   { fg = material.red }, -- For floats.
 		TSFuncMacro =               { fg = material.blue }, -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
 		TSInclude =                 { fg = material.cyan }, -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
@@ -241,7 +241,7 @@ theme.loadTreeSitter = function ()
 		TSOperator =                { fg = material.cyan }, -- For any operator: `+`, but also `->` and `*` in C.
 		TSParameter =               { fg = material.paleblue }, -- For parameters of a function.
 		TSParameterReference=       { fg = material.paleblue }, -- For references to parameters of a function.
-		TSProperty =                { fg = material.paleblue }, -- Same as `TSField`,accesing for struct members in C.
+		TSProperty =                { fg = material.gray }, -- Same as `TSField`,accesing for struct members in C.
 		TSPunctDelimiter =          { fg = material.cyan }, -- For delimiters ie: `.`
 		TSPunctBracket =            { fg = material.cyan }, -- For brackets and parens.
 		TSPunctSpecial =            { fg = material.cyan }, -- For special punctutation that does not fall in the catagories before.
@@ -305,11 +305,11 @@ theme.loadTreeSitter = function ()
 
 	-- TreeSitter Italic variables
 	if config.italics.variables then
-	    treesitter.TSVariable =                { fg = material.variable, style = 'italic' } -- Any variable name that does not have another highlight.
-	    treesitter.TSVariableBuiltin =         { fg = material.variable, style = 'italic' } -- Variable names that are defined by the languages, like `this` or `self`.
+	    treesitter.TSVariable =                { fg = material.fg, style = 'italic' } -- Any variable name that does not have another highlight.
+	    treesitter.TSVariableBuiltin =         { fg = material.fg, style = 'italic' } -- Variable names that are defined by the languages, like `this` or `self`.
 	else
-	    treesitter.TSVariable =                { fg = material.variable } -- Any variable name that does not have another highlight.
-	    treesitter.TSVariableBuiltin =         { fg = material.variable } -- Variable names that are defined by the languages, like `this` or `self`.
+	    treesitter.TSVariable =                { fg = material.fg } -- Any variable name that does not have another highlight.
+	    treesitter.TSVariableBuiltin =         { fg = material.fg } -- Variable names that are defined by the languages, like `this` or `self`.
 	end
 
 	return treesitter
