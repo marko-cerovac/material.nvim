@@ -4,6 +4,7 @@ local defaults = {
 
 	contrast = true, -- Enable contrast
 	borders = false, -- Split window borders
+	popup_menu = 'dark', -- Popup menu style ( can be: 'dark', 'light', 'colorful' or 'stealth' )
 
 	italics = {
 		comments = false, -- Italic comments

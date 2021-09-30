@@ -182,6 +182,13 @@ This is an example of the setup function with the default values:
 
     + material_borders  {bool}
           Enable the border between verticaly split windows
+	
+	+ popup_menu  {string}
+		  Select the style of the popup menu
+		  Can be initialized with one of these values: - dark
+													   - light
+													   - colorful
+													   - stealth
 
 	+ italics  {table}
 		  Select which code objects  are italic: -comments
@@ -215,6 +222,7 @@ Example config in Lua:
 	require('material').setup({
 		contrast = true,
 		borders = false,
+		popup_menu = "dark"
 		italics = {
 			comments = true,
 			strings = false,

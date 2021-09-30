@@ -119,10 +119,6 @@ theme.loadEditor = function ()
 		ModeMsg =				{ fg = material.accent }, -- 'showmode' message (e.g., "-- INSERT -- ")
 		MoreMsg =				{ fg = material.accent }, -- |more-prompt|
 		NonText =				{ fg = material.disabled }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-		Pmenu =					{ fg = material.paleblue, bg = material.contrast }, -- Popup menu: normal item.
-		PmenuSel =				{ fg = material.accent, bg = material.active, style = 'italic' }, -- Popup menu: selected item.
-		PmenuSbar =				{ fg = material.paleblue, bg = material.contrast }, -- Popup menu: scrollbar.
-		PmenuThumb =			{ fg = material.fg, bg = material.border }, -- Popup menu: Thumb of the scrollbar.
 		Question =				{ fg = material.green }, -- |hit-enter| prompt and yes/no questions
 		QuickFixLine =			{ fg = material.highlight, bg = material.title, style = 'reverse' }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
 		qfLineNr =				{ fg = material.highlight, bg = material.title, style = 'reverse' }, -- Line numbers for quickfix lists
@@ -191,6 +187,29 @@ theme.loadEditor = function ()
 		editor.EndOfBuffer =			{ fg = material.bg } -- ~ lines at the end of a buffer
 	else
 		editor.EndOfBuffer =			{ fg = material.disabled } -- ~ lines at the end of a buffer
+	end
+
+	-- Set popup menu style
+	if config.popup_menu == 'light' then
+		editor.Pmenu =					{ fg = material.fg, bg = material.border } -- Popup menu: normal item.
+		editor.PmenuSel =				{ fg = material.accent, bg = material.highight, style = 'bold' } -- Popup menu: selected item.
+		editor.PmenuSbar =				{ bg = material.border } -- Popup menu: scrollbar.
+		editor.PmenuThumb =				{ bg = material.fg } -- Popup menu: Thumb of the scrollbar.
+	elseif config.popup_menu == 'colorful' then
+		editor.Pmenu =					{ fg = material.paleblue, bg = material.border } -- Popup menu: normal item.
+		editor.PmenuSel =				{ fg = material.green, bg = material.border, style = 'bold' } -- Popup menu: selected item.
+		editor.PmenuSbar =				{ bg = material.border } -- Popup menu: scrollbar.
+		editor.PmenuThumb =				{ bg = material.red } -- Popup menu: Thumb of the scrollbar.
+	elseif config.popup_menu == 'stealth' then
+		editor.Pmenu =					{ fg = material.gray, bg = material.bg } -- Popup menu: normal item.
+		editor.PmenuSel =				{ fg = material.title, bg = material.bg, style = 'bold' } -- Popup menu: selected item.
+		editor.PmenuSbar =				{ bg = material.bg } -- Popup menu: scrollbar.
+		editor.PmenuThumb =				{ bg = material.selection } -- Popup menu: Thumb of the scrollbar.
+	else
+		editor.Pmenu =					{ fg = material.paleblue, bg = material.contrast } -- Popup menu: normal item.
+		editor.PmenuSel =				{ fg = material.accent, bg = material.active, style = 'bold' } -- Popup menu: selected item.
+		editor.PmenuSbar =				{ bg = material.contrast } -- Popup menu: scrollbar.
+		editor.PmenuThumb =				{ bg = material.paleblue } -- Popup menu: Thumb of the scrollbar.
 	end
 
 	return editor
