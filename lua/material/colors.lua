@@ -153,7 +153,7 @@ elseif vim.g.material_style == 'deep ocean' then
 	material.selection = 	'#1F2233'
 	material.contrast =		'#090B10'
 	material.active =		'#1A1C25'
-	material.border =		'#1f2233'
+	material.border =		'#1F2233'
 	material.line_numbers =	'#3B3F51'
 	material.highlight =	'#1F2233'
 	material.disabled =		'#464B5D'

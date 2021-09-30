@@ -192,12 +192,12 @@ theme.loadEditor = function ()
 	-- Set popup menu style
 	if config.popup_menu == 'light' then
 		editor.Pmenu =					{ fg = material.fg, bg = material.border } -- Popup menu: normal item.
-		editor.PmenuSel =				{ fg = material.accent, bg = material.highight, style = 'bold' } -- Popup menu: selected item.
-		editor.PmenuSbar =				{ bg = material.border } -- Popup menu: scrollbar.
+		editor.PmenuSel =				{ fg = material.contrast, bg = material.accent, style = 'bold' } -- Popup menu: selected item.
+		editor.PmenuSbar =				{ bg = material.active } -- Popup menu: scrollbar.
 		editor.PmenuThumb =				{ bg = material.fg } -- Popup menu: Thumb of the scrollbar.
 	elseif config.popup_menu == 'colorful' then
-		editor.Pmenu =					{ fg = material.paleblue, bg = material.border } -- Popup menu: normal item.
-		editor.PmenuSel =				{ fg = material.green, bg = material.border, style = 'bold' } -- Popup menu: selected item.
+		editor.Pmenu =					{ fg = material.fg, bg = material.border } -- Popup menu: normal item.
+		editor.PmenuSel =				{ fg = material.border, bg = material.green } -- Popup menu: selected item.
 		editor.PmenuSbar =				{ bg = material.border } -- Popup menu: scrollbar.
 		editor.PmenuThumb =				{ bg = material.red } -- Popup menu: Thumb of the scrollbar.
 	elseif config.popup_menu == 'stealth' then
@@ -206,10 +206,10 @@ theme.loadEditor = function ()
 		editor.PmenuSbar =				{ bg = material.bg } -- Popup menu: scrollbar.
 		editor.PmenuThumb =				{ bg = material.selection } -- Popup menu: Thumb of the scrollbar.
 	else
-		editor.Pmenu =					{ fg = material.paleblue, bg = material.contrast } -- Popup menu: normal item.
-		editor.PmenuSel =				{ fg = material.accent, bg = material.active, style = 'bold' } -- Popup menu: selected item.
+		editor.Pmenu =					{ fg = material.fg, bg = material.contrast } -- Popup menu: normal item.
+		editor.PmenuSel =				{ fg = material.contrast, bg = material.accent } -- Popup menu: selected item.
 		editor.PmenuSbar =				{ bg = material.contrast } -- Popup menu: scrollbar.
-		editor.PmenuThumb =				{ bg = material.paleblue } -- Popup menu: Thumb of the scrollbar.
+		editor.PmenuThumb =				{ bg = material.selection } -- Popup menu: Thumb of the scrollbar.
 	end
 
 	return editor
