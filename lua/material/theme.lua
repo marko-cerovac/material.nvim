@@ -240,26 +240,27 @@ theme.loadTreeSitter = function ()
     -- TreeSitter highlight groups
 
 	local treesitter = {
-		TSAnnotation =              { fg = material.red }, -- For C++/Dart attributes, annotations that can be attached to the code to denote some kind of meta information.
 		TSAttribute =               { fg = material.yellow }, -- (unstable) TODO: docs
 		TSBoolean=                  { fg = material.orange }, -- For booleans.
 		TSCharacter=                { fg = material.orange }, -- For characters.
 		TSConstructor =             { fg = material.purple }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
 		TSConstant =                { fg = material.yellow }, -- For constants
-		TSConstBuiltin =            { fg = material.red }, -- For constant that are built in the language: `nil` in Lua.
+		TSConstBuiltin =            { fg = material.orange }, -- For constant that are built in the language: `nil` in Lua.
 		TSConstMacro =              { fg = material.red }, -- For constants that are defined by macros: `NULL` in C.
 		TSError =                   { fg = material.error }, -- For syntax/parser errors.
 		TSException =               { fg = material.red }, -- For exception related keywords.
-		TSField =                   { fg = material.fg }, -- For fields.
+		TSField =                   { fg = material.paleblue }, -- For fields.
 		TSFloat =                   { fg = material.red }, -- For floats.
 		TSFuncMacro =               { fg = material.blue }, -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
 		TSInclude =                 { fg = material.cyan }, -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
+		TSKeywordOperator =			{ fg = material.red }, -- Unary and binary operators that are English words: `and`, `or` in Python; `sizeof` in C.
+		TSKeywordReturn =			{ fg = material.cyan },
 		TSLabel =                   { fg = material.red }, -- For labels: `label:` in C and `:label:` in Lua.
 		TSNamespace =               { fg = material.yellow }, -- For identifiers referring to modules and namespaces.
 		TSNumber =                  { fg = material.orange }, -- For all numbers
 		TSOperator =                { fg = material.cyan }, -- For any operator: `+`, but also `->` and `*` in C.
 		TSParameter =               { fg = material.paleblue }, -- For parameters of a function.
-		TSParameterReference=       { fg = material.paleblue }, -- For references to parameters of a function.
+		TSParameterReference =      { fg = material.paleblue }, -- For references to parameters of a function.
 		TSProperty =                { fg = material.gray }, -- Same as `TSField`,accesing for struct members in C.
 		TSPunctDelimiter =          { fg = material.cyan }, -- For delimiters ie: `.`
 		TSPunctBracket =            { fg = material.cyan }, -- For brackets and parens.
@@ -267,11 +268,13 @@ theme.loadTreeSitter = function ()
 		TSStringRegex =             { fg = material.blue }, -- For regexes.
 		TSStringEscape =            { fg = material.disabled }, -- For escape characters within a string.
 		TSSymbol =                  { fg = material.yellow }, -- For identifiers referring to symbols or atoms.
+		TSStrong =					{ fg = material.paleblue, style = 'bold' }, -- Text to be represented in bold.
 		TSType =                    { fg = material.purple }, -- For types.
 		TSTypeBuiltin =             { fg = material.purple }, -- For builtin types.
 		TSTag =                     { fg = material.red }, -- Tags like html tag names.
 		TSTagDelimiter =            { fg = material.cyan }, -- Tag delimiter like `<` `>` `/`
-		TSText =                    { fg = material.text }, -- For strings considered text in a markup language.
+		TSTagAttribute =			{ fg = material.gray }, -- HTML tag attributes.
+		TSText =                    { fg = material.fg }, -- For strings considered text in a markup language.
 		TSTextReference =           { fg = material.yellow }, -- FIXME
 		TSEmphasis =                { fg = material.paleblue }, -- For text to be represented with emphasis.
 		TSUnderline =               { fg = material.fg, bg = material.none, style = 'underline' }, -- For text to be represented with an underline.
@@ -279,6 +282,7 @@ theme.loadTreeSitter = function ()
 		TSTitle =                   { fg = material.title, bg = material.none, style = 'bold' }, -- Text that is part of a title.
 		TSLiteral =                 { fg = material.fg }, -- Literal text.
 		TSURI =                     { fg = material.link }, -- Any URI like a link or email.
+		TSMath =					{ fg = material.blue }, -- Math environments like LaTeX's `$ ... $`
 		--TSNone =                    { }, -- TODO: docs
     }
 
