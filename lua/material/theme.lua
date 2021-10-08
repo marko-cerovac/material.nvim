@@ -99,7 +99,7 @@ theme.loadEditor = function ()
 
 	local editor = {
 		NormalFloat =			{ fg = material.fg, bg = material.float }, -- normal text and background color for floating windows
-		FloatBorder =			{ fg = material.paleblue },
+		FloatBorder =			{ fg = material.text }, -- floating window border
 		ColorColumn =			{ fg = material.none, bg = material.active }, --  used for the columns set with 'colorcolumn'
 		Conceal =				{ fg = material.disabled }, -- placeholder characters substituted for concealed text (see 'conceallevel')
 		Cursor =				{ fg = material.cursor, bg = material.none, style = 'reverse' }, -- the character under the cursor
@@ -112,7 +112,7 @@ theme.loadEditor = function ()
 		ErrorMsg =				{ fg = material.error }, -- error messages
 		Folded =				{ fg = material.disabled, bg = material.none, style = 'italic' }, -- line used for closed folds
 		FoldColumn =			{ fg = material.blue }, -- 'foldcolumn'
-		IncSearch =				{ fg = material.highlight, bg = material.title, style = 'reverse' }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+		IncSearch =				{ fg = material.bg, bg = material.title }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
 		LineNr =				{ fg = material.line_numbers }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
 		CursorLineNr =			{ fg = material.accent }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
 		MatchParen =			{ fg = material.yellow, bg = material.none, style = 'bold' }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
@@ -122,7 +122,7 @@ theme.loadEditor = function ()
 		Question =				{ fg = material.green }, -- |hit-enter| prompt and yes/no questions
 		QuickFixLine =			{ fg = material.highlight, bg = material.title, style = 'reverse' }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
 		qfLineNr =				{ fg = material.highlight, bg = material.title, style = 'reverse' }, -- Line numbers for quickfix lists
-		Search =				{ fg = material.highlight, bg = material.title, style = 'reverse' }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+		Search =				{ fg = material.bg, bg = material.title }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
 		SpecialKey =			{ fg = material.purple }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
 		SpellBad =				{ fg = material.red, bg = material.none, style = 'italic,undercurl' }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
 		SpellCap =				{ fg = material.blue, bg = material.none, style = 'italic,undercurl' }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
@@ -399,10 +399,6 @@ theme.loadPlugins = function()
 		LspTroubleCount =                       { fg = material.purple, bg = material.active },
 		LspTroubleNormal =                      { fg = material.fg, bg = material.sidebar },
 
-		-- Nvim-Compe
-		CompeDocumentation =					{ fg = material.text, bg = material.contrast },
-		CompeDocumentationBorder =				{ fg = material.paleblue },
-
 		-- Diff
 		diffAdded =                             { fg = material.green },
 		diffRemoved =                           { fg = material.red },
@@ -448,9 +444,9 @@ theme.loadPlugins = function()
 		TelescopeMatching =                     { fg = material.cyan },
 
 		-- NvimTree
-		NvimTreeRootFolder =                    { fg = material.title, style = 'italic' },
+		NvimTreeRootFolder =                    { fg = material.fg, style = 'italic' },
 		NvimTreeFolderName=                     { fg = material.text },
-		NvimTreeFolderIcon=                     { fg = material.accent },
+		NvimTreeFolderIcon=                     { fg = material.accent, bg = material.sidebar },
 		NvimTreeEmptyFolderName=                { fg = material.disabled },
 		NvimTreeOpenedFolderName=               { fg = material.accent, style = 'italic' },
 		NvimTreeIndentMarker =                  { fg = material.disabled },
@@ -511,7 +507,7 @@ theme.loadPlugins = function()
 
 		-- BufferLine
 		BufferLineIndicatorSelected =           { fg = material.accent },
-		BufferLineFill =                        { bg = material.bg_alt },
+		BufferLineFill =                        { bg = material.bg },
 
 		-- Sneak
 		Sneak =                                 { fg = material.bg, bg = material.accent },
