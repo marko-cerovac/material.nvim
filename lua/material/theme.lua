@@ -139,7 +139,7 @@ theme.loadEditor = function ()
 		Visual =				{ fg = material.none, bg = material.selection }, -- Visual mode selection
 		VisualNOS =				{ fg = material.none, bg = material.selection }, -- Visual mode selection when vim is "Not Owning the Selection".
 		WarningMsg =			{ fg = material.yellow }, -- warning messages
-		Whitespace =			{ fg = material.fg }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
+		Whitespace =			{ fg = material.selection }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
 		WildMenu =				{ fg = material.orange, bg = material.none, style = 'bold' }, -- current match in 'wildmenu' completion
 		CursorColumn =			{ fg = material.none, bg = material.active }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
 		CursorLine =			{ fg = material.none, bg = material.active }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
