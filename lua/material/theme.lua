@@ -246,14 +246,14 @@ theme.loadTreeSitter = function ()
 		TSConstructor =             { fg = material.purple }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
 		TSConstant =                { fg = material.yellow }, -- For constants
 		TSConstBuiltin =            { fg = material.orange }, -- For constant that are built in the language: `nil` in Lua.
-		TSConstMacro =              { fg = material.red }, -- For constants that are defined by macros: `NULL` in C.
+		TSConstMacro =              { fg = material.yellow }, -- For constants that are defined by macros: `NULL` in C.
 		TSError =                   { fg = material.error }, -- For syntax/parser errors.
 		TSException =               { fg = material.red }, -- For exception related keywords.
-		TSField =                   { fg = material.paleblue }, -- For fields.
-		TSFloat =                   { fg = material.red }, -- For floats.
+		TSField =                   { fg = material.fg }, -- For fields.
+		TSFloat =                   { fg = material.orange }, -- For floats.
 		TSFuncMacro =               { fg = material.blue }, -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
 		TSInclude =                 { fg = material.cyan }, -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
-		TSKeywordOperator =			{ fg = material.red }, -- Unary and binary operators that are English words: `and`, `or` in Python; `sizeof` in C.
+		TSKeywordOperator =			{ fg = material.purple }, -- Unary and binary operators that are English words: `and`, `or` in Python; `sizeof` in C.
 		TSKeywordReturn =			{ fg = material.cyan },
 		TSLabel =                   { fg = material.red }, -- For labels: `label:` in C and `:label:` in Lua.
 		TSNamespace =               { fg = material.yellow }, -- For identifiers referring to modules and namespaces.
@@ -367,22 +367,23 @@ theme.loadLSP = function ()
 		LspReferenceRead =                      { fg = material.accent, bg = material.highlight }, -- used for highlighting "read" references
 		LspReferenceWrite =                     { fg = material.accent, bg = material.highlight }, -- used for highlighting "write" references
 
-		DiagnosticVirtualTextWarn  = { link = "LspDiagnosticsVirtualTextWarning" },
-		DiagnosticUnderlineWarn    = { link = "LspDiagnosticsUnderlineWarning" },
-		DiagnosticFloatingWarn     = { link = "LspDiagnosticsFloatingWarning" },
-		DiagnosticSignWarn         = { link = "LspDiagnosticsSignWarning" },
-		DiagnosticVirtualTextError = { link = "LspDiagnosticsVirtualTextError" },
-		DiagnosticUnderlineError   = { link = "LspDiagnosticsUnderlineError" },
-		DiagnosticFloatingError    = { link = "LspDiagnosticsFloatingError" },
-		DiagnosticSignError        = { link = "LspDiagnosticsSignError" },
-		DiagnosticVirtualTextInfo  = { link = "LspDiagnosticsVirtualTextInformation" },
-		DiagnosticUnderlineInfo    = { link = "LspDiagnosticsUnderlineInformation" },
-		DiagnosticFloatingInfo     = { link = "LspDiagnosticsFloatingInformation" },
-		DiagnosticSignInfo         = { link = "LspDiagnosticsSignInformation" },
-		DiagnosticVirtualTextHint  = { link = "LspDiagnosticsVirtualTextHint" },
-		DiagnosticUnderlineHint    = { link = "LspDiagnosticsUnderlineHint" },
-		DiagnosticFloatingHint     = { link = "LspDiagnosticsFloatingHint" },
-		DiagnosticSignHint         = { link = "LspDiagnosticsSignHint" },
+		-- Nvim 0.6.
+		DiagnosticVirtualTextError = { fg = material.error },
+		DiagnosticFloatingError    = { fg = material.error },
+		DiagnosticSignError        = { fg = material.error },
+		DiagnosticUnderlineError   = { style = 'undercurl', sp = material.error },
+		DiagnosticVirtualTextWarn  = { fg = material.yellow },
+		DiagnosticFloatingWarn     = { fg = material.yellow },
+		DiagnosticSignWarn         = { fg = material.yellow },
+		DiagnosticUnderlineWarn    = { style = 'undercurl', sp = material.yellow },
+		DiagnosticVirtualTextInfo  = { fg = material.paleblue },
+		DiagnosticFloatingInfo     = { fg = material.paleblue },
+		DiagnosticSignInfo         = { fg = material.paleblue },
+		DiagnosticUnderlineInfo    = { style = 'undercurl', sp = material.paleblue },
+		DiagnosticVirtualTextHint  = { fg = material.purple },
+		DiagnosticFloatingHint     = { fg = material.purple },
+		DiagnosticSignHint         = { fg = material.purple },
+		DiagnosticUnderlineHint    = { style = 'undercurl', sp = material.purple },
 	}
 
 	return lsp
@@ -393,6 +394,10 @@ theme.loadPlugins = function()
     -- Plugins highlight groups
 
 	local plugins = {
+
+		-- Built in debugger
+		debugPC =								{ bg = material.selection },
+		debugBreakpoint =						{ fg = material.red, bg = material.bg },
 
 		-- LspTrouble
 		LspTroubleText =                        { fg = material.text },

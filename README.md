@@ -79,7 +79,7 @@ colorscheme material
 
 ```lua
 --Lua:
-require('material').set()
+vim.cmd 'colorscheme material'
 ```
 
 To enable the `material-nvim` theme for `Lualine`, simply specify it in your lualine settings:

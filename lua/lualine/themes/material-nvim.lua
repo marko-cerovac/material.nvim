@@ -31,7 +31,7 @@ material.command = {
 material.inactive = {
   a = {fg = colors.disabled, bg = colors.bg, gui = 'bold'},
   b = {fg = colors.disabled, bg = colors.bg},
-  c = {fg = colors.disabled, bg = colors.selection}
+  c = {fg = colors.disabled, bg = colors.bg}
 }
 
 return material
