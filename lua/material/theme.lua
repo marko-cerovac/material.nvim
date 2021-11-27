@@ -54,7 +54,7 @@ theme.loadSyntax = function ()
 
 	-- Italic comments
 	if config.italics.comments then
-		syntax.Comment =		{ fg = material.comments, bg = material.none, style = 'italic' } -- italic comments
+		syntax.Comment =		{ fg = material.comments, style = 'italic' } -- italic comments
 	else
 		syntax.Comment =		{fg = material.comments} -- normal comments
 	end
@@ -105,16 +105,16 @@ theme.loadEditor = function ()
 		Cursor =				{ fg = material.cursor, bg = material.none, style = 'reverse' }, -- the character under the cursor
 		CursorIM =				{ fg = material.cursor, bg = material.none, style = 'reverse' }, -- like Cursor, but used when in IME mode
 		Directory =				{ fg = material.blue, bg = material.none }, -- directory names (and other special names in listings)
-		DiffAdd =				{ fg = material.green, bg = material.none, style = 'reverse' }, -- diff mode: Added line
-		DiffChange =			{ fg = material.blue, bg = material.none, style = 'reverse' }, --  diff mode: Changed line
-		DiffDelete =			{ fg = material.red, bg = material.none, style = 'reverse' }, -- diff mode: Deleted line
-		DiffText =				{ fg = material.fg, bg = material.none, style = 'reverse' }, -- diff mode: Changed text within a changed line
+		DiffAdd =				{ fg = material.green, bg = material.none }, -- diff mode: Added line
+		DiffChange =			{ fg = material.blue, bg = material.none }, --  diff mode: Changed line
+		DiffDelete =			{ fg = material.red, bg = material.none }, -- diff mode: Deleted line
+		DiffText =				{ fg = material.fg, bg = material.none }, -- diff mode: Changed text within a changed line
 		ErrorMsg =				{ fg = material.error }, -- error messages
 		Folded =				{ fg = material.disabled, bg = material.none, style = 'italic' }, -- line used for closed folds
 		FoldColumn =			{ fg = material.blue }, -- 'foldcolumn'
 		IncSearch =				{ fg = material.title, bg = material.selection, style = 'underline' }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
 		LineNr =				{ fg = material.line_numbers }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-		CursorLineNr =			{ fg = material.accent }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+		CursorLineNr =			{ fg = material.accent, bg = material.active }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
 		MatchParen =			{ fg = material.yellow, bg = material.none, style = 'bold' }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
 		ModeMsg =				{ fg = material.accent }, -- 'showmode' message (e.g., "-- INSERT -- ")
 		MoreMsg =				{ fg = material.accent }, -- |more-prompt|
@@ -243,10 +243,10 @@ theme.loadTreeSitter = function ()
 		TSAttribute =               { fg = material.yellow }, -- (unstable) TODO: docs
 		TSBoolean=                  { fg = material.orange }, -- For booleans.
 		TSCharacter=                { fg = material.orange }, -- For characters.
-		TSConstructor =             { fg = material.purple }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
+		TSConstructor =             { fg = material.blue }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
 		TSConstant =                { fg = material.yellow }, -- For constants
 		TSConstBuiltin =            { fg = material.orange }, -- For constant that are built in the language: `nil` in Lua.
-		TSConstMacro =              { fg = material.yellow }, -- For constants that are defined by macros: `NULL` in C.
+		TSConstMacro =              { fg = material.cyan }, -- For constants that are defined by macros: `NULL` in C.
 		TSError =                   { fg = material.error }, -- For syntax/parser errors.
 		TSException =               { fg = material.red }, -- For exception related keywords.
 		TSField =                   { fg = material.fg }, -- For fields.
@@ -363,9 +363,9 @@ theme.loadLSP = function ()
 		LspDiagnosticsFloatingHint =            { fg = material.purple  }, -- used for "Hint" diagnostic messages in the diagnostics float
 		LspDiagnosticsVirtualTextHint =         { fg = material.purple  }, -- Virtual text "Hint"
 		LspDiagnosticsUnderlineHint =           { style = 'undercurl', sp = material.paleblue }, -- used to underline "Hint" diagnostics.
-		LspReferenceText =                      { fg = material.accent, bg = material.highlight }, -- used for highlighting "text" references
-		LspReferenceRead =                      { fg = material.accent, bg = material.highlight }, -- used for highlighting "read" references
-		LspReferenceWrite =                     { fg = material.accent, bg = material.highlight }, -- used for highlighting "write" references
+		LspReferenceText =                      { fg = material.white, style = 'underline' }, -- used for highlighting "text" references
+		LspReferenceRead =                      { fg = material.white, style = 'underline' }, -- used for highlighting "read" references
+		LspReferenceWrite =                     { fg = material.white, style = 'underline' }, -- used for highlighting "write" references
 
 		-- Nvim 0.6.
 		DiagnosticVirtualTextError = { fg = material.error },
@@ -396,7 +396,7 @@ theme.loadPlugins = function()
 	local plugins = {
 
 		-- Built in debugger
-		debugPC =								{ bg = material.selection },
+		-- debugPC =								{ bg = material.selection },
 		debugBreakpoint =						{ fg = material.red, bg = material.bg },
 
 		-- LspTrouble
@@ -484,7 +484,7 @@ theme.loadPlugins = function()
 		DiagnosticWarning =                     { fg = material.yellow },
 		DiagnosticInformation =                 { fg = material.paleblue },
 		DiagnosticHint =                        { fg = material.purple },
-		LspSagaDiagnosticBorder =				{ fg = material.gray },
+		LspSagaDiagnosticBorder =				{ fg = material.blue },
 		LspSagaDiagnosticHeader =				{ fg = material.blue },
 		LspSagaDiagnosticTruncateLine =			{ fg = material.border },
 		LspLinesDiagBorder =					{ fg = material.contrast },
@@ -495,6 +495,7 @@ theme.loadPlugins = function()
 		LspSagaBorderTitle =                    { fg = material.cyan },
 		LspSagaHoverBorder =                    { fg = material.paleblue },
 		LspSagaRenameBorder =                   { fg = material.green },
+		LspSagaRenamePromptPrefix =             { fg = material.yellow },
 		LspSagaDefPreviewBorder =               { fg = material.green },
 		LspSagaCodeActionTitle =                { fg = material.paleblue },
 		LspSagaCodeActionContent =              { fg = material.purple },
@@ -524,7 +525,11 @@ theme.loadPlugins = function()
 
 		-- Nvim dap
 		DapBreakpoint =                         { fg = material.red },
-		DapStopped =                            { fg = material.green },
+		DapStopped =                            { fg = material.yellow },
+
+		-- Nvim dap-UI
+		DapUIFloatBorder =						{ fg = material.yellow },
+		DapUIDecoration =						{ fg = material.blue },
 
 		-- Illuminate
 		illuminatedWord =						{ bg = material.highight },
