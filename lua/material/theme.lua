@@ -99,7 +99,7 @@ theme.loadEditor = function ()
 
 	local editor = {
 		NormalFloat =			{ fg = material.fg, bg = material.float }, -- normal text and background color for floating windows
-		FloatBorder =			{ fg = material.text }, -- floating window border
+		FloatBorder =			{ fg = material.paleblue }, -- floating window border
 		ColorColumn =			{ fg = material.none, bg = material.active }, --  used for the columns set with 'colorcolumn'
 		Conceal =				{ fg = material.disabled }, -- placeholder characters substituted for concealed text (see 'conceallevel')
 		Cursor =				{ fg = material.cursor, bg = material.none, style = 'reverse' }, -- the character under the cursor
@@ -254,7 +254,7 @@ theme.loadTreeSitter = function ()
 		TSFuncMacro =               { fg = material.blue }, -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
 		TSInclude =                 { fg = material.cyan }, -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
 		TSKeywordOperator =			{ fg = material.purple }, -- Unary and binary operators that are English words: `and`, `or` in Python; `sizeof` in C.
-		TSKeywordReturn =			{ fg = material.cyan },
+		TSKeywordReturn =			{ fg = material.cyan }, -- return keyword
 		TSLabel =                   { fg = material.red }, -- For labels: `label:` in C and `:label:` in Lua.
 		TSNamespace =               { fg = material.yellow }, -- For identifiers referring to modules and namespaces.
 		TSNumber =                  { fg = material.orange }, -- For all numbers
@@ -270,7 +270,7 @@ theme.loadTreeSitter = function ()
 		TSSymbol =                  { fg = material.yellow }, -- For identifiers referring to symbols or atoms.
 		TSStrong =					{ fg = material.paleblue, style = 'bold' }, -- Text to be represented in bold.
 		TSType =                    { fg = material.purple }, -- For types.
-		TSTypeBuiltin =             { fg = material.purple }, -- For builtin types.
+		TSTypeBuiltin =             { fg = material.red }, -- For builtin types.
 		TSTag =                     { fg = material.red }, -- Tags like html tag names.
 		TSTagDelimiter =            { fg = material.cyan }, -- Tag delimiter like `<` `>` `/`
 		TSTagAttribute =			{ fg = material.gray }, -- HTML tag attributes.
@@ -564,6 +564,8 @@ theme.loadPlugins = function()
 		plugins.CmpItemAbbrMatch =						{ fg = material.yellow, style = 'bold' }
 	elseif config.popup_menu == 'stealth' then
 		plugins.CmpItemKind =							{ fg = material.fg }
+	else
+		plugins.CmpItemAbbrMatch =						{ fg = material.paleblue, style = 'bold' }
 	end
 
 	return plugins

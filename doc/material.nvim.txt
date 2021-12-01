@@ -211,7 +211,7 @@ This is an example of the setup function with the default values:
 	
 	+ custom_highlights  {table}
 		  If you want to change or set a certain highlight group to a value,
-		  you can pass the group name and the color value in this table
+		  you can pass the group name and the color values in this table
 
 Example config in Lua:
 
@@ -244,6 +244,20 @@ Example config in Lua:
 
     -- Apply the colorscheme
     vim.cmd[[colorscheme material]]
+
+If you want to use the custom_highlights table, this is how you would use it:
+
+require('material').setup({
+	...
+	custom_highlights = {
+		Function = { fg = "#00FF00", bg = "#FF0000", gui = "bold" },
+		TelescopePromptBorder = { fg = "#0A0A0A", bg = "#000000" }
+	}
+	...
+})
+
+Just put the name of the highlight group as the name of a table, and pass in
+the values for fg, bg, gui, guisp
 
 ================================================================================
 5. Functions                                           *material.nvim-functions*
