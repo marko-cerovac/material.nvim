@@ -2,8 +2,6 @@
 -- the basic colors of the theme
 -- and the style specific colors
 
-local options = require("material.conditionals")
-
 local colors = {
 	-- Common colors
 
@@ -123,6 +121,7 @@ else vim.g.material_style = 'oceanic'
 
 end
 
-colors = vim.tbl_deep_extend("keep", colors, options)
+-- Extend the colors table with the conditional colors
+colors = vim.tbl_deep_extend("keep", colors, require("material.conditionals"))
 
 return colors
