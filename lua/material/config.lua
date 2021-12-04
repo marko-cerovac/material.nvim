@@ -14,7 +14,7 @@ local defaults = {
 		variables = false -- Italic variables
 	},
 
-	contrast_windows = { -- Select which windows get the contrast background
+	contrast_filetypes = { -- Select which windows get the contrast background
 		"terminal", -- Darker terminal
 		"packer", -- Darker packer background
 		"qf" -- Darker qf list background

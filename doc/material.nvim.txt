@@ -159,7 +159,7 @@ This is an example of the setup function with the default values:
 			functions = false,
 			variables = false
 		},
-		contrast_windows = {
+		contrast_filetypes = {
 			"terminal",
 			"packer",
 			"qf"
@@ -198,7 +198,7 @@ This is an example of the setup function with the default values:
 		                                         -variables
 		 Set the desired value to true to make it italic
 
-	+ contrast_windows  {table}
+	+ contrast_filetypes  {table}
 		  Pass in the names of windows to make their background darker (contrasted)
 
 	+ text_contrast  {table}
@@ -230,7 +230,7 @@ Example config in Lua:
 			functions = true,
 			variables = false
 		},
-		contrast_windows = {
+		contrast_filetypes = {
 			"terminal",
 			"packer",
 			"qf",

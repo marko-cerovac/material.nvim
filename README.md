@@ -141,7 +141,7 @@ require('material').setup({
 		variables = false -- Enable italic variables
 	},
 
-	contrast_windows = { -- Specify which windows get the contrasted (darker) background
+	contrast_filetypes = { -- Specify which filetypes get the contrasted (darker) background
 		"terminal", -- Darker terminal background
 		"packer", -- Darker packer background
 		"qf" -- Darker qf list background
