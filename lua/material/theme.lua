@@ -67,6 +67,7 @@ theme.loadEditor = function ()
     -- Editor highlight groups
 
 	local editor = {
+		Normal =				{ fg = colors.fg, bg = colors.bg }, -- normal text and background color
 		NormalFloat =			{ fg = colors.fg, bg = colors.float }, -- normal text and background color for floating windows
 		FloatBorder =			{ fg = colors.paleblue }, -- floating window border
 		ColorColumn =			{ fg = colors.none, bg = colors.active }, --  used for the columns set with 'colorcolumn'
@@ -92,6 +93,7 @@ theme.loadEditor = function ()
 		QuickFixLine =			{ fg = colors.highlight, bg = colors.title, style = 'reverse' }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
 		qfLineNr =				{ fg = colors.highlight, bg = colors.title, style = 'reverse' }, -- Line numbers for quickfix lists
 		Search =				{ fg = colors.title, bg = colors.selection, style = 'bold' }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+		SignColumn =			{ fg = colors.fg, bg = colors.bg },
 		SpecialKey =			{ fg = colors.purple }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
 		SpellBad =				{ fg = colors.red, bg = colors.none, style = 'italic,undercurl' }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
 		SpellCap =				{ fg = colors.blue, bg = colors.none, style = 'italic,undercurl' }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
@@ -135,20 +137,11 @@ theme.loadEditor = function ()
 
     -- Options:
 
-    --Set transparent background
-	if config.disable.background then
-		editor.Normal =				{ fg = colors.fg, bg = colors.none } -- normal text and background color
-		editor.SignColumn =			{ fg = colors.fg, bg = colors.none }
-	else
-		editor.Normal =				{ fg = colors.fg, bg = colors.bg } -- normal text and background color
-		editor.SignColumn =			{ fg = colors.fg, bg = colors.bg }
-	end
-
 	-- Remove window split borders
-	if config.borders then
-		editor.VertSplit =				{ fg = colors.border } -- the column separating vertically split windows
-	else
+	if config.disable.borders == true then
 		editor.VertSplit =				{ fg = colors.bg } -- the column separating vertically split windows
+	else
+		editor.VertSplit =				{ fg = colors.border } -- the column separating vertically split windows
 	end
 
 	--Set End of Buffer lines (~)
@@ -158,28 +151,6 @@ theme.loadEditor = function ()
 		editor.EndOfBuffer =			{ fg = colors.disabled } -- ~ lines at the end of a buffer
 	end
 
-	-- Set popup menu style
-	if config.popup_menu == 'light' then
-		editor.Pmenu =					{ fg = colors.fg, bg = colors.border } -- Popup menu: normal item.
-		editor.PmenuSel =				{ fg = colors.contrast, bg = colors.accent, style = 'bold' } -- Popup menu: selected item.
-		editor.PmenuSbar =				{ bg = colors.active } -- Popup menu: scrollbar.
-		editor.PmenuThumb =				{ bg = colors.fg } -- Popup menu: Thumb of the scrollbar.
-	elseif config.popup_menu == 'colorful' then
-		editor.Pmenu =					{ fg = colors.fg, bg = colors.border } -- Popup menu: normal item.
-		editor.PmenuSel =				{ fg = colors.border, bg = colors.green } -- Popup menu: selected item.
-		editor.PmenuSbar =				{ bg = colors.border } -- Popup menu: scrollbar.
-		editor.PmenuThumb =				{ bg = colors.red } -- Popup menu: Thumb of the scrollbar.
-	elseif config.popup_menu == 'stealth' then
-		editor.Pmenu =					{ fg = colors.gray, bg = colors.bg } -- Popup menu: normal item.
-		editor.PmenuSel =				{ fg = colors.title, bg = colors.bg, style = 'bold' } -- Popup menu: selected item.
-		editor.PmenuSbar =				{ bg = colors.bg } -- Popup menu: scrollbar.
-		editor.PmenuThumb =				{ bg = colors.selection } -- Popup menu: Thumb of the scrollbar.
-	else
-		editor.Pmenu =					{ fg = colors.fg, bg = colors.contrast } -- Popup menu: normal item.
-		editor.PmenuSel =				{ fg = colors.contrast, bg = colors.accent } -- Popup menu: selected item.
-		editor.PmenuSbar =				{ bg = colors.contrast } -- Popup menu: scrollbar.
-		editor.PmenuThumb =				{ bg = colors.selection } -- Popup menu: Thumb of the scrollbar.
-	end
 
 	return editor
 end
@@ -478,28 +449,47 @@ theme.loadPlugins = function()
 
     -- Options:
 
-    -- Disable nvim-tree background
-	if config.disable.background then
-		plugins.NvimTreeNormal =                        { fg = colors.comments, bg = colors.none }
-	else
-		plugins.NvimTreeNormal =                        { fg = colors.comments, bg = colors.sidebar }
-	end
+
+	return plugins
+
+end
+
+theme.loadPmenu = function()
+	-- Popup menu highlight groups
+
+	local pmenu = {}
 
 	-- Nvim-Cmp style options
 	if config.popup_menu == 'light' then
-		plugins.CmpItemKind =							{ fg = colors.green }
-		plugins.CmpItemAbbrMatch =						{ fg = colors.paleblue, style = 'bold' }
-		plugins.CmpItemAbbr =							{ fg = colors.fg }
+		pmenu.Pmenu =								{ fg = colors.fg, bg = colors.border } -- Popup menu: normal item.
+		pmenu.PmenuSel =							{ fg = colors.contrast, bg = colors.accent, style = 'bold' } -- Popup menu: selected item.
+		pmenu.PmenuSbar =							{ bg = colors.active } -- Popup menu: scrollbar.
+		pmenu.PmenuThumb =							{ bg = colors.fg } -- Popup menu: Thumb of the scrollbar.
+		pmenu.CmpItemKind =							{ fg = colors.green }
+		pmenu.CmpItemAbbrMatch =					{ fg = colors.paleblue, style = 'bold' }
+		pmenu.CmpItemAbbr =							{ fg = colors.fg }
 	elseif config.popup_menu == 'colorful' then
-		plugins.CmpItemKind =							{ fg = colors.blue, style = 'italic' }
-		plugins.CmpItemAbbrMatch =						{ fg = colors.yellow, style = 'bold' }
+		pmenu.Pmenu =								{ fg = colors.fg, bg = colors.border } -- Popup menu: normal item.
+		pmenu.PmenuSel =							{ fg = colors.border, bg = colors.green } -- Popup menu: selected item.
+		pmenu.PmenuSbar =							{ bg = colors.border } -- Popup menu: scrollbar.
+		pmenu.PmenuThumb =							{ bg = colors.red } -- Popup menu: Thumb of the scrollbar.
+		pmenu.CmpItemKind =							{ fg = colors.blue, style = 'italic' }
+		pmenu.CmpItemAbbrMatch =					{ fg = colors.yellow, style = 'bold' }
 	elseif config.popup_menu == 'stealth' then
-		plugins.CmpItemKind =							{ fg = colors.fg }
+		pmenu.Pmenu =								{ fg = colors.gray, bg = colors.bg } -- Popup menu: normal item.
+		pmenu.PmenuSel =							{ fg = colors.title, bg = colors.bg, style = 'bold' } -- Popup menu: selected item.
+		pmenu.PmenuSbar =							{ bg = colors.bg } -- Popup menu: scrollbar.
+		pmenu.PmenuThumb =							{ bg = colors.selection } -- Popup menu: Thumb of the scrollbar.
+		pmenu.CmpItemKind =							{ fg = colors.fg }
 	else
-		plugins.CmpItemAbbrMatch =						{ fg = colors.paleblue, style = 'bold' }
+		pmenu.Pmenu =								{ fg = colors.fg, bg = colors.contrast } -- Popup menu: normal item.
+		pmenu.PmenuSel =							{ fg = colors.contrast, bg = colors.accent } -- Popup menu: selected item.
+		pmenu.PmenuSbar =							{ bg = colors.contrast } -- Popup menu: scrollbar.
+		pmenu.PmenuThumb =							{ bg = colors.selection } -- Popup menu: Thumb of the scrollbar.
+		pmenu.CmpItemAbbrMatch =					{ fg = colors.paleblue, style = 'bold' }
 	end
 
-	return plugins
+	return pmenu
 
 end
 

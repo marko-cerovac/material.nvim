@@ -151,7 +151,6 @@ This is an example of the setup function with the default values:
 
 	require('material').setup({
 		contrast = true,
-		borders = false,
 		italics = {
 			comments = false,
 			strings = false,
@@ -169,6 +168,7 @@ This is an example of the setup function with the default values:
 			darker = false
 		},
 		disable = {
+			borders = false,
 			background = false,
 			term_colors = false,
 			eob_lines = false
@@ -179,9 +179,6 @@ This is an example of the setup function with the default values:
     + contrast {bool}
           Make sidebars, floating windows and popup menus like nvim-tree and
           telescope have a different background
-
-    + material_borders  {bool}
-          Enable the border between verticaly split windows
 	
 	+ popup_menu  {string}
 		  Select the style of the popup menu
@@ -206,8 +203,8 @@ This is an example of the setup function with the default values:
 		  those styles more contrast for better visibility
 
 	+ disable  {table}
-		  This table allows you to disable the theme from setting the
-		  background, terminal colors and end-of-buffer lines
+		  This table allows you to disable the theme from setting
+		  borders, background, terminal colors and end-of-buffer lines
 	
 	+ custom_highlights  {table}
 		  If you want to change or set a certain highlight group to a value,
@@ -221,7 +218,6 @@ Example config in Lua:
     -- Colorscheme settings
 	require('material').setup({
 		contrast = true,
-		borders = false,
 		popup_menu = "dark"
 		italics = {
 			comments = true,
@@ -236,6 +232,7 @@ Example config in Lua:
 			"qf",
 		},
 		disable = {
+			borders = true,
 			background = false,
 			term_colors = false,
 			eob_lines = false

@@ -129,7 +129,6 @@ This is an example of the function with the default values
 require('material').setup({
 
 	contrast = true, -- Enable contrast for sidebars, floating windows and popup menus like Nvim-Tree
-	borders = false, -- Enable borders between verticaly split windows
 
 	popup_menu = "dark", -- Popup menu style ( can be: 'dark', 'light', 'colorful' or 'stealth' )
 
@@ -153,6 +152,7 @@ require('material').setup({
 	},
 
 	disable = {
+		borders = false, -- Disable borders between verticaly split windows
 		background = false, -- Prevent the theme from setting the background (NeoVim then uses your teminal background)
 		term_colors = false, -- Prevent the theme from setting terminal colors
 		eob_lines = false -- Hide the end-of-buffer lines

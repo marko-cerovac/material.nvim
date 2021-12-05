@@ -53,6 +53,7 @@ function util.load()
         -- imort tables for plugins and lsp
         local plugins = material.loadPlugins()
         local lsp = material.loadLSP()
+		local pmenu = material.loadPmenu()
 
         if config.disable.term_colors == false then
           material.loadTerminal()
@@ -63,6 +64,10 @@ function util.load()
         end
 
         for group, colors in pairs(lsp) do
+            util.highlight(group, colors)
+        end
+
+        for group, colors in pairs(pmenu) do
             util.highlight(group, colors)
         end
 		if type(config.custom_highlights) == 'table' then

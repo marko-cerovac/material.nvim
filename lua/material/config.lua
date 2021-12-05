@@ -3,7 +3,6 @@ local Config = {}
 local defaults = {
 
 	contrast = true, -- Enable contrast
-	borders = false, -- Split window borders
 	popup_menu = 'dark', -- Popup menu style ( can be: 'dark', 'light', 'colorful' or 'stealth' )
 
 	italics = {
@@ -20,15 +19,16 @@ local defaults = {
 		"qf" -- Darker qf list background
 	},
 
-	text_contrast = {
-		lighter = false, -- Higher contrast text for lighter style
-		darker = false -- Higher contrast text for darker style
-	},
-
 	disable = {
+		borders = false, -- Disable window split borders
 		background = false, -- Disable setting the background color
 		term_colors = false, -- Disable setting the terminal colors
 		eob_lines = false -- Make end-of-buffer lines invisible
+	},
+
+	text_contrast = {
+		lighter = false, -- Higher contrast text for lighter style
+		darker = false -- Higher contrast text for darker style
 	},
 
 	-- custom_colors = {}, -- TODO: define custom colors

@@ -122,6 +122,6 @@ else vim.g.material_style = 'oceanic'
 end
 
 -- Extend the colors table with the conditional colors
-colors = vim.tbl_deep_extend("keep", colors, require("material.conditionals"))
+colors = vim.tbl_deep_extend("force", colors, require("material.conditionals"))
 
 return colors
