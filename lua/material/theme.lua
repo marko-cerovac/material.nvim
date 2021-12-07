@@ -68,7 +68,7 @@ theme.loadEditor = function ()
 
 	local editor = {
 		Normal =				{ fg = colors.fg, bg = colors.bg }, -- normal text and background color
-		NormalFloat =			{ fg = colors.fg, bg = colors.float }, -- normal text and background color for floating windows
+		NormalFloat =			{ fg = colors.fg, bg = colors.bg_alt }, -- normal text and background color for floating windows
 		FloatBorder =			{ fg = colors.paleblue }, -- floating window border
 		ColorColumn =			{ fg = colors.none, bg = colors.active }, --  used for the columns set with 'colorcolumn'
 		Conceal =				{ fg = colors.disabled }, -- placeholder characters substituted for concealed text (see 'conceallevel')
@@ -83,8 +83,8 @@ theme.loadEditor = function ()
 		Folded =				{ fg = colors.disabled, bg = colors.none, style = 'italic' }, -- line used for closed folds
 		FoldColumn =			{ fg = colors.blue }, -- 'foldcolumn'
 		IncSearch =				{ fg = colors.title, bg = colors.selection, style = 'underline' }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
-		LineNr =				{ fg = colors.line_numbers }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-		CursorLineNr =			{ fg = colors.accent, bg = colors.active }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+		LineNr =				{ fg = colors.line_numbers, bg = colors.num_bg }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+		CursorLineNr =			{ fg = colors.accent, bg = colors.cur_bg }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
 		MatchParen =			{ fg = colors.yellow, bg = colors.none, style = 'bold' }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
 		ModeMsg =				{ fg = colors.accent }, -- 'showmode' message (e.g., "-- INSERT -- ")
 		MoreMsg =				{ fg = colors.accent }, -- |more-prompt|
@@ -93,7 +93,7 @@ theme.loadEditor = function ()
 		QuickFixLine =			{ fg = colors.highlight, bg = colors.title, style = 'reverse' }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
 		qfLineNr =				{ fg = colors.highlight, bg = colors.title, style = 'reverse' }, -- Line numbers for quickfix lists
 		Search =				{ fg = colors.title, bg = colors.selection, style = 'bold' }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
-		SignColumn =			{ fg = colors.fg, bg = colors.bg },
+		SignColumn =			{ fg = colors.fg, bg = colors.sign_bg },
 		SpecialKey =			{ fg = colors.purple }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
 		SpellBad =				{ fg = colors.red, bg = colors.none, style = 'italic,undercurl' }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
 		SpellCap =				{ fg = colors.blue, bg = colors.none, style = 'italic,undercurl' }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
@@ -112,10 +112,10 @@ theme.loadEditor = function ()
 		WarningMsg =			{ fg = colors.yellow }, -- warning messages
 		Whitespace =			{ fg = colors.selection }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
 		WildMenu =				{ fg = colors.orange, bg = colors.none, style = 'bold' }, -- current match in 'wildmenu' completion
-		CursorColumn =			{ fg = colors.none, bg = colors.active }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
-		CursorLine =			{ fg = colors.none, bg = colors.active }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
-		-- ToolbarLine =			{ fg = material.fg, bg = material.bg_alt },
-		-- ToolbarButton =			{ fg = material.fg, bg = material.none, style = 'bold' },
+		CursorColumn =			{ fg = colors.none, bg = colors.cur_bg }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
+		CursorLine =			{ fg = colors.none, bg = colors.cur_bg }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
+		-- ToolbarLine =			{ fg = colors.fg, bg = colors.bg_alt },
+		-- ToolbarButton =			{ fg = colors.fg, bg = colors.none, style = 'bold' },
 		NormalMode =			{ fg = colors.accent, bg = colors.none, style = 'reverse' }, -- Normal mode message in the cmdline
 		InsertMode =			{ fg = colors.green, bg = colors.none, style = 'reverse' }, -- Insert mode message in the cmdline
 		ReplacelMode =			{ fg = colors.red, bg = colors.none, style = 'reverse' }, -- Replace mode message in the cmdline
@@ -133,16 +133,18 @@ theme.loadEditor = function ()
 		DashboardCenter =                       { fg = colors.accent },
 		DashboardFooter =                       { fg = colors.green, style = 'italic' },
 
+		VertSplit =				{ fg = colors.vsp }, -- the column separating vertically split windows
+
 	}
 
     -- Options:
 
 	-- Remove window split borders
-	if config.disable.borders == true then
+	--[[ if config.disable.borders == true then
 		editor.VertSplit =				{ fg = colors.bg } -- the column separating vertically split windows
 	else
 		editor.VertSplit =				{ fg = colors.border } -- the column separating vertically split windows
-	end
+	end ]]
 
 	--Set End of Buffer lines (~)
 	if config.disable.eob_lines then
@@ -229,7 +231,7 @@ theme.loadTreeSitter = function ()
 		TSVariableBuiltin =         { fg = colors.fg, style = styles.variables }, -- Variable names that are defined by the languages, like `this` or `self`.
 		TSEmphasis =                { fg = colors.paleblue }, -- For text to be represented with emphasis.
 		TSUnderline =               { fg = colors.fg, bg = colors.none, style = 'underline' }, -- For text to be represented with an underline.
-		TSStrike =                  { }, -- For strikethrough text.
+		-- TSStrike =                  { fg = colors.fg, bg = colors.none, style = 'strikethrough'}, -- For strikethrough text.
 		TSTitle =                   { fg = colors.title, bg = colors.none, style = 'bold' }, -- Text that is part of a title.
 		TSLiteral =                 { fg = colors.fg }, -- Literal text.
 		TSURI =                     { fg = colors.link }, -- Any URI like a link or email.
@@ -351,6 +353,8 @@ theme.loadPlugins = function()
 		TelescopeMatching =                     { fg = colors.cyan },
 
 		-- NvimTree
+		NvimTreeNormal =						{ fg = colors.comments, bg = colors.sidebar },
+		NvimTreeNormalNC =						{ fg = colors.comments },
 		NvimTreeRootFolder =                    { fg = colors.fg, style = 'italic' },
 		NvimTreeFolderName=                     { fg = colors.text },
 		NvimTreeFolderIcon=                     { fg = colors.accent, bg = colors.sidebar },
@@ -372,16 +376,15 @@ theme.loadPlugins = function()
 		LspDiagnosticsHint =                    { fg = colors.purple },
 
 		-- WhichKey
-		WhichKey =                              { fg = colors.accent , style = 'bold'},
+		WhichKey =                              { fg = colors.accent, style = 'bold'},
 		WhichKeyGroup =                         { fg = colors.text },
 		WhichKeyDesc =                          { fg = colors.blue, style = 'italic' },
 		WhichKeySeperator =                     { fg = colors.fg },
-		WhichKeyFloating =                      { bg = colors.float },
 		WhichKeyFloat =                         { bg = colors.float },
 
 		-- LspSaga
-		LspFloatWinNormal =                     { fg = colors.text, bg = colors.bg },
-		LspFloatWinBorder =                     { fg = colors.purple },
+		LspFloatWinNormal =                     { fg = colors.text, bg = colors.float },
+		LspFloatWinBorder =                     { fg = colors.purple, bg = colors.float },
 		DiagnosticError =                       { fg = colors.error },
 		DiagnosticWarning =                     { fg = colors.yellow },
 		DiagnosticInformation =                 { fg = colors.paleblue },

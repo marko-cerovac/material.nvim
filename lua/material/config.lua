@@ -2,8 +2,13 @@ local Config = {}
 
 local defaults = {
 
-	contrast = true, -- Enable contrast
-	popup_menu = 'dark', -- Popup menu style ( can be: 'dark', 'light', 'colorful' or 'stealth' )
+	contrast = {
+		sidebars = false, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
+		floating_windows = false, -- Enable contrast for floating windows
+		line_numbers = false, -- Enable contrast background for line numbers
+		sign_column = false, -- Enable contrast background the sign column
+		cursor_line = false, -- Enable darker background for the cursor line
+	},
 
 	italics = {
 		comments = false, -- Italic comments
@@ -13,11 +18,9 @@ local defaults = {
 		variables = false -- Italic variables
 	},
 
-	contrast_filetypes = { -- Select which windows get the contrast background
-		"terminal", -- Darker terminal
-		"packer", -- Darker packer background
-		"qf" -- Darker qf list background
-	},
+	popup_menu = 'dark', -- Popup menu style ( can be: 'dark', 'light', 'colorful' or 'stealth' )
+
+	contrast_filetypes = {}, -- Select which windows get the contrast background
 
 	disable = {
 		borders = false, -- Disable window split borders
@@ -26,7 +29,7 @@ local defaults = {
 		eob_lines = false -- Make end-of-buffer lines invisible
 	},
 
-	text_contrast = {
+	high_visibility = {
 		lighter = false, -- Higher contrast text for lighter style
 		darker = false -- Higher contrast text for darker style
 	},

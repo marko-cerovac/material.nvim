@@ -8,7 +8,7 @@ local colors = {}
 -- Add contrast to Lighter style
 if vim.g.material_style == 'lighter' then
 
-	if config.text_contrast.lighter == true then
+	if config.high_visibility.lighter == true then
 
 		-- Lighter theme style with high contrast
 		colors.fg =				'#213B47' -- 20% darkened
@@ -57,8 +57,8 @@ end
 
 -- Add contrast to Darker style
 if vim.g.material_style == 'darker' then
-	if config.text_contrast.darker == true then
-		-- Lighter theme style with high contrast
+	if config.high_visibility.darker == true then
+		-- Darker theme style with high contrast
 		colors.comments =		'#757575'
 		colors.line_numbers =	'#5C5C5C'
 	else
@@ -69,23 +69,7 @@ if vim.g.material_style == 'darker' then
 	end
 end
 
--- Apply the disabled background setting
-if config.disable.background == true then
-	colors.bg = 'NONE'
-end
 
-if config.disable.borders == true then
-	colors.vsp = colors.bg
-end
-
--- Enable contrast sidebars, floating windows and popup menus
-if config.contrast == true then
-    colors.sidebar = colors.bg_alt
-    colors.float = colors.bg_alt
-else
-    colors.sidebar = colors.bg
-    colors.float = colors.bg
-end
 
 
 -- Apply user defined colors

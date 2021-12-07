@@ -2,6 +2,8 @@
 -- the basic colors of the theme
 -- and the style specific colors
 
+local config = require('material.config').options
+
 local colors = {
 	-- Common colors
 
@@ -39,6 +41,17 @@ local colors = {
 if vim.g.material_style == 'darker' then
 	-- Darker theme style
 
+	if config.high_visibility.darker == true then
+		-- Darker theme style with high contrast
+		colors.comments =		'#757575'
+		colors.line_numbers =	'#5C5C5C'
+	else
+		-- default Darker theme style
+		colors.comments =		'#616161'
+		colors.line_numbers =	'#424242'
+
+	end
+
     colors.bg =				'#212121'
     colors.bg_alt =			'#1A1A1A'
     colors.fg =				'#B0BEC5'
@@ -54,6 +67,47 @@ if vim.g.material_style == 'darker' then
 
 elseif vim.g.material_style == 'lighter' then
 
+	if config.high_visibility.lighter == true then
+
+		-- Lighter theme style with high contrast
+		colors.fg =				'#213B47' -- 20% darkened
+		colors.text =			'#61747D' -- 20% darkened
+		colors.comments =		'#778C96' -- 20% darkened
+		colors.selection = 		'#e2e9e9' -- 15% saturation, 10% lightness
+		colors.line_numbers =	'#B6BFC3' -- 10% darkened
+		colors.accent =			'#0089A1' -- 20% darkened
+
+		colors.red =			'#B20602' -- 20% darkened
+		colors.green =			'#5E8526' -- 20% darkened
+		colors.yellow =			'#C37101' -- 20% darkened
+		colors.blue = 			'#2E4F85' -- 20% darkened
+		colors.paleblue =		'#54637D' -- 20% darkened
+		colors.cyan = 			'#067A82' -- 20% darkened
+		colors.purple =			'#491ACC' -- 20% darkened
+		colors.orange =			'#C43A14' -- 20% darkened
+		colors.pink = 			'#CC203D' -- 20% darkened
+
+	else
+
+		-- default Lighter theme style
+		colors.fg =				'#546E7A'
+		colors.text =			'#94A7B0'
+		colors.comments =		'#AABFC9'
+		colors.selection = 		'#80CBC4'
+		colors.line_numbers	=	'#CFD8DC'
+		colors.accent =			'#00BCD4'
+
+		colors.red =			'#E53935'
+		colors.green =			'#91B859'
+		colors.yellow =			'#F6A434'
+		colors.blue = 			'#6182B8'
+		colors.paleblue =		'#8796B0'
+		colors.cyan = 			'#39ADB5'
+		colors.purple =			'#7C4DFF'
+		colors.orange =			'#F76D47'
+		colors.pink = 			'#FF5370'
+
+	end
 
 	colors.bg =				'#FAFAFA'
 	colors.bg_alt =			'#FFFFFF'
@@ -66,6 +120,7 @@ elseif vim.g.material_style == 'lighter' then
 
 	colors.white =			'#FFFFFF'
 	colors.gray = 			'#717CB4'
+
 
 
 elseif vim.g.material_style == 'palenight' then
@@ -122,6 +177,76 @@ else vim.g.material_style = 'oceanic'
 end
 
 -- Extend the colors table with the conditional colors
-colors = vim.tbl_deep_extend("force", colors, require("material.conditionals"))
+-- colors = vim.tbl_deep_extend("force", colors, require("material.conditionals"))
+
+-- Apply the disabled background setting
+if config.disable.background == true then
+	colors.bg = 'NONE'
+end
+
+if config.disable.borders == true then
+	colors.vsp = colors.bg
+end
+
+-- Enable contrast sidebars
+if config.contrast.sidebars == true then
+	colors.sidebar = colors.bg_alt
+else
+	colors.sidebar = colors.bg
+end
+
+-- Enable contrast floating windows
+if config.contrast.floating_windows == true then
+	colors.float = colors.bg_alt
+else
+	colors.float = colors.bg
+end
+
+-- Enable contrast line numbers
+if config.contrast.line_numbers == true then
+	colors.num_bg = colors.bg_alt
+else
+	colors.num_bg = colors.bg
+end
+
+-- Enable contrast sign column
+if config.contrast.sign_column == true then
+	colors.sign_bg = colors.bg_alt
+else
+	colors.sign_bg = colors.bg
+end
+
+-- Enable contrast cursor line
+if config.contrast.cursor_line == true then
+	colors.cur_bg = colors.bg_alt
+else
+	colors.cur_bg = colors.active
+end
+
+-- Disable borders
+if config.disable.borders == true then
+	colors.vsp = colors.bg
+else
+	colors.vsp = colors.border
+end
+
+-- Apply user defined colors
+if type(config.custom_colors) == "table" then
+	for key, value in pairs(config.custom_colors) do
+		-- If the color starts with a #
+		if string.sub(value, 1, 1) == "#" then
+			-- Hex override
+			colors[key] = value
+		-- IF it doesn't, dont accept it
+		else
+			-- Another group
+			if not colors[value] then
+				error("Color " .. value .. " does not exist")
+			else
+				colors[key] = colors[value]
+			end
+		end
+	end
+end
 
 return colors
