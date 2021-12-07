@@ -32,6 +32,7 @@ local colors = {
 	error =					'#FF5370',
 	link =					'#80CBC4',
 	cursor =				'#FFCC00',
+	title =					'#EEFFFF',
 
 	none =      			'NONE'
 }

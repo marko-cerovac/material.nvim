@@ -51,8 +51,6 @@ if vim.g.material_style == 'lighter' then
 	-- Text and titles should be black on the light variant
     colors.title = colors.black
 
-else
-    colors.title = colors.white
 end
 
 -- Add contrast to Darker style
