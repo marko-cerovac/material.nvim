@@ -116,11 +116,11 @@ theme.loadEditor = function ()
 		CursorLine =			{ fg = colors.none, bg = colors.cur_bg }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
 		-- ToolbarLine =			{ fg = colors.fg, bg = colors.bg_alt },
 		-- ToolbarButton =			{ fg = colors.fg, bg = colors.none, style = 'bold' },
-		NormalMode =			{ fg = colors.accent, bg = colors.none, style = 'reverse' }, -- Normal mode message in the cmdline
-		InsertMode =			{ fg = colors.green, bg = colors.none, style = 'reverse' }, -- Insert mode message in the cmdline
-		ReplacelMode =			{ fg = colors.red, bg = colors.none, style = 'reverse' }, -- Replace mode message in the cmdline
-		VisualMode =			{ fg = colors.purple, bg = colors.none, style = 'reverse' }, -- Visual mode message in the cmdline
-		CommandMode =			{ fg = colors.gray, bg = colors.none, style = 'reverse' }, -- Command mode message in the cmdline
+		NormalMode =			{ fg = colors.accent }, -- Normal mode message in the cmdline
+		InsertMode =			{ fg = colors.green }, -- Insert mode message in the cmdline
+		ReplacelMode =			{ fg = colors.red }, -- Replace mode message in the cmdline
+		VisualMode =			{ fg = colors.purple }, -- Visual mode message in the cmdline
+		CommandMode =			{ fg = colors.gray }, -- Command mode message in the cmdline
 		Warnings =				{ fg = colors.yellow },
 
         healthError =           { fg = colors.error },
@@ -185,7 +185,7 @@ theme.loadTreeSitter = function ()
 		TSAttribute =               { fg = colors.yellow }, -- (unstable) TODO: docs
 		TSBoolean=                  { fg = colors.orange }, -- For booleans.
 		TSCharacter=                { fg = colors.orange }, -- For characters.
-		TSComment=                  { fg = colors.comments , bg = colors.none, style = styles.comments }, -- For comment blocks.
+		TSComment=                  { fg = colors.comments, style = styles.comments }, -- For comment blocks.
 		TSConditional =             { fg = colors.purple, style = styles.keywords }, -- For keywords related to conditionnals.
 		TSConstructor =             { fg = colors.blue }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
 		TSConstant =                { fg = colors.yellow }, -- For constants
