@@ -354,7 +354,7 @@ theme.loadPlugins = function()
 
 		-- NvimTree
 		NvimTreeNormal =						{ fg = colors.comments, bg = colors.sidebar },
-		NvimTreeNormalNC =						{ fg = colors.comments },
+		NvimTreeNormalNC =						{ fg = colors.comments, bg = colors.sidebar },
 		NvimTreeRootFolder =                    { fg = colors.fg, style = 'italic' },
 		NvimTreeFolderName=                     { fg = colors.text },
 		NvimTreeFolderIcon=                     { fg = colors.accent, bg = colors.sidebar },
