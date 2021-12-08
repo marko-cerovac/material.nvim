@@ -68,7 +68,8 @@ theme.loadEditor = function ()
 
 	local editor = {
 		Normal =				{ fg = colors.fg, bg = colors.bg }, -- normal text and background color
-		NormalFloat =			{ fg = colors.fg, bg = colors.bg_alt }, -- normal text and background color for floating windows
+		NormalFloat =			{ fg = colors.fg, bg = colors.float }, -- normal text and background color for floating windows
+		NormalContrast =		{ fg = colors.fg, bg = colors.bg_alt }, -- a help group for contrast fileypes
 		FloatBorder =			{ fg = colors.paleblue }, -- floating window border
 		ColorColumn =			{ fg = colors.none, bg = colors.active }, --  used for the columns set with 'colorcolumn'
 		Conceal =				{ fg = colors.disabled }, -- placeholder characters substituted for concealed text (see 'conceallevel')
@@ -84,7 +85,7 @@ theme.loadEditor = function ()
 		FoldColumn =			{ fg = colors.blue }, -- 'foldcolumn'
 		IncSearch =				{ fg = colors.title, bg = colors.selection, style = 'underline' }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
 		LineNr =				{ fg = colors.line_numbers, bg = colors.num_bg }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-		CursorLineNr =			{ fg = colors.accent, bg = colors.cur_bg }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+		CursorLineNr =			{ fg = colors.accent, bg = colors.num_bg }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
 		MatchParen =			{ fg = colors.yellow, bg = colors.none, style = 'bold' }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
 		ModeMsg =				{ fg = colors.accent }, -- 'showmode' message (e.g., "-- INSERT -- ")
 		MoreMsg =				{ fg = colors.accent }, -- |more-prompt|
@@ -400,7 +401,7 @@ theme.loadPlugins = function()
 		LspSagaBorderTitle =                    { fg = colors.cyan },
 		LspSagaHoverBorder =                    { fg = colors.paleblue },
 		LspSagaRenameBorder =                   { fg = colors.green },
-		LspSagaRenamePromptPrefix =             { fg = colors.yellow },
+		LspSagaRenamePromptPrefix =             { fg = colors.green },
 		LspSagaDefPreviewBorder =               { fg = colors.green },
 		LspSagaCodeActionTitle =                { fg = colors.paleblue },
 		LspSagaCodeActionContent =              { fg = colors.purple },
@@ -473,9 +474,9 @@ theme.loadPmenu = function()
 		CmpItemKindModule =							{ fg = colors.red },
 		CmpItemKindProperty =						{ fg = colors.purple },
 		CmpItemKindKeyword =						{ fg = colors.cyan },
-		CmpItemKindFile =							{ fg = colors.green },
-		CmpItemKindFolder =							{ fg = colors.green },
-		CmpItemKindSnippet =						{ fg = colors.orange },
+		CmpItemKindFile =							{ fg = colors.title },
+		CmpItemKindFolder =							{ fg = colors.title },
+		CmpItemKindSnippet =						{ fg = colors.green },
 
 	}
 
