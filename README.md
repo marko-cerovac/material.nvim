@@ -134,9 +134,9 @@ require('material').setup({
 		line_numbers = false, -- Enable contrast background for line numbers
 		sign_column = false, -- Enable contrast background the sign column
 		cursor_line = false, -- Enable darker background for the cursor line
+		non_current_windows = false -- Enable darker background for non-current windows
+		popup_menu = false, -- Enable lighter background for the popup menu
 	},
-
-	popup_menu = "dark", -- Popup menu style ( can be: 'dark', 'light', 'colorful' or 'stealth' )
 
 	italics = {
 		comments = false, -- Enable italic comments

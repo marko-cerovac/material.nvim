@@ -121,7 +121,7 @@ elseif vim.g.material_style == 'lighter' then
 
 	colors.white =			'#FFFFFF'
 	colors.gray = 			'#717CB4'
-
+    colors.title = colors.black
 
 
 elseif vim.g.material_style == 'palenight' then
@@ -177,9 +177,6 @@ else vim.g.material_style = 'oceanic'
 
 end
 
--- Extend the colors table with the conditional colors
--- colors = vim.tbl_deep_extend("force", colors, require("material.conditionals"))
-
 -- Apply the disabled background setting
 if config.disable.background == true then
 	colors.bg = 'NONE'
@@ -205,23 +202,29 @@ end
 
 -- Enable contrast line numbers
 if config.contrast.line_numbers == true then
-	colors.num_bg = colors.bg_alt
+	colors.bg_num = colors.bg_alt
 else
-	colors.num_bg = colors.bg
+	colors.bg_num = colors.bg
 end
 
 -- Enable contrast sign column
 if config.contrast.sign_column == true then
-	colors.sign_bg = colors.bg_alt
+	colors.bg_sign = colors.bg_alt
 else
-	colors.sign_bg = colors.bg
+	colors.bg_sign = colors.bg
 end
 
 -- Enable contrast cursor line
 if config.contrast.cursor_line == true then
-	colors.cur_bg = colors.bg_alt
+	colors.bg_cur = colors.bg_alt
 else
-	colors.cur_bg = colors.active
+	colors.bg_cur = colors.active
+end
+
+if config.contrast.non_current_windows == true then
+	colors.bg_nc = colors.bg_alt
+else
+	colors.bg_nc = colors.bg
 end
 
 -- Disable borders
@@ -232,22 +235,23 @@ else
 end
 
 -- Apply user defined colors
-if type(config.custom_colors) == "table" then
+--[[ if type(config.custom_colors) == "table" then
 	for key, value in pairs(config.custom_colors) do
 		-- If the color starts with a #
 		if string.sub(value, 1, 1) == "#" then
 			-- Hex override
 			colors[key] = value
-		-- IF it doesn't, dont accept it
+		-- IF it doesn't
 		else
-			-- Another group
+			-- If the color isn't already in the colors table
 			if not colors[value] then
 				error("Color " .. value .. " does not exist")
 			else
+			-- If it is, then link to it
 				colors[key] = colors[value]
 			end
 		end
 	end
-end
+end ]]
 
 return colors

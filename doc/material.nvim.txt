@@ -156,6 +156,8 @@ This is an example of the setup function with the default values:
 			line_numbers = false,
 			sign_column = false,
 			cursor_line = false,
+			non_current_windows = false,
+			popup_menu = false
 		},
 		italics = {
 			comments = false,
@@ -180,21 +182,22 @@ This is an example of the setup function with the default values:
 
     + contrast {table}
           Make sidebars (like nvim-tree), floating windows, line numbers,
-		  sign column and cursor line have a different background
-	
-	+ popup_menu  {string}
-		  Select the style of the popup menu
-		  Can be initialized with one of these values: - dark
-													   - light
-													   - colorful
-													   - stealth
+		  sign column, popup menu, cursor line and non current windows have
+		  a different background. Varable names are: - sidebars
+													 - floating_windows
+							 						 - line_numbers
+							 						 - sign_column
+							 						 - cursor_line
+							 						 - non_current_windows
+							 						 - popup_menu
+		These can be set to true or false
 
 	+ italics  {table}
-		  Select which code objects  are italic: -comments
-		                                         -strings
-		                                         -keywords
-		                                         -functions
-		                                         -variables
+		  Select which code objects are italic: -comments
+		                                        -strings
+		                                        -keywords
+		                                        -functions
+		                                        -variables
 		 Set the desired value to true to make it italic
 
 	+ contrast_filetypes  {table}
@@ -226,8 +229,8 @@ Example config in Lua:
 			line_numbers = false,
 			sign_column = false,
 			cursor_line = true,
+			popup_menu = false
 		},
-		popup_menu = "dark"
 		italics = {
 			comments = true,
 			strings = false,

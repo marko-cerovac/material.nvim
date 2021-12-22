@@ -5,10 +5,20 @@ local defaults = {
 	contrast = {
 		sidebars = false, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
 		floating_windows = false, -- Enable contrast for floating windows
+		cursor_line = false, -- Enable darker background for the cursor line
 		line_numbers = false, -- Enable contrast background for line numbers
 		sign_column = false, -- Enable contrast background the sign column
-		cursor_line = false, -- Enable darker background for the cursor line
+		non_current_windows = false, -- Enable darker background for non-current windows
+		popup_menu = false, -- Enable lighter background for the popup menu
 	},
+
+	--[[ styles = {
+		comments = '', -- comment style
+		strings = '', -- string style
+		keywords = '', -- keyword style
+		functions = '', -- function style
+		variables = '' -- variable style
+	}, ]]
 
 	italics = {
 		comments = false, -- Italic comments
@@ -17,8 +27,6 @@ local defaults = {
 		functions = false, -- Italic functions
 		variables = false -- Italic variables
 	},
-
-	popup_menu = 'dark', -- Popup menu style ( can be: 'dark', 'light', 'colorful' or 'stealth' )
 
 	contrast_filetypes = {}, -- Select which windows get the contrast background
 

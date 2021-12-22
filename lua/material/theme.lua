@@ -68,13 +68,14 @@ theme.loadEditor = function ()
 
 	local editor = {
 		Normal =				{ fg = colors.fg, bg = colors.bg }, -- normal text and background color
+		NormalNC =				{ fg = colors.fg, bg = colors.bg_nc }, -- normal text and background color
 		NormalFloat =			{ fg = colors.fg, bg = colors.float }, -- normal text and background color for floating windows
 		NormalContrast =		{ fg = colors.fg, bg = colors.bg_alt }, -- a help group for contrast fileypes
 		FloatBorder =			{ fg = colors.paleblue }, -- floating window border
 		ColorColumn =			{ fg = colors.none, bg = colors.active }, --  used for the columns set with 'colorcolumn'
 		Conceal =				{ fg = colors.disabled }, -- placeholder characters substituted for concealed text (see 'conceallevel')
-		Cursor =				{ fg = colors.cursor, bg = colors.none, style = 'reverse' }, -- the character under the cursor
-		CursorIM =				{ fg = colors.cursor, bg = colors.none, style = 'reverse' }, -- like Cursor, but used when in IME mode
+		Cursor =				{ fg = colors.bg_alt, bg = colors.cursor }, -- the character under the cursor
+		CursorIM =				{ fg = colors.bg_alt, bg = colors.cursor }, -- like Cursor, but used when in IME mode
 		Directory =				{ fg = colors.blue, bg = colors.none }, -- directory names (and other special names in listings)
 		DiffAdd =				{ fg = colors.green, bg = colors.none }, -- diff mode: Added line
 		DiffChange =			{ fg = colors.blue, bg = colors.none }, --  diff mode: Changed line
@@ -84,17 +85,18 @@ theme.loadEditor = function ()
 		Folded =				{ fg = colors.disabled, bg = colors.none, style = 'italic' }, -- line used for closed folds
 		FoldColumn =			{ fg = colors.blue }, -- 'foldcolumn'
 		IncSearch =				{ fg = colors.title, bg = colors.selection, style = 'underline' }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
-		LineNr =				{ fg = colors.line_numbers, bg = colors.num_bg }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-		CursorLineNr =			{ fg = colors.accent, bg = colors.num_bg }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+		LineNr =				{ fg = colors.line_numbers, bg = colors.bg_num }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+		CursorLineNr =			{ fg = colors.accent, bg = colors.bg_num }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
 		MatchParen =			{ fg = colors.yellow, bg = colors.none, style = 'bold' }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
 		ModeMsg =				{ fg = colors.accent }, -- 'showmode' message (e.g., "-- INSERT -- ")
 		MoreMsg =				{ fg = colors.accent }, -- |more-prompt|
 		NonText =				{ fg = colors.disabled }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+		PmenuSel =				{ fg = colors.contrast, bg = colors.accent }, -- Popup menu: selected item.
 		Question =				{ fg = colors.green }, -- |hit-enter| prompt and yes/no questions
 		QuickFixLine =			{ fg = colors.highlight, bg = colors.title, style = 'reverse' }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
 		qfLineNr =				{ fg = colors.highlight, bg = colors.title, style = 'reverse' }, -- Line numbers for quickfix lists
 		Search =				{ fg = colors.title, bg = colors.selection, style = 'bold' }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
-		SignColumn =			{ fg = colors.fg, bg = colors.sign_bg },
+		SignColumn =			{ fg = colors.fg, bg = colors.bg_sign },
 		SpecialKey =			{ fg = colors.purple }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
 		SpellBad =				{ fg = colors.red, bg = colors.none, style = 'italic,undercurl' }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
 		SpellCap =				{ fg = colors.blue, bg = colors.none, style = 'italic,undercurl' }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
@@ -113,8 +115,8 @@ theme.loadEditor = function ()
 		WarningMsg =			{ fg = colors.yellow }, -- warning messages
 		Whitespace =			{ fg = colors.selection }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
 		WildMenu =				{ fg = colors.orange, bg = colors.none, style = 'bold' }, -- current match in 'wildmenu' completion
-		CursorColumn =			{ fg = colors.none, bg = colors.cur_bg }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
-		CursorLine =			{ fg = colors.none, bg = colors.cur_bg }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
+		CursorColumn =			{ fg = colors.none, bg = colors.bg_cur }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
+		CursorLine =			{ fg = colors.none, bg = colors.bg_cur }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
 		-- ToolbarLine =			{ fg = colors.fg, bg = colors.bg_alt },
 		-- ToolbarButton =			{ fg = colors.fg, bg = colors.none, style = 'bold' },
 		NormalMode =			{ fg = colors.accent }, -- Normal mode message in the cmdline
@@ -134,24 +136,28 @@ theme.loadEditor = function ()
 		DashboardCenter =                       { fg = colors.accent },
 		DashboardFooter =                       { fg = colors.green, style = 'italic' },
 
-		VertSplit =				{ fg = colors.vsp }, -- the column separating vertically split windows
+		VertSplit =								{ fg = colors.vsp }, -- the column separating vertically split windows
 
 	}
 
     -- Options:
-
-	-- Remove window split borders
-	--[[ if config.disable.borders == true then
-		editor.VertSplit =				{ fg = colors.bg } -- the column separating vertically split windows
-	else
-		editor.VertSplit =				{ fg = colors.border } -- the column separating vertically split windows
-	end ]]
 
 	--Set End of Buffer lines (~)
 	if config.disable.eob_lines then
 		editor.EndOfBuffer =			{ fg = colors.bg } -- ~ lines at the end of a buffer
 	else
 		editor.EndOfBuffer =			{ fg = colors.disabled } -- ~ lines at the end of a buffer
+	end
+
+	-- Nvim-Cmp style options
+	if config.contrast.popup_menu == true then
+		editor.Pmenu =					{ fg = colors.fg, bg = colors.border } -- Popup menu: normal item.
+		editor.PmenuSbar =				{ bg = colors.active } -- Popup menu: scrollbar.
+		editor.PmenuThumb =				{ bg = colors.fg } -- Popup menu: Thumb of the scrollbar.
+	else
+		editor.Pmenu =					{ fg = colors.fg, bg = colors.contrast } -- Popup menu: normal item.
+		editor.PmenuSbar =				{ bg = colors.contrast } -- Popup menu: scrollbar.
+		editor.PmenuThumb =				{ bg = colors.selection } -- Popup menu: Thumb of the scrollbar.
 	end
 
 
@@ -248,6 +254,10 @@ theme.loadLSP = function ()
     -- Lsp highlight groups
 
 	local lsp = {
+		DiagnosticError =                       { fg = colors.error },
+		DiagnosticWarning =                     { fg = colors.yellow },
+		DiagnosticInformation =                 { fg = colors.paleblue },
+		DiagnosticHint =                        { fg = colors.purple },
 		LspDiagnosticsDefaultError =            { fg = colors.error }, -- used for "Error" diagnostic virtual text
 		LspDiagnosticsSignError =               { fg = colors.error }, -- used for "Error" diagnostic signs in sign column
 		LspDiagnosticsFloatingError =           { fg = colors.error }, -- used for "Error" diagnostic messages in the diagnostics float
@@ -308,6 +318,24 @@ theme.loadPlugins = function()
 		LspTroubleText =                        { fg = colors.text },
 		LspTroubleCount =                       { fg = colors.purple, bg = colors.active },
 		LspTroubleNormal =                      { fg = colors.fg, bg = colors.sidebar },
+
+		-- Nvim-Cmp
+		CmpItemAbbrMatch =							{ fg = colors.paleblue, style = 'bold' },
+		CmpItemKindText =							{ fg = colors.red },
+		CmpItemKindMethod =							{ fg = colors.blue },
+		CmpItemKindFunction =						{ fg = colors.blue },
+		CmpItemKindContructor =						{ fg = colors.purple },
+		CmpItemKindField =							{ fg = colors.cyan },
+		CmpItemKindVariable =						{ fg = colors.yellow },
+		CmpItemKindClass =							{ fg = colors.yellow },
+		CmpItemKindInterface =						{ fg = colors.yellow },
+		CmpItemKindConstant =						{ fg = colors.yellow },
+		CmpItemKindModule =							{ fg = colors.red },
+		CmpItemKindProperty =						{ fg = colors.purple },
+		CmpItemKindKeyword =						{ fg = colors.cyan },
+		CmpItemKindFile =							{ fg = colors.title },
+		CmpItemKindFolder =							{ fg = colors.title },
+		CmpItemKindSnippet =						{ fg = colors.green },
 
 		-- Diff
 		diffAdded =                             { fg = colors.green },
@@ -386,10 +414,6 @@ theme.loadPlugins = function()
 		-- LspSaga
 		LspFloatWinNormal =                     { fg = colors.text, bg = colors.float },
 		LspFloatWinBorder =                     { fg = colors.purple, bg = colors.float },
-		DiagnosticError =                       { fg = colors.error },
-		DiagnosticWarning =                     { fg = colors.yellow },
-		DiagnosticInformation =                 { fg = colors.paleblue },
-		DiagnosticHint =                        { fg = colors.purple },
 		LspSagaDiagnosticBorder =				{ fg = colors.blue },
 		LspSagaDiagnosticHeader =				{ fg = colors.blue },
 		LspSagaDiagnosticTruncateLine =			{ fg = colors.border },
@@ -451,66 +475,7 @@ theme.loadPlugins = function()
 		FernBranchText =						{ fg = colors.blue },
 	}
 
-    -- Options:
-
-
 	return plugins
-
-end
-
-theme.loadPmenu = function()
-	-- Popup menu highlight groups
-
-	local pmenu = {
-		CmpItemKindText =							{ fg = colors.red },
-		CmpItemKindMethod =							{ fg = colors.blue },
-		CmpItemKindFunction =						{ fg = colors.blue },
-		CmpItemKindContructor =						{ fg = colors.purple },
-		CmpItemKindField =							{ fg = colors.cyan },
-		CmpItemKindVariable =						{ fg = colors.yellow },
-		CmpItemKindClass =							{ fg = colors.yellow },
-		CmpItemKindInterface =						{ fg = colors.yellow },
-		CmpItemKindConstant =						{ fg = colors.yellow },
-		CmpItemKindModule =							{ fg = colors.red },
-		CmpItemKindProperty =						{ fg = colors.purple },
-		CmpItemKindKeyword =						{ fg = colors.cyan },
-		CmpItemKindFile =							{ fg = colors.title },
-		CmpItemKindFolder =							{ fg = colors.title },
-		CmpItemKindSnippet =						{ fg = colors.green },
-
-	}
-
-	-- Nvim-Cmp style options
-	if config.popup_menu == 'light' then
-		pmenu.Pmenu =								{ fg = colors.fg, bg = colors.border } -- Popup menu: normal item.
-		pmenu.PmenuSel =							{ fg = colors.contrast, bg = colors.accent, style = 'bold' } -- Popup menu: selected item.
-		pmenu.PmenuSbar =							{ bg = colors.active } -- Popup menu: scrollbar.
-		pmenu.PmenuThumb =							{ bg = colors.fg } -- Popup menu: Thumb of the scrollbar.
-		pmenu.CmpItemKind =							{ fg = colors.green }
-		pmenu.CmpItemAbbrMatch =					{ fg = colors.paleblue, style = 'bold' }
-		pmenu.CmpItemAbbr =							{ fg = colors.fg }
-	elseif config.popup_menu == 'colorful' then
-		pmenu.Pmenu =								{ fg = colors.fg, bg = colors.border } -- Popup menu: normal item.
-		pmenu.PmenuSel =							{ fg = colors.border, bg = colors.green } -- Popup menu: selected item.
-		pmenu.PmenuSbar =							{ bg = colors.border } -- Popup menu: scrollbar.
-		pmenu.PmenuThumb =							{ bg = colors.red } -- Popup menu: Thumb of the scrollbar.
-		pmenu.CmpItemKind =							{ fg = colors.blue, style = 'italic' }
-		pmenu.CmpItemAbbrMatch =					{ fg = colors.yellow, style = 'bold' }
-	elseif config.popup_menu == 'stealth' then
-		pmenu.Pmenu =								{ fg = colors.gray, bg = colors.bg } -- Popup menu: normal item.
-		pmenu.PmenuSel =							{ fg = colors.title, bg = colors.bg, style = 'bold' } -- Popup menu: selected item.
-		pmenu.PmenuSbar =							{ bg = colors.bg } -- Popup menu: scrollbar.
-		pmenu.PmenuThumb =							{ bg = colors.selection } -- Popup menu: Thumb of the scrollbar.
-		pmenu.CmpItemKind =							{ fg = colors.fg }
-	else
-		pmenu.Pmenu =								{ fg = colors.fg, bg = colors.contrast } -- Popup menu: normal item.
-		pmenu.PmenuSel =							{ fg = colors.contrast, bg = colors.accent } -- Popup menu: selected item.
-		pmenu.PmenuSbar =							{ bg = colors.contrast } -- Popup menu: scrollbar.
-		pmenu.PmenuThumb =							{ bg = colors.selection } -- Popup menu: Thumb of the scrollbar.
-		pmenu.CmpItemAbbrMatch =					{ fg = colors.paleblue, style = 'bold' }
-	end
-
-	return pmenu
 
 end
 
