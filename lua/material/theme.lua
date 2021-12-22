@@ -343,6 +343,12 @@ theme.loadLSP = function ()
     -- Lsp highlight groups
 
 	local lsp = {
+		LspFloatWinNormal =                     { fg = material.text, bg = material.bg },
+		LspFloatWinBorder =                     { fg = material.purple },
+		DiagnosticError =                       { fg = material.error },
+		DiagnosticWarning =                     { fg = material.yellow },
+		DiagnosticInformation =                 { fg = material.paleblue },
+		DiagnosticHint =                        { fg = material.purple },
 		LspDiagnosticsDefaultError =            { fg = material.error }, -- used for "Error" diagnostic virtual text
 		LspDiagnosticsSignError =               { fg = material.error }, -- used for "Error" diagnostic signs in sign column
 		LspDiagnosticsFloatingError =           { fg = material.error }, -- used for "Error" diagnostic messages in the diagnostics float
@@ -478,12 +484,6 @@ theme.loadPlugins = function()
 		WhichKeyFloat =                         { bg = material.float },
 
 		-- LspSaga
-		LspFloatWinNormal =                     { fg = material.text, bg = material.bg },
-		LspFloatWinBorder =                     { fg = material.purple },
-		DiagnosticError =                       { fg = material.error },
-		DiagnosticWarning =                     { fg = material.yellow },
-		DiagnosticInformation =                 { fg = material.paleblue },
-		DiagnosticHint =                        { fg = material.purple },
 		LspSagaDiagnosticBorder =				{ fg = material.blue },
 		LspSagaDiagnosticHeader =				{ fg = material.blue },
 		LspSagaDiagnosticTruncateLine =			{ fg = material.border },

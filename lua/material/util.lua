@@ -52,7 +52,6 @@ function util.load()
     async = vim.loop.new_async(vim.schedule_wrap(function ()
         -- imort tables for plugins and lsp
         local plugins = material.loadPlugins()
-        local lsp = material.loadLSP()
 
         if config.disable.term_colors == false then
           material.loadTerminal()
@@ -62,9 +61,6 @@ function util.load()
             util.highlight(group, colors)
         end
 
-        for group, colors in pairs(lsp) do
-            util.highlight(group, colors)
-        end
 		if type(config.custom_highlights) == 'table' then
 			for group, colors in pairs(config.custom_highlights) do
 				util.highlight(group, colors)
@@ -79,6 +75,7 @@ function util.load()
     local editor = material.loadEditor()
     local syntax = material.loadSyntax()
     local treesitter = material.loadTreeSitter()
+	local lsp = material.loadLSP()
 
     for group, colors in pairs(editor) do
         util.highlight(group, colors)
@@ -91,6 +88,10 @@ function util.load()
     for group, colors in pairs(treesitter) do
         util.highlight(group, colors)
     end
+
+	for group, colors in pairs(lsp) do
+		util.highlight(group, colors)
+	end
     async:send()
 end
 
