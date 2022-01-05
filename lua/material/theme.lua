@@ -149,6 +149,12 @@ theme.loadEditor = function ()
 		editor.EndOfBuffer =			{ fg = colors.disabled } -- ~ lines at the end of a buffer
 	end
 
+--------------------- REMOVE AS SOON AS POSIBLE ---------------------
+if type(config.contrast) == "boolean" then
+	return editor
+end
+---------------------------------------------------------------------
+
 	-- Nvim-Cmp style options
 	if config.contrast.popup_menu == true then
 		editor.Pmenu =					{ fg = colors.fg, bg = colors.border } -- Popup menu: normal item.
@@ -382,23 +388,23 @@ theme.loadPlugins = function()
 		TelescopeMatching =                     { fg = colors.cyan },
 
 		-- NvimTree
-		NvimTreeNormal =						{ fg = colors.comments, bg = colors.sidebar },
-		NvimTreeNormalNC =						{ fg = colors.comments, bg = colors.sidebar },
-		NvimTreeRootFolder =                    { fg = colors.fg, style = 'italic' },
-		NvimTreeFolderName=                     { fg = colors.text },
-		NvimTreeFolderIcon=                     { fg = colors.accent, bg = colors.sidebar },
-		NvimTreeEmptyFolderName=                { fg = colors.disabled },
-		NvimTreeOpenedFolderName=               { fg = colors.accent, style = 'italic' },
+		NvimTreeNormal =						{ fg = colors.fg, bg = colors.sidebar },
+		NvimTreeNormalNC =						{ fg = colors.fg, bg = colors.sidebar },
+		NvimTreeRootFolder =                    { fg = colors.accent },
+		NvimTreeFolderName=                     { fg = colors.blue, style = 'bold' },
+		NvimTreeFolderIcon=                     { fg = colors.blue, style = 'bold' },
+		NvimTreeEmptyFolderName=                { fg = colors.gray },
+		NvimTreeOpenedFolderName=               { fg = colors.green, style = 'bold' },
 		NvimTreeIndentMarker =                  { fg = colors.disabled },
-		NvimTreeGitDirty =                      { fg = colors.blue },
+		NvimTreeGitDirty =                      { fg = colors.yellow },
 		NvimTreeGitNew =                        { fg = colors.green },
-		NvimTreeGitStaged =                     { fg = colors.comments },
+		NvimTreeGitStaged =                     { fg = colors.purple },
 		NvimTreeGitDeleted =                    { fg = colors.red },
-		NvimTreeOpenedFile =                    { fg = colors.accent },
+		NvimTreeOpenedFile =					{ fg = colors.green },
 		NvimTreeImageFile =                     { fg = colors.yellow },
 		NvimTreeMarkdownFile =                  { fg = colors.pink },
 		NvimTreeExecFile =                      { fg = colors.green },
-		NvimTreeSpecialFile =                   { fg = colors.purple , style = 'underline' },
+		NvimTreeSpecialFile =                   { fg = colors.purple },
 		LspDiagnosticsError =                   { fg = colors.error },
 		LspDiagnosticsWarning =                 { fg = colors.yellow },
 		LspDiagnosticsInformation =             { fg = colors.paleblue },

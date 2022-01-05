@@ -67,19 +67,23 @@ CONTENTS
         colorscheme material~
 
     If you are using Lua:
-        require('material').set~
+        vim.cmd 'colorscheme material'~
 
 
-    Material.nvim also includes a Lualine theme. Set it in your Lualine config
+    Material.nvim also includes two Lualine themes called
+	'material-nvim' and 'material-stealth'.
+	Set one of them in your Lualine config
         require('lualine').setup {~
           options = {~
             -- ... your lualine config
-            theme = 'material-nvim'~
+			theme = 'material-nvim'~
+			or
+			theme = 'material-stealth'~
             -- ... your lualine config
           }~
         }~
-    Just make sure to set the theme to "material.nvim", as "material" already
-    exist built in to lualine
+    Just make sure to set the theme to "material.nvim" or "material-stealth",
+	as "material" already exist built in to lualine
 
 ================================================================================
 3. Styles                                                 *material.nvim-styles*
@@ -89,7 +93,7 @@ CONTENTS
     + Oceanic:~
         This is the default style that will be apllied by default.
         It uses a soft and darkish blue background, and a teal accent
-        color .
+        color.
 
     + Deep Ocean:~
         This style comes with a really dark background and a cyan accent

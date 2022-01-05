@@ -93,6 +93,19 @@ function util.load()
 		util.highlight(group, colors)
 	end
 
+--------------------- REMOVE AS SOON AS POSIBLE ---------------------
+	if type(config.contrast) == 'boolean' or
+		config.text_contrast or
+		config.contrast_windows or
+		config.popup_menu
+	then
+		vim.notify('Your material.nvim config is outdated', vim.log.levels.WARN)
+		vim.notify('You can find the new config under in :help material.nvim-config', vim.log.levels.WARN)
+		vim.notify('or :help material.nvim-examples or the github README.', vim.log.levels.WARN)
+		vim.notify('More options have been added to material.nvim including another lualine theme', vim.log.levels.INFO)
+	end
+---------------------------------------------------------------------
+
     async:send()
 end
 

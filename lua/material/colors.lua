@@ -186,6 +186,25 @@ if config.disable.borders == true then
 	colors.vsp = colors.bg
 end
 
+-- Disable borders
+if config.disable.borders == true then
+	colors.vsp = colors.bg
+else
+	colors.vsp = colors.border
+end
+
+--------------------- REMOVE AS SOON AS POSIBLE ---------------------
+if type(config.contrast) == "boolean" then
+	colors.sidebar = colors.bg
+	colors.float = colors.bg
+	colors.bg_num = colors.bg
+	colors.bg_sign = colors.bg
+	colors.bg_cur = colors.active
+	colors.bg_nc = colors.bg
+	return colors
+end
+---------------------------------------------------------------------
+
 -- Enable contrast sidebars
 if config.contrast.sidebars == true then
 	colors.sidebar = colors.bg_alt
@@ -225,13 +244,6 @@ if config.contrast.non_current_windows == true then
 	colors.bg_nc = colors.bg_alt
 else
 	colors.bg_nc = colors.bg
-end
-
--- Disable borders
-if config.disable.borders == true then
-	colors.vsp = colors.bg
-else
-	colors.vsp = colors.border
 end
 
 -- Apply user defined colors
