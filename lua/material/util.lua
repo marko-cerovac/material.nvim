@@ -100,7 +100,7 @@ function util.load()
 		config.popup_menu
 	then
 		vim.notify('Your material.nvim config is outdated', vim.log.levels.WARN)
-		vim.notify('You can find the new config under in :help material.nvim-config', vim.log.levels.WARN)
+		vim.notify('You can find the new config under :help material.nvim-config', vim.log.levels.WARN)
 		vim.notify('or :help material.nvim-examples or the github README.', vim.log.levels.WARN)
 		vim.notify('More options have been added to material.nvim including another lualine theme', vim.log.levels.INFO)
 	end
