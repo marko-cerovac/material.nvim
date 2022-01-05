@@ -12,14 +12,6 @@ local defaults = {
 		popup_menu = false, -- Enable lighter background for the popup menu
 	},
 
-	--[[ styles = {
-		comments = '', -- comment style
-		strings = '', -- string style
-		keywords = '', -- keyword style
-		functions = '', -- function style
-		variables = '' -- variable style
-	}, ]]
-
 	italics = {
 		comments = false, -- Italic comments
 		strings = false, -- Italic strings

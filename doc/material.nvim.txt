@@ -216,6 +216,9 @@ This is an example of the setup function with the default values:
 		  If you want to change or set a certain highlight group to a value,
 		  you can pass the group name and the color values in this table
 
+================================================================================
+5. Examples											*material.nvim-examples*
+
 Example config in Lua:
 
 	-- Theme style
@@ -269,7 +272,7 @@ Just put the name of the highlight group as the name of a table, and pass in
 the values for fg, bg, gui, guisp
 
 ================================================================================
-5. Functions                                           *material.nvim-functions*
+6. Functions                                           *material.nvim-functions*
 
 Material.nvim has built in fuctions that you can call or bind to a key
 
@@ -288,7 +291,7 @@ Material.nvim has built in fuctions that you can call or bind to a key
           :lua require('material.functions').toggle_eob()~
 
 ================================================================================
-6. Mappings                                             *material.nvim-mappings*
+7. Mappings                                             *material.nvim-mappings*
 
 You can mapp the built-in functions to keys
 This will allow you to change the style and toggle the end-of-buffer lines
