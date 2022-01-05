@@ -67,19 +67,23 @@ CONTENTS
         colorscheme material~
 
     If you are using Lua:
-        require('material').set~
+        vim.cmd 'colorscheme material'~
 
 
-    Material.nvim also includes a Lualine theme. Set it in your Lualine config
+    Material.nvim also includes two Lualine themes called
+	'material-nvim' and 'material-stealth'.
+	Set one of them in your Lualine config
         require('lualine').setup {~
           options = {~
             -- ... your lualine config
-            theme = 'material-nvim'~
+			theme = 'material-nvim'~
+			or
+			theme = 'material-stealth'~
             -- ... your lualine config
           }~
         }~
-    Just make sure to set the theme to "material.nvim", as "material" already
-    exist built in to lualine
+    Just make sure to set the theme to "material.nvim" or "material-stealth",
+	as "material" already exist built in to lualine
 
 ================================================================================
 3. Styles                                                 *material.nvim-styles*
@@ -89,7 +93,7 @@ CONTENTS
     + Oceanic:~
         This is the default style that will be apllied by default.
         It uses a soft and darkish blue background, and a teal accent
-        color .
+        color.
 
     + Deep Ocean:~
         This style comes with a really dark background and a cyan accent
@@ -150,8 +154,15 @@ All other options are passed to a setup function
 This is an example of the setup function with the default values:
 
 	require('material').setup({
-		contrast = true,
-		borders = false,
+		contrast = {
+			sidebars = false,
+			floating_windows = false,
+			line_numbers = false,
+			sign_column = false,
+			cursor_line = false,
+			non_current_windows = false,
+			popup_menu = false
+		},
 		italics = {
 			comments = false,
 			strings = false,
@@ -159,16 +170,13 @@ This is an example of the setup function with the default values:
 			functions = false,
 			variables = false
 		},
-		contrast_windows = {
-			"terminal",
-			"packer",
-			"qf"
-		},
-		text_contrast = {
+		contrast_filetypes = {},
+		high_visibility = {
 			lighter = false,
 			darker = false
 		},
 		disable = {
+			borders = false,
 			background = false,
 			term_colors = false,
 			eob_lines = false
@@ -176,42 +184,44 @@ This is an example of the setup function with the default values:
 		custom_highlights = {}
 	})
 
-    + contrast {bool}
-          Make sidebars, floating windows and popup menus like nvim-tree and
-          telescope have a different background
-
-    + material_borders  {bool}
-          Enable the border between verticaly split windows
-	
-	+ popup_menu  {string}
-		  Select the style of the popup menu
-		  Can be initialized with one of these values: - dark
-													   - light
-													   - colorful
-													   - stealth
+    + contrast {table}
+          Make sidebars (like nvim-tree), floating windows, line numbers,
+		  sign column, popup menu, cursor line and non current windows have
+		  a different background. Varable names are: - sidebars
+													 - floating_windows
+							 						 - line_numbers
+							 						 - sign_column
+							 						 - cursor_line
+							 						 - non_current_windows
+							 						 - popup_menu
+		These can be set to true or false
 
 	+ italics  {table}
-		  Select which code objects  are italic: -comments
-		                                         -strings
-		                                         -keywords
-		                                         -functions
-		                                         -variables
+		  Select which code objects are italic: -comments
+		                                        -strings
+		                                        -keywords
+		                                        -functions
+		                                        -variables
 		 Set the desired value to true to make it italic
 
-	+ contrast_windows  {table}
-		  Pass in the names of windows to make their background darker (contrasted)
+	+ contrast_filetypes  {table}
+		  Pass in filetype names of windows to make their background darker (contrasted)
+		  example: "terminal", "qf", "packer" ...
 
-	+ text_contrast  {table}
+	+ high_visibility  {table}
 		  Set the darker or lighter variable to true in this table to give
 		  those styles more contrast for better visibility
 
 	+ disable  {table}
-		  This table allows you to disable the theme from setting the
-		  background, terminal colors and end-of-buffer lines
+		  This table allows you to disable the theme from setting
+		  borders, background, terminal colors and end-of-buffer lines
 	
 	+ custom_highlights  {table}
 		  If you want to change or set a certain highlight group to a value,
 		  you can pass the group name and the color values in this table
+
+================================================================================
+5. Examples											*material.nvim-examples*
 
 Example config in Lua:
 
@@ -220,9 +230,14 @@ Example config in Lua:
 
     -- Colorscheme settings
 	require('material').setup({
-		contrast = true,
-		borders = false,
-		popup_menu = "dark"
+		contrast = {
+			sidebars = true,
+			floating_windows = false,
+			line_numbers = false,
+			sign_column = false,
+			cursor_line = true,
+			popup_menu = false
+		},
 		italics = {
 			comments = true,
 			strings = false,
@@ -230,12 +245,13 @@ Example config in Lua:
 			functions = true,
 			variables = false
 		},
-		contrast_windows = {
+		contrast_filetypes = {
 			"terminal",
 			"packer",
 			"qf",
 		},
 		disable = {
+			borders = true,
 			background = false,
 			term_colors = false,
 			eob_lines = false
@@ -260,7 +276,7 @@ Just put the name of the highlight group as the name of a table, and pass in
 the values for fg, bg, gui, guisp
 
 ================================================================================
-5. Functions                                           *material.nvim-functions*
+6. Functions                                           *material.nvim-functions*
 
 Material.nvim has built in fuctions that you can call or bind to a key
 
@@ -279,7 +295,7 @@ Material.nvim has built in fuctions that you can call or bind to a key
           :lua require('material.functions').toggle_eob()~
 
 ================================================================================
-6. Mappings                                             *material.nvim-mappings*
+7. Mappings                                             *material.nvim-mappings*
 
 You can mapp the built-in functions to keys
 This will allow you to change the style and toggle the end-of-buffer lines

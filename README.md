@@ -128,10 +128,15 @@ This is an example of the function with the default values
 ```lua
 require('material').setup({
 
-	contrast = true, -- Enable contrast for sidebars, floating windows and popup menus like Nvim-Tree
-	borders = false, -- Enable borders between verticaly split windows
-
-	popup_menu = "dark", -- Popup menu style ( can be: 'dark', 'light', 'colorful' or 'stealth' )
+	contrast = {
+		sidebars = false, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
+		floating_windows = false, -- Enable contrast for floating windows
+		line_numbers = false, -- Enable contrast background for line numbers
+		sign_column = false, -- Enable contrast background the sign column
+		cursor_line = false, -- Enable darker background for the cursor line
+		non_current_windows = false -- Enable darker background for non-current windows
+		popup_menu = false, -- Enable lighter background for the popup menu
+	},
 
 	italics = {
 		comments = false, -- Enable italic comments
@@ -141,7 +146,7 @@ require('material').setup({
 		variables = false -- Enable italic variables
 	},
 
-	contrast_windows = { -- Specify which windows get the contrasted (darker) background
+	contrast_filetypes = { -- Specify which filetypes get the contrasted (darker) background
 		"terminal", -- Darker terminal background
 		"packer", -- Darker packer background
 		"qf" -- Darker qf list background
@@ -153,6 +158,7 @@ require('material').setup({
 	},
 
 	disable = {
+		borders = false, -- Disable borders between verticaly split windows
 		background = false, -- Prevent the theme from setting the background (NeoVim then uses your teminal background)
 		term_colors = false, -- Prevent the theme from setting terminal colors
 		eob_lines = false -- Hide the end-of-buffer lines
@@ -170,6 +176,39 @@ colorscheme material
 
 ```lua
 vim.cmd[[colorscheme material]]
+```
+
+This is an example config in lua:
+```lua
+-- Set the theme style
+vim.g.material_style = 'deep ocean'
+
+require('material').setup({
+	contrast = {
+		sidebars = true,
+		floating_windows = true,
+	},
+	italics = {
+		keywords = true,
+		functions = true,
+	},
+	contrast_filetypes = {
+		"terminal",
+		"packer",
+		"qf",
+	},
+	disable = {
+		borders = true,
+		eob_lines = true
+	}
+})
+
+-- Enable style toggling
+vim.api.nvim_set_keymap('n', '<leader>ms', ':lua require("material.functions").toggle_style()<CR>', { noremap = true, silent = true })
+
+-- Enable the colorscheme
+vim.cmd 'colorscheme material'
+
 ```
 
 This is an example of overwriting the default highlights (most users will never need to do this):

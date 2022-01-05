@@ -28,11 +28,11 @@ util.contrast = function ()
     vim.cmd [[augroup Material]]
     vim.cmd [[  autocmd!]]
     vim.cmd [[  autocmd ColorScheme * lua require("material.util").onColorScheme()]]
-	for _, sidebar in ipairs(config.contrast_windows) do
+	for _, sidebar in ipairs(config.contrast_filetypes) do
 		if sidebar == "terminal" then
-			vim.cmd [[  autocmd TermOpen * setlocal winhighlight=Normal:NormalFloat,SignColumn:NormalFloat]]
+			vim.cmd [[  autocmd TermOpen * setlocal winhighlight=Normal:NormalContrast,SignColumn:NormalContrast]]
 		else
-			vim.cmd([[  autocmd FileType ]] .. sidebar .. [[ setlocal winhighlight=Normal:NormalFloat,SignColumn:SignColumnFloat]])
+			vim.cmd([[  autocmd FileType ]] .. sidebar .. [[ setlocal winhighlight=Normal:NormalContrast,SignColumn:SignColumnFloat]])
 		end
 	end
     vim.cmd [[augroup end]]
@@ -92,6 +92,19 @@ function util.load()
 	for group, colors in pairs(lsp) do
 		util.highlight(group, colors)
 	end
+
+--------------------- REMOVE AS SOON AS POSIBLE ---------------------
+	if type(config.contrast) == 'boolean' or
+		config.text_contrast or
+		config.contrast_windows or
+		config.popup_menu
+	then
+		vim.notify('Your material.nvim config is outdated', vim.log.levels.WARN)
+		vim.notify('You can find the new config under in :help material.nvim-config', vim.log.levels.WARN)
+		vim.notify('or :help material.nvim-examples or the github README.', vim.log.levels.WARN)
+		vim.notify('More options have been added to material.nvim including another lualine theme', vim.log.levels.INFO)
+	end
+---------------------------------------------------------------------
     async:send()
 end
 
