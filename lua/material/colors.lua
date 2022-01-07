@@ -247,7 +247,7 @@ else
 end
 
 -- Apply user defined colors
---[[ if type(config.custom_colors) == "table" then
+if type(config.custom_colors) == "table" then
 	for key, value in pairs(config.custom_colors) do
 		-- If the color starts with a #
 		if string.sub(value, 1, 1) == "#" then
@@ -264,6 +264,6 @@ end
 			end
 		end
 	end
-end ]]
+end
 
 return colors

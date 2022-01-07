@@ -34,7 +34,7 @@ local defaults = {
 		darker = false -- Higher contrast text for darker style
 	},
 
-	-- custom_colors = {}, -- TODO: define custom colors
+	custom_colors = {}, -- TODO: define custom colors
 	custom_highlights = {} -- define custom highlights
 }
 
