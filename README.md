@@ -132,7 +132,7 @@ require('material').setup({
 		sidebars = false, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
 		floating_windows = false, -- Enable contrast for floating windows
 		line_numbers = false, -- Enable contrast background for line numbers
-		sign_column = false, -- Enable contrast background the sign column
+		sign_column = false, -- Enable contrast background for the sign column
 		cursor_line = false, -- Enable darker background for the cursor line
 		non_current_windows = false -- Enable darker background for non-current windows
 		popup_menu = false, -- Enable lighter background for the popup menu
@@ -152,7 +152,7 @@ require('material').setup({
 		"qf" -- Darker qf list background
 	},
 
-	text_contrast = {
+	high_visibility = {
 		lighter = false, -- Enable higher contrast text for lighter style
 		darker = false -- Enable higher contrast text for darker style
 	},
