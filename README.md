@@ -1,5 +1,19 @@
-# 🌊 material.nvim
-![logo](https://user-images.githubusercontent.com/76592799/129165712-7ca1a27a-b507-4bd3-8c7a-da718d7dcec9.jpg)
+<div align="center">
+<p align="center">
+  <img width="302" height="302" src="media/logo.png">
+</p>
+
+##  material.nvim
+
+![Neovim](https://img.shields.io/badge/NeoVim-%2357A143.svg?&style=for-the-badge&logo=neovim&logoColor=white)
+![Lua](https://img.shields.io/badge/lua-%232C2D72.svg?style=for-the-badge&logo=lua&logoColor=white)
+
+
+The original [Material](https://material-theme.site) theme now available for [NeoVim](https://neovim.io/)
+
+---
+
+</div>
 
 ## 🔱 Info
 A port of [Material](https://material-theme.site) colorscheme for NeoVim written in Lua
@@ -7,9 +21,7 @@ A port of [Material](https://material-theme.site) colorscheme for NeoVim written
 Material.nvim is meant to be a fast and modern colorscheme written in Lua that supports a lot of the new features
 added to NeoVim like built-in LSP and [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
 
-If you want the old version that uses colorbuddy.nvim, you can find it [here](https://github.com/marko-cerovac/material.nvim/tree/colorbuddy)
-
-## ✨ Features
+## 🌊 Features
 
 + 5 styles to choose from
     + Deep ocean ![deep-ocean](https://user-images.githubusercontent.com/76592799/129165476-6ec7c2bf-c81b-405e-83a2-f75674cf7a7f.png)
