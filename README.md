@@ -94,20 +94,22 @@ colorscheme material
 vim.cmd 'colorscheme material'
 ```
 
-To enable the `material-nvim` theme for `Lualine`, simply specify it in your lualine settings:
-( make sure to set the theme to 'material-nvim', as 'material' already exists built in to lualine)
+The theme also comes with two `Lualine` themes called `material-nvim` and `material-stealth`.
+To enable one of them, simply specify it in your lualine settings:
 
 ```lua
 require('lualine').setup {
   options = {
     -- ... your lualine config
     theme = 'material-nvim'
+    or
+    theme = 'material-stealth'
     -- ... your lualine config
   }
 }
 ```
 
-For a comlete guide on usage and Configuration of the theme, see ```:help material.nvim```.
+For a comlete guide on usage and configuration of the theme, see ```:help material.nvim```.
 
 ## ⚙️ Configuration
 
