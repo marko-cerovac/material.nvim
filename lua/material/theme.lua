@@ -71,7 +71,7 @@ theme.loadEditor = function ()
 		NormalNC =				{ fg = colors.fg, bg = colors.bg_nc }, -- normal text and background color
 		NormalFloat =			{ fg = colors.fg, bg = colors.float }, -- normal text and background color for floating windows
 		NormalContrast =		{ fg = colors.fg, bg = colors.bg_alt }, -- a help group for contrast fileypes
-		FloatBorder =			{ fg = colors.paleblue }, -- floating window border
+		FloatBorder =			{ fg = colors.paleblue, bg = colors.float }, -- floating window border
 		ColorColumn =			{ fg = colors.none, bg = colors.active }, --  used for the columns set with 'colorcolumn'
 		Conceal =				{ fg = colors.disabled }, -- placeholder characters substituted for concealed text (see 'conceallevel')
 		Cursor =				{ fg = colors.bg_alt, bg = colors.cursor }, -- the character under the cursor
@@ -379,10 +379,10 @@ theme.loadPlugins = function()
 		GitSignsDeleteLn =                      { fg = colors.red }, -- diff mode: Deleted line |diff.txt|
 
 		-- Telescope
-		TelescopeNormal =                       { fg = colors.fg, bg = colors.bg },
-		TelescopePromptBorder =                 { fg = colors.cyan },
-		TelescopeResultsBorder =                { fg = colors.purple },
-		TelescopePreviewBorder =                { fg = colors.green },
+		TelescopeNormal =                       { fg = colors.fg, bg = colors.float },
+		TelescopePromptBorder =                 { fg = colors.cyan, bg = colors.float },
+		TelescopeResultsBorder =                { fg = colors.purple, bg = colors.float },
+		TelescopePreviewBorder =                { fg = colors.green, bg = colors.float },
 		TelescopeSelectionCaret =               { fg = colors.purple },
 		TelescopeSelection =                    { fg = colors.purple, bg = colors.active },
 		TelescopeMatching =                     { fg = colors.cyan },
@@ -420,26 +420,27 @@ theme.loadPlugins = function()
 		-- LspSaga
 		LspFloatWinNormal =                     { fg = colors.text, bg = colors.float },
 		LspFloatWinBorder =                     { fg = colors.purple, bg = colors.float },
-		LspSagaDiagnosticBorder =				{ fg = colors.blue },
+		LspSagaDiagnosticBorder =				{ fg = colors.blue, bg = colors.float },
 		LspSagaDiagnosticHeader =				{ fg = colors.blue },
 		LspSagaDiagnosticTruncateLine =			{ fg = colors.border },
-		LspLinesDiagBorder =					{ fg = colors.contrast },
+		LspLinesDiagBorder =					{ fg = colors.contrast, bg = colors.float },
 		ProviderTruncateLine =					{ fg = colors.border },
 		LspSagaShTruncateLine =					{ fg = colors.border },
 		LspSagaDocTruncateLine =				{ fg = colors.border },
 		LineDiagTruncateLine =					{ fg = colors.border },
-		LspSagaBorderTitle =                    { fg = colors.cyan },
-		LspSagaHoverBorder =                    { fg = colors.paleblue },
-		LspSagaRenameBorder =                   { fg = colors.green },
+		LspSagaBorderTitle =                    { fg = colors.cyan, bg = colors.float },
+		LspSagaHoverBorder =                    { fg = colors.paleblue, bg = colors.float },
+		LspSagaRenameBorder =                   { fg = colors.green, bg = colors.float },
 		LspSagaRenamePromptPrefix =             { fg = colors.green },
-		LspSagaDefPreviewBorder =               { fg = colors.green },
+		LspSagaDefPreviewBorder =               { fg = colors.green, bg = colors.float },
 		LspSagaCodeActionTitle =                { fg = colors.paleblue },
 		LspSagaCodeActionContent =              { fg = colors.purple },
-		LspSagaCodeActionBorder =               { fg = colors.blue },
+		LspSagaCodeActionBorder =               { fg = colors.blue, bg = colors.float },
 		LspSagaCodeActionTruncateLine =			{ fg = colors.border },
-		LspSagaSignatureHelpBorder =            { fg = colors.pink },
+		LspSagaSignatureHelpBorder =            { fg = colors.pink, bg = colors.float },
 		LspSagaFinderSelection =                { fg = colors.green },
-		-- LspSagaAutoPreview =					{ fg = material.red },
+		LspSagaLspFinderBorder =				{ fg = colors.blue, bg = colors.float },
+		LspSagaAutoPreview =					{ fg = colors.yellow, bg = colors.float },
 		ReferencesCount =                       { fg = colors.purple },
 		DefinitionCount =                       { fg = colors.purple },
 		DefinitionPreviewTitle =				{ fg = colors.green },
@@ -464,12 +465,12 @@ theme.loadPlugins = function()
 		DapStopped =                            { fg = colors.yellow },
 
 		-- Nvim dap-UI
-		DapUIFloatBorder =						{ fg = colors.yellow },
+		DapUIFloatBorder =						{ fg = colors.yellow, bg = colors.float },
 		DapUIDecoration =						{ fg = colors.blue },
 
 		-- Illuminate
-		illuminatedWord =						{ bg = colors.highight },
-		illuminatedCurWord =					{ bg = colors.highight },
+		illuminatedWord =						{ bg = colors.highight, gui = 'italic' },
+		illuminatedCurWord =					{ bg = colors.highight, gui = 'underline' },
 
 		-- Hop
 		HopNextKey =							{ fg = colors.accent, style = 'bold' },
