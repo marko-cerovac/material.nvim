@@ -28,7 +28,7 @@ CONTENTS
                                          -darker
                                          -lighter
 
-    + A wide array of supprted plugiuns like: -TreeSitter
+    + A wide array of supported plugins like: -TreeSitter
                                               -LSP Diagnostics
                                               -LSP Saga
                                               -LSP Trouble
@@ -91,7 +91,7 @@ CONTENTS
     The theme comes in 5 styles to choose from
 
     + Oceanic:~
-        This is the default style that will be apllied by default.
+        This is the default style that will be applied by default.
         It uses a soft and darkish blue background, and a teal accent
         color.
 
@@ -129,7 +129,7 @@ CONTENTS
 ================================================================================
 4. Configuration                                   *material.nvim-configuration*
 
-What sets material.nvim appart from most Vim/NeoVim themes is the wide array
+What sets material.nvim apart from most Vim/NeoVim themes is the wide array
 of options for customising the theme.
 
 In order for these settings to take effect, they should be placed in your
@@ -278,7 +278,7 @@ the values for fg, bg, gui, guisp
 ================================================================================
 6. Functions                                           *material.nvim-functions*
 
-Material.nvim has built in fuctions that you can call or bind to a key
+Material.nvim has built in functions that you can call or bind to a key
 
     + Toggle trough styles without the need to restart NeoVim
           Just call the funciton and it will switch to the next style:
@@ -297,7 +297,7 @@ Material.nvim has built in fuctions that you can call or bind to a key
 ================================================================================
 7. Mappings                                             *material.nvim-mappings*
 
-You can mapp the built-in functions to keys
+You can map the built-in functions to keys
 This will allow you to change the style and toggle the end-of-buffer lines
 at keypress
 
