@@ -29,7 +29,7 @@ material.command = {
 }
 
 material.inactive = {
-  a = {fg = colors.disabled, bg = colors.bg, gui = 'bold'},
+  a = {fg = colors.disabled, bg = colors.bg},
   b = {fg = colors.disabled, bg = colors.bg},
   c = {fg = colors.disabled, bg = colors.bg}
 }

@@ -60,7 +60,7 @@ if vim.g.material_style == 'darker' then
     colors.selection = 		'#404040'
     colors.contrast =		'#1A1A1A'
     colors.active =			'#323232'
-    colors.border =			'#292929'
+    colors.border =			'#343434'
     colors.highlight =		'#3F3F3F'
     colors.disabled =		'#474747'
     colors.accent =			'#FF9800'
@@ -135,7 +135,7 @@ elseif vim.g.material_style == 'palenight' then
 	colors.selection =		'#444267'
 	colors.contrast =		'#202331'
 	colors.active =			'#414863'
-	colors.border =			'#676E95'
+	colors.border =			'#364367'
 	colors.line_numbers =	'#3A3F58'
 	colors.highlight =		'#444267'
 	colors.disabled =		'#515772'
@@ -152,7 +152,7 @@ elseif vim.g.material_style == 'deep ocean' then
 	colors.selection = 		'#1F2233'
 	colors.contrast =		'#090B10'
 	colors.active =			'#1A1C25'
-	colors.border =			'#1F2233'
+	colors.border =			'#232637'
 	colors.line_numbers =	'#3B3F51'
 	colors.highlight =		'#1F2233'
 	colors.disabled =		'#464B5D'
@@ -169,7 +169,7 @@ else vim.g.material_style = 'oceanic'
 	colors.selection =		'#464B5D'
 	colors.contrast =		'#1E272C'
 	colors.active =			'#314549'
-	colors.border =			'#2A373E'
+	colors.border =			'#37444C'
 	colors.line_numbers =	'#37474F'
 	colors.highlight =		'#425B67'
 	colors.disabled =		'#415967'
@@ -192,18 +192,6 @@ if config.disable.borders == true then
 else
 	colors.vsp = colors.border
 end
-
---------------------- REMOVE AS SOON AS POSIBLE ---------------------
-if type(config.contrast) == "boolean" then
-	colors.sidebar = colors.bg
-	colors.float = colors.bg
-	colors.bg_num = colors.bg
-	colors.bg_sign = colors.bg
-	colors.bg_cur = colors.active
-	colors.bg_nc = colors.bg
-	return colors
-end
----------------------------------------------------------------------
 
 -- Enable contrast sidebars
 if config.contrast.sidebars == true then
