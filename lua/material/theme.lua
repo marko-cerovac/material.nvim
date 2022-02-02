@@ -20,11 +20,11 @@ theme.loadSyntax = function ()
 		Float =						{ fg = colors.orange }, -- a floating point constant: 2.3e10
 		Function =					{ fg = colors.blue, bg = colors.none, style = styles.functions }, -- italic funtion names
 		Identifier =				{ fg = colors.fg, bg = colors.none, style = styles.variables }; -- any variable name
-		Statement =					{ fg = colors.pink }, -- any statement
+		Statement =					{ fg = colors.cyan }, -- any statement
 		Keyword =					{ fg = colors.purple, bg = colors.none, style = styles.keywords }, -- italic for, do, while, etc.
 		Label =						{ fg = colors.purple }, -- case, default, etc.
 		Operator =					{ fg = colors.cyan }, -- sizeof", "+", "*", etc.
-		Exception =					{ fg = colors.cyan }, -- try, catch, throw
+		Exception =					{ fg = colors.red }, -- try, catch, throw
 		PreProc =					{ fg = colors.purple }, -- generic Preprocessor
 		Include =					{ fg = colors.blue }, -- preprocessor #include
 		Define =					{ fg = colors.pink }, -- preprocessor #define
@@ -34,7 +34,7 @@ theme.loadSyntax = function ()
 		Repeat =					{ fg = colors.purple, bg = colors.none, style = styles.keywords }, -- italic any other keyword
 		String =					{ fg = colors.green, bg = colors.none, style= styles.strings }, -- any string
 		Special =					{ fg = colors.red }, -- any special symbol
-		SpecialChar =				{ fg = colors.pink }, -- special character in a constant
+		SpecialChar =				{ fg = colors.disabled }, -- special character in a constant
 		Tag =						{ fg = colors.red }, -- you can use CTRL-] on this
 		Delimiter =					{ fg = colors.cyan }, -- character that needs attention like , or .
 		SpecialComment =			{ fg = colors.gray }, -- special things inside a comment
@@ -404,11 +404,17 @@ theme.loadPlugins = function()
 		LspDiagnosticsInformation =             { fg = colors.paleblue },
 		LspDiagnosticsHint =                    { fg = colors.purple },
 
+		-- Sidebar.nvim
+		SidebarNvimNormal =						{ fg = colors.fg },
+		SidebarNvimSectionTitle	=				{ fg = colors.accent },
+		SidebarNvimSectionSeparator =			{ fg = colors.border },
+		SidebarNvimLabel =						{ fg = colors.gray },
+
 		-- WhichKey
 		WhichKey =                              { fg = colors.accent, style = 'bold'},
-		WhichKeyGroup =                         { fg = colors.text },
-		WhichKeyDesc =                          { fg = colors.blue, style = 'italic' },
-		WhichKeySeperator =                     { fg = colors.fg },
+		WhichKeyGroup =                         { fg = colors.gray },
+		WhichKeyDesc =                          { fg = colors.fg, style = 'italic' },
+		WhichKeySeparator =                     { fg = colors.red },
 		WhichKeyFloat =                         { bg = colors.float },
 
 		-- LspSaga
