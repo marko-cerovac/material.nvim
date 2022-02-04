@@ -16,8 +16,10 @@ CONTENTS
     2. Usage .................... |material.nvim-usage|
     3. Styles ................... |material.nvim-styles|
     4. Configuration ............ |material.nvim-configuration|
-    5. Functions ................ |material.nvim-functions|
-    6. Mappings ................. |material.nvim-mappings|
+    5. Examples ................. |material.nvim-examples|
+    6. Lualine setup ............ |material.nvim-lualine-setup|
+    7. Functions ................ |material.nvim-functions|
+    8. Mappings ................. |material.nvim-mappings|
 
 ================================================================================
 1. Features                                             *material.nvim-features*
@@ -69,21 +71,6 @@ CONTENTS
     If you are using Lua:
         vim.cmd 'colorscheme material'~
 
-
-    Material.nvim also includes two Lualine themes called
-	'material-nvim' and 'material-stealth'.
-	Set one of them in your Lualine config
-        require('lualine').setup {~
-          options = {~
-            -- ... your lualine config
-			theme = 'material-nvim'~
-			or
-			theme = 'material-stealth'~
-            -- ... your lualine config
-          }~
-        }~
-    Just make sure to set the theme to "material.nvim" or "material-stealth",
-	as "material" already exist built in to lualine
 
 ================================================================================
 3. Styles                                                 *material.nvim-styles*
@@ -181,6 +168,7 @@ This is an example of the setup function with the default values:
 			term_colors = false,
 			eob_lines = false
 		}
+		lualine_style = 'default',
 		custom_highlights = {}
 	})
 
@@ -215,6 +203,9 @@ This is an example of the setup function with the default values:
 	+ disable  {table}
 		  This table allows you to disable the theme from setting
 		  borders, background, terminal colors and end-of-buffer lines
+
+	+ lualine_style {string}
+	      Choose between two styles for lualine. can be "default" or "stealth"
 	
 	+ custom_highlights  {table}
 		  If you want to change or set a certain highlight group to a value,
@@ -241,7 +232,7 @@ Example config in Lua:
 		italics = {
 			comments = true,
 			strings = false,
-			keywords = true,
+			keywords = false,
 			functions = true,
 			variables = false
 		},
@@ -256,10 +247,11 @@ Example config in Lua:
 			term_colors = false,
 			eob_lines = false
 		},
+		lualine_style = 'stealth'
 	})
 
     -- Apply the colorscheme
-    vim.cmd[[colorscheme material]]
+    vim.cmd 'colorscheme material'
 
 If you want to use the custom_highlights table, this is how you would use it:
 
@@ -276,7 +268,48 @@ Just put the name of the highlight group as the name of a table, and pass in
 the values for fg, bg, gui, guisp
 
 ================================================================================
-6. Functions                                           *material.nvim-functions*
+6. Lualine setup                                   *material.nvim-lualine-setup*
+
+	To enable the lualine themes, first set the theme
+	in your lualine settings to `auto` or `material`
+
+		require('lualine').setup {~
+		  options = {~
+			-- ... your lualine config
+			theme = 'auto'~
+			or
+			theme = 'material'~
+			-- ... your lualine config
+		  }~
+		}~
+
+	Then, choose the style trough a variable called lualine_style
+	in the theme setup function
+
+	require('material').setup({~
+		lualine_style = 'default' -- the default style
+		or
+		lualine_style = 'stealth' -- the stealth style
+	})~
+
+	If the theme, doesn't look right, it's probably because material.nvim
+	is being loaded before lualine, causing the other material theme
+	that comes built-in to lualine to be used.
+	To fix this, either load material.nvim after lualine (preferred way)
+	or set the lualine theme to one of these two values in your lualine settings
+
+	require('lualine').setup {~
+	  options = {~
+		-- ... your lualine config
+		theme = 'material-nvim' -- the default style
+		or
+		theme = 'material-stealth' -- the stealth style
+		-- ... your lualine config
+	  }~
+	}~
+
+================================================================================
+7. Functions                                           *material.nvim-functions*
 
 Material.nvim has built in functions that you can call or bind to a key
 
@@ -295,7 +328,7 @@ Material.nvim has built in functions that you can call or bind to a key
           :lua require('material.functions').toggle_eob()~
 
 ================================================================================
-7. Mappings                                             *material.nvim-mappings*
+8. Mappings                                             *material.nvim-mappings*
 
 You can map the built-in functions to keys
 This will allow you to change the style and toggle the end-of-buffer lines

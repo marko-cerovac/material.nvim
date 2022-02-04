@@ -42,7 +42,7 @@ theme.loadSyntax = function ()
 		Underlined =				{ fg = colors.link, bg = colors.none, style = 'underline' }, -- text that stands out, HTML links
 		Ignore =					{ fg = colors.disabled }, -- left blank, hidden
 		Error =						{ fg = colors.error, bg = colors.none, style = 'bold,underline' }, -- any erroneous construct
-		Todo =						{ fg = colors.yellow, bg = colors.none, style = 'bold,italic' }, -- anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+		Todo =						{ fg = colors.yellow, bg = colors.none, style = 'bold,italic' }, -- anything that needs extra attention; mostly the keywords TODO HACK FIXME and XXX
 
 		htmlLink =					{ fg = colors.link, style = 'underline' },
 		htmlH1 =					{ fg = colors.cyan, style = 'bold' },
@@ -243,6 +243,7 @@ theme.loadTreeSitter = function ()
 		TSLiteral =                 { fg = colors.fg }, -- Literal text.
 		TSURI =                     { fg = colors.link }, -- Any URI like a link or email.
 		TSMath =					{ fg = colors.blue }, -- Math environments like LaTeX's `$ ... $`
+		TSDanger =					{ fg = colors.error }, -- Text representation of a danger note.
 		--TSNone =                    { }, -- TODO: docs
 	}
 
@@ -457,7 +458,7 @@ theme.loadPlugins = function()
 		SneakScope =                            { bg = colors.selection },
 
 		-- Indent Blankline
-		IndentBlanklineChar =                   { fg = colors.highlight },
+		IndentBlanklineChar =                   { fg = colors.border },
 		IndentBlanklineContextChar =            { fg = colors.fg },
 
 		-- Nvim dap

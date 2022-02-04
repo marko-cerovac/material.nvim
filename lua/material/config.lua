@@ -34,6 +34,8 @@ local defaults = {
 		darker = false -- Higher contrast text for darker style
 	},
 
+	lualine_style = 'default', -- Lualine style ( can be 'stealth' or 'default' )
+
 	custom_colors = {}, -- TODO: define custom colors
 	custom_highlights = {} -- define custom highlights
 }

@@ -1,4 +1,4 @@
-<div align="center">
+ <div align="center">
 <p align="center">
   <img width="302" height="302" src="https://user-images.githubusercontent.com/76592799/150905447-8ae16047-4646-4f54-b122-a5f85ef59782.png">
 </p>
@@ -65,6 +65,22 @@ added to NeoVim like built-in LSP and [TreeSitter](https://github.com/nvim-trees
 
 + Added functions for live theme switching without the need to restart NeoVim
 
++ Two [Lualine](https://github.com/hoob3rt/lualine.nvim) themes
+
+	+ Default:
+	![default-oceanic](https://user-images.githubusercontent.com/76592799/152083490-d0d3631f-6652-4fb0-aea5-1feb662ee01c.png)
+	![default-darker](https://user-images.githubusercontent.com/76592799/152083516-744eaad0-4803-4910-ac79-74acad5f306d.png)
+	![default-deep-ocean](https://user-images.githubusercontent.com/76592799/152083521-a0951e57-53aa-4d1a-8b3b-d374e74eae3e.jpg)
+	![default-palenight](https://user-images.githubusercontent.com/76592799/152083524-3c618c5b-f3f2-480d-8890-a8c36a356e08.png)
+	![default-lighter](https://user-images.githubusercontent.com/76592799/152083531-ae9f5b3f-4b24-4ab6-a974-e5662d1deaca.png)
+	
+	+ Stealth
+	![stealth-oceanic](https://user-images.githubusercontent.com/76592799/152083543-bd887c52-c05e-4913-bab0-5de99bac76df.png)
+	![stealth-darker](https://user-images.githubusercontent.com/76592799/152083585-c8ea9e62-8188-4935-911b-c5da818aa93f.png)
+	![stealth-deep-ocean](https://user-images.githubusercontent.com/76592799/152083592-157ea3bc-6de9-40b0-a39b-5c0c1be1e0f6.png)
+	![stealth-palenight](https://user-images.githubusercontent.com/76592799/152083601-bbb22742-e5eb-452a-98cf-93a8ef6c7d11.png)
+	![stealth-lighter](https://user-images.githubusercontent.com/76592799/152083608-ee859def-be8b-443d-a871-987d5ca3e948.png)
+
 ## ⚡️ Requirements
 
 + Neovim >= 0.5.0
@@ -95,55 +111,6 @@ colorscheme material
 vim.cmd 'colorscheme material'
 ```
 
-This plugin also comes with two `Lualine` themes.
-+ default
-![default-oceanic](https://user-images.githubusercontent.com/76592799/152083490-d0d3631f-6652-4fb0-aea5-1feb662ee01c.png)
-![default-darker](https://user-images.githubusercontent.com/76592799/152083516-744eaad0-4803-4910-ac79-74acad5f306d.png)
-![default-deep-ocean](https://user-images.githubusercontent.com/76592799/152083521-a0951e57-53aa-4d1a-8b3b-d374e74eae3e.jpg)
-![default-palenight](https://user-images.githubusercontent.com/76592799/152083524-3c618c5b-f3f2-480d-8890-a8c36a356e08.png)
-![default-lighter](https://user-images.githubusercontent.com/76592799/152083531-ae9f5b3f-4b24-4ab6-a974-e5662d1deaca.png)
-
-+ stealth
-![stealth-oceanic](https://user-images.githubusercontent.com/76592799/152083543-bd887c52-c05e-4913-bab0-5de99bac76df.png)
-![stealth-darker](https://user-images.githubusercontent.com/76592799/152083585-c8ea9e62-8188-4935-911b-c5da818aa93f.png)
-![stealth-deep-ocean](https://user-images.githubusercontent.com/76592799/152083592-157ea3bc-6de9-40b0-a39b-5c0c1be1e0f6.png)
-![stealth-palenight](https://user-images.githubusercontent.com/76592799/152083601-bbb22742-e5eb-452a-98cf-93a8ef6c7d11.png)
-![stealth-lighter](https://user-images.githubusercontent.com/76592799/152083608-ee859def-be8b-443d-a871-987d5ca3e948.png)
-
-
-To set one of them, first set your lualine theme to `auto` or `material`
-```lua
-require('lualine').setup {
-  options = {
-    -- ... your lualine config
-    theme = 'auto'
-    or
-    theme = 'material'
-    -- ... your lualine config
-  }
-}
-```
-Then, choose the style trough a global variable called ```material_lualine_style```
-```lua
-vim.g.material_lualine_style = 'default' -- the default style
-or
-vim.g.material_lualine_style = 'stealth' -- the stealth style
-```
-
-If the theme, doesn't look right, it's probably because material.nvim is being loaded before lualine, causing the
-built-in lualine material theme to be used.
-To fix this, either load material.nvim after lualine or set the lualine theme to one of these two values in your lualine settings
-```lua
-require('lualine').setup {
-  options = {
-    -- ... your lualine config
-    theme = 'material-nvim' -- the default style
-    or
-    theme = 'material-stealth' -- the stealth style
-    -- ... your lualine config
-  }
-}
-```
 
 For a comlete guide on usage and configuration of the theme, see ```:help material.nvim```.
 
@@ -159,7 +126,7 @@ For a comlete guide on usage and configuration of the theme, see ```:help materi
 Set the desired style using:
 ```vim
 "Vim-Script:
-let g:material_style = 'darker'
+let g:material_style = "darker"
 ```
 
 ```lua
@@ -214,6 +181,8 @@ require('material').setup({
 		eob_lines = false -- Hide the end-of-buffer lines
 	},
 
+	lualine_style = "default", -- Lualine style ( can be 'stealth' or 'default' )
+
 	custom_highlights = {} -- Overwrite highlights with your own
 })
 ```
@@ -225,7 +194,44 @@ colorscheme material
 ```
 
 ```lua
-vim.cmd[[colorscheme material]]
+vim.cmd 'colorscheme material'
+```
+
+To enable the lualine themes, first set the theme in your lualine settings to `auto` or `material`
+```lua
+require('lualine').setup {
+  options = {
+    -- ... your lualine config
+    theme = 'auto'
+    or
+    theme = 'material'
+    -- ... your lualine config
+  }
+}
+```
+Then, choose the style trough a variable called ```lualine_style``` in the theme setup function
+```lua
+require('material').setup({
+	lualine_style = 'default' -- the default style
+	or
+	lualine_style = 'stealth' -- the stealth style
+})
+```
+
+If the theme, doesn't look right, it's probably because material.nvim is being loaded before lualine,
+causing the other material theme that comes built-in to lualine to be used.
+To fix this, either load material.nvim after lualine (preferred way)
+or set the lualine theme to one of these two values in your lualine settings
+```lua
+require('lualine').setup {
+  options = {
+    -- ... your lualine config
+    theme = 'material-nvim' -- the default style
+    or
+    theme = 'material-stealth' -- the stealth style
+    -- ... your lualine config
+  }
+}
 ```
 
 This is an example config in lua:
@@ -236,10 +242,10 @@ vim.g.material_style = 'deep ocean'
 require('material').setup({
 	contrast = {
 		sidebars = true,
-		floating_windows = true,
+		cursor_line = true,
 	},
 	italics = {
-		keywords = true,
+		comments = true,
 		functions = true,
 	},
 	contrast_filetypes = {
@@ -250,11 +256,9 @@ require('material').setup({
 	disable = {
 		borders = true,
 		eob_lines = true
-	}
+	},
+	lualine_style = 'stealth'
 })
-
--- Enable style toggling
-vim.api.nvim_set_keymap('n', '<leader>ms', ':lua require("material.functions").toggle_style()<CR>', { noremap = true, silent = true })
 
 -- Enable the colorscheme
 vim.cmd 'colorscheme material'
@@ -265,8 +269,8 @@ This is an example of overwriting the default highlights (most users will never 
 ```lua
 require('material').setup{
 	custom_highlights = {
-		CursorLine = '#0000FF',
-		LineNr = '#FF0000'
+		CursorLine = { fg = '#0000FF', gui = 'underline' },
+		LineNr = { bg = '#FF0000' }
 	}
 }
 ```

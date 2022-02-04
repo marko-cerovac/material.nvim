@@ -1,8 +1,9 @@
 local colors = require('material.colors')
+local config = require('material.config').options
 
 local material = {}
 
-if vim.g.material_lualine_style == 'stealth' then
+if config.lualine_style == 'stealth' then
 
 	material.normal = {
 		a = {fg = colors.accent, bg = colors.highlight},
@@ -71,8 +72,5 @@ else
 	}
 
 end
-
-
-
 
 return material
