@@ -38,8 +38,8 @@ local defaults = {
 
 	custom_colors = {}, -- TODO: define custom colors
 	custom_highlights = {}, -- define custom highlights
-	
-  async_loading = true -- Enable asynchronous loading
+
+	async_loading = true -- Load parts of the theme asyncronously for faster startup
 }
 
 Config.options = {}

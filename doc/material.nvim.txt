@@ -169,6 +169,7 @@ This is an example of the setup function with the default values:
 			eob_lines = false
 		}
 		lualine_style = 'default',
+		async_loading = true,
 		custom_highlights = {}
 	})
 
@@ -206,6 +207,10 @@ This is an example of the setup function with the default values:
 
 	+ lualine_style {string}
 	      Choose between two styles for lualine. can be "default" or "stealth"
+
+	+ async_loading {bool}
+		  Load parts of the theme asyncronously for faster startup
+		  (turned on by default)
 	
 	+ custom_highlights  {table}
 		  If you want to change or set a certain highlight group to a value,

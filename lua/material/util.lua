@@ -50,57 +50,72 @@ function util.load()
   -- Load plugins and lsp
     local async
 
-    function plugins_and_lsp_loader()
-      -- imort tables for plugins and lsp
-        local plugins = material.loadPlugins()
+	local function async_loader()
+		-- Import the table for plugins
+		local plugins = material.loadPlugins()
 
-        if config.disable.term_colors == false then
-          material.loadTerminal()
-        end
+		-- Apply the terminal colors
+		if config.disable.term_colors == false then
+			material.loadTerminal()
+		end
 
-        for group, colors in pairs(plugins) do
-          util.highlight(group, colors)
-        end
+		-- Apply the plugin colors
+		for group, colors in pairs(plugins) do
+			util.highlight(group, colors)
+		end
 
-        if type(config.custom_highlights) == 'table' then
-          for group, colors in pairs(config.custom_highlights) do
-            util.highlight(group, colors)
-          end
-        end
-        util.contrast()
+		-- Apply user defined highlights if they exist
+		if type(config.custom_highlights) == 'table' then
+			for group, colors in pairs(config.custom_highlights) do
+				util.highlight(group, colors)
+			end
+		end
 
-        if (async) then async:close() end
-    end
-    
-    if (config.async_loading) then
-      async = vim.loop.new_async(vim.schedule_wrap(plugins_and_lsp_loader))
-    else
-      plugins_and_lsp_loader()
-    end
-    
-    -- load base theme
+		-- Apply window contrast
+		util.contrast()
+
+		-- If this function gets called asyncronously, this closure is needed
+		if (async) then
+			async:close()
+		end
+	end
+
+	-- If async loading is enabled,
+	-- execute async_loader() asyncronously, if not, load it now
+	if (config.async_loading == true) then
+		async = vim.loop.new_async(vim.schedule_wrap(async_loader))
+	else
+		async_loader()
+	end
+
+    -- Import tables for the base, syntax, treesitter and lsp
     local editor = material.loadEditor()
     local syntax = material.loadSyntax()
     local treesitter = material.loadTreeSitter()
 	local lsp = material.loadLSP()
 
+	-- Apply base colors
     for group, colors in pairs(editor) do
         util.highlight(group, colors)
     end
 
+	-- Apply basic syntax colors
     for group, colors in pairs(syntax) do
         util.highlight(group, colors)
     end
 
+	-- Apply treesitter colors
     for group, colors in pairs(treesitter) do
         util.highlight(group, colors)
     end
 
+	-- Apply lsp colors
 	for group, colors in pairs(lsp) do
 		util.highlight(group, colors)
 	end
 
-    if (config.async_loading) then async:send() end
+	-- If async loading is enabled, send it
+    if (config.async_loading == true) then async:send() end
 end
 
 return util
