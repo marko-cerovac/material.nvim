@@ -47,10 +47,11 @@ function util.load()
     vim.o.termguicolors = true
     vim.g.colors_name = "material"
 
-    -- Load plugins and lsp async
+  -- Load plugins and lsp
     local async
-    async = vim.loop.new_async(vim.schedule_wrap(function ()
-        -- imort tables for plugins and lsp
+
+    function plugins_and_lsp_loader()
+      -- imort tables for plugins and lsp
         local plugins = material.loadPlugins()
 
         if config.disable.term_colors == false then
@@ -58,19 +59,25 @@ function util.load()
         end
 
         for group, colors in pairs(plugins) do
-            util.highlight(group, colors)
+          util.highlight(group, colors)
         end
 
-		if type(config.custom_highlights) == 'table' then
-			for group, colors in pairs(config.custom_highlights) do
-				util.highlight(group, colors)
-			end
-		end
-		util.contrast()
-        async:close()
+        if type(config.custom_highlights) == 'table' then
+          for group, colors in pairs(config.custom_highlights) do
+            util.highlight(group, colors)
+          end
+        end
+        util.contrast()
 
-    end))
-
+        if (async) then async:close() end
+    end
+    
+    if (config.async_loading) then
+      async = vim.loop.new_async(vim.schedule_wrap(plugins_and_lsp_loader))
+    else
+      plugins_and_lsp_loader()
+    end
+    
     -- load base theme
     local editor = material.loadEditor()
     local syntax = material.loadSyntax()
@@ -93,7 +100,7 @@ function util.load()
 		util.highlight(group, colors)
 	end
 
-    async:send()
+    if (config.async_loading) then async:send() end
 end
 
 return util

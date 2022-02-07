@@ -37,7 +37,9 @@ local defaults = {
 	lualine_style = 'default', -- Lualine style ( can be 'stealth' or 'default' )
 
 	custom_colors = {}, -- TODO: define custom colors
-	custom_highlights = {} -- define custom highlights
+	custom_highlights = {}, -- define custom highlights
+	
+  async_loading = true -- Enable asynchronous loading
 }
 
 Config.options = {}
