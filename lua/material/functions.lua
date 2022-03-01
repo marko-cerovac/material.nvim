@@ -37,7 +37,9 @@ local toggle_eob = function ()
 	else
 		config.disable.eob_lines = true
 	end
-	vim.cmd[[colorscheme material]]
+
+	local editor = require("material.theme").loadEditor()
+	require("material.util").highlight( "EndOfBuffer", editor.EndOfBuffer)
 end
 
 return {
@@ -46,3 +48,4 @@ return {
 	toggle_style = toggle_style,
 	toggle_eob = toggle_eob
 }
+

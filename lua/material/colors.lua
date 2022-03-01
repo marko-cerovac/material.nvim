@@ -21,13 +21,13 @@ local colors = {
 	pink =  				'#FF9CAC',
 
 	-- Dark colors
-	darkred =				'#dc6068',
-	darkgreen =				'#abcf76',
-	darkyellow =			'#e6b455',
-	darkblue =				'#6e98eb',
-	darkcyan =				'#71c6e7',
-	darkpurple =			'#b480d6',
-	darkorange =			'#e2795b',
+	darkred =				'#DC6068',
+	darkgreen =				'#ABCF76',
+	darkyellow =			'#E6B455',
+	darkblue =				'#6E98EB',
+	darkcyan =				'#71C6E7',
+	darkpurple =			'#B480D6',
+	darkorange =			'#E2795B',
 
 	error =					'#FF5370',
 	link =					'#80CBC4',

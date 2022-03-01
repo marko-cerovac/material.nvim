@@ -113,7 +113,7 @@ theme.loadEditor = function ()
 		Visual =				{ fg = colors.none, bg = colors.selection }, -- Visual mode selection
 		VisualNOS =				{ fg = colors.none, bg = colors.selection }, -- Visual mode selection when vim is "Not Owning the Selection".
 		WarningMsg =			{ fg = colors.yellow }, -- warning messages
-		Whitespace =			{ fg = colors.selection }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
+		Whitespace =			{ fg = colors.disabled }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
 		WildMenu =				{ fg = colors.orange, bg = colors.none, style = 'bold' }, -- current match in 'wildmenu' completion
 		CursorColumn =			{ fg = colors.none, bg = colors.bg_cur }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
 		CursorLine =			{ fg = colors.none, bg = colors.bg_cur }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
@@ -224,7 +224,7 @@ theme.loadTreeSitter = function ()
 		TSRepeat =                  { fg = colors.purple, style = styles.keywords }, -- For keywords related to loops.
 	    TSString =                  { fg = colors.green, styles = styles.strings }, -- For strings.
 		TSStringRegex =             { fg = colors.blue }, -- For regexes.
-		TSStringEscape =            { fg = colors.disabled }, -- For escape characters within a string.
+		TSStringEscape =            { fg = colors.text }, -- For escape characters within a string.
 		TSSymbol =                  { fg = colors.yellow }, -- For identifiers referring to symbols or atoms.
 		TSStrong =					{ fg = colors.paleblue, style = 'bold' }, -- Text to be represented in bold.
 		TSType =                    { fg = colors.purple }, -- For types.
@@ -279,9 +279,9 @@ theme.loadLSP = function ()
 		LspDiagnosticsFloatingHint =            { fg = colors.purple  }, -- used for "Hint" diagnostic messages in the diagnostics float
 		LspDiagnosticsVirtualTextHint =         { fg = colors.purple  }, -- Virtual text "Hint"
 		LspDiagnosticsUnderlineHint =           { style = 'undercurl', sp = colors.paleblue }, -- used to underline "Hint" diagnostics.
-		LspReferenceText =                      { fg = colors.white, style = 'underline' }, -- used for highlighting "text" references
-		LspReferenceRead =                      { fg = colors.white, style = 'underline' }, -- used for highlighting "read" references
-		LspReferenceWrite =                     { fg = colors.white, style = 'underline' }, -- used for highlighting "write" references
+		LspReferenceText =                      { bg = colors.selection, style = 'underline' }, -- used for highlighting "text" references
+		LspReferenceRead =                      { bg = colors.selection, style = 'underline' }, -- used for highlighting "read" references
+		LspReferenceWrite =                     { bg = colors.selection, style = 'underline' }, -- used for highlighting "write" references
 
 		-- Nvim 0.6.
 		DiagnosticVirtualTextError = { fg = colors.error },
@@ -385,15 +385,15 @@ theme.loadPlugins = function()
 		-- NvimTree
 		NvimTreeNormal =						{ fg = colors.fg, bg = colors.sidebar },
 		NvimTreeNormalNC =						{ fg = colors.fg, bg = colors.sidebar },
-		NvimTreeRootFolder =                    { fg = colors.accent },
+		NvimTreeRootFolder =                    { fg = colors.accent, bg = colors.sidebar },
 		NvimTreeFolderName=                     { fg = colors.blue, style = 'bold' },
 		NvimTreeFolderIcon=                     { fg = colors.blue, style = 'bold' },
 		NvimTreeEmptyFolderName=                { fg = colors.gray },
 		NvimTreeOpenedFolderName=               { fg = colors.green, style = 'bold' },
 		NvimTreeIndentMarker =                  { fg = colors.disabled },
-		NvimTreeGitDirty =                      { fg = colors.yellow },
+		NvimTreeGitDirty =                      { fg = colors.blue },
 		NvimTreeGitNew =                        { fg = colors.green },
-		NvimTreeGitStaged =                     { fg = colors.purple },
+		NvimTreeGitStaged =                     { fg = colors.fg },
 		NvimTreeGitDeleted =                    { fg = colors.red },
 		NvimTreeOpenedFile =					{ fg = colors.green },
 		NvimTreeImageFile =                     { fg = colors.yellow },
