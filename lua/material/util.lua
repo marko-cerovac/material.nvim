@@ -12,7 +12,9 @@ util.highlight = function (group, color)
     local hl = "highlight " .. group .. " " .. style .. " " .. fg .. " " .. bg .. " " .. sp
 
     vim.cmd(hl)
-    if color.link then vim.cmd("highlight! link " .. group .. " " .. color.link) end
+    if color.link then
+		vim.cmd("highlight! link " .. group .. " " .. color.link)
+	end
 end
 
 -- Only define Material if it's the active colorshceme
@@ -20,6 +22,7 @@ function util.onColorScheme()
   if vim.g.colors_name ~= "material" then
     vim.cmd [[autocmd! Material]]
     vim.cmd [[augroup! Material]]
+	-- vim.api.nvim_del_augroup_by_name("Material")
   end
 end
 
@@ -36,6 +39,27 @@ util.contrast = function ()
 		end
 	end
     vim.cmd [[augroup end]]
+
+	-- local group = vim.api.nvim_create_augroup("Material", { clear = true })
+	-- vim.api.nvim_create_autocmd("ColorScheme", { callback = function ()
+	-- 	require("material.util").onColorScheme()
+	-- end, group = group })
+
+	-- for _, sidebar in ipairs(config.contrast_filetypes) do
+	-- 	if sidebar == "terminal" then
+	-- 		vim.api.nvim_create_autocmd("TermOpen", {
+	-- 			command = "setlocal winhighlight=Normal:NormalContrast,SignColumn:NormalContrast",
+	-- 			group = group,
+	-- 			buffer = 0
+	-- 		})
+	-- 	else
+	-- 		vim.api.nvim_create_autocmd("FileType " .. sidebar, {
+	-- 			command = "setlocal winhighlight=Normal:NormalContrast,SignColumn:SignColumnFloat",
+	-- 			group = group,
+	-- 			buffer = 0
+	-- 		})
+	-- 	end
+	-- end
 end
 
 -- Load the theme
