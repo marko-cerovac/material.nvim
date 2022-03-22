@@ -136,7 +136,8 @@ theme.loadEditor = function ()
 		DashboardCenter =                       { fg = colors.accent },
 		DashboardFooter =                       { fg = colors.green, style = 'italic' },
 
-		VertSplit =								{ fg = colors.vsp }, -- the column separating vertically split windows
+		VertSplit =								{ fg = colors.vsp }, -- The column separating vertically split windows
+		WinSeparator = 							{ fg = colors.vsp } -- Lines between window splits
 
 	}
 
@@ -255,51 +256,51 @@ theme.loadLSP = function ()
     -- Lsp highlight groups
 
 	local lsp = {
-		DiagnosticError =                       { fg = colors.error },
-		DiagnosticWarning =                     { fg = colors.yellow },
-		DiagnosticInformation =                 { fg = colors.paleblue },
-		DiagnosticHint =                        { fg = colors.purple },
-		LspDiagnosticsDefaultError =            { fg = colors.error }, -- used for "Error" diagnostic virtual text
-		LspDiagnosticsSignError =               { fg = colors.error }, -- used for "Error" diagnostic signs in sign column
-		LspDiagnosticsFloatingError =           { fg = colors.error }, -- used for "Error" diagnostic messages in the diagnostics float
-		LspDiagnosticsVirtualTextError =        { fg = colors.error }, -- Virtual text "Error"
-		LspDiagnosticsUnderlineError =          { style = 'undercurl', sp = colors.error }, -- used to underline "Error" diagnostics.
-		LspDiagnosticsDefaultWarning =          { fg = colors.yellow }, -- used for "Warning" diagnostic signs in sign column
-		LspDiagnosticsSignWarning =             { fg = colors.yellow }, -- used for "Warning" diagnostic signs in sign column
-		LspDiagnosticsFloatingWarning =         { fg = colors.yellow }, -- used for "Warning" diagnostic messages in the diagnostics float
-		LspDiagnosticsVirtualTextWarning =      { fg = colors.yellow }, -- Virtual text "Warning"
-		LspDiagnosticsUnderlineWarning =        { style = 'undercurl', sp = colors.yellow }, -- used to underline "Warning" diagnostics.
-		LspDiagnosticsDefaultInformation =      { fg = colors.paleblue }, -- used for "Information" diagnostic virtual text
-		LspDiagnosticsSignInformation =         { fg = colors.paleblue },  -- used for "Information" diagnostic signs in sign column
-		LspDiagnosticsFloatingInformation =     { fg = colors.paleblue }, -- used for "Information" diagnostic messages in the diagnostics float
-		LspDiagnosticsVirtualTextInformation =  { fg = colors.paleblue }, -- Virtual text "Information"
-		LspDiagnosticsUnderlineInformation =    { style = 'undercurl', sp = colors.paleblue }, -- used to underline "Information" diagnostics.
-		LspDiagnosticsDefaultHint =             { fg = colors.purple  },  -- used for "Hint" diagnostic virtual text
-		LspDiagnosticsSignHint =                { fg = colors.purple  }, -- used for "Hint" diagnostic signs in sign column
-		LspDiagnosticsFloatingHint =            { fg = colors.purple  }, -- used for "Hint" diagnostic messages in the diagnostics float
-		LspDiagnosticsVirtualTextHint =         { fg = colors.purple  }, -- Virtual text "Hint"
-		LspDiagnosticsUnderlineHint =           { style = 'undercurl', sp = colors.paleblue }, -- used to underline "Hint" diagnostics.
-		LspReferenceText =                      { bg = colors.selection, style = 'underline' }, -- used for highlighting "text" references
-		LspReferenceRead =                      { bg = colors.selection, style = 'underline' }, -- used for highlighting "read" references
-		LspReferenceWrite =                     { bg = colors.selection, style = 'underline' }, -- used for highlighting "write" references
+		-- DiagnosticError =                       { fg = colors.error },
+		-- DiagnosticWarning =                     { fg = colors.yellow },
+		-- DiagnosticInformation =                 { fg = colors.paleblue },
+		-- DiagnosticHint =                        { fg = colors.purple },
+		-- LspDiagnosticsDefaultError =            { fg = colors.error }, -- used for "Error" diagnostic virtual text
+		-- LspDiagnosticsSignError =               { fg = colors.error, bg = colors.bg_sign }, -- used for "Error" diagnostic signs in sign column
+		-- LspDiagnosticsFloatingError =           { fg = colors.error }, -- used for "Error" diagnostic messages in the diagnostics float
+		-- LspDiagnosticsVirtualTextError =        { fg = colors.error }, -- Virtual text "Error"
+		-- LspDiagnosticsUnderlineError =          { style = 'undercurl', sp = colors.error }, -- used to underline "Error" diagnostics.
+		-- LspDiagnosticsDefaultWarning =          { fg = colors.yellow }, -- used for "Warning" diagnostic signs in sign column
+		-- LspDiagnosticsSignWarning =             { fg = colors.yellow, bg = colors.bg_sign }, -- used for "Warning" diagnostic signs in sign column
+		-- LspDiagnosticsFloatingWarning =         { fg = colors.yellow }, -- used for "Warning" diagnostic messages in the diagnostics float
+		-- LspDiagnosticsVirtualTextWarning =      { fg = colors.yellow }, -- Virtual text "Warning"
+		-- LspDiagnosticsUnderlineWarning =        { style = 'undercurl', sp = colors.yellow }, -- used to underline "Warning" diagnostics.
+		-- LspDiagnosticsDefaultInformation =      { fg = colors.paleblue }, -- used for "Information" diagnostic virtual text
+		-- LspDiagnosticsSignInformation =         { fg = colors.paleblue, bg = colors.bg_sign },  -- used for "Information" diagnostic signs in sign column
+		-- LspDiagnosticsFloatingInformation =     { fg = colors.paleblue }, -- used for "Information" diagnostic messages in the diagnostics float
+		-- LspDiagnosticsVirtualTextInformation =  { fg = colors.paleblue }, -- Virtual text "Information"
+		-- LspDiagnosticsUnderlineInformation =    { style = 'undercurl', sp = colors.paleblue }, -- used to underline "Information" diagnostics.
+		-- LspDiagnosticsDefaultHint =             { fg = colors.purple },  -- used for "Hint" diagnostic virtual text
+		-- LspDiagnosticsSignHint =                { fg = colors.purple, bg = colors.bg_sign }, -- used for "Hint" diagnostic signs in sign column
+		-- LspDiagnosticsFloatingHint =            { fg = colors.purple }, -- used for "Hint" diagnostic messages in the diagnostics float
+		-- LspDiagnosticsVirtualTextHint =         { fg = colors.purple }, -- Virtual text "Hint"
+		-- LspDiagnosticsUnderlineHint =           { style = 'undercurl', sp = colors.paleblue }, -- used to underline "Hint" diagnostics.
 
 		-- Nvim 0.6.
-		DiagnosticVirtualTextError = { fg = colors.error },
-		DiagnosticFloatingError    = { fg = colors.error },
-		DiagnosticSignError        = { fg = colors.error },
-		DiagnosticUnderlineError   = { style = 'undercurl', sp = colors.error },
-		DiagnosticVirtualTextWarn  = { fg = colors.yellow },
-		DiagnosticFloatingWarn     = { fg = colors.yellow },
-		DiagnosticSignWarn         = { fg = colors.yellow },
-		DiagnosticUnderlineWarn    = { style = 'undercurl', sp = colors.yellow },
-		DiagnosticVirtualTextInfo  = { fg = colors.paleblue },
-		DiagnosticFloatingInfo     = { fg = colors.paleblue },
-		DiagnosticSignInfo         = { fg = colors.paleblue },
-		DiagnosticUnderlineInfo    = { style = 'undercurl', sp = colors.paleblue },
-		DiagnosticVirtualTextHint  = { fg = colors.purple },
-		DiagnosticFloatingHint     = { fg = colors.purple },
-		DiagnosticSignHint         = { fg = colors.purple },
-		DiagnosticUnderlineHint    = { style = 'undercurl', sp = colors.purple },
+		DiagnosticVirtualTextError = 			{ fg = colors.error },
+		DiagnosticFloatingError = 				{ fg = colors.error },
+		DiagnosticSignError = 					{ fg = colors.error, bg = colors.bg_sign },
+		DiagnosticUnderlineError = 				{ style = 'undercurl', sp = colors.error },
+		DiagnosticVirtualTextWarn  = 			{ fg = colors.yellow },
+		DiagnosticFloatingWarn = 				{ fg = colors.yellow },
+		DiagnosticSignWarn = 					{ fg = colors.yellow, bg = colors.bg_sign },
+		DiagnosticUnderlineWarn = 				{ style = 'undercurl', sp = colors.yellow },
+		DiagnosticVirtualTextInfo = 			{ fg = colors.paleblue },
+		DiagnosticFloatingInfo = 				{ fg = colors.paleblue },
+		DiagnosticSignInfo = 					{ fg = colors.paleblue, bg = colors.bg_sign },
+		DiagnosticUnderlineInfo = 				{ style = 'undercurl', sp = colors.paleblue },
+		DiagnosticVirtualTextHint = 			{ fg = colors.purple },
+		DiagnosticFloatingHint = 				{ fg = colors.purple },
+		DiagnosticSignHint = 					{ fg = colors.purple, bg = colors.bg_sign },
+		DiagnosticUnderlineHint  = 				{ style = 'undercurl', sp = colors.purple },
+		LspReferenceText = 						{ bg = colors.selection, style = 'underline' }, -- used for highlighting "text" references
+		LspReferenceRead = 						{ bg = colors.selection, style = 'underline' }, -- used for highlighting "read" references
+		LspReferenceWrite = 					{ bg = colors.selection, style = 'underline' }, -- used for highlighting "write" references
 	}
 
 	return lsp
@@ -321,22 +322,22 @@ theme.loadPlugins = function()
 		LspTroubleNormal =                      { fg = colors.fg, bg = colors.sidebar },
 
 		-- Nvim-Cmp
-		CmpItemAbbrMatch =							{ fg = colors.paleblue, style = 'bold' },
-		CmpItemKindText =							{ fg = colors.red },
-		CmpItemKindMethod =							{ fg = colors.blue },
-		CmpItemKindFunction =						{ fg = colors.blue },
-		CmpItemKindContructor =						{ fg = colors.purple },
-		CmpItemKindField =							{ fg = colors.cyan },
-		CmpItemKindVariable =						{ fg = colors.yellow },
-		CmpItemKindClass =							{ fg = colors.yellow },
-		CmpItemKindInterface =						{ fg = colors.yellow },
-		CmpItemKindConstant =						{ fg = colors.yellow },
-		CmpItemKindModule =							{ fg = colors.red },
-		CmpItemKindProperty =						{ fg = colors.purple },
-		CmpItemKindKeyword =						{ fg = colors.cyan },
-		CmpItemKindFile =							{ fg = colors.title },
-		CmpItemKindFolder =							{ fg = colors.title },
-		CmpItemKindSnippet =						{ fg = colors.green },
+		CmpItemAbbrMatch =						{ fg = colors.paleblue, style = 'bold' },
+		CmpItemKindText =						{ fg = colors.red },
+		CmpItemKindMethod =						{ fg = colors.blue },
+		CmpItemKindFunction =					{ fg = colors.blue },
+		CmpItemKindContructor =					{ fg = colors.purple },
+		CmpItemKindField =						{ fg = colors.cyan },
+		CmpItemKindVariable =					{ fg = colors.yellow },
+		CmpItemKindClass =						{ fg = colors.yellow },
+		CmpItemKindInterface =					{ fg = colors.yellow },
+		CmpItemKindConstant =					{ fg = colors.yellow },
+		CmpItemKindModule =						{ fg = colors.red },
+		CmpItemKindProperty =					{ fg = colors.purple },
+		CmpItemKindKeyword =					{ fg = colors.cyan },
+		CmpItemKindFile =						{ fg = colors.title },
+		CmpItemKindFolder =						{ fg = colors.title },
+		CmpItemKindSnippet =					{ fg = colors.green },
 
 		-- Diff
 		diffAdded =                             { fg = colors.green },
@@ -363,14 +364,14 @@ theme.loadPlugins = function()
 		GitGutterDelete =                       { fg = colors.red }, -- diff mode: Deleted line |diff.txt|
 
 		-- GitSigns
-		GitSignsAdd =                           { fg = colors.green }, -- diff mode: Added line |diff.txt|
-		GitSignsAddNr =                         { fg = colors.green }, -- diff mode: Added line |diff.txt|
+		GitSignsAdd =                           { fg = colors.green, bg = colors.bg_sign }, -- diff mode: Added line |diff.txt|
+		GitSignsAddNr =                         { fg = colors.green, bg =colors.bg_num }, -- diff mode: Added line |diff.txt|
 		GitSignsAddLn =                         { fg = colors.green }, -- diff mode: Added line |diff.txt|
-		GitSignsChange =                        { fg = colors.blue }, -- diff mode: Changed line |diff.txt|
-		GitSignsChangeNr =                      { fg = colors.blue }, -- diff mode: Changed line |diff.txt|
+		GitSignsChange =                        { fg = colors.blue, bg = colors.bg_sign }, -- diff mode: Changed line |diff.txt|
+		GitSignsChangeNr =                      { fg = colors.blue, bg =colors.bg_num }, -- diff mode: Changed line |diff.txt|
 		GitSignsChangeLn =                      { fg = colors.blue }, -- diff mode: Changed line |diff.txt|
-		GitSignsDelete =                        { fg = colors.red }, -- diff mode: Deleted line |diff.txt|
-		GitSignsDeleteNr =                      { fg = colors.red }, -- diff mode: Deleted line |diff.txt|
+		GitSignsDelete =                        { fg = colors.red, bg = colors.bg_sign }, -- diff mode: Deleted line |diff.txt|
+		GitSignsDeleteNr =                      { fg = colors.red, bg =colors.bg_num }, -- diff mode: Deleted line |diff.txt|
 		GitSignsDeleteLn =                      { fg = colors.red }, -- diff mode: Deleted line |diff.txt|
 
 		-- Telescope
