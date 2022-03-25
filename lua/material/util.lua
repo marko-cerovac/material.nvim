@@ -71,7 +71,7 @@ function util.load()
     vim.o.termguicolors = true
     vim.g.colors_name = "material"
 
-  -- Load plugins and lsp
+  -- Load plugins and custom highlights
     local async
 
 	local function async_loader()

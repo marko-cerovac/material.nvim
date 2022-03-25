@@ -76,11 +76,11 @@ theme.loadEditor = function ()
 		Conceal =				{ fg = colors.disabled }, -- placeholder characters substituted for concealed text (see 'conceallevel')
 		Cursor =				{ fg = colors.bg_alt, bg = colors.cursor }, -- the character under the cursor
 		CursorIM =				{ fg = colors.bg_alt, bg = colors.cursor }, -- like Cursor, but used when in IME mode
-		Directory =				{ fg = colors.blue, bg = colors.none }, -- directory names (and other special names in listings)
-		DiffAdd =				{ fg = colors.green, bg = colors.none }, -- diff mode: Added line
-		DiffChange =			{ fg = colors.blue, bg = colors.none }, --  diff mode: Changed line
-		DiffDelete =			{ fg = colors.red, bg = colors.none }, -- diff mode: Deleted line
-		DiffText =				{ fg = colors.fg, bg = colors.none }, -- diff mode: Changed text within a changed line
+		Directory =				{ fg = colors.blue }, -- directory names (and other special names in listings)
+		DiffAdd =				{ fg = colors.green }, -- diff mode: Added line
+		DiffChange =			{ fg = colors.blue }, --  diff mode: Changed line
+		DiffDelete =			{ fg = colors.red }, -- diff mode: Deleted line
+		DiffText =				{ fg = colors.fg, bg = colors.bg_alt }, -- diff mode: Changed text within a changed line
 		ErrorMsg =				{ fg = colors.error }, -- error messages
 		Folded =				{ fg = colors.disabled, bg = colors.none, style = 'italic' }, -- line used for closed folds
 		FoldColumn =			{ fg = colors.blue }, -- 'foldcolumn'
@@ -256,10 +256,6 @@ theme.loadLSP = function ()
     -- Lsp highlight groups
 
 	local lsp = {
-		-- DiagnosticError =                       { fg = colors.error },
-		-- DiagnosticWarning =                     { fg = colors.yellow },
-		-- DiagnosticInformation =                 { fg = colors.paleblue },
-		-- DiagnosticHint =                        { fg = colors.purple },
 		-- LspDiagnosticsDefaultError =            { fg = colors.error }, -- used for "Error" diagnostic virtual text
 		-- LspDiagnosticsSignError =               { fg = colors.error, bg = colors.bg_sign }, -- used for "Error" diagnostic signs in sign column
 		-- LspDiagnosticsFloatingError =           { fg = colors.error }, -- used for "Error" diagnostic messages in the diagnostics float
@@ -282,18 +278,22 @@ theme.loadLSP = function ()
 		-- LspDiagnosticsUnderlineHint =           { style = 'undercurl', sp = colors.paleblue }, -- used to underline "Hint" diagnostics.
 
 		-- Nvim 0.6.
+		DiagnosticError =                       { fg = colors.error },
 		DiagnosticVirtualTextError = 			{ fg = colors.error },
 		DiagnosticFloatingError = 				{ fg = colors.error },
 		DiagnosticSignError = 					{ fg = colors.error, bg = colors.bg_sign },
 		DiagnosticUnderlineError = 				{ style = 'undercurl', sp = colors.error },
+		DiagnosticWarning =                     { fg = colors.yellow },
 		DiagnosticVirtualTextWarn  = 			{ fg = colors.yellow },
 		DiagnosticFloatingWarn = 				{ fg = colors.yellow },
 		DiagnosticSignWarn = 					{ fg = colors.yellow, bg = colors.bg_sign },
 		DiagnosticUnderlineWarn = 				{ style = 'undercurl', sp = colors.yellow },
+		DiagnosticInformation =                 { fg = colors.paleblue },
 		DiagnosticVirtualTextInfo = 			{ fg = colors.paleblue },
 		DiagnosticFloatingInfo = 				{ fg = colors.paleblue },
 		DiagnosticSignInfo = 					{ fg = colors.paleblue, bg = colors.bg_sign },
 		DiagnosticUnderlineInfo = 				{ style = 'undercurl', sp = colors.paleblue },
+		DiagnosticHint =                        { fg = colors.purple },
 		DiagnosticVirtualTextHint = 			{ fg = colors.purple },
 		DiagnosticFloatingHint = 				{ fg = colors.purple },
 		DiagnosticSignHint = 					{ fg = colors.purple, bg = colors.bg_sign },
