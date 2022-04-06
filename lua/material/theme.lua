@@ -12,6 +12,7 @@ theme.loadSyntax = function ()
 		StorageClass =				{ fg = colors.cyan }, -- static, register, volatile, etc.
 		Structure =					{ fg = colors.puple }, -- struct, union, enum, etc.
 		Comment =					{ fg = colors.comments, style = styles.comments }, -- italic comments
+		SpecialComment =			{ fg = colors.comments, style = styles.comments }, -- special things inside a comment
 		Conditional =				{ fg = colors.purple, bg = colors.none, style = styles.keywords }, -- italic if, then, else, endif, switch, etc.
 		Constant =					{ fg = colors.yellow }, -- any constant
 		Character =					{ fg = colors.orange }, -- any character constant: 'c', '\n'
@@ -37,7 +38,6 @@ theme.loadSyntax = function ()
 		SpecialChar =				{ fg = colors.disabled }, -- special character in a constant
 		Tag =						{ fg = colors.red }, -- you can use CTRL-] on this
 		Delimiter =					{ fg = colors.cyan }, -- character that needs attention like , or .
-		SpecialComment =			{ fg = colors.gray }, -- special things inside a comment
 		Debug =						{ fg = colors.red }, -- debugging statements
 		Underlined =				{ fg = colors.link, bg = colors.none, style = 'underline' }, -- text that stands out, HTML links
 		Ignore =					{ fg = colors.disabled }, -- left blank, hidden
