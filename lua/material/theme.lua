@@ -13,16 +13,16 @@ theme.loadSyntax = function ()
 		Structure =					{ fg = colors.puple }, -- struct, union, enum, etc.
 		Comment =					{ fg = colors.comments, style = styles.comments }, -- italic comments
 		SpecialComment =			{ fg = colors.comments, style = styles.comments }, -- special things inside a comment
-		Conditional =				{ fg = colors.purple, bg = colors.none, style = styles.keywords }, -- italic if, then, else, endif, switch, etc.
+		Conditional =				{ fg = colors.purple, style = styles.keywords }, -- italic if, then, else, endif, switch, etc.
 		Constant =					{ fg = colors.yellow }, -- any constant
 		Character =					{ fg = colors.orange }, -- any character constant: 'c', '\n'
 		Number =					{ fg = colors.orange }, -- a number constant: 5
 		Boolean =					{ fg = colors.orange }, -- a boolean constant: TRUE, false
 		Float =						{ fg = colors.orange }, -- a floating point constant: 2.3e10
-		Function =					{ fg = colors.blue, bg = colors.none, style = styles.functions }, -- italic funtion names
-		Identifier =				{ fg = colors.fg, bg = colors.none, style = styles.variables }; -- any variable name
+		Function =					{ fg = colors.blue, style = styles.functions }, -- italic funtion names
+		Identifier =				{ fg = colors.fg, style = styles.variables }; -- any variable name
 		Statement =					{ fg = colors.cyan }, -- any statement
-		Keyword =					{ fg = colors.purple, bg = colors.none, style = styles.keywords }, -- italic for, do, while, etc.
+		Keyword =					{ fg = colors.purple, style = styles.keywords }, -- italic for, do, while, etc.
 		Label =						{ fg = colors.purple }, -- case, default, etc.
 		Operator =					{ fg = colors.cyan }, -- sizeof", "+", "*", etc.
 		Exception =					{ fg = colors.red }, -- try, catch, throw
@@ -32,17 +32,17 @@ theme.loadSyntax = function ()
 		Macro =						{ fg = colors.cyan }, -- same as Define
 		Typedef =					{ fg = colors.red }, -- A typedef
 		PreCondit =					{ fg = colors.cyan }, -- preprocessor #if, #else, #endif, etc.
-		Repeat =					{ fg = colors.purple, bg = colors.none, style = styles.keywords }, -- italic any other keyword
-		String =					{ fg = colors.green, bg = colors.none, style= styles.strings }, -- any string
+		Repeat =					{ fg = colors.purple, style = styles.keywords }, -- italic any other keyword
+		String =					{ fg = colors.green, style= styles.strings }, -- any string
 		Special =					{ fg = colors.red }, -- any special symbol
 		SpecialChar =				{ fg = colors.disabled }, -- special character in a constant
 		Tag =						{ fg = colors.red }, -- you can use CTRL-] on this
 		Delimiter =					{ fg = colors.cyan }, -- character that needs attention like , or .
 		Debug =						{ fg = colors.red }, -- debugging statements
-		Underlined =				{ fg = colors.link, bg = colors.none, style = 'underline' }, -- text that stands out, HTML links
+		Underlined =				{ fg = colors.link, style = 'underline' }, -- text that stands out, HTML links
 		Ignore =					{ fg = colors.disabled }, -- left blank, hidden
-		Error =						{ fg = colors.error, bg = colors.none, style = 'bold,underline' }, -- any erroneous construct
-		Todo =						{ fg = colors.yellow, bg = colors.none, style = 'bold,italic' }, -- anything that needs extra attention; mostly the keywords TODO HACK FIXME and XXX
+		Error =						{ fg = colors.error, style = 'bold,underline' }, -- any erroneous construct
+		Todo =						{ fg = colors.yellow, style = 'bold,italic' }, -- anything that needs extra attention; mostly the keywords TODO HACK FIXME and XXX
 
 		htmlLink =					{ fg = colors.link, style = 'underline' },
 		htmlH1 =					{ fg = colors.cyan, style = 'bold' },
@@ -82,12 +82,12 @@ theme.loadEditor = function ()
 		DiffDelete =			{ fg = colors.red }, -- diff mode: Deleted line
 		DiffText =				{ fg = colors.fg, bg = colors.bg_alt }, -- diff mode: Changed text within a changed line
 		ErrorMsg =				{ fg = colors.error }, -- error messages
-		Folded =				{ fg = colors.disabled, bg = colors.none, style = 'italic' }, -- line used for closed folds
+		Folded =				{ fg = colors.disabled, style = 'italic' }, -- line used for closed folds
 		FoldColumn =			{ fg = colors.blue }, -- 'foldcolumn'
 		IncSearch =				{ fg = colors.title, bg = colors.selection, style = 'underline' }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
 		LineNr =				{ fg = colors.line_numbers, bg = colors.bg_num }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
 		CursorLineNr =			{ fg = colors.accent, bg = colors.bg_num }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-		MatchParen =			{ fg = colors.yellow, bg = colors.none, style = 'bold' }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+		MatchParen =			{ fg = colors.yellow, style = 'bold' }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
 		ModeMsg =				{ fg = colors.accent }, -- 'showmode' message (e.g., "-- INSERT -- ")
 		MoreMsg =				{ fg = colors.accent }, -- |more-prompt|
 		NonText =				{ fg = colors.disabled }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
@@ -98,10 +98,10 @@ theme.loadEditor = function ()
 		Search =				{ fg = colors.title, bg = colors.selection, style = 'bold' }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
 		SignColumn =			{ fg = colors.fg, bg = colors.bg_sign },
 		SpecialKey =			{ fg = colors.purple }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
-		SpellBad =				{ fg = colors.red, bg = colors.none, style = 'italic,undercurl' }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
-		SpellCap =				{ fg = colors.blue, bg = colors.none, style = 'italic,undercurl' }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
-		SpellLocal =			{ fg = colors.cyan, bg = colors.none, style = 'italic,undercurl' }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
-		SpellRare =				{ fg = colors.purple, bg = colors.none, style = 'italic,undercurl' }, -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
+		SpellBad =				{ fg = colors.red, style = 'italic,undercurl' }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
+		SpellCap =				{ fg = colors.blue, style = 'italic,undercurl' }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
+		SpellLocal =			{ fg = colors.cyan, style = 'italic,undercurl' }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
+		SpellRare =				{ fg = colors.purple, style = 'italic,undercurl' }, -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
 		StatusLine =			{ fg = colors.accent, bg = colors.active }, -- status line of current window
 		StatusLineNC =  		{ fg = colors.fg, bg = colors.bg }, -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
 		StatusLineTerm =		{ fg = colors.fg, bg = colors.active }, -- status line of current terminal window
@@ -109,16 +109,16 @@ theme.loadEditor = function ()
 		TabLineFill =			{ fg = colors.fg }, -- tab pages line, where there are no labels
 		TablineSel =			{ fg = colors.bg, bg = colors.accent }, -- tab pages line, active tab page label
 		Tabline =				{ fg = colors.fg },
-		Title =					{ fg = colors.title, bg = colors.none, style = 'bold' }, -- titles for output from ":set all", ":autocmd" etc.
+		Title =					{ fg = colors.title, style = 'bold' }, -- titles for output from ":set all", ":autocmd" etc.
 		Visual =				{ fg = colors.none, bg = colors.selection }, -- Visual mode selection
 		VisualNOS =				{ fg = colors.none, bg = colors.selection }, -- Visual mode selection when vim is "Not Owning the Selection".
 		WarningMsg =			{ fg = colors.yellow }, -- warning messages
 		Whitespace =			{ fg = colors.disabled }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
-		WildMenu =				{ fg = colors.orange, bg = colors.none, style = 'bold' }, -- current match in 'wildmenu' completion
+		WildMenu =				{ fg = colors.orange, style = 'bold' }, -- current match in 'wildmenu' completion
 		CursorColumn =			{ fg = colors.none, bg = colors.bg_cur }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
 		CursorLine =			{ fg = colors.none, bg = colors.bg_cur }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
 		-- ToolbarLine =			{ fg = colors.fg, bg = colors.bg_alt },
-		-- ToolbarButton =			{ fg = colors.fg, bg = colors.none, style = 'bold' },
+		-- ToolbarButton =			{ fg = colors.fg, style = 'bold' },
 		NormalMode =			{ fg = colors.accent }, -- Normal mode message in the cmdline
 		InsertMode =			{ fg = colors.green }, -- Insert mode message in the cmdline
 		ReplacelMode =			{ fg = colors.red }, -- Replace mode message in the cmdline
@@ -224,7 +224,7 @@ theme.loadTreeSitter = function ()
 		TSPunctSpecial =            { fg = colors.cyan }, -- For special punctutation that does not fall in the catagories before.
 		TSRepeat =                  { fg = colors.purple, style = styles.keywords }, -- For keywords related to loops.
 	    TSString =                  { fg = colors.green, styles = styles.strings }, -- For strings.
-		TSStringRegex =             { fg = colors.blue }, -- For regexes.
+		TSStringRegex =             { fg = colors.yellow }, -- For regexes.
 		TSStringEscape =            { fg = colors.text }, -- For escape characters within a string.
 		TSSymbol =                  { fg = colors.yellow }, -- For identifiers referring to symbols or atoms.
 		TSStrong =					{ fg = colors.paleblue, style = 'bold' }, -- Text to be represented in bold.
@@ -238,9 +238,9 @@ theme.loadTreeSitter = function ()
 		TSVariable =                { fg = colors.fg, style = styles.variables }, -- Any variable name that does not have another highlight.
 		TSVariableBuiltin =         { fg = colors.fg, style = styles.variables }, -- Variable names that are defined by the languages, like `this` or `self`.
 		TSEmphasis =                { fg = colors.paleblue }, -- For text to be represented with emphasis.
-		TSUnderline =               { fg = colors.fg, bg = colors.none, style = 'underline' }, -- For text to be represented with an underline.
-		-- TSStrike =                  { fg = colors.fg, bg = colors.none, style = 'strikethrough'}, -- For strikethrough text.
-		TSTitle =                   { fg = colors.title, bg = colors.none, style = 'bold' }, -- Text that is part of a title.
+		TSUnderline =               { fg = colors.fg, style = 'underline' }, -- For text to be represented with an underline.
+		-- TSStrike =                  { fg = colors.fg,, style = 'strikethrough'}, -- For strikethrough text.
+		TSTitle =                   { fg = colors.title, style = 'bold' }, -- Text that is part of a title.
 		TSLiteral =                 { fg = colors.fg }, -- Literal text.
 		TSURI =                     { fg = colors.link }, -- Any URI like a link or email.
 		TSMath =					{ fg = colors.blue }, -- Math environments like LaTeX's `$ ... $`
@@ -408,10 +408,10 @@ theme.loadPlugins = function()
 		NvimTreeMarkdownFile =                  { fg = colors.pink },
 		NvimTreeExecFile =                      { fg = colors.green },
 		NvimTreeSpecialFile =                   { fg = colors.purple },
-		LspDiagnosticsError =                   { fg = colors.error },
-		LspDiagnosticsWarning =                 { fg = colors.yellow },
-		LspDiagnosticsInformation =             { fg = colors.paleblue },
-		LspDiagnosticsHint =                    { fg = colors.purple },
+		-- LspDiagnosticsError =                   { fg = colors.error },
+		-- LspDiagnosticsWarning =                 { fg = colors.yellow },
+		-- LspDiagnosticsInformation =             { fg = colors.paleblue },
+		-- LspDiagnosticsHint =                    { fg = colors.purple },
 
 		-- Sidebar.nvim
 		SidebarNvimNormal =						{ fg = colors.fg },
