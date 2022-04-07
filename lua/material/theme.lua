@@ -316,10 +316,17 @@ theme.loadPlugins = function()
 		-- debugPC =								{ bg = material.selection },
 		debugBreakpoint =						{ fg = colors.red, bg = colors.bg },
 
-		-- LspTrouble
-		LspTroubleText =                        { fg = colors.text },
-		LspTroubleCount =                       { fg = colors.purple, bg = colors.active },
-		LspTroubleNormal =                      { fg = colors.fg, bg = colors.sidebar },
+		-- Trouble
+		TroubleText =                        	{ fg = colors.text, bg = colors.sidebar },
+		TroubleCount =                       	{ fg = colors.purple, bg = colors.sidebar },
+		TroubleNormal =                      	{ fg = colors.fg, bg = colors.sidebar },
+		TroubleSignError = 						{ fg = colors.error, bg = colors.sidebar},
+		TroubleSignWarning = 					{ fg = colors.yellow, bg = colors.sidebar},
+		TroubleSignInformation = 				{ fg = colors.paleblue, bg = colors.sidebar},
+		TroubleSignHint = 						{ fg = colors.purple, bg = colors.sidebar},
+		TroubleFoldIcon = 						{ fg = colors.accent, bg = colors.sidebar },
+		TroubleIndent = 						{ fg = colors.border, bg = colors.sidebar },
+		TroubleLocation = 						{ fg = colors.disabled, bg = colors.sidebar },
 
 		-- Nvim-Cmp
 		CmpItemAbbrMatch =						{ fg = colors.paleblue, style = 'bold' },
