@@ -102,10 +102,10 @@ theme.loadEditor = function ()
 		SpellCap =				{ fg = colors.blue, style = 'italic,undercurl' }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
 		SpellLocal =			{ fg = colors.cyan, style = 'italic,undercurl' }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
 		SpellRare =				{ fg = colors.purple, style = 'italic,undercurl' }, -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
-		StatusLine =			{ fg = colors.accent, bg = colors.active }, -- status line of current window
-		StatusLineNC =  		{ fg = colors.fg, bg = colors.bg }, -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+		StatusLine =			{ fg = colors.fg, bg = colors.active }, -- status line of current window
+		StatusLineNC =  		{ fg = colors.disabled, bg = colors.bg }, -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
 		StatusLineTerm =		{ fg = colors.fg, bg = colors.active }, -- status line of current terminal window
-		StatusLineTermNC =		{ fg = colors.text, bg = colors.bg }, -- status lines of not-current terminal windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+		StatusLineTermNC =		{ fg = colors.disabled, bg = colors.bg }, -- status lines of not-current terminal windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
 		TabLineFill =			{ fg = colors.fg }, -- tab pages line, where there are no labels
 		TablineSel =			{ fg = colors.bg, bg = colors.accent }, -- tab pages line, active tab page label
 		Tabline =				{ fg = colors.fg },
@@ -335,10 +335,10 @@ theme.loadPlugins = function()
 		CmpItemKindFunction =					{ fg = colors.blue },
 		CmpItemKindContructor =					{ fg = colors.purple },
 		CmpItemKindField =						{ fg = colors.cyan },
-		CmpItemKindVariable =					{ fg = colors.yellow },
+		CmpItemKindVariable =					{ fg = colors.paleblue },
+		CmpItemKindConstant =					{ fg = colors.paleblue },
 		CmpItemKindClass =						{ fg = colors.yellow },
 		CmpItemKindInterface =					{ fg = colors.yellow },
-		CmpItemKindConstant =					{ fg = colors.yellow },
 		CmpItemKindModule =						{ fg = colors.red },
 		CmpItemKindProperty =					{ fg = colors.purple },
 		CmpItemKindKeyword =					{ fg = colors.cyan },
