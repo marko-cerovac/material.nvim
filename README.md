@@ -20,20 +20,22 @@ The original [Material](https://material-theme.site) theme now available for [Ne
 A port of [Material](https://material-theme.site) colorscheme for NeoVim written in Lua
 
 Material.nvim is meant to be a fast and modern colorscheme written in Lua that supports a lot of the new features
-added to NeoVim like built-in LSP and [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
+added to NeoVim like built-in [LSP](https://github.com/neovim/nvim-lspconfig) and [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
 
 ## 🌊 Features
 
 + 5 styles to choose from
-    + Deep ocean ![deep-ocean](https://user-images.githubusercontent.com/76592799/129165476-6ec7c2bf-c81b-405e-83a2-f75674cf7a7f.png)
 
-    + Oceanic ![oceanic](https://user-images.githubusercontent.com/76592799/129165517-6048f242-b9d1-4d0c-912c-c53b76442e47.png)
+    + Oceanic ![2022-04-18-01:21:38-screenshot](https://user-images.githubusercontent.com/76592799/163740712-493ff2e9-cd4f-41e0-b7cd-595b58924816.png)
 
-    + Palenight ![palenight](https://user-images.githubusercontent.com/76592799/129165551-b4ee76f1-6d95-4275-831f-6419a1f805eb.png)
+    + Deep ocean ![2022-04-18-01:21:16-screenshot](https://user-images.githubusercontent.com/76592799/163740695-3c34201c-7ae4-482f-9548-53d08701bdd5.png)
 
-    + Lighter ![lighter](https://user-images.githubusercontent.com/76592799/129165583-9afa3f0a-97f0-4b01-ab96-31b8381baa84.png)
+    + Palenight ![2022-04-18-01:21:33-screenshot](https://user-images.githubusercontent.com/76592799/163740722-5bad7a23-a93d-446b-901a-fa2cae0c611e.png)
 
-    + Darker ![darker](https://user-images.githubusercontent.com/76592799/129165627-d43e4651-9206-427e-a31b-0962593ab550.png)
+    + Lighter ![2022-04-18-01:21:28-screenshot](https://user-images.githubusercontent.com/76592799/163740732-bfb9bde2-f56b-48af-b8be-be8b1e18fef3.png)
+
+    + Darker ![2022-04-18-01:21:22-screenshot](https://user-images.githubusercontent.com/76592799/163740743-02c243ae-512d-4707-b865-5261e09072dd.png)
+
 
 
 + Supported plugins:
@@ -61,7 +63,7 @@ added to NeoVim like built-in LSP and [TreeSitter](https://github.com/nvim-trees
 
 + Ability to change background on sidebar-like windows like Nvim-Tree, Packer, terminal etc.
 
-+ Asynchronous highlight loading which makes the theme extremely fast
++ Asynchronous highlight loading which makes the theme blazingly fast
 
 + Added functions for live theme switching without the need to restart NeoVim
 
@@ -199,6 +201,16 @@ colorscheme material
 vim.cmd 'colorscheme material'
 ```
 
+This is an example of overwriting the default highlights (most users will never need to do this)
+```lua
+require('material').setup{
+	custom_highlights = {
+		CursorLine = { fg = '#0000FF', gui = 'underline' },
+		LineNr = { bg = '#FF0000' }
+	}
+}
+```
+
 To enable the lualine themes, first set the theme in your lualine settings to `auto` or `material`
 ```lua
 require('lualine').setup {
@@ -233,47 +245,6 @@ require('lualine').setup {
     theme = 'material-stealth' -- the stealth style
     -- ... your lualine config
   }
-}
-```
-
-This is an example config in lua:
-```lua
--- Set the theme style
-vim.g.material_style = 'deep ocean'
-
-require('material').setup({
-	contrast = {
-		sidebars = true,
-		cursor_line = true,
-	},
-	italics = {
-		comments = true,
-		functions = true,
-	},
-	contrast_filetypes = {
-		"terminal",
-		"packer",
-		"qf",
-	},
-	disable = {
-		borders = true,
-		eob_lines = true
-	},
-	lualine_style = 'stealth'
-})
-
--- Enable the colorscheme
-vim.cmd 'colorscheme material'
-
-```
-
-This is an example of overwriting the default highlights (most users will never need to do this):
-```lua
-require('material').setup{
-	custom_highlights = {
-		CursorLine = { fg = '#0000FF', gui = 'underline' },
-		LineNr = { bg = '#FF0000' }
-	}
 }
 ```
 
