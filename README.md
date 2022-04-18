@@ -20,7 +20,7 @@ The original [Material](https://material-theme.site) theme now available for [Ne
 A port of [Material](https://material-theme.site) colorscheme for NeoVim written in Lua
 
 Material.nvim is meant to be a fast and modern colorscheme written in Lua that supports a lot of the new features
-added to NeoVim like built-in LSP and [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
+added to NeoVim like built-in [LSP](https://github.com/neovim/nvim-lspconfig) and [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
 
 ## 🌊 Features
 
@@ -63,7 +63,7 @@ added to NeoVim like built-in LSP and [TreeSitter](https://github.com/nvim-trees
 
 + Ability to change background on sidebar-like windows like Nvim-Tree, Packer, terminal etc.
 
-+ Asynchronous highlight loading which makes the theme extremely fast
++ Asynchronous highlight loading which makes the theme blazingly fast
 
 + Added functions for live theme switching without the need to restart NeoVim
 
@@ -201,6 +201,16 @@ colorscheme material
 vim.cmd 'colorscheme material'
 ```
 
+This is an example of overwriting the default highlights (most users will never need to do this)
+```lua
+require('material').setup{
+	custom_highlights = {
+		CursorLine = { fg = '#0000FF', gui = 'underline' },
+		LineNr = { bg = '#FF0000' }
+	}
+}
+```
+
 To enable the lualine themes, first set the theme in your lualine settings to `auto` or `material`
 ```lua
 require('lualine').setup {
@@ -235,47 +245,6 @@ require('lualine').setup {
     theme = 'material-stealth' -- the stealth style
     -- ... your lualine config
   }
-}
-```
-
-This is an example config in lua:
-```lua
--- Set the theme style
-vim.g.material_style = 'deep ocean'
-
-require('material').setup({
-	contrast = {
-		sidebars = true,
-		cursor_line = true,
-	},
-	italics = {
-		comments = true,
-		functions = true,
-	},
-	contrast_filetypes = {
-		"terminal",
-		"packer",
-		"qf",
-	},
-	disable = {
-		borders = true,
-		eob_lines = true
-	},
-	lualine_style = 'stealth'
-})
-
--- Enable the colorscheme
-vim.cmd 'colorscheme material'
-
-```
-
-This is an example of overwriting the default highlights (most users will never need to do this):
-```lua
-require('material').setup{
-	custom_highlights = {
-		CursorLine = { fg = '#0000FF', gui = 'underline' },
-		LineNr = { bg = '#FF0000' }
-	}
 }
 ```
 
