@@ -283,7 +283,7 @@ theme.loadLSP = function ()
 		DiagnosticFloatingError = 				{ fg = colors.error },
 		DiagnosticSignError = 					{ fg = colors.error, bg = colors.bg_sign },
 		DiagnosticUnderlineError = 				{ style = 'undercurl', sp = colors.error },
-		DiagnosticWarning =                     { fg = colors.yellow },
+		DiagnosticWarn =                     { fg = colors.yellow },
 		DiagnosticVirtualTextWarn  = 			{ fg = colors.yellow },
 		DiagnosticFloatingWarn = 				{ fg = colors.yellow },
 		DiagnosticSignWarn = 					{ fg = colors.yellow, bg = colors.bg_sign },
@@ -456,6 +456,10 @@ theme.loadPlugins = function()
 		DefinitionIcon =                        { fg = colors.blue },
 		ReferencesIcon =                        { fg = colors.blue },
 		TargetWord =                            { fg = colors.cyan },
+
+		-- Symbols outline
+		FocusedSymbol = 						{ bg = colors.selection },
+		SymbolsOutlineConnector = 				{ fg = colors.border },
 
 		-- BufferLine
 		BufferLineIndicatorSelected =           { fg = colors.accent },

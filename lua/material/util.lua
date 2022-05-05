@@ -67,8 +67,9 @@ function util.load()
     -- Set the theme environment
     vim.cmd("hi clear")
     if vim.fn.exists("syntax_on") then vim.cmd("syntax reset") end
-    vim.o.background = "dark"
-    vim.o.termguicolors = true
+    vim.opt.background = "dark"
+    vim.opt.termguicolors = true
+	vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:Cursor/Cursor"
     vim.g.colors_name = "material"
 
   -- Load plugins and custom highlights
