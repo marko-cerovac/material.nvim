@@ -16,8 +16,8 @@
 -- Website:                 https://github.com/marko-cerovac/material.nvim
 
 -- Load the theme with user configuration
-local setup = function (options)
-	require('material.config').setup(options)
+local setup = function(options)
+  require('material.config').setup(options)
 end
 
 return { setup = setup }
