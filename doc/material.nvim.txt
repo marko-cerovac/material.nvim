@@ -163,6 +163,7 @@ This is an example of the setup function with the default values:
 			darker = false
 		},
 		disable = {
+			colored_cursor = false,
 			borders = false,
 			background = false,
 			term_colors = false,
@@ -203,7 +204,8 @@ This is an example of the setup function with the default values:
 
 	+ disable  {table}
 		  This table allows you to disable the theme from setting
-		  borders, background, terminal colors and end-of-buffer lines
+		  the cursor color, borders, background, terminal colors and
+		  end-of-buffer lines
 
 	+ lualine_style {string}
 	      Choose between two styles for lualine. can be "default" or "stealth"

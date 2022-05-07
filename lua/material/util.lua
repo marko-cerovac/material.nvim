@@ -69,8 +69,11 @@ function util.load()
     if vim.fn.exists("syntax_on") then vim.cmd("syntax reset") end
     vim.opt.background = "dark"
     vim.opt.termguicolors = true
-	vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:Cursor/Cursor"
     vim.g.colors_name = "material"
+
+	if config.disable.colored_cursor == false then
+		vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:Cursor/Cursor"
+	end
 
   -- Load plugins and custom highlights
     local async

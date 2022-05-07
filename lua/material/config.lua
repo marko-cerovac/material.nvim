@@ -23,6 +23,7 @@ local defaults = {
 	contrast_filetypes = {}, -- Select which windows get the contrast background
 
 	disable = {
+		colored_cursor = false, -- Disable the colored cursor
 		borders = false, -- Disable window split borders
 		background = false, -- Disable setting the background color
 		term_colors = false, -- Disable setting the terminal colors
