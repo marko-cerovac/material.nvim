@@ -43,10 +43,12 @@ if vim.g.material_style == 'darker' then
 	-- Darker theme style
 
 	if config.high_visibility.darker == true then
+
 		-- Darker theme style with high contrast
 		colors.comments =		'#757575'
 		colors.line_numbers =	'#5C5C5C'
 	else
+
 		-- default Darker theme style
 		colors.comments =		'#616161'
 		colors.line_numbers =	'#424242'
@@ -67,6 +69,7 @@ if vim.g.material_style == 'darker' then
 
 
 elseif vim.g.material_style == 'lighter' then
+	-- Lighter theme style
 
 	if config.high_visibility.lighter == true then
 

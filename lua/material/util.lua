@@ -33,9 +33,9 @@ util.contrast = function ()
     vim.cmd [[  autocmd ColorScheme * lua require("material.util").onColorScheme()]]
 	for _, sidebar in ipairs(config.contrast_filetypes) do
 		if sidebar == "terminal" then
-			vim.cmd [[  autocmd TermOpen * setlocal winhighlight=Normal:NormalContrast,SignColumn:NormalContrast]]
+			vim.cmd([[ autocmd TermOpen * setlocal winhighlight=Normal:NormalContrast,SignColumn:NormalContrast ]])
 		else
-			vim.cmd([[  autocmd FileType ]] .. sidebar .. [[ setlocal winhighlight=Normal:NormalContrast,SignColumn:SignColumnFloat]])
+			vim.cmd([[ autocmd FileType ]] .. sidebar .. [[ setlocal winhighlight=Normal:NormalContrast,SignColumn:SignColumnFloat ]])
 		end
 	end
     vim.cmd [[augroup end]]
@@ -73,6 +73,7 @@ function util.load()
 
 	if config.disable.colored_cursor == false then
 		vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:Cursor/Cursor"
+		vim.cmd([[autocmd ExitPre * set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20]])
 	end
 
   -- Load plugins and custom highlights

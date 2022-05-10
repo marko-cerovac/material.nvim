@@ -480,6 +480,7 @@ theme.loadPlugins = function()
 		-- Nvim dap-UI
 		DapUIFloatBorder =						{ fg = colors.border, bg = colors.bg },
 		DapUIDecoration =						{ fg = colors.blue },
+		-- DapUIVariable = 						{ fg = colors.fg },
 
 		-- Illuminate
 		illuminatedWord =						{ bg = colors.highight, gui = 'italic' },
