@@ -347,8 +347,8 @@ nnoremap <leader>mm :lua require('material.functions').toggle_style()<CR>
 
 nnoremap <leader>me :lua require('material.functions').toggle_eob()<CR>
 
-nnoremap <leader>md :luarequire('material.functions').change_style('darker')<CR>
-nnoremap <leader>ml :luarequire('material.functions').change_style('lighter')<CR>
+nnoremap <leader>md :lua require('material.functions').change_style('darker')<CR>
+nnoremap <leader>ml :lua require('material.functions').change_style('lighter')<CR>
 
 ================================================================================
 vim:tw=78:ts=4:ft=help:norl:
