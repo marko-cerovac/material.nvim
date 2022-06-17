@@ -10,7 +10,6 @@ util.highlight = function (group, color)
     local sp = color.sp and "guisp=" .. color.sp or ""
 
     local hl = "highlight " .. group .. " " .. style .. " " .. fg .. " " .. bg .. " " .. sp
-
     vim.cmd(hl)
     if color.link then
 		vim.cmd("highlight! link " .. group .. " " .. color.link)
@@ -90,13 +89,15 @@ function util.load()
 
 		-- Apply the plugin colors
 		for group, colors in pairs(plugins) do
-			util.highlight(group, colors)
+			-- util.highlight(group, colors)
+			vim.api.nvim_set_hl(0, group, colors)
 		end
 
 		-- Apply user defined highlights if they exist
 		if type(config.custom_highlights) == 'table' then
 			for group, colors in pairs(config.custom_highlights) do
-				util.highlight(group, colors)
+				-- util.highlight(group, colors)
+				vim.api.nvim_set_hl(0, group, colors)
 			end
 		end
 
@@ -125,22 +126,26 @@ function util.load()
 
 	-- Apply base colors
     for group, colors in pairs(editor) do
-        util.highlight(group, colors)
+        -- util.highlight(group, colors)
+		vim.api.nvim_set_hl(0, group, colors)
     end
 
 	-- Apply basic syntax colors
     for group, colors in pairs(syntax) do
-        util.highlight(group, colors)
+        -- util.highlight(group, colors)
+		vim.api.nvim_set_hl(0, group, colors)
     end
 
 	-- Apply treesitter colors
     for group, colors in pairs(treesitter) do
-        util.highlight(group, colors)
+        -- util.highlight(group, colors)
+		vim.api.nvim_set_hl(0, group, colors)
     end
 
 	-- Apply lsp colors
 	for group, colors in pairs(lsp) do
-		util.highlight(group, colors)
+		-- util.highlight(group, colors)
+		vim.api.nvim_set_hl(0, group, colors)
 	end
 
 	-- If async loading is enabled, send it
