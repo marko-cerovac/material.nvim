@@ -42,7 +42,7 @@ added to NeoVim like built-in [LSP](https://github.com/neovim/nvim-lspconfig) an
     + [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
     + [LSP Diagnostics](https://neovim.io/doc/user/lsp.html)
     + [Lsp Saga](https://github.com/glepnir/lspsaga.nvim)
-    + [Nvim-Compe](https://github.com/hrsh7th/nvim-compe)
+    + [Nvim-Cmp](https://github.com/hrsh7th/nvim-cmp)
     + [LSP Trouble](https://github.com/folke/lsp-trouble.nvim)
     + [Git Gutter](https://github.com/airblade/vim-gitgutter)
     + [git-messenger](https://github.com/rhysd/git-messenger.vim)
