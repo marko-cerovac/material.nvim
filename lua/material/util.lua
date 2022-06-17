@@ -3,7 +3,7 @@ local material = require('material.theme')
 local config = require('material.config').options
 
 -- Go trough the table and highlight the group with the color values
-util.highlight = function (group, color)
+--[[ util.highlight = function (group, color)
     local style = color.style and "gui=" .. color.style or "gui=NONE"
     local fg = color.fg and "guifg=" .. color.fg or "guifg=NONE"
     local bg = color.bg and "guibg=" .. color.bg or "guibg=NONE"
@@ -14,7 +14,7 @@ util.highlight = function (group, color)
     if color.link then
 		vim.cmd("highlight! link " .. group .. " " .. color.link)
 	end
-end
+end ]]
 
 -- Only define Material if it's the active colorshceme
 function util.onColorScheme()
@@ -39,26 +39,26 @@ util.contrast = function ()
 	end
     vim.cmd [[augroup end]]
 
-	-- local group = vim.api.nvim_create_augroup("Material", { clear = true })
-	-- vim.api.nvim_create_autocmd("ColorScheme", { callback = function ()
-	-- 	require("material.util").onColorScheme()
-	-- end, group = group })
+	--[[ local group = vim.api.nvim_create_augroup("Material", { clear = true })
+	vim.api.nvim_create_autocmd("ColorScheme", { callback = function ()
+		require("material.util").onColorScheme()
+	end, group = group })
 
-	-- for _, sidebar in ipairs(config.contrast_filetypes) do
-	-- 	if sidebar == "terminal" then
-	-- 		vim.api.nvim_create_autocmd("TermOpen", {
-	-- 			command = "setlocal winhighlight=Normal:NormalContrast,SignColumn:NormalContrast",
-	-- 			group = group,
-	-- 			buffer = 0
-	-- 		})
-	-- 	else
-	-- 		vim.api.nvim_create_autocmd("FileType " .. sidebar, {
-	-- 			command = "setlocal winhighlight=Normal:NormalContrast,SignColumn:SignColumnFloat",
-	-- 			group = group,
-	-- 			buffer = 0
-	-- 		})
-	-- 	end
-	-- end
+	for _, sidebar in ipairs(config.contrast_filetypes) do
+		if sidebar == "terminal" then
+			vim.api.nvim_create_autocmd("TermOpen", {
+				command = "setlocal winhighlight=Normal:NormalContrast,SignColumn:NormalContrast",
+				group = group,
+				buffer = 0
+			})
+		else
+			vim.api.nvim_create_autocmd("FileType " .. sidebar, {
+				command = "setlocal winhighlight=Normal:NormalContrast,SignColumn:SignColumnFloat",
+				group = group,
+				buffer = 0
+			})
+		end
+	end ]]
 end
 
 -- Load the theme
