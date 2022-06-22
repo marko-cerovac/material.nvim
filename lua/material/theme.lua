@@ -10,7 +10,7 @@ theme.loadSyntax = function ()
 	local syntax = {
 		Type =						{ fg = colors.purple }, -- int, long, char, etc.
 		StorageClass =				{ fg = colors.cyan }, -- static, register, volatile, etc.
-		Structure =					{ fg = colors.puple }, -- struct, union, enum, etc.
+		Structure =					{ fg = colors.purple }, -- struct, union, enum, etc.
 		Comment =					{ fg = colors.comments, style = styles.comments }, -- italic comments
 		SpecialComment =			{ fg = colors.comments, style = styles.comments }, -- special things inside a comment
 		Conditional =				{ fg = colors.purple, style = styles.keywords }, -- italic if, then, else, endif, switch, etc.
@@ -494,6 +494,36 @@ theme.loadPlugins = function()
 
 		-- Fern
 		FernBranchText =						{ fg = colors.blue },
+
+		-- nvim-navic
+		NavicIconsFile =						{ fg = colors.title		, bg = colors.selection },
+		NavicIconsModule =						{ fg = colors.title		, bg = colors.selection },
+		NavicIconsNamespace =					{ fg = colors.yellow	, bg = colors.selection },
+		NavicIconsPackage =						{ fg = colors.title		, bg = colors.selection },
+		NavicIconsClass =						{ fg = colors.yellow 	, bg = colors.selection },
+		NavicIconsMethod =						{ fg = colors.blue		, bg = colors.selection },
+		NavicIconsProperty =					{ fg = colors.purple	, bg = colors.selection },
+		NavicIconsField =						{ fg = colors.cyan		, bg = colors.selection },
+		NavicIconsConstructor =					{ fg = colors.purple	, bg = colors.selection },
+		NavicIconsEnum =						{ fg = colors.darkyellow, bg = colors.selection },
+		NavicIconsInterface =					{ fg = colors.yellow	, bg = colors.selection },
+		NavicIconsFunction =					{ fg = colors.blue		, bg = colors.selection },
+		NavicIconsVariable =					{ fg = colors.paleblue	, bg = colors.selection },
+		NavicIconsConstant =					{ fg = colors.paleblue	, bg = colors.selection },
+		NavicIconsString =						{ fg = colors.darkorange, bg = colors.selection },
+		NavicIconsNumber =						{ fg = colors.darkorange, bg = colors.selection },
+		NavicIconsBoolean =						{ fg = colors.green		, bg = colors.selection },
+		NavicIconsArray =						{ fg = colors.orange	, bg = colors.selection },
+		NavicIconsObject =						{ fg = colors.orange	, bg = colors.selection },
+		NavicIconsKey =							{ fg = colors.cyan		, bg = colors.selection },
+		NavicIconsNull =						{ fg = colors.red		, bg = colors.selection },
+		NavicIconsEnumMember =					{ fg = colors.darkyellow, bg = colors.selection },
+		NavicIconsStruct =						{ fg = colors.yellow	, bg = colors.selection },
+		NavicIconsEvent =						{ fg = colors.darkred	, bg = colors.selection },
+		NavicIconsOperator =					{ fg = colors.red		, bg = colors.selection },
+		NavicIconsTypeParameter =				{ fg = colors.darkgreen	, bg = colors.selection },
+		NavicText =								{ fg = colors.fg		, bg = colors.selection },
+		NavicSeparator =						{ fg = colors.fg		, bg = colors.selection },
 	}
 
 	return plugins
