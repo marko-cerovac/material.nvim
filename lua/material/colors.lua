@@ -27,7 +27,7 @@ local colors = {
 	darkblue =				'#6E98EB',
 	darkcyan =				'#71C6E7',
 	darkpurple =			'#B480D6',
-	darkorange =			'#E2795B',
+	-- darkorange =			'#E2795B',
 
 	error =					'#FF5370',
 	link =					'#80CBC4',

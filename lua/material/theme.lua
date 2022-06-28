@@ -12,7 +12,7 @@ theme.loadSyntax = function ()
 		StorageClass =				{ fg = colors.cyan }, -- static, register, volatile, etc.
 		Structure =					{ fg = colors.purple }, -- struct, union, enum, etc.
 		Comment =					{ fg = colors.comments, style = styles.comments }, -- italic comments
-		SpecialComment =			{ fg = colors.comments, style = styles.comments }, -- special things inside a comment
+		SpecialComment =			{ link = "Comment" }, -- special things inside a comment
 		Conditional =				{ fg = colors.purple, style = styles.keywords }, -- italic if, then, else, endif, switch, etc.
 		Constant =					{ fg = colors.yellow }, -- any constant
 		Character =					{ fg = colors.orange }, -- any character constant: 'c', '\n'
@@ -41,7 +41,7 @@ theme.loadSyntax = function ()
 		Debug =						{ fg = colors.red }, -- debugging statements
 		Underlined =				{ fg = colors.link, style = 'underline' }, -- text that stands out, HTML links
 		Ignore =					{ fg = colors.disabled }, -- left blank, hidden
-		Error =						{ fg = colors.error, style = 'bold,underline' }, -- any erroneous construct
+		Error =						{ fg = colors.error, style = 'bold' }, -- any erroneous construct
 		Todo =						{ fg = colors.yellow, style = 'bold,italic' }, -- anything that needs extra attention; mostly the keywords TODO HACK FIXME and XXX
 
 		htmlLink =					{ fg = colors.link, style = 'underline' },
@@ -94,7 +94,7 @@ theme.loadEditor = function ()
 		PmenuSel =				{ fg = colors.contrast, bg = colors.accent }, -- Popup menu: selected item.
 		Question =				{ fg = colors.green }, -- |hit-enter| prompt and yes/no questions
 		QuickFixLine =			{ fg = colors.highlight, bg = colors.title, style = 'reverse' }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-		qfLineNr =				{ fg = colors.highlight, bg = colors.title, style = 'reverse' }, -- Line numbers for quickfix lists
+		qfLineNr =				{ link = "QuickFixLine" }, -- Line numbers for quickfix lists
 		Search =				{ fg = colors.title, bg = colors.selection, style = 'bold' }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
 		SignColumn =			{ fg = colors.fg, bg = colors.bg_sign },
 		SpecialKey =			{ fg = colors.purple }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
@@ -111,12 +111,12 @@ theme.loadEditor = function ()
 		Tabline =				{ fg = colors.fg },
 		Title =					{ fg = colors.title, style = 'bold' }, -- titles for output from ":set all", ":autocmd" etc.
 		Visual =				{ fg = colors.none, bg = colors.selection }, -- Visual mode selection
-		VisualNOS =				{ fg = colors.none, bg = colors.selection }, -- Visual mode selection when vim is "Not Owning the Selection".
+		VisualNOS =				{ link = "Visual" }, -- Visual mode selection when vim is "Not Owning the Selection".
 		WarningMsg =			{ fg = colors.yellow }, -- warning messages
 		Whitespace =			{ fg = colors.disabled }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
 		WildMenu =				{ fg = colors.orange, style = 'bold' }, -- current match in 'wildmenu' completion
-		CursorColumn =			{ fg = colors.none, bg = colors.bg_cur }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
 		CursorLine =			{ fg = colors.none, bg = colors.bg_cur }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
+		CursorColumn =			{ link = "CursorLine" }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
 		-- ToolbarLine =			{ fg = colors.fg, bg = colors.bg_alt },
 		-- ToolbarButton =			{ fg = colors.fg, style = 'bold' },
 		NormalMode =			{ fg = colors.accent }, -- Normal mode message in the cmdline
@@ -191,28 +191,28 @@ theme.loadTreeSitter = function ()
 
 	local treesitter = {
 		TSAttribute =               { fg = colors.yellow }, -- (unstable) TODO: docs
-		TSBoolean=                  { fg = colors.orange }, -- For booleans.
-		TSCharacter=                { fg = colors.orange }, -- For characters.
-		TSComment=                  { fg = colors.comments, style = styles.comments }, -- For comment blocks.
-		TSConditional =             { fg = colors.purple, style = styles.keywords }, -- For keywords related to conditionnals.
+		TSBoolean=                  { link = "Boolean" }, -- For booleans.
+		TSCharacter=                { link = "Character" }, -- For characters.
+		TSComment=                  { link = "Comment" }, -- For comment blocks.
+		TSConditional =             { link = "Keyword" }, -- For keywords related to conditionnals.
 		TSConstructor =             { fg = colors.blue }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
-		TSConstant =                { fg = colors.yellow }, -- For constants
+		TSConstant =                { link = "Constant" }, -- For constants
 		TSConstBuiltin =            { fg = colors.orange }, -- For constant that are built in the language: `nil` in Lua.
 		TSConstMacro =              { fg = colors.cyan }, -- For constants that are defined by macros: `NULL` in C.
 		TSError =                   { fg = colors.error }, -- For syntax/parser errors.
 		TSException =               { fg = colors.red }, -- For exception related keywords.
 		TSField =                   { fg = colors.fg }, -- For fields.
 		TSFloat =                   { fg = colors.orange }, -- For floats.
-		TSFunction =                { fg = colors.blue, style = styles.functions }, -- For fuction (calls and definitions).
-		TSFuncBuiltin =             { fg = colors.cyan, style = styles.functions }, -- For builtin functions: `table.insert` in Lua.
+		TSFunction =                { link = "Function" }, -- For fuction (calls and definitions).
+		TSFuncBuiltin =             { link = "Function" }, -- For builtin functions: `table.insert` in Lua.
 		TSFuncMacro =               { fg = colors.blue }, -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
 		TSInclude =                 { fg = colors.cyan }, -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
-		TSKeyword =                 { fg = colors.cyan, style = styles.keywords }, -- For keywords that don't fall in previous categories.
-		TSKeywordFunction =         { fg = colors.purple, style = styles.keywords }, -- For keywords used to define a fuction.
+		TSKeyword =                 { link = "Keyword" }, -- For keywords that don't fall in previous categories.
+		TSKeywordFunction =         { link = "Keyword" }, -- For keywords used to define a fuction.
 		TSKeywordOperator =			{ fg = colors.purple }, -- Unary and binary operators that are English words: `and`, `or` in Python; `sizeof` in C.
 		TSKeywordReturn =			{ fg = colors.cyan }, -- return keyword
 		TSLabel =                   { fg = colors.red }, -- For labels: `label:` in C and `:label:` in Lua.
-		TSMethod =                  { fg = colors.blue, style = styles.functions }, -- For method calls and definitions.
+		TSMethod =                  { link = "Function" }, -- For method calls and definitions.
 		TSNamespace =               { fg = colors.yellow }, -- For identifiers referring to modules and namespaces.
 		TSNumber =                  { fg = colors.orange }, -- For all numbers
 		TSOperator =                { fg = colors.cyan }, -- For any operator: `+`, but also `->` and `*` in C.
@@ -222,8 +222,8 @@ theme.loadTreeSitter = function ()
 		TSPunctDelimiter =          { fg = colors.cyan }, -- For delimiters ie: `.`
 		TSPunctBracket =            { fg = colors.cyan }, -- For brackets and parens.
 		TSPunctSpecial =            { fg = colors.cyan }, -- For special punctutation that does not fall in the catagories before.
-		TSRepeat =                  { fg = colors.purple, style = styles.keywords }, -- For keywords related to loops.
-	    TSString =                  { fg = colors.green, styles = styles.strings }, -- For strings.
+		TSRepeat =                  { link = "Keyword" }, -- For keywords related to loops.
+	    TSString =                  { link = "String" }, -- For strings.
 		TSStringRegex =             { fg = colors.yellow }, -- For regexes.
 		TSStringEscape =            { fg = colors.text }, -- For escape characters within a string.
 		TSSymbol =                  { fg = colors.yellow }, -- For identifiers referring to symbols or atoms.
@@ -235,8 +235,8 @@ theme.loadTreeSitter = function ()
 		TSTagAttribute =			{ fg = colors.gray }, -- HTML tag attributes.
 		TSText =                    { fg = colors.fg }, -- For strings considered text in a markup language.
 		TSTextReference =           { fg = colors.yellow }, -- FIXME
-		TSVariable =                { fg = colors.fg, style = styles.variables }, -- Any variable name that does not have another highlight.
-		TSVariableBuiltin =         { fg = colors.fg, style = styles.variables }, -- Variable names that are defined by the languages, like `this` or `self`.
+		TSVariable =                { link = "Identifier" }, -- Any variable name that does not have another highlight.
+		TSVariableBuiltin =         { link = "Identifier" }, -- Variable names that are defined by the languages, like `this` or `self`.
 		TSEmphasis =                { fg = colors.paleblue }, -- For text to be represented with emphasis.
 		TSUnderline =               { fg = colors.fg, style = 'underline' }, -- For text to be represented with an underline.
 		-- TSStrike =                  { fg = colors.fg,, style = 'strikethrough'}, -- For strikethrough text.
@@ -256,34 +256,13 @@ theme.loadLSP = function ()
     -- Lsp highlight groups
 
 	local lsp = {
-		-- LspDiagnosticsDefaultError =            { fg = colors.error }, -- used for "Error" diagnostic virtual text
-		-- LspDiagnosticsSignError =               { fg = colors.error, bg = colors.bg_sign }, -- used for "Error" diagnostic signs in sign column
-		-- LspDiagnosticsFloatingError =           { fg = colors.error }, -- used for "Error" diagnostic messages in the diagnostics float
-		-- LspDiagnosticsVirtualTextError =        { fg = colors.error }, -- Virtual text "Error"
-		-- LspDiagnosticsUnderlineError =          { style = 'undercurl', sp = colors.error }, -- used to underline "Error" diagnostics.
-		-- LspDiagnosticsDefaultWarning =          { fg = colors.yellow }, -- used for "Warning" diagnostic signs in sign column
-		-- LspDiagnosticsSignWarning =             { fg = colors.yellow, bg = colors.bg_sign }, -- used for "Warning" diagnostic signs in sign column
-		-- LspDiagnosticsFloatingWarning =         { fg = colors.yellow }, -- used for "Warning" diagnostic messages in the diagnostics float
-		-- LspDiagnosticsVirtualTextWarning =      { fg = colors.yellow }, -- Virtual text "Warning"
-		-- LspDiagnosticsUnderlineWarning =        { style = 'undercurl', sp = colors.yellow }, -- used to underline "Warning" diagnostics.
-		-- LspDiagnosticsDefaultInformation =      { fg = colors.paleblue }, -- used for "Information" diagnostic virtual text
-		-- LspDiagnosticsSignInformation =         { fg = colors.paleblue, bg = colors.bg_sign },  -- used for "Information" diagnostic signs in sign column
-		-- LspDiagnosticsFloatingInformation =     { fg = colors.paleblue }, -- used for "Information" diagnostic messages in the diagnostics float
-		-- LspDiagnosticsVirtualTextInformation =  { fg = colors.paleblue }, -- Virtual text "Information"
-		-- LspDiagnosticsUnderlineInformation =    { style = 'undercurl', sp = colors.paleblue }, -- used to underline "Information" diagnostics.
-		-- LspDiagnosticsDefaultHint =             { fg = colors.purple },  -- used for "Hint" diagnostic virtual text
-		-- LspDiagnosticsSignHint =                { fg = colors.purple, bg = colors.bg_sign }, -- used for "Hint" diagnostic signs in sign column
-		-- LspDiagnosticsFloatingHint =            { fg = colors.purple }, -- used for "Hint" diagnostic messages in the diagnostics float
-		-- LspDiagnosticsVirtualTextHint =         { fg = colors.purple }, -- Virtual text "Hint"
-		-- LspDiagnosticsUnderlineHint =           { style = 'undercurl', sp = colors.paleblue }, -- used to underline "Hint" diagnostics.
-
-		-- Nvim 0.6.
+		-- Nvim 0.6. and up
 		DiagnosticError =                       { fg = colors.error },
 		DiagnosticVirtualTextError = 			{ fg = colors.error },
 		DiagnosticFloatingError = 				{ fg = colors.error },
 		DiagnosticSignError = 					{ fg = colors.error, bg = colors.bg_sign },
 		DiagnosticUnderlineError = 				{ style = 'undercurl', sp = colors.error },
-		DiagnosticWarn =                     { fg = colors.yellow },
+		DiagnosticWarn =                     	{ fg = colors.yellow },
 		DiagnosticVirtualTextWarn  = 			{ fg = colors.yellow },
 		DiagnosticFloatingWarn = 				{ fg = colors.yellow },
 		DiagnosticSignWarn = 					{ fg = colors.yellow, bg = colors.bg_sign },
@@ -299,8 +278,8 @@ theme.loadLSP = function ()
 		DiagnosticSignHint = 					{ fg = colors.purple, bg = colors.bg_sign },
 		DiagnosticUnderlineHint  = 				{ style = 'undercurl', sp = colors.purple },
 		LspReferenceText = 						{ bg = colors.selection, style = 'underline' }, -- used for highlighting "text" references
-		LspReferenceRead = 						{ bg = colors.selection, style = 'underline' }, -- used for highlighting "read" references
-		LspReferenceWrite = 					{ bg = colors.selection, style = 'underline' }, -- used for highlighting "write" references
+		LspReferenceRead = 						{ link = "LspReferenceText" }, -- used for highlighting "read" references
+		LspReferenceWrite = 					{ link = "LspReferenceText" }, -- used for highlighting "write" references
 	}
 
 	return lsp
@@ -312,40 +291,6 @@ theme.loadPlugins = function()
 
 	local plugins = {
 
-		-- Built in debugger
-		-- debugPC =								{ bg = material.selection },
-		debugBreakpoint =						{ fg = colors.red, bg = colors.bg },
-
-		-- Trouble
-		TroubleText =                        	{ fg = colors.text, bg = colors.sidebar },
-		TroubleCount =                       	{ fg = colors.purple, bg = colors.sidebar },
-		TroubleNormal =                      	{ fg = colors.fg, bg = colors.sidebar },
-		TroubleSignError = 						{ fg = colors.error, bg = colors.sidebar},
-		TroubleSignWarning = 					{ fg = colors.yellow, bg = colors.sidebar},
-		TroubleSignInformation = 				{ fg = colors.paleblue, bg = colors.sidebar},
-		TroubleSignHint = 						{ fg = colors.purple, bg = colors.sidebar},
-		TroubleFoldIcon = 						{ fg = colors.accent, bg = colors.sidebar },
-		TroubleIndent = 						{ fg = colors.border, bg = colors.sidebar },
-		TroubleLocation = 						{ fg = colors.disabled, bg = colors.sidebar },
-
-		-- Nvim-Cmp
-		CmpItemAbbrMatch =						{ fg = colors.paleblue, style = 'bold' },
-		CmpItemKindText =						{ fg = colors.red },
-		CmpItemKindMethod =						{ fg = colors.blue },
-		CmpItemKindFunction =					{ fg = colors.blue },
-		CmpItemKindContructor =					{ fg = colors.purple },
-		CmpItemKindField =						{ fg = colors.cyan },
-		CmpItemKindVariable =					{ fg = colors.paleblue },
-		CmpItemKindConstant =					{ fg = colors.paleblue },
-		CmpItemKindClass =						{ fg = colors.yellow },
-		CmpItemKindInterface =					{ fg = colors.yellow },
-		CmpItemKindModule =						{ fg = colors.red },
-		CmpItemKindProperty =					{ fg = colors.purple },
-		CmpItemKindKeyword =					{ fg = colors.cyan },
-		CmpItemKindFile =						{ fg = colors.title },
-		CmpItemKindFolder =						{ fg = colors.title },
-		CmpItemKindSnippet =					{ fg = colors.green },
-
 		-- Diff
 		diffAdded =                             { fg = colors.green },
 		diffRemoved =                           { fg = colors.red },
@@ -356,107 +301,6 @@ theme.loadPlugins = function()
 		diffLine =                              { fg = colors.cyan },
 		diffIndexLine =                         { fg = colors.purple },
 
-		-- Neogit
-		NeogitBranch =                          { fg = colors.paleblue },
-		NeogitRemote =                          { fg = colors.purple },
-		NeogitHunkHeader =                      { fg = colors.fg, bg = colors.highlight },
-		NeogitHunkHeaderHighlight =             { fg = colors.blue, bg = colors.contrast },
-		NeogitDiffContextHighlight =            { fg = colors.text, bg = colors.contrast },
-		NeogitDiffDeleteHighlight =             { fg = colors.red },
-		NeogitDiffAddHighlight =                { fg = colors.green },
-
-		-- GitGutter
-		GitGutterAdd =                          { fg = colors.green }, -- diff mode: Added line |diff.txt|
-		GitGutterChange =                       { fg = colors.blue }, -- diff mode: Changed line |diff.txt|
-		GitGutterDelete =                       { fg = colors.red }, -- diff mode: Deleted line |diff.txt|
-
-		-- GitSigns
-		GitSignsAdd =                           { fg = colors.green, bg = colors.bg_sign }, -- diff mode: Added line |diff.txt|
-		GitSignsAddNr =                         { fg = colors.green, bg =colors.bg_num }, -- diff mode: Added line |diff.txt|
-		GitSignsAddLn =                         { fg = colors.green }, -- diff mode: Added line |diff.txt|
-		GitSignsChange =                        { fg = colors.blue, bg = colors.bg_sign }, -- diff mode: Changed line |diff.txt|
-		GitSignsChangeNr =                      { fg = colors.blue, bg =colors.bg_num }, -- diff mode: Changed line |diff.txt|
-		GitSignsChangeLn =                      { fg = colors.blue }, -- diff mode: Changed line |diff.txt|
-		GitSignsDelete =                        { fg = colors.red, bg = colors.bg_sign }, -- diff mode: Deleted line |diff.txt|
-		GitSignsDeleteNr =                      { fg = colors.red, bg =colors.bg_num }, -- diff mode: Deleted line |diff.txt|
-		GitSignsDeleteLn =                      { fg = colors.red }, -- diff mode: Deleted line |diff.txt|
-
-		-- Telescope
-		TelescopeNormal =                       { fg = colors.fg, bg = colors.float },
-		TelescopePromptBorder =                 { fg = colors.border, bg = colors.float },
-		TelescopeResultsBorder =                { fg = colors.border, bg = colors.float },
-		TelescopePreviewBorder =                { fg = colors.border, bg = colors.float },
-		TelescopeSelectionCaret =               { fg = colors.purple },
-		TelescopeSelection =                    { fg = colors.purple, bg = colors.active },
-		TelescopeMatching =                     { fg = colors.cyan },
-
-		-- NvimTree
-		NvimTreeNormal =						{ fg = colors.fg, bg = colors.sidebar },
-		NvimTreeNormalNC =						{ fg = colors.fg, bg = colors.sidebar },
-		NvimTreeRootFolder =                    { fg = colors.accent, bg = colors.sidebar },
-		NvimTreeFolderName=                     { fg = colors.blue, style = 'bold' },
-		NvimTreeFolderIcon=                     { fg = colors.blue, style = 'bold' },
-		NvimTreeEmptyFolderName=                { fg = colors.gray },
-		NvimTreeOpenedFolderName=               { fg = colors.green, style = 'bold' },
-		NvimTreeIndentMarker =                  { fg = colors.disabled },
-		NvimTreeGitDirty =                      { fg = colors.blue },
-		NvimTreeGitNew =                        { fg = colors.green },
-		NvimTreeGitStaged =                     { fg = colors.fg },
-		NvimTreeGitDeleted =                    { fg = colors.red },
-		NvimTreeOpenedFile =					{ fg = colors.green },
-		NvimTreeImageFile =                     { fg = colors.yellow },
-		NvimTreeMarkdownFile =                  { fg = colors.pink },
-		NvimTreeExecFile =                      { fg = colors.green },
-		NvimTreeSpecialFile =                   { fg = colors.purple },
-		-- LspDiagnosticsError =                   { fg = colors.error },
-		-- LspDiagnosticsWarning =                 { fg = colors.yellow },
-		-- LspDiagnosticsInformation =             { fg = colors.paleblue },
-		-- LspDiagnosticsHint =                    { fg = colors.purple },
-
-		-- Sidebar.nvim
-		SidebarNvimNormal =						{ fg = colors.fg },
-		SidebarNvimSectionTitle	=				{ fg = colors.accent },
-		SidebarNvimSectionSeparator =			{ fg = colors.border },
-		SidebarNvimLabel =						{ fg = colors.gray },
-
-		-- WhichKey
-		WhichKey =                              { fg = colors.accent, style = 'bold'},
-		WhichKeyGroup =                         { fg = colors.gray },
-		WhichKeyDesc =                          { fg = colors.fg, style = 'italic' },
-		WhichKeySeparator =                     { fg = colors.red },
-		WhichKeyFloat =                         { bg = colors.float },
-
-		-- LspSaga
-		LspFloatWinNormal =                     { fg = colors.fg, bg = colors.float },
-		LspFloatWinBorder =                     { fg = colors.border, bg = colors.float },
-		LspSagaDiagnosticBorder =				{ fg = colors.border, bg = colors.float },
-		LspSagaDiagnosticHeader =				{ fg = colors.blue },
-		LspSagaDiagnosticTruncateLine =			{ fg = colors.border },
-		LspLinesDiagBorder =					{ fg = colors.border, bg = colors.float },
-		ProviderTruncateLine =					{ fg = colors.border },
-		LspSagaShTruncateLine =					{ fg = colors.border },
-		LspSagaDocTruncateLine =				{ fg = colors.border },
-		LineDiagTruncateLine =					{ fg = colors.border },
-		LspSagaBorderTitle =                    { fg = colors.cyan, bg = colors.float },
-		LspSagaHoverBorder =                    { fg = colors.border, bg = colors.float },
-		LspSagaRenameBorder =                   { fg = colors.border, bg = colors.float },
-		LspSagaRenamePromptPrefix =             { fg = colors.green },
-		LspSagaDefPreviewBorder =               { fg = colors.border, bg = colors.float },
-		LspSagaCodeActionTitle =                { fg = colors.paleblue },
-		LspSagaCodeActionContent =              { fg = colors.purple },
-		LspSagaCodeActionBorder =               { fg = colors.border, bg = colors.float },
-		LspSagaCodeActionTruncateLine =			{ fg = colors.border },
-		LspSagaSignatureHelpBorder =            { fg = colors.border, bg = colors.float },
-		LspSagaFinderSelection =                { fg = colors.green },
-		LspSagaLspFinderBorder =				{ fg = colors.border, bg = colors.float },
-		LspSagaAutoPreview =					{ fg = colors.border, bg = colors.float },
-		ReferencesCount =                       { fg = colors.purple },
-		DefinitionCount =                       { fg = colors.purple },
-		DefinitionPreviewTitle =				{ fg = colors.green },
-		DefinitionIcon =                        { fg = colors.blue },
-		ReferencesIcon =                        { fg = colors.blue },
-		TargetWord =                            { fg = colors.cyan },
-
 		-- Symbols outline
 		FocusedSymbol = 						{ bg = colors.selection },
 		SymbolsOutlineConnector = 				{ fg = colors.border },
@@ -465,66 +309,240 @@ theme.loadPlugins = function()
 		BufferLineIndicatorSelected =           { fg = colors.accent },
 		BufferLineFill =                        { bg = colors.bg },
 
-		-- Sneak
-		Sneak =                                 { fg = colors.bg, bg = colors.accent },
-		SneakScope =                            { bg = colors.selection },
-
-		-- Indent Blankline
-		IndentBlanklineChar =                   { fg = colors.border },
-		IndentBlanklineContextChar =            { fg = colors.fg },
-
-		-- Nvim dap
-		DapBreakpoint =                         { fg = colors.red },
-		DapStopped =                            { fg = colors.yellow },
-
-		-- Nvim dap-UI
-		DapUIFloatBorder =						{ fg = colors.border, bg = colors.bg },
-		DapUIDecoration =						{ fg = colors.blue },
-		-- DapUIVariable = 						{ fg = colors.fg },
-
-		-- Illuminate
-		illuminatedWord =						{ bg = colors.highight, gui = 'italic' },
-		illuminatedCurWord =					{ bg = colors.highight, gui = 'underline' },
-
-		-- Hop
-		HopNextKey =							{ fg = colors.accent, style = 'bold' },
-		HopNextKey1 =							{ fg = colors.purple, style = 'bold' },
-		HopNextKey2 =							{ fg = colors.blue },
-		HopUnmatched =							{ fg = colors.comments },
-
 		-- Fern
 		FernBranchText =						{ fg = colors.blue },
-
-		-- nvim-navic
-		NavicIconsFile =						{ fg = colors.title		, bg = colors.selection },
-		NavicIconsModule =						{ fg = colors.title		, bg = colors.selection },
-		NavicIconsNamespace =					{ fg = colors.yellow	, bg = colors.selection },
-		NavicIconsPackage =						{ fg = colors.title		, bg = colors.selection },
-		NavicIconsClass =						{ fg = colors.yellow 	, bg = colors.selection },
-		NavicIconsMethod =						{ fg = colors.blue		, bg = colors.selection },
-		NavicIconsProperty =					{ fg = colors.purple	, bg = colors.selection },
-		NavicIconsField =						{ fg = colors.cyan		, bg = colors.selection },
-		NavicIconsConstructor =					{ fg = colors.purple	, bg = colors.selection },
-		NavicIconsEnum =						{ fg = colors.darkyellow, bg = colors.selection },
-		NavicIconsInterface =					{ fg = colors.yellow	, bg = colors.selection },
-		NavicIconsFunction =					{ fg = colors.blue		, bg = colors.selection },
-		NavicIconsVariable =					{ fg = colors.paleblue	, bg = colors.selection },
-		NavicIconsConstant =					{ fg = colors.paleblue	, bg = colors.selection },
-		NavicIconsString =						{ fg = colors.darkorange, bg = colors.selection },
-		NavicIconsNumber =						{ fg = colors.darkorange, bg = colors.selection },
-		NavicIconsBoolean =						{ fg = colors.green		, bg = colors.selection },
-		NavicIconsArray =						{ fg = colors.orange	, bg = colors.selection },
-		NavicIconsObject =						{ fg = colors.orange	, bg = colors.selection },
-		NavicIconsKey =							{ fg = colors.cyan		, bg = colors.selection },
-		NavicIconsNull =						{ fg = colors.red		, bg = colors.selection },
-		NavicIconsEnumMember =					{ fg = colors.darkyellow, bg = colors.selection },
-		NavicIconsStruct =						{ fg = colors.yellow	, bg = colors.selection },
-		NavicIconsEvent =						{ fg = colors.darkred	, bg = colors.selection },
-		NavicIconsOperator =					{ fg = colors.red		, bg = colors.selection },
-		NavicIconsTypeParameter =				{ fg = colors.darkgreen	, bg = colors.selection },
-		NavicText =								{ fg = colors.fg		, bg = colors.selection },
-		NavicSeparator =						{ fg = colors.fg		, bg = colors.selection },
 	}
+
+	if config.plugins.trouble then
+
+		-- Trouble
+		plugins.TroubleText =                        	{ fg = colors.text, bg = colors.sidebar }
+		plugins.TroubleCount =                       	{ fg = colors.purple, bg = colors.sidebar }
+		plugins.TroubleNormal =                      	{ fg = colors.fg, bg = colors.sidebar }
+		plugins.TroubleSignError = 						{ fg = colors.error, bg = colors.sidebar}
+		plugins.TroubleSignWarning = 					{ fg = colors.yellow, bg = colors.sidebar}
+		plugins.TroubleSignInformation = 				{ fg = colors.paleblue, bg = colors.sidebar}
+		plugins.TroubleSignHint = 						{ fg = colors.purple, bg = colors.sidebar}
+		plugins.TroubleFoldIcon = 						{ fg = colors.accent, bg = colors.sidebar }
+		plugins.TroubleIndent = 						{ fg = colors.border, bg = colors.sidebar }
+		plugins.TroubleLocation = 						{ fg = colors.disabled, bg = colors.sidebar }
+	end
+
+	if config.plugins.nvim_cmp then
+
+		-- Nvim-Cmp
+		plugins.CmpItemAbbrMatch =						{ fg = colors.paleblue, style = 'bold' }
+		plugins.CmpItemKindText =						{ fg = colors.red }
+		plugins.CmpItemKindMethod =						{ fg = colors.blue }
+		plugins.CmpItemKindFunction =					{ fg = colors.blue }
+		plugins.CmpItemKindContructor =					{ fg = colors.purple }
+		plugins.CmpItemKindField =						{ fg = colors.cyan }
+		plugins.CmpItemKindVariable =					{ fg = colors.paleblue }
+		plugins.CmpItemKindConstant =					{ fg = colors.paleblue }
+		plugins.CmpItemKindClass =						{ fg = colors.yellow }
+		plugins.CmpItemKindInterface =					{ fg = colors.yellow }
+		plugins.CmpItemKindModule =						{ fg = colors.red }
+		plugins.CmpItemKindProperty =					{ fg = colors.purple }
+		plugins.CmpItemKindKeyword =					{ fg = colors.cyan }
+		plugins.CmpItemKindFile =						{ fg = colors.title }
+		plugins.CmpItemKindFolder =						{ fg = colors.title }
+		plugins.CmpItemKindSnippet =					{ fg = colors.green }
+	end
+
+	if config.plugins.neogit then
+
+		-- Neogit
+		plugins.NeogitBranch =                          { fg = colors.paleblue }
+		plugins.NeogitRemote =                          { fg = colors.purple }
+		plugins.NeogitHunkHeader =                      { fg = colors.fg, bg = colors.highlight }
+		plugins.NeogitHunkHeaderHighlight =             { fg = colors.blue, bg = colors.contrast }
+		plugins.NeogitDiffContextHighlight =            { fg = colors.text, bg = colors.contrast }
+		plugins.NeogitDiffDeleteHighlight =             { fg = colors.red }
+		plugins.NeogitDiffAddHighlight =                { fg = colors.green }
+	end
+
+	if config.plugins.gitsigns then
+
+		-- GitSigns
+		plugins.GitSignsAdd =                           { fg = colors.green, bg = colors.bg_sign } -- diff mode: Added line |diff.txt|
+		plugins.GitSignsAddNr =                         { fg = colors.green, bg =colors.bg_num } -- diff mode: Added line |diff.txt|
+		plugins.GitSignsAddLn =                         { fg = colors.green } -- diff mode: Added line |diff.txt|
+		plugins.GitSignsChange =                        { fg = colors.blue, bg = colors.bg_sign } -- diff mode: Changed line |diff.txt|
+		plugins.GitSignsChangeNr =                      { fg = colors.blue, bg =colors.bg_num } -- diff mode: Changed line |diff.txt|
+		plugins.GitSignsChangeLn =                      { fg = colors.blue } -- diff mode: Changed line |diff.txt|
+		plugins.GitSignsDelete =                        { fg = colors.red, bg = colors.bg_sign } -- diff mode: Deleted line |diff.txt|
+		plugins.GitSignsDeleteNr =                      { fg = colors.red, bg =colors.bg_num } -- diff mode: Deleted line |diff.txt|
+		plugins.GitSignsDeleteLn =                      { fg = colors.red } -- diff mode: Deleted line |diff.txt|
+	end
+
+	if config.plugins.git_gutter then
+
+		-- GitGutter
+		plugins.GitGutterAdd =                          { fg = colors.green } -- diff mode: Added line |diff.txt|
+		plugins.GitGutterChange =                       { fg = colors.blue } -- diff mode: Changed line |diff.txt|
+		plugins.GitGutterDelete =                       { fg = colors.red } -- diff mode: Deleted line |diff.txt|
+	end
+
+	if config.plugins.telescope then
+
+		-- Telescope
+		plugins.TelescopeNormal =                       { fg = colors.fg, bg = colors.float }
+		plugins.TelescopePromptBorder =                 { fg = colors.border, bg = colors.float }
+		plugins.TelescopeResultsBorder =                { link = "TelescopePromptBorder" }
+		plugins.TelescopePreviewBorder =                { link = "TelescopePromptBorder" }
+		plugins.TelescopeSelectionCaret =               { fg = colors.purple }
+		plugins.TelescopeSelection =                    { fg = colors.purple, bg = colors.active }
+		plugins.TelescopeMatching =                     { fg = colors.cyan }
+	end
+
+	if config.plugins.nvim_tree then
+
+		-- NvimTree
+		plugins.NvimTreeNormal =						{ fg = colors.fg, bg = colors.sidebar }
+		plugins.NvimTreeNormalNC =						{ link = "NvimTreeNormal" }
+		plugins.NvimTreeRootFolder =                    { fg = colors.accent, bg = colors.sidebar }
+		plugins.NvimTreeFolderName=                     { fg = colors.blue, style = 'bold' }
+		plugins.NvimTreeFolderIcon=                     { link = "NvimTreeFolderName" }
+		plugins.NvimTreeEmptyFolderName=                { fg = colors.gray }
+		plugins.NvimTreeOpenedFolderName=               { fg = colors.green, style = 'bold' }
+		plugins.NvimTreeIndentMarker =                  { fg = colors.disabled }
+		plugins.NvimTreeGitDirty =                      { fg = colors.blue }
+		plugins.NvimTreeGitNew =                        { fg = colors.green }
+		plugins.NvimTreeGitStaged =                     { fg = colors.fg }
+		plugins.NvimTreeGitDeleted =                    { fg = colors.red }
+		plugins.NvimTreeOpenedFile =					{ link = "NvimTreeGitNew" }
+		plugins.NvimTreeImageFile =                     { fg = colors.yellow }
+		plugins.NvimTreeMarkdownFile =                  { fg = colors.pink }
+		plugins.NvimTreeExecFile =                      { link = "NvimTreeGitNew" }
+		plugins.NvimTreeSpecialFile =                   { fg = colors.purple }
+	end
+
+	if config.plugins.sidebar_nvim then
+
+		-- Sidebar.nvim
+		plugins.SidebarNvimNormal =						{ fg = colors.fg }
+		plugins.SidebarNvimSectionTitle	=				{ fg = colors.accent }
+		plugins.SidebarNvimSectionSeparator =			{ fg = colors.border }
+		plugins.SidebarNvimLabel =						{ fg = colors.gray }
+	end
+
+	if config.plugins.lsp_saga then
+
+		-- LspSaga
+		plugins.LspFloatWinNormal =                     { fg = colors.fg, bg = colors.float }
+		plugins.LspFloatWinBorder =                     { fg = colors.border, bg = colors.float }
+		plugins.LspSagaDiagnosticBorder =				{ link = "LspFloatWinBorder" }
+		plugins.LspSagaDiagnosticHeader =				{ fg = colors.blue }
+		plugins.LspSagaDiagnosticTruncateLine =			{ fg = colors.border }
+		plugins.LspLinesDiagBorder =					{ link = "LspFloatWinBorder" }
+		plugins.ProviderTruncateLine =					{ link = "LspSagaDiagnosticTruncateLine" }
+		plugins.LspSagaShTruncateLine =					{ link = "LspSagaDiagnosticTruncateLine" }
+		plugins.LspSagaDocTruncateLine =				{ link = "LspSagaDiagnosticTruncateLine" }
+		plugins.LineDiagTruncateLine =					{ link = "LspSagaDiagnosticTruncateLine" }
+		plugins.LspSagaBorderTitle =                    { fg = colors.cyan, bg = colors.float }
+		plugins.LspSagaHoverBorder =                    { link = "LspFloatWinBorder" }
+		plugins.LspSagaRenameBorder =                   { link = "LspFloatWinBorder" }
+		plugins.LspSagaRenamePromptPrefix =             { fg = colors.green }
+		plugins.LspSagaDefPreviewBorder =               { link = "LspFloatWinBorder" }
+		plugins.LspSagaCodeActionTitle =                { fg = colors.paleblue }
+		plugins.LspSagaCodeActionContent =              { fg = colors.purple }
+		plugins.LspSagaCodeActionBorder =               { link = "LspFloatWinBorder" }
+		plugins.LspSagaCodeActionTruncateLine =			{ link = "LspSagaDiagnosticTruncateLine" }
+		plugins.LspSagaSignatureHelpBorder =            { link = "LspFloatWinBorder" }
+		plugins.LspSagaFinderSelection =                { link = "LspSagaRenamePromptPrefix" }
+		plugins.LspSagaLspFinderBorder =				{ link = "LspFloatWinBorder" }
+		plugins.LspSagaAutoPreview =					{ link = "LspFloatWinBorder" }
+		plugins.ReferencesCount =                       { link = "LspSagaCodeActionContent" }
+		plugins.DefinitionCount =                       { link = "LspSagaCodeActionContent" }
+		plugins.DefinitionPreviewTitle =				{ link = "LspSagaRenamePromptPrefix" }
+		plugins.DefinitionIcon =                        { fg = colors.blue }
+		plugins.ReferencesIcon =                        { link = "DefinitionIcon" }
+		plugins.TargetWord =                            { fg = colors.cyan }
+	end
+
+	if config.plugins.nvim_dap then
+
+		-- Nvim dap
+		plugins.DapBreakpoint =                         { fg = colors.red }
+		plugins.DapStopped =                            { fg = colors.yellow }
+
+		-- Nvim dap-UI
+		plugins.DapUIFloatBorder =						{ fg = colors.border, bg = colors.bg }
+		plugins.DapUIDecoration =						{ fg = colors.blue }
+		-- plugins.DapUIVariable = 						{ fg = colors.fg }
+	end
+
+	if config.plugins.nvim_navic then
+		-- nvim-navic
+		plugins.NavicIconsFile =						{ fg = colors.title, bg = colors.selection }
+		plugins.NavicIconsModule =						{ link = "NavicIconsFile" }
+		plugins.NavicIconsNamespace =					{ fg = colors.yellow, bg = colors.selection }
+		plugins.NavicIconsPackage =						{ link = "NavicIconsFile" }
+		plugins.NavicIconsClass =						{ link = "NavicIconsModule" }
+		plugins.NavicIconsMethod =						{ fg = colors.blue, bg = colors.selection }
+		plugins.NavicIconsProperty =					{ fg = colors.purple, bg = colors.selection }
+		plugins.NavicIconsField =						{ fg = colors.cyan, bg = colors.selection }
+		plugins.NavicIconsConstructor =					{ link = "NavicIconsProperty"}
+		plugins.NavicIconsEnum =						{ link = "NavicIconsNamespace" }
+		plugins.NavicIconsInterface =					{ link = "NavicIconsModule" }
+		plugins.NavicIconsFunction =					{ link = "NavicIconsMethod" }
+		plugins.NavicIconsVariable =					{ fg = colors.paleblue, bg = colors.selection }
+		plugins.NavicIconsConstant =					{ link = "NavicIconsVariable" }
+		plugins.NavicIconsString =						{ fg = colors.orange, bg = colors.selection }
+		plugins.NavicIconsNumber =						{ link = "NavicIconsString" }
+		plugins.NavicIconsBoolean =						{ fg = colors.green, bg = colors.selection }
+		plugins.NavicIconsArray =						{ link = "NavicIconsString" }
+		plugins.NavicIconsObject =						{ link = "NavicIconsString" }
+		plugins.NavicIconsKey =							{ link = "NavicIconsField" }
+		plugins.NavicIconsNull =						{ fg = colors.red, bg = colors.selection }
+		plugins.NavicIconsEnumMember =					{ link = "NavicIconsNamespace" }
+		plugins.NavicIconsStruct =						{ link = "NavicIconsModule" }
+		plugins.NavicIconsEvent =						{ link = "NavicIconsNull" }
+		plugins.NavicIconsOperator =					{ link = "NavicIconsNull" }
+		plugins.NavicIconsTypeParameter =				{ link = "NavicIconsBoolean" }
+		plugins.NavicText =								{ fg = colors.fg, bg = colors.selection }
+		plugins.NavicSeparator =						{ link = "NavicText" }
+	end
+
+	if config.plugins.which_key then
+
+		-- WhichKey
+		plugins.WhichKey =                              { fg = colors.accent, style = 'bold'}
+		plugins.WhichKeyGroup =                         { fg = colors.gray }
+		plugins.WhichKeyDesc =                          { fg = colors.fg, style = 'italic' }
+		plugins.WhichKeySeparator =                     { fg = colors.red }
+		plugins.WhichKeyFloat =                         { bg = colors.float }
+	end
+
+	if config.plugins.hop then
+
+		-- Hop
+		plugins.HopNextKey =							{ fg = colors.accent, style = 'bold' }
+		plugins.HopNextKey1 =							{ fg = colors.purple, style = 'bold' }
+		plugins.HopNextKey2 =							{ fg = colors.blue }
+		plugins.HopUnmatched =							{ fg = colors.comments }
+	end
+
+	if config.plugins.sneak then
+
+		-- Sneak
+		plugins.Sneak =                                 { fg = colors.bg, bg = colors.accent }
+		plugins.SneakScope =                            { bg = colors.selection }
+	end
+
+	if config.plugins.indent_blankline then
+
+		-- Indent Blankline
+		plugins.IndentBlanklineChar =                   { fg = colors.border }
+		plugins.IndentBlanklineContextChar =            { fg = colors.fg }
+	end
+
+	if config.plugins.nvim_illuminate then
+
+		-- Illuminate
+		plugins.illuminatedWord =						{ bg = colors.highight, gui = 'italic' }
+		plugins.illuminatedCurWord =					{ bg = colors.highight, gui = 'underline' }
+	end
 
 	return plugins
 

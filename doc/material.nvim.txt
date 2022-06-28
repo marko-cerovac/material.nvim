@@ -171,7 +171,25 @@ This is an example of the setup function with the default values:
 		}
 		lualine_style = 'default',
 		async_loading = true,
-		custom_highlights = {}
+		custom_highlights = {},
+		plugins = {
+			trouble = true,
+			nvim_cmp = true,
+			neogit = true,
+			gitsigns = true,
+			git_gutter = true,
+			telescope = true,
+			nvim_tree = true,
+			sidebar_nvim = true,
+			lsp_saga = true,
+			nvim_dap = true,
+			nvim_navic = true,
+			which_key = true,
+			sneak = true,
+			hop = true,
+			indent_blankline = true,
+			nvim_illuminate = true,
+		}
 	})
 
     + contrast {table}
@@ -217,6 +235,10 @@ This is an example of the setup function with the default values:
 	+ custom_highlights  {table}
 		  If you want to change or set a certain highlight group to a value,
 		  you can pass the group name and the color values in this table
+
+	+ plugins  {table}
+		  If you don't use a specific plugin, or don't want the theme to set
+		  the highlights for it, you can disable it in this table.
 
 ================================================================================
 5. Examples											*material.nvim-examples*

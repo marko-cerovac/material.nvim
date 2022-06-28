@@ -40,7 +40,27 @@ local defaults = {
 	custom_colors = {}, -- TODO: define custom colors
 	custom_highlights = {}, -- define custom highlights
 
-	async_loading = true -- Load parts of the theme asyncronously for faster startup
+	async_loading = true, -- Load parts of the theme asyncronously for faster startup
+
+	plugins = { -- Here, you can disable(set to false) plugins that you don't use
+		-- treesitter = true,
+		trouble = true,
+		nvim_cmp = true,
+		neogit = true,
+		gitsigns = true,
+		git_gutter = true,
+		telescope = true,
+		nvim_tree = true,
+		sidebar_nvim = true,
+		lsp_saga = true,
+		nvim_dap = true,
+		nvim_navic = true,
+		which_key = true,
+		sneak = true,
+		hop = true,
+		indent_blankline = true,
+		nvim_illuminate = true,
+	}
 }
 
 Config.options = {}
