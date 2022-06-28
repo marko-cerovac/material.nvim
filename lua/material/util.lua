@@ -2,21 +2,6 @@ local util = {}
 local material = require('material.theme')
 local config = require('material.config').options
 
--- Go trough the table and highlight the group with the color values
-util.highlight = function (group, color)
-    local style = color.style and "gui=" .. color.style or "gui=NONE"
-    local fg = color.fg and "guifg=" .. color.fg or "guifg=NONE"
-    local bg = color.bg and "guibg=" .. color.bg or "guibg=NONE"
-    local sp = color.sp and "guisp=" .. color.sp or ""
-
-    local hl = "highlight " .. group .. " " .. style .. " " .. fg .. " " .. bg .. " " .. sp
-
-    vim.cmd(hl)
-    if color.link then
-		vim.cmd("highlight! link " .. group .. " " .. color.link)
-	end
-end
-
 -- Only define Material if it's the active colorshceme
 function util.onColorScheme()
   if vim.g.colors_name ~= "material" then
@@ -28,38 +13,25 @@ end
 
 -- Change the background for the terminal and packer windows
 util.contrast = function ()
-    vim.cmd [[augroup Material]]
-    vim.cmd [[  autocmd!]]
-    vim.cmd [[  autocmd ColorScheme * lua require("material.util").onColorScheme()]]
+	local group = vim.api.nvim_create_augroup("Material", { clear = true })
+	vim.api.nvim_create_autocmd("ColorScheme", { callback = function ()
+		require("material.util").onColorScheme()
+	end, group = group })
+
 	for _, sidebar in ipairs(config.contrast_filetypes) do
 		if sidebar == "terminal" then
-			vim.cmd([[ autocmd TermOpen * setlocal winhighlight=Normal:NormalContrast,SignColumn:NormalContrast ]])
+			vim.api.nvim_create_autocmd("TermOpen", {
+				command = "setlocal winhighlight=Normal:NormalContrast,SignColumn:NormalContrast",
+				group = group,
+			})
 		else
-			vim.cmd([[ autocmd FileType ]] .. sidebar .. [[ setlocal winhighlight=Normal:NormalContrast,SignColumn:SignColumnFloat ]])
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = sidebar,
+				command = "setlocal winhighlight=Normal:NormalContrast,SignColumn:SignColumnFloat",
+				group = group,
+			})
 		end
 	end
-    vim.cmd [[augroup end]]
-
-	-- local group = vim.api.nvim_create_augroup("Material", { clear = true })
-	-- vim.api.nvim_create_autocmd("ColorScheme", { callback = function ()
-	-- 	require("material.util").onColorScheme()
-	-- end, group = group })
-
-	-- for _, sidebar in ipairs(config.contrast_filetypes) do
-	-- 	if sidebar == "terminal" then
-	-- 		vim.api.nvim_create_autocmd("TermOpen", {
-	-- 			command = "setlocal winhighlight=Normal:NormalContrast,SignColumn:NormalContrast",
-	-- 			group = group,
-	-- 			buffer = 0
-	-- 		})
-	-- 	else
-	-- 		vim.api.nvim_create_autocmd("FileType " .. sidebar, {
-	-- 			command = "setlocal winhighlight=Normal:NormalContrast,SignColumn:SignColumnFloat",
-	-- 			group = group,
-	-- 			buffer = 0
-	-- 		})
-	-- 	end
-	-- end
 end
 
 -- Load the theme
@@ -73,7 +45,11 @@ function util.load()
 
 	if config.disable.colored_cursor == false then
 		vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:Cursor/Cursor"
-		vim.cmd([[autocmd ExitPre * set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20]])
+		local exit_group = vim.api.nvim_create_augroup("MaterialExit", { clear = true })
+		vim.api.nvim_create_autocmd("ExitPre", {
+			command = "autocmd ExitPre * set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20",
+			group = exit_group
+		})
 	end
 
   -- Load plugins and custom highlights
@@ -90,13 +66,15 @@ function util.load()
 
 		-- Apply the plugin colors
 		for group, colors in pairs(plugins) do
-			util.highlight(group, colors)
+			-- util.highlight(group, colors)
+			vim.api.nvim_set_hl(0, group, colors)
 		end
 
 		-- Apply user defined highlights if they exist
 		if type(config.custom_highlights) == 'table' then
 			for group, colors in pairs(config.custom_highlights) do
-				util.highlight(group, colors)
+				-- util.highlight(group, colors)
+				vim.api.nvim_set_hl(0, group, colors)
 			end
 		end
 
@@ -125,22 +103,22 @@ function util.load()
 
 	-- Apply base colors
     for group, colors in pairs(editor) do
-        util.highlight(group, colors)
+		vim.api.nvim_set_hl(0, group, colors)
     end
 
 	-- Apply basic syntax colors
     for group, colors in pairs(syntax) do
-        util.highlight(group, colors)
+		vim.api.nvim_set_hl(0, group, colors)
     end
 
 	-- Apply treesitter colors
     for group, colors in pairs(treesitter) do
-        util.highlight(group, colors)
+		vim.api.nvim_set_hl(0, group, colors)
     end
 
 	-- Apply lsp colors
 	for group, colors in pairs(lsp) do
-		util.highlight(group, colors)
+		vim.api.nvim_set_hl(0, group, colors)
 	end
 
 	-- If async loading is enabled, send it
