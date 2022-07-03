@@ -287,8 +287,8 @@ If you want to use the custom_highlights table, this is how you would use it:
 require('material').setup({
 	...
 	custom_highlights = {
-		Function = { fg = "#00FF00", bg = "#FF0000", gui = "bold" },
-		TelescopePromptBorder = { fg = "#0A0A0A", bg = "#000000" }
+		Function = { fg = "#00FF00", bg = "#FF0000", italic = true },
+		TelescopePromptBorder = { fg = "#0A0A0A", bg = "#000000", bold = true }
 	}
 	...
 })
