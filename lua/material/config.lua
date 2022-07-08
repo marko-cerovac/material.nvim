@@ -60,6 +60,7 @@ local defaults = {
 		hop = true,
 		indent_blankline = true,
 		nvim_illuminate = true,
+		mini = true,
 	}
 }
 

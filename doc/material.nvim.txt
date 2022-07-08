@@ -189,6 +189,7 @@ This is an example of the setup function with the default values:
 			hop = true,
 			indent_blankline = true,
 			nvim_illuminate = true,
+			mini = true,
 		}
 	})
 
