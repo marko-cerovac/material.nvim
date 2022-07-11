@@ -542,6 +542,60 @@ theme.loadPlugins = function()
 		plugins.illuminatedCurWord =					{ bg = colors.highight, underline = true }
 	end
 
+	if config.plugins.mini then
+
+		-- Mini
+		plugins.MiniCompletionActiveParameter = { underline = true }
+
+		plugins.MiniCursorword = { underline = true }
+		plugins.MiniCursorwordCurrent = { underline = true }
+
+		plugins.MiniIndentscopeSymbol = { fg = colors.cyan }
+		plugins.MiniIndentscopePrefix = { nocombine = true } -- Make it invisible
+
+		plugins.MiniJump = { fg = colors.bg, bg = colors.accent }
+
+		plugins.MiniJump2dSpot = { fg = colors.accent, bold = true, nocombine = true }
+
+		plugins.MiniStarterCurrent = { nocombine = true }
+		plugins.MiniStarterFooter = { fg = colors.green, italic = true }
+		plugins.MiniStarterHeader = { fg = colors.comments }
+		plugins.MiniStarterInactive = { link = "Comment" }
+		plugins.MiniStarterItem = { link = "Normal" }
+		plugins.MiniStarterItemBullet = { fg = colors.border }
+		plugins.MiniStarterItemPrefix = { fg = colors.yellow }
+		plugins.MiniStarterSection = {  fg = colors.cyan }
+		plugins.MiniStarterQuery = { fg = colors.paleblue }
+
+		plugins.MiniStatuslineDevinfo = { fg = colors.fg, bg = colors.active }
+		plugins.MiniStatuslineFileinfo = { fg = colors.fg, bg = colors.active }
+		plugins.MiniStatuslineFilename = { fg = colors.disabled, bg = colors.bg }
+		plugins.MiniStatuslineInactive = { fg = colors.disabled, bg = colors.bg }
+		plugins.MiniStatuslineModeCommand = { fg = colors.bg, bg = colors.yellow, bold = true }
+		plugins.MiniStatuslineModeInsert = { fg = colors.bg, bg = colors.green, bold = true }
+		plugins.MiniStatuslineModeNormal = { fg = colors.bg, bg = colors.accent, bold = true }
+		plugins.MiniStatuslineModeOther = { fg = colors.bg, bg = colors.cyan, bold = true }
+		plugins.MiniStatuslineModeReplace = { fg = colors.bg, bg = colors.red, bold = true }
+		plugins.MiniStatuslineModeVisual = { fg = colors.bg, bg = colors.purple, bold = true }
+
+		plugins.MiniSurround = { link = "IncSearch" }
+
+		plugins.MiniTablineCurrent = { fg = colors.bg, bg = colors.accent, bold = true }
+		plugins.MiniTablineFill = { link = "TabLineFill" }
+		plugins.MiniTablineHidden = { fg = colors.fg, bg = colors.bg }
+		plugins.MiniTablineModifiedCurrent = { fg = colors.accent, bg = colors.bg, bold = true }
+		plugins.MiniTablineModifiedHidden = { fg = colors.bg, bg = colors.fg }
+		plugins.MiniTablineModifiedVisible = { fg = colors.accent, bg = colors.bg }
+		plugins.MiniTablineTabpagesection = { fg = colors.title, bg = colors.selection, bold = true }
+		plugins.MiniTablineVisible = { fg = colors.bg, bg = colors.accent }
+
+		plugins.MiniTestEmphasis = { bold = true }
+		plugins.MiniTestFail = { fg = colors.red, bold = true }
+		plugins.MiniTestPass = { fg = colors.green, bold = true }
+
+		plugins.MiniTrailspace = { bg = colors.red }
+	end
+
 	return plugins
 
 end

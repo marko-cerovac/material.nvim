@@ -60,6 +60,7 @@ added to NeoVim like built-in [LSP](https://github.com/neovim/nvim-lspconfig) an
     + [vim-sneak](https://github.com/justinmk/vim-sneak)
     + [nvim-dap](https://github.com/mfussenegger/nvim-dap)
     + [vim-illuminate](https://github.com/RRethy/vim-illuminate)
+    + [mini.nvim](https://github.com/echasnovski/mini.nvim)
 
 + Ability to change background on sidebar-like windows like Nvim-Tree, Packer, terminal etc.
 
@@ -207,6 +208,7 @@ require('material').setup({
 		hop = true,
 		indent_blankline = true,
 		nvim_illuminate = true,
+		mini = true,
 	}
 })
 ```
