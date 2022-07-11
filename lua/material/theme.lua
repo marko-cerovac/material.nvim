@@ -206,8 +206,8 @@ theme.loadTreeSitter = function ()
 		TSFuncBuiltin =             { link = "Function" }, -- For builtin functions: `table.insert` in Lua.
 		TSFuncMacro =               { fg = colors.blue }, -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
 		TSInclude =                 { fg = colors.cyan }, -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
-		TSKeyword =                 { link = "Keyword" }, -- For keywords that don't fall in previous categories.
-		TSKeywordFunction =         { link = "Keyword" }, -- For keywords used to define a fuction.
+		TSKeyword =                 { link = "Statement" }, -- For keywords that don't fall in previous categories.
+		TSKeywordFunction =         { link = "Statement" }, -- For keywords used to define a fuction.
 		TSKeywordOperator =			{ fg = colors.purple }, -- Unary and binary operators that are English words: `and`, `or` in Python; `sizeof` in C.
 		TSKeywordReturn =			{ fg = colors.cyan }, -- return keyword
 		TSLabel =                   { fg = colors.red }, -- For labels: `label:` in C and `:label:` in Lua.
