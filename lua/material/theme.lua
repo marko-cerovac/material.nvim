@@ -428,27 +428,27 @@ theme.loadPlugins = function()
 
 		-- LspSaga
 		plugins.LspFloatWinNormal =                     { fg = colors.fg, bg = colors.float }
-		plugins.LspFloatWinBorder =                     { fg = colors.border, bg = colors.float }
-		plugins.LspSagaDiagnosticBorder =				{ link = "LspFloatWinBorder" }
+		plugins.LspFloatWinBorder =                     { link = "FloatBorder" }
+		plugins.LspSagaDiagnosticBorder =				{ link = "FloatBorder" }
 		plugins.LspSagaDiagnosticHeader =				{ fg = colors.blue }
-		plugins.LspSagaDiagnosticTruncateLine =			{ fg = colors.border }
-		plugins.LspLinesDiagBorder =					{ link = "LspFloatWinBorder" }
-		plugins.ProviderTruncateLine =					{ link = "LspSagaDiagnosticTruncateLine" }
-		plugins.LspSagaShTruncateLine =					{ link = "LspSagaDiagnosticTruncateLine" }
-		plugins.LspSagaDocTruncateLine =				{ link = "LspSagaDiagnosticTruncateLine" }
-		plugins.LineDiagTruncateLine =					{ link = "LspSagaDiagnosticTruncateLine" }
-		plugins.LspSagaBorderTitle =                    { fg = colors.cyan, bg = colors.float }
-		plugins.LspSagaHoverBorder =                    { link = "LspFloatWinBorder" }
-		plugins.LspSagaRenameBorder =                   { link = "LspFloatWinBorder" }
+		plugins.LspSagaDiagnosticTruncateLine =			{ link = "FloatBorder" }
+		plugins.LspLinesDiagBorder =					{ link = "FloatBorder" }
+		plugins.ProviderTruncateLine =					{ link = "FloatBorder" }
+		plugins.LspSagaShTruncateLine =					{ link = "FloatBorder" }
+		plugins.LspSagaDocTruncateLine =				{ link = "FloatBorder" }
+		plugins.LineDiagTruncateLine =					{ link = "FloatBorder" }
+		plugins.LspSagaBorderTitle =                    { fg = colors.blue }
+		plugins.LspSagaHoverBorder =                    { link = "FloatBorder" }
+		plugins.LspSagaRenameBorder =                   { link = "FloatBorder" }
 		plugins.LspSagaRenamePromptPrefix =             { fg = colors.green }
-		plugins.LspSagaDefPreviewBorder =               { link = "LspFloatWinBorder" }
+		plugins.LspSagaDefPreviewBorder =               { link = "FloatBorder" }
 		plugins.LspSagaCodeActionTitle =                { fg = colors.paleblue }
 		plugins.LspSagaCodeActionContent =              { fg = colors.purple }
-		plugins.LspSagaCodeActionBorder =               { link = "LspFloatWinBorder" }
-		plugins.LspSagaCodeActionTruncateLine =			{ link = "LspSagaDiagnosticTruncateLine" }
-		plugins.LspSagaSignatureHelpBorder =            { link = "LspFloatWinBorder" }
+		plugins.LspSagaCodeActionBorder =               { link = "FloatBorder" }
+		plugins.LspSagaCodeActionTruncateLine =			{ link = "FloatBorder" }
+		plugins.LspSagaSignatureHelpBorder =            { link = "FloatBorder" }
 		plugins.LspSagaFinderSelection =                { link = "LspSagaRenamePromptPrefix" }
-		plugins.LspSagaLspFinderBorder =				{ link = "LspFloatWinBorder" }
+		plugins.LspSagaLspFinderBorder =				{ link = "FloatBorder" }
 		plugins.LspSagaAutoPreview =					{ link = "LspFloatWinBorder" }
 		plugins.ReferencesCount =                       { link = "LspSagaCodeActionContent" }
 		plugins.DefinitionCount =                       { link = "LspSagaCodeActionContent" }
