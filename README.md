@@ -189,7 +189,7 @@ require('material').setup({
 
 	async_loading = true, -- Load parts of the theme asyncronously for faster startup (turned on by default)
 
-	custom_highlights = {} -- Overwrite highlights with your own
+	custom_highlights = {}, -- Overwrite highlights with your own
 
 	plugins = { -- Here, you can disable(set to false) plugins that you don't use or don't want to apply the theme to
 		trouble = true,

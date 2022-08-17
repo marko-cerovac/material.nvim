@@ -236,7 +236,7 @@ theme.loadTreeSitter = function ()
 		TSTextReference =           { fg = colors.yellow }, -- FIXME
 		TSVariable =                { link = "Identifier" }, -- Any variable name that does not have another highlight.
 		TSVariableBuiltin =         { link = "Identifier" }, -- Variable names that are defined by the languages, like `this` or `self`.
-		TSEmphasis =                { fg = colors.paleblue }, -- For text to be represented with emphasis.
+		TSEmphasis =                { fg = colors.paleblue, italic = true }, -- For text to be represented with emphasis.
 		TSUnderline =               { fg = colors.fg, underline = true }, -- For text to be represented with an underline.
 		-- TSStrike =                  { fg = colors.fg,, strikethrough = true}, -- For strikethrough text.
 		TSTitle =                   { fg = colors.title, bold = true }, -- Text that is part of a title.
