@@ -76,10 +76,10 @@ theme.loadEditor = function ()
 		Cursor =				{ fg = colors.bg_alt, bg = colors.cursor }, -- the character under the cursor
 		CursorIM =				{ fg = colors.bg_alt, bg = colors.cursor }, -- like Cursor, but used when in IME mode
 		Directory =				{ fg = colors.blue }, -- directory names (and other special names in listings)
-		DiffAdd =				{ fg = colors.green }, -- diff mode: Added line
+		DiffAdd =				{ fg = colors.green, reverse = true }, -- diff mode: Added line
 		DiffChange =			{ fg = colors.blue }, --  diff mode: Changed line
-		DiffDelete =			{ fg = colors.red }, -- diff mode: Deleted line
-		DiffText =				{ fg = colors.fg, bg = colors.bg_alt }, -- diff mode: Changed text within a changed line
+		DiffDelete =			{ fg = colors.red, reverse = true }, -- diff mode: Deleted line
+		DiffText =				{ fg = colors.blue, reverse = true }, -- diff mode: Changed text within a changed line
 		ErrorMsg =				{ fg = colors.error }, -- error messages
 		Folded =				{ fg = colors.disabled, italic = true }, -- line used for closed folds
 		FoldColumn =			{ fg = colors.blue }, -- 'foldcolumn'
