@@ -6,11 +6,11 @@ if vim.g.material_style_switch == nil then
 end
 
 local set_lualine = function ()
-	local lualine = pcall('lualine')
-	if lualine then
+	local has_lualine, lualine = pcall(require, "lualine")
+	if has_lualine then
 		lualine.setup {
 			options = {
-				theme = 'material-nvim'
+				theme = "auto"
 			}
 		}
 	end
@@ -21,7 +21,7 @@ local change_style = function (style)
 	set_lualine()
 	vim.g.material_style = style
 	print("Material style: ", style)
-	vim.cmd[[colorscheme material]]
+	vim.cmd "colorscheme material"
  end
 
 -- Toggle_style takes no parameters toggles the style on every function call
@@ -42,10 +42,15 @@ local toggle_eob = function ()
 	require("material.util").highlight( "EndOfBuffer", editor.EndOfBuffer)
 end
 
+local telescope_style = function ()
+	require "material.telescope_switcher".find()
+end
+
 return {
 	set_lualine = set_lualine,
 	change_style = change_style,
 	toggle_style = toggle_style,
-	toggle_eob = toggle_eob
+	toggle_eob = toggle_eob,
+	telescope_style = telescope_style
 }
 

@@ -77,8 +77,11 @@ theme.loadEditor = function ()
 		CursorIM =				{ fg = colors.bg_alt, bg = colors.cursor }, -- like Cursor, but used when in IME mode
 		Directory =				{ fg = colors.blue }, -- directory names (and other special names in listings)
 		DiffAdd =				{ fg = colors.green, reverse = true }, -- diff mode: Added line
+		GitSignsAdd =           { fg = colors.green, bg = colors.bg_sign }, -- diff mode: Added line |diff.txt|
 		DiffChange =			{ fg = colors.blue }, --  diff mode: Changed line
+		GitSignsChange =        { fg = colors.blue, bg = colors.bg_sign }, -- diff mode: Changed line |diff.txt|
 		DiffDelete =			{ fg = colors.red, reverse = true }, -- diff mode: Deleted line
+		GitSignsDelete =        { fg = colors.red, bg = colors.bg_sign }, -- diff mode: Deleted line |diff.txt|
 		DiffText =				{ fg = colors.blue, reverse = true }, -- diff mode: Changed text within a changed line
 		ErrorMsg =				{ fg = colors.error }, -- error messages
 		Folded =				{ fg = colors.disabled, italic = true }, -- line used for closed folds
@@ -276,7 +279,7 @@ theme.loadLSP = function ()
 		DiagnosticFloatingHint = 				{ fg = colors.purple },
 		DiagnosticSignHint = 					{ fg = colors.purple, bg = colors.bg_sign },
 		DiagnosticUnderlineHint  = 				{ undercurl = true, sp = colors.purple },
-		LspReferenceText = 						{ bg = colors.selection, underline = true }, -- used for highlighting "text" references
+		LspReferenceText = 						{ bg = colors.selection }, -- used for highlighting "text" references
 		LspReferenceRead = 						{ link = "LspReferenceText" }, -- used for highlighting "read" references
 		LspReferenceWrite = 					{ link = "LspReferenceText" }, -- used for highlighting "write" references
 	}
@@ -311,9 +314,8 @@ theme.loadPlugins = function()
 		FernBranchText =						{ fg = colors.blue },
 	}
 
+	-- Trouble
 	if config.plugins.trouble then
-
-		-- Trouble
 		plugins.TroubleText =                        	{ fg = colors.text, bg = colors.sidebar }
 		plugins.TroubleCount =                       	{ fg = colors.purple, bg = colors.sidebar }
 		plugins.TroubleNormal =                      	{ fg = colors.fg, bg = colors.sidebar }
@@ -326,11 +328,10 @@ theme.loadPlugins = function()
 		plugins.TroubleLocation = 						{ fg = colors.disabled, bg = colors.sidebar }
 	end
 
+	-- Nvim-Cmp
 	if config.plugins.nvim_cmp then
-
-		-- Nvim-Cmp
 		plugins.CmpItemAbbrMatch =						{ fg = colors.paleblue, bold = true }
-		plugins.CmpItemKindText =						{ fg = colors.red }
+		plugins.CmpItemKindText =						{ fg = colors.title }
 		plugins.CmpItemKindMethod =						{ fg = colors.blue }
 		plugins.CmpItemKindFunction =					{ fg = colors.blue }
 		plugins.CmpItemKindContructor =					{ fg = colors.purple }
@@ -347,9 +348,8 @@ theme.loadPlugins = function()
 		plugins.CmpItemKindSnippet =					{ fg = colors.green }
 	end
 
+	-- Neogit
 	if config.plugins.neogit then
-
-		-- Neogit
 		plugins.NeogitBranch =                          { fg = colors.paleblue }
 		plugins.NeogitRemote =                          { fg = colors.purple }
 		plugins.NeogitHunkHeader =                      { fg = colors.fg, bg = colors.highlight }
@@ -359,43 +359,37 @@ theme.loadPlugins = function()
 		plugins.NeogitDiffAddHighlight =                { fg = colors.green }
 	end
 
+	-- GitSigns
 	if config.plugins.gitsigns then
-
-		-- GitSigns
-		plugins.GitSignsAdd =                           { fg = colors.green, bg = colors.bg_sign } -- diff mode: Added line |diff.txt|
 		plugins.GitSignsAddNr =                         { fg = colors.green, bg =colors.bg_num } -- diff mode: Added line |diff.txt|
 		plugins.GitSignsAddLn =                         { fg = colors.green } -- diff mode: Added line |diff.txt|
-		plugins.GitSignsChange =                        { fg = colors.blue, bg = colors.bg_sign } -- diff mode: Changed line |diff.txt|
 		plugins.GitSignsChangeNr =                      { fg = colors.blue, bg =colors.bg_num } -- diff mode: Changed line |diff.txt|
 		plugins.GitSignsChangeLn =                      { fg = colors.blue } -- diff mode: Changed line |diff.txt|
-		plugins.GitSignsDelete =                        { fg = colors.red, bg = colors.bg_sign } -- diff mode: Deleted line |diff.txt|
 		plugins.GitSignsDeleteNr =                      { fg = colors.red, bg =colors.bg_num } -- diff mode: Deleted line |diff.txt|
 		plugins.GitSignsDeleteLn =                      { fg = colors.red } -- diff mode: Deleted line |diff.txt|
 	end
 
+	-- GitGutter
 	if config.plugins.git_gutter then
-
-		-- GitGutter
 		plugins.GitGutterAdd =                          { fg = colors.green } -- diff mode: Added line |diff.txt|
 		plugins.GitGutterChange =                       { fg = colors.blue } -- diff mode: Changed line |diff.txt|
 		plugins.GitGutterDelete =                       { fg = colors.red } -- diff mode: Deleted line |diff.txt|
 	end
 
+	-- Telescope
 	if config.plugins.telescope then
-
-		-- Telescope
 		plugins.TelescopeNormal =                       { fg = colors.fg, bg = colors.float }
 		plugins.TelescopePromptBorder =                 { fg = colors.border, bg = colors.float }
 		plugins.TelescopeResultsBorder =                { link = "TelescopePromptBorder" }
 		plugins.TelescopePreviewBorder =                { link = "TelescopePromptBorder" }
-		plugins.TelescopeSelectionCaret =               { fg = colors.purple }
-		plugins.TelescopeSelection =                    { fg = colors.purple, bg = colors.active }
-		plugins.TelescopeMatching =                     { fg = colors.cyan }
+		plugins.TelescopeSelectionCaret =               { fg = colors.green, bg = colors.selection }
+		plugins.TelescopeSelection =                    { fg = colors.green, bg = colors.selection }
+		plugins.TelescopeMultiSelection =               { fg = colors.yellow }
+		plugins.TelescopeMatching =                     { bold = true }
 	end
 
+	-- NvimTree
 	if config.plugins.nvim_tree then
-
-		-- NvimTree
 		plugins.NvimTreeNormal =						{ fg = colors.fg, bg = colors.sidebar }
 		plugins.NvimTreeNormalNC =						{ link = "NvimTreeNormal" }
 		plugins.NvimTreeRootFolder =                    { fg = colors.accent, bg = colors.sidebar }
@@ -415,18 +409,16 @@ theme.loadPlugins = function()
 		plugins.NvimTreeSpecialFile =                   { fg = colors.purple }
 	end
 
+	-- Sidebar.nvim
 	if config.plugins.sidebar_nvim then
-
-		-- Sidebar.nvim
 		plugins.SidebarNvimNormal =						{ fg = colors.fg }
 		plugins.SidebarNvimSectionTitle	=				{ fg = colors.accent }
 		plugins.SidebarNvimSectionSeparator =			{ fg = colors.border }
 		plugins.SidebarNvimLabel =						{ fg = colors.gray }
 	end
 
+	-- LspSaga
 	if config.plugins.lsp_saga then
-
-		-- LspSaga
 		plugins.LspFloatWinNormal =                     { fg = colors.fg, bg = colors.float }
 		plugins.LspFloatWinBorder =                     { link = "FloatBorder" }
 		plugins.LspSagaDiagnosticBorder =				{ link = "FloatBorder" }
@@ -458,20 +450,18 @@ theme.loadPlugins = function()
 		plugins.TargetWord =                            { fg = colors.cyan }
 	end
 
+	-- Nvim dap and dap-UI
 	if config.plugins.nvim_dap then
-
-		-- Nvim dap
 		plugins.DapBreakpoint =                         { fg = colors.red }
 		plugins.DapStopped =                            { fg = colors.yellow }
 
-		-- Nvim dap-UI
 		plugins.DapUIFloatBorder =						{ fg = colors.border, bg = colors.bg }
 		plugins.DapUIDecoration =						{ fg = colors.blue }
 		-- plugins.DapUIVariable = 						{ fg = colors.fg }
 	end
 
+	-- nvim-navic
 	if config.plugins.nvim_navic then
-		-- nvim-navic
 		plugins.NavicIconsFile =						{ fg = colors.title, bg = colors.selection }
 		plugins.NavicIconsModule =						{ link = "NavicIconsFile" }
 		plugins.NavicIconsNamespace =					{ fg = colors.yellow, bg = colors.selection }
@@ -502,9 +492,8 @@ theme.loadPlugins = function()
 		plugins.NavicSeparator =						{ link = "NavicText" }
 	end
 
+	-- WhichKey
 	if config.plugins.which_key then
-
-		-- WhichKey
 		plugins.WhichKey =                              { fg = colors.accent, bold = true }
 		plugins.WhichKeyGroup =                         { fg = colors.gray }
 		plugins.WhichKeyDesc =                          { fg = colors.fg, italic = true }
@@ -512,32 +501,28 @@ theme.loadPlugins = function()
 		plugins.WhichKeyFloat =                         { bg = colors.float }
 	end
 
+	-- Hop
 	if config.plugins.hop then
-
-		-- Hop
 		plugins.HopNextKey =							{ fg = colors.accent, bold = true }
 		plugins.HopNextKey1 =							{ fg = colors.purple, bold = true }
 		plugins.HopNextKey2 =							{ fg = colors.blue }
 		plugins.HopUnmatched =							{ fg = colors.comments }
 	end
 
+	-- Sneak
 	if config.plugins.sneak then
-
-		-- Sneak
 		plugins.Sneak =                                 { fg = colors.bg, bg = colors.accent }
 		plugins.SneakScope =                            { bg = colors.selection }
 	end
 
+	-- Indent Blankline
 	if config.plugins.indent_blankline then
-
-		-- Indent Blankline
 		plugins.IndentBlanklineChar =                   { fg = colors.border }
-		plugins.IndentBlanklineContextChar =            { fg = colors.fg }
+		plugins.IndentBlanklineContextChar =            { fg = colors.disabled }
 	end
 
+	-- Illuminate
 	if config.plugins.nvim_illuminate then
-
-		-- Illuminate
 		plugins.illuminatedWord =						{ bg = colors.highight, italic = true }
 		plugins.illuminatedCurWord =					{ bg = colors.highight, underline = true }
 	end
@@ -568,9 +553,9 @@ theme.loadPlugins = function()
 		plugins.MiniStarterQuery = { fg = colors.paleblue }
 
 		plugins.MiniStatuslineDevinfo = { fg = colors.fg, bg = colors.active }
-		plugins.MiniStatuslineFileinfo = { fg = colors.fg, bg = colors.active }
+		plugins.MiniStatuslineFileinfo = { link = "MiniStatuslineDevinfo" }
 		plugins.MiniStatuslineFilename = { fg = colors.disabled, bg = colors.bg }
-		plugins.MiniStatuslineInactive = { fg = colors.disabled, bg = colors.bg }
+		plugins.MiniStatuslineInactive = { link = "MiniStatuslineFilename" }
 		plugins.MiniStatuslineModeCommand = { fg = colors.bg, bg = colors.yellow, bold = true }
 		plugins.MiniStatuslineModeInsert = { fg = colors.bg, bg = colors.green, bold = true }
 		plugins.MiniStatuslineModeNormal = { fg = colors.bg, bg = colors.accent, bold = true }

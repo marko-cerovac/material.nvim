@@ -6,7 +6,6 @@ local config = require('material.config').options
 
 local colors = {
 	-- Common colors
-
 	white =					'#EEFFFF',
 	gray =					'#717CB4',
 	black = 				'#000000',
@@ -33,6 +32,7 @@ local colors = {
 	link =					'#80CBC4',
 	cursor =				'#FFCC00',
 	title =					'#EEFFFF',
+	-- visual_alt = 			'#3B3D0E',
 
 	none =      			'NONE'
 }
@@ -120,6 +120,7 @@ elseif vim.g.material_style == 'lighter' then
 	colors.border =			'#D3E1E8'
 	colors.highlight =		'#E7E7E8'
 	colors.disabled =		'#D2D4D5'
+	-- colors.visual_alt = 	'#F6F8B4'
 	colors.cursor =			'#272727'
 
 	colors.white =			'#FFFFFF'
