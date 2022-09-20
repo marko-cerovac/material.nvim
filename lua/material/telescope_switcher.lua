@@ -29,6 +29,8 @@ local opts = {
 		"oceanic",
 		"palenight"
 	},
+	prompt_title = "Material",
+	results_title = "styles",
 	sorter = sorters.get_fzy_sorter({}),
 	borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
 	attach_mappings = function (_, map)

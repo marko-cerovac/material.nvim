@@ -42,7 +42,7 @@ local toggle_eob = function ()
 	require("material.util").highlight( "EndOfBuffer", editor.EndOfBuffer)
 end
 
-local telescope_style = function ()
+local find_style = function ()
 	require "material.telescope_switcher".find()
 end
 
@@ -51,6 +51,6 @@ return {
 	change_style = change_style,
 	toggle_style = toggle_style,
 	toggle_eob = toggle_eob,
-	telescope_style = telescope_style
+	find_style = find_style
 }
 

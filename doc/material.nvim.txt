@@ -12,17 +12,17 @@ for native LSP, TreeSitter and many more plugins.
 ================================================================================
 CONTENTS
 
-    1. Features ................. |material.nvim-features|
-    2. Usage .................... |material.nvim-usage|
-    3. Styles ................... |material.nvim-styles|
-    4. Configuration ............ |material.nvim-configuration|
-    5. Examples ................. |material.nvim-examples|
-    6. Lualine setup ............ |material.nvim-lualine-setup|
-    7. Functions ................ |material.nvim-functions|
-    8. Mappings ................. |material.nvim-mappings|
+    1. Features ................. |material-features|
+    2. Usage .................... |material-usage|
+    3. Styles ................... |material-styles|
+    4. Configuration ............ |material-configuration|
+    5. Examples ................. |material-examples|
+    6. Lualine setup ............ |material-lualine-setup|
+    7. Functions ................ |material-functions|
+    8. Mappings ................. |material-mappings|
 
 ================================================================================
-1. Features                                             *material.nvim-features*
+1. Features                                             *material-features*
 
     + There are 5 styles to choose from: -oceanic
                                          -deep ocean
@@ -61,7 +61,7 @@ CONTENTS
       NeoVim
 
 ================================================================================
-2. Usage                                                   *material.nvim-usage*
+2. Usage                                                   *material-usage*
 
     To use the default settings, just apply the theme
 
@@ -73,7 +73,7 @@ CONTENTS
 
 
 ================================================================================
-3. Styles                                                 *material.nvim-styles*
+3. Styles                                                 *material-styles*
 
     The theme comes in 5 styles to choose from
 
@@ -114,7 +114,7 @@ CONTENTS
     Just make sure to set the style before applying the colorscheme
 
 ================================================================================
-4. Configuration                                   *material.nvim-configuration*
+4. Configuration                                   *material-configuration*
 
 What sets material.nvim apart from most Vim/NeoVim themes is the wide array
 of options for customising the theme.
@@ -136,149 +136,149 @@ The theme style is set using a global variable called material_style
 
 All other options are passed to a setup function
 
-	+ require('material').setup()
+    + require('material').setup()
 
 This is an example of the setup function with the default values:
 
-	require('material').setup({
-		contrast = {
-			sidebars = false,
-			floating_windows = false,
-			line_numbers = false,
-			sign_column = false,
-			cursor_line = false,
-			non_current_windows = false,
-			popup_menu = false
-		},
-		italics = {
-			comments = false,
-			strings = false,
-			keywords = false,
-			functions = false,
-			variables = false
-		},
-		contrast_filetypes = {},
-		high_visibility = {
-			lighter = false,
-			darker = false
-		},
-		disable = {
-			colored_cursor = false,
-			borders = false,
-			background = false,
-			term_colors = false,
-			eob_lines = false
-		}
-		lualine_style = 'default',
-		async_loading = true,
-		custom_highlights = {},
-		plugins = {
-			trouble = true,
-			nvim_cmp = true,
-			neogit = true,
-			gitsigns = true,
-			git_gutter = true,
-			telescope = true,
-			nvim_tree = true,
-			sidebar_nvim = true,
-			lsp_saga = true,
-			nvim_dap = true,
-			nvim_navic = true,
-			which_key = true,
-			sneak = true,
-			hop = true,
-			indent_blankline = true,
-			nvim_illuminate = true,
-			mini = true,
-		}
-	})
+    require('material').setup({
+        contrast = {
+            sidebars = false,
+            floating_windows = false,
+            line_numbers = false,
+            sign_column = false,
+            cursor_line = false,
+            non_current_windows = false,
+            popup_menu = false
+        },
+        italics = {
+            comments = false,
+            strings = false,
+            keywords = false,
+            functions = false,
+            variables = false
+        },
+        contrast_filetypes = {},
+        high_visibility = {
+            lighter = false,
+            darker = false
+        },
+        disable = {
+            colored_cursor = false,
+            borders = false,
+            background = false,
+            term_colors = false,
+            eob_lines = false
+        }
+        lualine_style = 'default',
+        async_loading = true,
+        custom_highlights = {},
+        plugins = {
+            trouble = true,
+            nvim_cmp = true,
+            neogit = true,
+            gitsigns = true,
+            git_gutter = true,
+            telescope = true,
+            nvim_tree = true,
+            sidebar_nvim = true,
+            lsp_saga = true,
+            nvim_dap = true,
+            nvim_navic = true,
+            which_key = true,
+            sneak = true,
+            hop = true,
+            indent_blankline = true,
+            nvim_illuminate = true,
+            mini = true,
+        }
+    })
 
     + contrast {table}
           Make sidebars (like nvim-tree), floating windows, line numbers,
-		  sign column, popup menu, cursor line and non current windows have
-		  a different background. Varable names are: - sidebars
-													 - floating_windows
-							 						 - line_numbers
-							 						 - sign_column
-							 						 - cursor_line
-							 						 - non_current_windows
-							 						 - popup_menu
-		These can be set to true or false
+          sign column, popup menu, cursor line and non current windows have
+          a different background. Varable names are: - sidebars
+                                                     - floating_windows
+                                                     - line_numbers
+                                                     - sign_column
+                                                     - cursor_line
+                                                     - non_current_windows
+                                                     - popup_menu
+        These can be set to true or false
 
-	+ italics  {table}
-		  Select which code objects are italic: -comments
-		                                        -strings
-		                                        -keywords
-		                                        -functions
-		                                        -variables
-		 Set the desired value to true to make it italic
+    + italics  {table}
+          Select which code objects are italic: -comments
+                                                -strings
+                                                -keywords
+                                                -functions
+                                                -variables
+         Set the desired value to true to make it italic
 
-	+ contrast_filetypes  {table}
-		  Pass in filetype names of windows to make their background darker (contrasted)
-		  example: "terminal", "qf", "packer" ...
+    + contrast_filetypes  {table}
+          Pass in filetype names of windows to make their background darker (contrasted)
+          example: "terminal", "qf", "packer" ...
 
-	+ high_visibility  {table}
-		  Set the darker or lighter variable to true in this table to give
-		  those styles more contrast for better visibility
+    + high_visibility  {table}
+          Set the darker or lighter variable to true in this table to give
+          those styles more contrast for better visibility
 
-	+ disable  {table}
-		  This table allows you to disable the theme from setting
-		  the cursor color, borders, background, terminal colors and
-		  end-of-buffer lines
+    + disable  {table}
+          This table allows you to disable the theme from setting
+          the cursor color, borders, background, terminal colors and
+          end-of-buffer lines
 
-	+ lualine_style {string}
-	      Choose between two styles for lualine. can be "default" or "stealth"
+    + lualine_style {string}
+          Choose between two styles for lualine. can be "default" or "stealth"
 
-	+ async_loading {bool}
-		  Load parts of the theme asyncronously for faster startup
-		  (turned on by default)
-	
-	+ custom_highlights  {table}
-		  If you want to change or set a certain highlight group to a value,
-		  you can pass the group name and the color values in this table
+    + async_loading {bool}
+          Load parts of the theme asyncronously for faster startup
+          (turned on by default)
+    
+    + custom_highlights  {table}
+          If you want to change or set a certain highlight group to a value,
+          you can pass the group name and the color values in this table
 
-	+ plugins  {table}
-		  If you don't use a specific plugin, or don't want the theme to set
-		  the highlights for it, you can disable it in this table.
+    + plugins  {table}
+          If you don't use a specific plugin, or don't want the theme to set
+          the highlights for it, you can disable it in this table.
 
 ================================================================================
-5. Examples											*material.nvim-examples*
+5. Examples                                         *material-examples*
 
 Example config in Lua:
 
-	-- Theme style
-	vim.g.material_style = 'deep ocean'
+    -- Theme style
+    vim.g.material_style = 'deep ocean'
 
     -- Colorscheme settings
-	require('material').setup({
-		contrast = {
-			sidebars = true,
-			floating_windows = false,
-			line_numbers = false,
-			sign_column = false,
-			cursor_line = true,
-			popup_menu = false
-		},
-		italics = {
-			comments = true,
-			strings = false,
-			keywords = false,
-			functions = true,
-			variables = false
-		},
-		contrast_filetypes = {
-			"terminal",
-			"packer",
-			"qf",
-		},
-		disable = {
-			borders = true,
-			background = false,
-			term_colors = false,
-			eob_lines = false
-		},
-		lualine_style = 'stealth'
-	})
+    require('material').setup({
+        contrast = {
+            sidebars = true,
+            floating_windows = false,
+            line_numbers = false,
+            sign_column = false,
+            cursor_line = true,
+            popup_menu = false
+        },
+        italics = {
+            comments = true,
+            strings = false,
+            keywords = false,
+            functions = true,
+            variables = false
+        },
+        contrast_filetypes = {
+            "terminal",
+            "packer",
+            "qf",
+        },
+        disable = {
+            borders = true,
+            background = false,
+            term_colors = false,
+            eob_lines = false
+        },
+        lualine_style = 'stealth'
+    })
 
     -- Apply the colorscheme
     vim.cmd 'colorscheme material'
@@ -286,64 +286,67 @@ Example config in Lua:
 If you want to use the custom_highlights table, this is how you would use it:
 
 require('material').setup({
-	...
-	custom_highlights = {
-		Function = { fg = "#00FF00", bg = "#FF0000", italic = true },
-		TelescopePromptBorder = { fg = "#0A0A0A", bg = "#000000", bold = true }
-	}
-	...
+    ...
+    custom_highlights = {
+        Function = { fg = "#00FF00", bg = "#FF0000", italic = true },
+        TelescopePromptBorder = { fg = "#0A0A0A", bg = "#000000", bold = true }
+    }
+    ...
 })
 
 Just put the name of the highlight group as the name of a table, and pass in
 the values for fg, bg, gui, guisp
 
 ================================================================================
-6. Lualine setup                                   *material.nvim-lualine-setup*
+6. Lualine setup                                   *material-lualine-setup*
 
-	To enable the lualine themes, first set the theme
-	in your lualine settings to `auto` or `material`
+    To enable the lualine themes, first set the theme
+    in your lualine settings to `auto` or `material`
 
-		require('lualine').setup {~
-		  options = {~
-			-- ... your lualine config
-			theme = 'auto'~
-			or
-			theme = 'material'~
-			-- ... your lualine config
-		  }~
-		}~
+        require('lualine').setup {~
+          options = {~
+            -- ... your lualine config
+            theme = 'auto'~
+            or
+            theme = 'material'~
+            -- ... your lualine config
+          }~
+        }~
 
-	Then, choose the style trough a variable called lualine_style
-	in the theme setup function
+    Then, choose the style trough a variable called lualine_style
+    in the theme setup function
 
-	require('material').setup({~
-		lualine_style = 'default' -- the default style
-		or
-		lualine_style = 'stealth' -- the stealth style
-	})~
+    require('material').setup({~
+        lualine_style = 'default' -- the default style
+        or
+        lualine_style = 'stealth' -- the stealth style
+    })~
 
-	If the theme, doesn't look right, it's probably because material.nvim
-	is being loaded before lualine, causing the other material theme
-	that comes built-in to lualine to be used.
-	To fix this, either load material.nvim after lualine (preferred way)
-	or set the lualine theme to one of these two values in your lualine settings
+    If the theme, doesn't look right, it's probably because material.nvim
+    is being loaded before lualine, causing the other material theme
+    that comes built-in to lualine to be used.
+    To fix this, either load material.nvim after lualine (preferred way)
+    or set the lualine theme to one of these two values in your lualine settings
 
-	require('lualine').setup {~
-	  options = {~
-		-- ... your lualine config
-		theme = 'material-nvim' -- the default style
-		or
-		theme = 'material-stealth' -- the stealth style
-		-- ... your lualine config
-	  }~
-	}~
+    require('lualine').setup {~
+      options = {~
+        -- ... your lualine config
+        theme = 'material-nvim' -- the default style
+        or
+        theme = 'material-stealth' -- the stealth style
+        -- ... your lualine config
+      }~
+    }~
 
 ================================================================================
-7. Functions                                           *material.nvim-functions*
+7. Functions                                           *material-functions*
 
 Material.nvim has built in functions that you can call or bind to a key
 
-    + Toggle trough styles without the need to restart NeoVim
+    + Use telescope.nvim to switch to a style
+          :lua require("material.functions").find_style()~
+
+    + Cycle trough styles without the need to restart NeoVim
           Just call the funciton and it will switch to the next style:
           :lua require('material.functions').toggle_style()~
 
@@ -358,13 +361,15 @@ Material.nvim has built in functions that you can call or bind to a key
           :lua require('material.functions').toggle_eob()~
 
 ================================================================================
-8. Mappings                                             *material.nvim-mappings*
+8. Mappings                                             *material-mappings*
 
 You can map the built-in functions to keys
 This will allow you to change the style and toggle the end-of-buffer lines
 at keypress
 
 Example:
+
+nnoremap <leader>mf :lua require('material.functions').find_style()<CR>
 
 nnoremap <leader>mm :lua require('material.functions').toggle_style()<CR>
 
