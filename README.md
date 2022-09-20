@@ -66,6 +66,8 @@ added to NeoVim like built-in [LSP](https://github.com/neovim/nvim-lspconfig) an
 
 + Asynchronous highlight loading which makes the theme blazingly fast
 
++ Ability to select styles using [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+
 + Added functions for live theme switching without the need to restart NeoVim
 
 + Two [Lualine](https://github.com/hoob3rt/lualine.nvim) themes
@@ -288,66 +290,27 @@ require('lualine').setup {
 
 ## ⛵ Functions
 
-+ Toggle the style live without the need to exit NeoVim
++ Use Telescope.nvim to switch styles
 
-![toggle_style](https://user-images.githubusercontent.com/76592799/129165775-6a5a0114-5c1f-4e45-aae3-7cd612aa2c04.gif)
-
-Just call the function for style switching
+![telescope_finder](https://user-images.githubusercontent.com/76592799/191139931-579be597-f176-4dd4-af52-eb2c496c3607.png)
 ```vim
-"Vim-Script
+:lua require("material.functions").find_style()
+```
+
+
++ Cycle trough styles
+```vim
 :lua require('material.functions').toggle_style()
-"This command toggles the style
 ```
 
-The command can also be mapped to a key for fast style switching
-```vim
-"Vim-Script:
-nnoremap <leader>mm :lua require('material.functions').toggle_style()<CR>
-```
-
-```lua
---Lua:
-vim.api.nvim_set_keymap('n', '<leader>mm', [[<Cmd>lua require('material.functions').toggle_style()<CR>]], { noremap = true, silent = true })
-```
 
 + Toggle the end of buffer lines ( ~ )
-
-Call the built in function for toggling buffer lines
-
 ```vim
-"Vim-Script
 :lua require('material.functions').toggle_eob()
-"This command toggles the end of buffer lines
 ```
 
-
-The command can also be mapped to a key to toggle the lines live
-```vim
-"Vim-Script:
-nnoremap <leader>me :lua require('material.functions').toggle_eob()<CR>
-```
-
-```lua
---Lua:
-vim.api.nvim_set_keymap('n', '<leader>me', [[<Cmd>lua require('material.functions').toggle_eob()<CR>]], { noremap = true, silent = true })
-```
 
 + Change the style to a desired one using the function change_style("desired style")
 ```vim
-"Vim-Script:
 :lua require('material.functions').change_style("palenight")
-"This command changes the style to palenight
-```
-
-The command can also be mapped to a key for fast style switching
-```vim
-"Vim-Script:
-nnoremap <leader>ml :lua require('material.functions').change_style('lighter')<CR>
-nnoremap <leader>md :lua require('material.functions').change_style('darker')<CR>
-```
-
-```lua
---Lua:
-vim.api.nvim_set_keymap('n', '<leader>ml', [[<Cmd>lua require('material.functions').change_style('lighter')<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>md', [[<Cmd>lua require('material.functions').change_style('darker')<CR>]], { noremap = true, silent = true })
 ```
