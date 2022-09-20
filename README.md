@@ -66,7 +66,7 @@ added to NeoVim like built-in [LSP](https://github.com/neovim/nvim-lspconfig) an
 
 + Asynchronous highlight loading which makes the theme blazingly fast
 
-+ Ability to select styles using [Telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
++ Ability to select styles using [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 
 + Added functions for live theme switching without the need to restart NeoVim
 
