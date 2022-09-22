@@ -15,7 +15,7 @@ end
 util.contrast = function ()
 	local group = vim.api.nvim_create_augroup("Material", { clear = true })
 	vim.api.nvim_create_autocmd("ColorScheme", { callback = function ()
-		require("material.util").onColorScheme()
+		util.onColorScheme()
 	end, group = group })
 
 	for _, sidebar in ipairs(config.contrast_filetypes) do

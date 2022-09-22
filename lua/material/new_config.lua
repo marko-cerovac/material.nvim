@@ -58,8 +58,8 @@ local defaults = {
 
 ---Prepare environment
 ---@param settings table settings passed to the setup function
-local prepare_environment = function (settings)
-        vim.cmd "hi clear"
+local prepare_environment = function(settings)
+    vim.cmd "hi clear"
     vim.opt.termguicolors = true
     if vim.fn.exists "syntax_on" then
         vim.cmd "syntax reset"
@@ -72,50 +72,24 @@ local prepare_environment = function (settings)
     end
     vim.g.colors_name = "material"
 
-	if not settings.disable.colored_cursor then
-		vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:Cursor/Cursor"
-		local exit_group = vim.api.nvim_create_augroup("MaterialExit", { clear = true })
-		vim.api.nvim_create_autocmd("ExitPre", {
-			command = "autocmd ExitPre * set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20",
-			group = exit_group
-		})
-	end
+    if not settings.disable.colored_cursor then
+        vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:Cursor/Cursor"
+        local exit_group = vim.api.nvim_create_augroup("MaterialExit", { clear = true })
+        vim.api.nvim_create_autocmd("ExitPre", {
+            command = "autocmd ExitPre * set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20",
+            group = exit_group
+        })
+    end
 end
 
----Give darker background to given filetypes or buftypes
----@param filetypes table names of filetypes to apply contrast to
-local apply_contrast = function (filetypes)
-	local group = vim.api.nvim_create_augroup("Material", { clear = true })
-
-	vim.api.nvim_create_autocmd("ColorScheme", { callback = function ()
-		require("material.util").onColorScheme()
-	end, group = group })
-
-	for _, sidebar in ipairs(filetypes) do
-		if sidebar == "terminal" then
-			vim.api.nvim_create_autocmd("TermOpen", {
-				command = "setlocal winhighlight=Normal:NormalContrast,SignColumn:NormalContrast",
-				group = group,
-			})
-		else
-			vim.api.nvim_create_autocmd("FileType", {
-				pattern = sidebar,
-				command = "setlocal winhighlight=Normal:NormalContrast,SignColumn:SignColumnFloat",
-				group = group,
-			})
-		end
-	end
-end
-
-M.config = defaults
+M.settings = defaults
 
 ---Setup function
 ---@param user_settings table user settings for the theme
-M.setup = function (user_settings)
-    M.config = vim.tbl_deep_extend("force", {}, defaults, user_settings or {})
+M.setup = function(user_settings)
+    M.settings = vim.tbl_deep_extend("force", {}, defaults, user_settings or {})
 
-    prepare_environment(M.config)
-    apply_contrast(M.config.contrast_filetypes)
+    prepare_environment(M.settings)
 end
 
 return M
