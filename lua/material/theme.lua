@@ -1,5 +1,5 @@
 local colors = require('material.colors')
-local config = require('material.config').options
+local config = require('material.config').settings
 
 local theme = {}
 

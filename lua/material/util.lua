@@ -1,6 +1,6 @@
 local util = {}
 local material = require('material.theme')
-local config = require('material.config').options
+local config = require('material.config').settings
 
 -- Only define Material if it's the active colorshceme
 function util.onColorScheme()

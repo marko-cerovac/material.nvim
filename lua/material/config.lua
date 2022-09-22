@@ -64,10 +64,10 @@ local defaults = {
 	}
 }
 
-Config.options = {}
+Config.settings = {}
 
-Config.setup = function (options)
-	Config.options = vim.tbl_deep_extend("force", {}, defaults, options or {})
+Config.setup = function (user_settings)
+	Config.settings = vim.tbl_deep_extend("force", {}, defaults, user_settings or {})
 end
 
 Config.setup()

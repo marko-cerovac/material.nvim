@@ -2,7 +2,7 @@
 -- the basic colors of the theme
 -- and the style specific colors
 
-local config = require('material.config').options
+local config = require('material.config').settings
 
 local colors = {
 	-- Common colors

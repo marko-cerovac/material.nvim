@@ -1,4 +1,4 @@
-local config = require('material.config').options
+local config = require('material.config').settings
 
 -- Define style_switch
 if vim.g.material_style_switch == nil then
