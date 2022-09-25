@@ -181,6 +181,26 @@ else vim.g.material_style = 'oceanic'
 
 end
 
+-- Apply user defined colors
+if type(config.custom_colors) == "table" then
+	for key, value in pairs(config.custom_colors) do
+		-- If the color starts with a #
+		if string.sub(value, 1, 1) == "#" then
+			-- Hex override
+			colors[key] = value
+		-- IF it doesn't
+		else
+			-- If the color isn't already in the colors table
+			if not colors[value] then
+				error("Color " .. value .. " does not exist")
+			else
+			-- If it is, then link to it
+				colors[key] = colors[value]
+			end
+		end
+	end
+end
+
 -- Apply the disabled background setting
 if config.disable.background == true then
 	colors.bg = 'NONE'
@@ -236,26 +256,6 @@ if config.contrast.non_current_windows == true then
 	colors.bg_nc = colors.bg_alt
 else
 	colors.bg_nc = colors.bg
-end
-
--- Apply user defined colors
-if type(config.custom_colors) == "table" then
-	for key, value in pairs(config.custom_colors) do
-		-- If the color starts with a #
-		if string.sub(value, 1, 1) == "#" then
-			-- Hex override
-			colors[key] = value
-		-- IF it doesn't
-		else
-			-- If the color isn't already in the colors table
-			if not colors[value] then
-				error("Color " .. value .. " does not exist")
-			else
-			-- If it is, then link to it
-				colors[key] = colors[value]
-			end
-		end
-	end
 end
 
 return colors
