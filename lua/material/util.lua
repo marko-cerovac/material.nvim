@@ -1,128 +1,120 @@
-local util = {}
-local material = require('material.theme')
-local config = require('material.config').settings
+local theme    = require "material.theme"
+local settings = require "material.config".settings
 
--- Only define Material if it's the active colorshceme
-function util.onColorScheme()
-  if vim.g.colors_name ~= "material" then
-    vim.cmd [[autocmd! Material]]
-    vim.cmd [[augroup! Material]]
-	-- vim.api.nvim_del_augroup_by_name("Material")
-  end
+local M = {}
+
+---apply highlights for a given table
+---@param highlights table highlight group names and their values
+local apply_highlights = function(highlights)
+    for group, values in pairs(highlights) do
+        vim.api.nvim_set_hl(0, group, values)
+    end
 end
 
--- Change the background for the terminal and packer windows
-util.contrast = function ()
-	local group = vim.api.nvim_create_augroup("Material", { clear = true })
-	vim.api.nvim_create_autocmd("ColorScheme", { callback = function ()
-		util.onColorScheme()
-	end, group = group })
-
-	for _, sidebar in ipairs(config.contrast_filetypes) do
-		if sidebar == "terminal" then
-			vim.api.nvim_create_autocmd("TermOpen", {
-				command = "setlocal winhighlight=Normal:NormalContrast,SignColumn:NormalContrast",
-				group = group,
-			})
-		else
-			vim.api.nvim_create_autocmd("FileType", {
-				pattern = sidebar,
-				command = "setlocal winhighlight=Normal:NormalContrast,SignColumn:SignColumnFloat",
-				group = group,
-			})
-		end
-	end
-end
-
--- Load the theme
-function util.load()
-    -- Set the theme environment
-    vim.cmd("hi clear")
-    if vim.fn.exists("syntax_on") then vim.cmd("syntax reset") end
-    vim.opt.background = "dark"
+---prepare environment
+local prepare_environment = function()
+    vim.g.colors_name     = "material"
     vim.opt.termguicolors = true
-    vim.g.colors_name = "material"
+    vim.cmd "hi clear"
 
-	if config.disable.colored_cursor == false then
-		vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:Cursor/Cursor"
-		local exit_group = vim.api.nvim_create_augroup("MaterialExit", { clear = true })
-		vim.api.nvim_create_autocmd("ExitPre", {
-			command = "autocmd ExitPre * set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20",
-			group = exit_group
-		})
-	end
-
-  -- Load plugins and custom highlights
-    local async
-
-	local function async_loader()
-		-- Import the table for plugins
-		local plugins = material.loadPlugins()
-
-		-- Apply the terminal colors
-		if config.disable.term_colors == false then
-			material.loadTerminal()
-		end
-
-		-- Apply the plugin colors
-		for group, colors in pairs(plugins) do
-			-- util.highlight(group, colors)
-			vim.api.nvim_set_hl(0, group, colors)
-		end
-
-		-- Apply user defined highlights if they exist
-		if type(config.custom_highlights) == 'table' then
-			for group, colors in pairs(config.custom_highlights) do
-				-- util.highlight(group, colors)
-				vim.api.nvim_set_hl(0, group, colors)
-			end
-		end
-
-		-- Apply window contrast
-		util.contrast()
-
-		-- If this function gets called asyncronously, this closure is needed
-		if (async) then
-			async:close()
-		end
-	end
-
-	-- If async loading is enabled,
-	-- execute async_loader() asyncronously, if not, load it now
-	if (config.async_loading == true) then
-		async = vim.loop.new_async(vim.schedule_wrap(async_loader))
-	else
-		async_loader()
-	end
-
-    -- Import tables for the base, syntax, treesitter and lsp
-    local editor = material.loadEditor()
-    local syntax = material.loadSyntax()
-    local treesitter = material.loadTreeSitter()
-	local lsp = material.loadLSP()
-
-	-- Apply base colors
-    for group, colors in pairs(editor) do
-		vim.api.nvim_set_hl(0, group, colors)
+    if vim.fn.exists "syntax_on" then
+        vim.cmd "syntax reset"
     end
 
-	-- Apply basic syntax colors
-    for group, colors in pairs(syntax) do
-		vim.api.nvim_set_hl(0, group, colors)
+    if vim.g.material_style == "lighter" then
+        vim.opt.background = "light"
+    else
+        vim.opt.background = "dark"
     end
 
-	-- Apply treesitter colors
-    for group, colors in pairs(treesitter) do
-		vim.api.nvim_set_hl(0, group, colors)
+    if not settings.disable.colored_cursor then
+        vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:Cursor/Cursor"
+        local exit_group  = vim.api.nvim_create_augroup("MaterialExit", { clear = true })
+        vim.api.nvim_create_autocmd("ExitPre", {
+            command = "autocmd ExitPre * set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20",
+            group   = exit_group
+        })
     end
-
-	-- Apply lsp colors
-	for group, colors in pairs(lsp) do
-		vim.api.nvim_set_hl(0, group, colors)
-	end
-
-	-- If async loading is enabled, send it
-    if (config.async_loading == true) then async:send() end
 end
 
-return util
+---give darker background to given filetypes or buftypes
+---@param filetypes table names of filetypes to apply contrast to
+local apply_contrast = function(filetypes)
+    local group = vim.api.nvim_create_augroup("Material", { clear = true })
+
+    -- clean up autogroups if the theme is not material
+    vim.api.nvim_create_autocmd("ColorScheme", { callback = function()
+        if vim.g.colors_name ~= "material" then
+            vim.api.nvim_del_augroup_by_name("Material")
+        end
+    end, group = group })
+
+    for _, sidebar in ipairs(filetypes) do
+        if sidebar == "terminal" then
+            vim.api.nvim_create_autocmd("TermOpen", {
+                command = "setlocal winhighlight=Normal:NormalContrast,SignColumn:NormalContrast",
+                group   = group,
+            })
+        else
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = sidebar,
+                command = "setlocal winhighlight=Normal:NormalContrast,SignColumn:SignColumnFloat",
+                group   = group,
+            })
+        end
+    end
+end
+
+---async clojure
+local async
+
+---loads highlights asynchronously
+local load_async = function()
+    for _, fn in pairs(theme.async_highlights) do
+        -- fn() returns a table of highlights to be applied
+        M.apply_highlights(fn())
+    end
+
+    -- load terminal colors
+    if not settings.disable.term_colors then
+        theme.loadTerminal();
+    end
+
+    -- load user defined higlights
+    if type(settings.cusom_highlights) == "table" then
+        apply_highlights(settings.cusom_highlights)
+    end
+
+    -- apply contrast to user defined filetypes
+    apply_contrast(settings.contrast.filetypes)
+
+    -- if this function gets called asyncronously, this closure is needed
+    if (async) then
+        async:close()
+    end
+end
+
+---loads the theme and applies the highlights
+M.load = function()
+    prepare_environment()
+
+    -- schedule the async function if async is enabled
+    if settings.async_loading then
+        async = vim.loop.new_async(vim.schedule_wrap(load_async))
+    else
+        load_async()
+    end
+
+    -- apply highlights one by one
+    for _, fn in pairs(theme.main_highlights) do
+        -- fn() returns a table of highlights to be applied
+        M.apply_highlights(fn())
+    end
+
+	-- if async is enabled, send the function
+    if settings.async_loading == true then
+        async:send()
+    end
+end
+
+return M

@@ -1,588 +1,527 @@
-local colors = require('material.colors')
-local config = require('material.config').settings
+local colors = require "material.colors"
+local settings = require "material.config".settings
 
-local theme = {}
+local m = colors.main
+local e = colors.editor
+local g = colors.git
+local l = colors.lsp
+local s = colors.syntax
+local b = colors.backgrounds
+local i = settings.italics
 
-theme.loadSyntax = function ()
-    -- Syntax highlight groups
+local M = {}
 
-	local syntax = {
-		Type =						{ fg = colors.purple }, -- int, long, char, etc.
-		StorageClass =				{ fg = colors.cyan }, -- static, register, volatile, etc.
-		Structure =					{ fg = colors.purple }, -- struct, union, enum, etc.
-		Comment =					{ fg = colors.comments, italic = config.italics.comments }, -- italic comments
-		SpecialComment =			{ link = "Comment" }, -- special things inside a comment
-		Conditional =				{ fg = colors.purple, italic = config.italics.keywords }, -- italic if, then, else, endif, switch, etc.
-		Constant =					{ fg = colors.yellow }, -- any constant
-		Character =					{ fg = colors.orange }, -- any character constant: 'c', '\n'
-		Number =					{ fg = colors.orange }, -- a number constant: 5
-		Boolean =					{ fg = colors.orange }, -- a boolean constant: TRUE, false
-		Float =						{ fg = colors.orange }, -- a floating point constant: 2.3e10
-		Function =					{ fg = colors.blue, italic = config.italics.functions }, -- italic funtion names
-		Identifier =				{ fg = colors.fg, italic = config.italics.variables }; -- any variable name
-		Statement =					{ fg = colors.cyan }, -- any statement
-		Keyword =					{ fg = colors.purple, italic = config.italics.keywords }, -- italic for, do, while, etc.
-		Label =						{ fg = colors.purple }, -- case, default, etc.
-		Operator =					{ fg = colors.cyan }, -- sizeof", "+", "*", etc.
-		Exception =					{ fg = colors.red }, -- try, catch, throw
-		PreProc =					{ fg = colors.purple }, -- generic Preprocessor
-		Include =					{ fg = colors.blue }, -- preprocessor #include
-		Define =					{ fg = colors.pink }, -- preprocessor #define
-		Macro =						{ fg = colors.cyan }, -- same as Define
-		Typedef =					{ fg = colors.red }, -- A typedef
-		PreCondit =					{ fg = colors.cyan }, -- preprocessor #if, #else, #endif, etc.
-		Repeat =					{ fg = colors.purple, italic = config.italics.keywords }, -- italic any other keyword
-		String =					{ fg = colors.green, italic= config.italics.strings }, -- any string
-		Special =					{ fg = colors.red }, -- any special symbol
-		SpecialChar =				{ fg = colors.disabled }, -- special character in a constant
-		Tag =						{ fg = colors.red }, -- you can use CTRL-] on this
-		Delimiter =					{ fg = colors.cyan }, -- character that needs attention like , or .
-		Debug =						{ fg = colors.red }, -- debugging statements
-		Underlined =				{ fg = colors.link, underline = true }, -- text that stands out, HTML links
-		Ignore =					{ fg = colors.disabled }, -- left blank, hidden
-		Error =						{ fg = colors.error, bold = true, underline = true }, -- any erroneous construct
-		Todo =						{ fg = colors.yellow, bold = true, italic = true }, -- anything that needs extra attention; mostly the keywords TODO HACK FIXME and XXX
+---main highlight functions
+M.main_highlights = {}
 
-		htmlLink =					{ fg = colors.link, underline = true },
-		htmlH1 =					{ fg = colors.cyan, bold = true },
-		htmlH2 =					{ fg = colors.red, bold = true },
-		htmlH3 =					{ fg = colors.green, bold = true },
-		htmlH4 =					{ fg = colors.yellow, bold = true },
-		htmlH5 =					{ fg = colors.purple, bold = true },
-		markdownH1 =				{ fg = colors.cyan, bold = true },
-		markdownH2 =				{ fg = colors.red, bold = true },
-		markdownH3 =				{ fg = colors.green, bold = true },
-		markdownH1Delimiter =		{ fg = colors.cyan },
-		markdownH2Delimiter =		{ fg = colors.red },
-		markdownH3Delimiter =		{ fg = colors.green },
-	}
-
-	return syntax
-
-end
+---async highlight functions
+M.async_highlights = {}
 
 
-theme.loadEditor = function ()
-    -- Editor highlight groups
+if settings.use_treesitter then
 
-	local editor = {
-		Normal =				{ fg = colors.fg, bg = colors.bg }, -- normal text and background color
-		NormalNC =				{ fg = colors.fg, bg = colors.bg_nc }, -- normal text and background color
-		NormalFloat =			{ fg = colors.fg, bg = colors.float }, -- normal text and background color for floating windows
-		NormalContrast =		{ fg = colors.fg, bg = colors.bg_alt }, -- a help group for contrast fileypes
-		FloatBorder =			{ fg = colors.border, bg = colors.float }, -- floating window border
-		ColorColumn =			{ fg = colors.none, bg = colors.active }, --  used for the columns set with 'colorcolumn'
-		Conceal =				{ fg = colors.disabled }, -- placeholder characters substituted for concealed text (see 'conceallevel')
-		Cursor =				{ fg = colors.bg_alt, bg = colors.cursor }, -- the character under the cursor
-		CursorIM =				{ fg = colors.bg_alt, bg = colors.cursor }, -- like Cursor, but used when in IME mode
-		Directory =				{ fg = colors.blue }, -- directory names (and other special names in listings)
-		DiffAdd =				{ fg = colors.green, reverse = true }, -- diff mode: Added line
-		GitSignsAdd =           { fg = colors.green, bg = colors.bg_sign }, -- diff mode: Added line |diff.txt|
-		DiffChange =			{ fg = colors.blue }, --  diff mode: Changed line
-		GitSignsChange =        { fg = colors.blue, bg = colors.bg_sign }, -- diff mode: Changed line |diff.txt|
-		DiffDelete =			{ fg = colors.red, reverse = true }, -- diff mode: Deleted line
-		GitSignsDelete =        { fg = colors.red, bg = colors.bg_sign }, -- diff mode: Deleted line |diff.txt|
-		DiffText =				{ fg = colors.blue, reverse = true }, -- diff mode: Changed text within a changed line
-		ErrorMsg =				{ fg = colors.error }, -- error messages
-		Folded =				{ fg = colors.disabled, italic = true }, -- line used for closed folds
-		FoldColumn =			{ fg = colors.blue }, -- 'foldcolumn'
-		IncSearch =				{ fg = colors.title, bg = colors.selection, underline = true }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
-		LineNr =				{ fg = colors.line_numbers, bg = colors.bg_num }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-		CursorLineNr =			{ fg = colors.accent, bg = colors.bg_num }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-		MatchParen =			{ fg = colors.yellow, bold = true }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
-		ModeMsg =				{ fg = colors.accent }, -- 'showmode' message (e.g., "-- INSERT -- ")
-		MoreMsg =				{ fg = colors.accent }, -- |more-prompt|
-		NonText =				{ fg = colors.disabled }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-		PmenuSel =				{ fg = colors.contrast, bg = colors.accent }, -- Popup menu: selected item.
-		Question =				{ fg = colors.green }, -- |hit-enter| prompt and yes/no questions
-		QuickFixLine =			{ fg = colors.highlight, bg = colors.title, reverse = true }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-		qfLineNr =				{ link = "QuickFixLine" }, -- Line numbers for quickfix lists
-		Search =				{ fg = colors.title, bg = colors.selection, bold = true }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
-		SignColumn =			{ fg = colors.fg, bg = colors.bg_sign },
-		SpecialKey =			{ fg = colors.purple }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
-		SpellBad =				{ fg = colors.red, italic = true, undercurl = true }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
-		SpellCap =				{ fg = colors.blue, italic = true, undercurl = true }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
-		SpellLocal =			{ fg = colors.cyan, italic = true, undercurl = true }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
-		SpellRare =				{ fg = colors.purple, italic = true, undercurl = true }, -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
-		StatusLine =			{ fg = colors.fg, bg = colors.active }, -- status line of current window
-		StatusLineNC =  		{ fg = colors.disabled, bg = colors.bg }, -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
-		StatusLineTerm =		{ fg = colors.fg, bg = colors.active }, -- status line of current terminal window
-		StatusLineTermNC =		{ fg = colors.disabled, bg = colors.bg }, -- status lines of not-current terminal windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
-		TabLineFill =			{ fg = colors.fg }, -- tab pages line, where there are no labels
-		TablineSel =			{ fg = colors.bg, bg = colors.accent }, -- tab pages line, active tab page label
-		Tabline =				{ fg = colors.fg },
-		Title =					{ fg = colors.title, bold = true }, -- titles for output from ":set all", ":autocmd" etc.
-		Visual =				{ fg = colors.none, bg = colors.selection }, -- Visual mode selection
-		VisualNOS =				{ link = "Visual" }, -- Visual mode selection when vim is "Not Owning the Selection".
-		WarningMsg =			{ fg = colors.yellow }, -- warning messages
-		Whitespace =			{ fg = colors.disabled }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
-		WildMenu =				{ fg = colors.orange, bold = true }, -- current match in 'wildmenu' completion
-		CursorLine =			{ fg = colors.none, bg = colors.bg_cur }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
-		CursorColumn =			{ link = "CursorLine" }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
-		-- ToolbarLine =			{ fg = colors.fg, bg = colors.bg_alt },
-		-- ToolbarButton =			{ fg = colors.fg, bold = true },
-		NormalMode =			{ fg = colors.accent }, -- Normal mode message in the cmdline
-		InsertMode =			{ fg = colors.green }, -- Insert mode message in the cmdline
-		ReplacelMode =			{ fg = colors.red }, -- Replace mode message in the cmdline
-		VisualMode =			{ fg = colors.purple }, -- Visual mode message in the cmdline
-		CommandMode =			{ fg = colors.gray }, -- Command mode message in the cmdline
-		Warnings =				{ fg = colors.yellow },
+    ---treesitter highlights
+    M.main_highlights.treesitter = function ()
+        local treesitter_hls = {
+            -- TSComment            = { link = "Comment" },
+            -- TSConditional        = { link = "Keyword" },
+            -- TSFunction           = { link = "Function" },
+            -- TSFuncBuiltin        = { link = "Function" },
+            -- TSBoolean            = { link = "Boolean" },
+            -- TSCharacter          = { link = "Character" },
+            -- TSConstant           = { link = "Constant" },
+            -- TSKeyword            = { link = "Statement" },
+            -- TSKeywordFunction    = { link = "Statement" },
+            -- TSMethod             = { link = "Function" },
+            -- TSRepeat             = { link = "Keyword" },
+            -- TSString             = { link = "String" },
+            -- TSVariable           = { link = "Identifier" },
+            -- TSVariableBuiltin    = { link = "Identifier" },
+            TSComment            = { fg = s.comments, italic = i.comments },
+            TSConditional        = { fg = s.keyword, italic = i.keywords },
+            TSFunction           = { fg = s.fn, italic = i.functions },
+            TSMethod             = { link = "TSFunction" },
+            TSConstructor        = { link = "TSFunction" },
+            TSFuncMacro          = { link = "TSFunction" },
+            TSFuncBuiltin        = { fg = s.fn, italic = i.functions },
+            TSNumber             = { fg = s.value },
+            TSBoolean            = { link = "TSNumber" },
+            TSCharacter          = { link = "TSNumber" },
+            TSFloat              = { link = "TSNumber" },
+            TSConstBuiltin       = { link = "TSNumber" },
+            TSConstMacro         = { link = "TSNumber" },
+            TSConstant           = { fg = m.yellow },
+            TSKeyword            = { fg = m.cyan },
+            TSKeywordFunction    = { fg = m.cyan },
+            TSRepeat             = { fg = s.keyword, italic = i.keywords },
+            TSString             = { fg = s.string, italic = i.strings },
+            TSVariable           = { fg = e.fg, italic = i.variables },
+            TSVariableBuiltin    = { link = "TSVariable" },
+            TSAttribute          = { fg = m.yellow },
+            TSError              = { fg = l.error },
+            TSException          = { fg = m.red },
+            TSField              = { fg = e.fg },
+            TSInclude            = { fg = m.cyan },
+            TSKeywordOperator    = { fg = m.purple },
+            TSKeywordReturn      = { fg = m.cyan },
+            TSLabel              = { fg = m.red },
+            TSNamespace          = { fg = m.yellow },
+            TSOperator           = { fg = s.operator },
+            TSParameter          = { fg = m.paleblue },
+            TSParameterReference = { fg = m.paleblue },
+            TSProperty           = { fg = m.gray },
+            TSPunctDelimiter     = { fg = m.cyan }, -- TODO change color
+            TSPunctBracket       = { fg = m.cyan },
+            TSPunctSpecial       = { fg = m.cyan }, -- TODO update color
+            TSStringRegex        = { fg = m.yellow },
+            TSStringEscape       = { fg = e.fg_alt },
+            TSSymbol             = { fg = m.yellow },
+            TSStrong             = { fg = m.paleblue, bold = true },
+            TSType               = { fg = s.type },
+            TSTypeBuiltin        = { link = "TSType" },
+            TSTag                = { fg = m.red },
+            TSTagDelimiter       = { fg = m.cyan },
+            TSTagAttribute       = { fg = m.gray },
+            TSText               = { fg = e.fg },
+            TSTextReference      = { fg = m.yellow },
+            TSEmphasis           = { fg = m.paleblue },
+            TSUnderline          = { fg = e.fg, underline = true },
+            TSDebug              = { fg = m.red },
+            -- TSStrike          = { fg = e.fg,, strikethrough = true},
+            TSTitle              = { fg = e.title, bold = true },
+            TSLiteral            = { fg = e.fg },
+            TSURI                = { fg = e.link },
+            TSMath               = { fg = m.blue },
+            TSDanger             = { fg = l.error },
+            --TSNone             = { },
 
-        healthError =           { fg = colors.error },
-        healthSuccess =         { fg = colors.green },
-        healthWarning =         { fg = colors.yellow },
+        }
 
-		-- Dashboard
-		DashboardShortCut =                     { fg = colors.red },
-		DashboardHeader =                       { fg = colors.comments },
-		DashboardCenter =                       { fg = colors.accent },
-		DashboardFooter =                       { fg = colors.green, italic = true },
+        return treesitter_hls
+    end
 
-		VertSplit =								{ fg = colors.vsp }, -- The column separating vertically split windows
-		WinSeparator = 							{ fg = colors.vsp } -- Lines between window splits
+else
 
-	}
+    ---regular Vim syntax highlights
+    M.main_highlights.syntax = function ()
+        local syntax_hls = {
+            Comment        = { fg = s.comments, italic = i.comments },
+            Conditional    = { fg = s.keyword, italic = i.keywords },
+            Function       = { fg = s.fn, italic = i.functions },
+            Identifier     = { fg = e.fg, italic = i.variables },
+            Keyword        = { fg = s.keyword, italic = i.keywords },
+            Repeat         = { fg = s.keyword, italic = i.keywords },
+            String         = { fg = s.string, italic = i.strings },
+            Type           = { fg = s.type },
+            StorageClass   = { fg = m.cyan }, -- static, register, volatile, etc.
+            Structure      = { fg = s.type },
+            SpecialComment = { link = "Comment" }, -- special things inside a comment
+            Constant       = { fg = m.yellow },
+            Number         = { fg = s.value },
+            Character      = { link = "Number" },
+            Boolean        = { link = "Number" },
+            Float          = { link = "Number" },
+            Statement      = { fg = m.cyan },
+            Label          = { fg = s.keyword }, -- case, default, etc.
+            Operator       = { fg = s.operator },
+            Exception      = { fg = m.red },
+            Macro          = { fg = m.cyan },
+            Include        = { link = "Macro" },
+            Define         = { link = "Macro" },
+            -- PreProc     = { link = "Macro" },
+            -- PreCondit   = { link = "Macro" },
+            Typedef        = { link = "Operator" },
+            Special        = { fg = m.red },
+            SpecialChar    = { fg = e.disabled },
+            Tag            = { fg = m.red },
+            Delimiter      = { fg = s.operator }, -- ;
+            Debug          = { fg = m.red },
+            Ignore         = { fg = e.disabled },
+            Underlined     = { fg = e.links, underline = true },
+            Error          = { fg = l.error, bold = true },
+            Todo           = { fg = m.yellow, bold = true },
+            htmlLink       = { fg = e.link, underline = true },
+            htmlH1         = { fg = m.cyan, bold = true },
+            htmlH2         = { fg = m.red, bold = true },
+            htmlH3         = { fg = m.green, bold = true },
+        }
 
-    -- Options:
-
-	--Set End of Buffer lines (~)
-	if config.disable.eob_lines then
-		editor.EndOfBuffer =			{ fg = colors.bg } -- ~ lines at the end of a buffer
-	else
-		editor.EndOfBuffer =			{ fg = colors.disabled } -- ~ lines at the end of a buffer
-	end
-
-	-- Nvim-Cmp style options
-	if config.contrast.popup_menu == true then
-		editor.Pmenu =					{ fg = colors.fg, bg = colors.border } -- Popup menu: normal item.
-		editor.PmenuSbar =				{ bg = colors.active } -- Popup menu: scrollbar.
-		editor.PmenuThumb =				{ bg = colors.fg } -- Popup menu: Thumb of the scrollbar.
-	else
-		editor.Pmenu =					{ fg = colors.fg, bg = colors.contrast } -- Popup menu: normal item.
-		editor.PmenuSbar =				{ bg = colors.contrast } -- Popup menu: scrollbar.
-		editor.PmenuThumb =				{ bg = colors.selection } -- Popup menu: Thumb of the scrollbar.
-	end
-
-
-	return editor
-end
-
-theme.loadTerminal = function ()
-
-	vim.g.terminal_color_0 = colors.black
-	vim.g.terminal_color_1 = colors.darkred
-	vim.g.terminal_color_2 = colors.darkgreen
-	vim.g.terminal_color_3 = colors.darkyellow
-	vim.g.terminal_color_4 = colors.darkblue
-	vim.g.terminal_color_5 = colors.darkpurple
-	vim.g.terminal_color_6 = colors.darkcyan
-	vim.g.terminal_color_7 = colors.white
-	vim.g.terminal_color_8 = colors.disabled
-	vim.g.terminal_color_9 = colors.red
-	vim.g.terminal_color_10 = colors.green
-	vim.g.terminal_color_11 = colors.yellow
-	vim.g.terminal_color_12 = colors.blue
-	vim.g.terminal_color_13 = colors.purple
-	vim.g.terminal_color_14 = colors.cyan
-	vim.g.terminal_color_15 = colors.white
+        return syntax_hls
+    end
 
 end
+---parts of the editor that get loaded right away
+M.main_highlights.editor = function ()
+    local editor_hls = {
+        Normal           = { fg = e.fg, bg = e.bg },
+        NormalFloat      = { fg = e.fg, bg = b.floating_windows },
+        NormalContrast   = { fg = e.fg, bg = e.bg_alt }, -- a help group for contrast fileypes
+        ColorColumn      = { fg = m.none, bg = e.active },
+        Conceal          = { fg = e.disabled },
+        Cursor           = { fg = e.bg_alt, bg = e.cursor },
+        CursorIM         = { link = "Cursor" }, -- like Cursor, but used when in IME mode
+        ErrorMsg         = { fg = l.error },
+        Folded           = { fg = e.disabled, italic = true },
+        FoldColumn       = { fg = m.blue },
+        LineNr           = { fg = e.line_numbers, bg = e.bg_num },
+        CursorLineNr     = { fg = e.accent, bg = e.bg_num },
+        DiffAdd          = { fg = g.added, reverse = true },
+        DiffChange       = { fg = g.modified },
+        DiffDelete       = { fg = g.removed, reverse = true },
+        DiffText         = { fg = g.modified, reverse = true },
+        ModeMsg          = { fg = e.accent }, -- 'showmode' message (e.g., "-- INSERT -- ")
+        NonText          = { fg = e.disabled },
+        SignColumn       = { fg = e.fg, bg = e.bg_sign },
+        SpecialKey       = { fg = m.purple },
+        StatusLine       = { fg = e.fg, bg = e.active },
+        StatusLineNC     = { fg = e.disabled, bg = e.bg },
+        StatusLineTerm   = { fg = e.fg, bg = e.active },
+        StatusLineTermNC = { fg = e.disabled, bg = e.bg },
+        TabLineFill      = { fg = e.fg },
+        TablineSel       = { fg = e.bg, bg = e.accent },
+        Tabline          = { fg = e.fg },
+        Title            = { fg = e.title, bold = true },
+        WarningMsg       = { fg = m.yellow },
+        Whitespace       = { fg = e.disabled },
+        CursorLine       = { fg = m.none, bg = e.bg_cur },
+        CursorColumn     = { link = "CursorLine" },
+    }
 
-theme.loadTreeSitter = function ()
-    -- TreeSitter highlight groups
-
-	local treesitter = {
-		TSAttribute =               { fg = colors.yellow }, -- (unstable) TODO: docs
-		TSBoolean=                  { link = "Boolean" }, -- For booleans.
-		TSCharacter=                { link = "Character" }, -- For characters.
-		TSComment=                  { link = "Comment" }, -- For comment blocks.
-		TSConditional =             { link = "Keyword" }, -- For keywords related to conditionnals.
-		TSConstructor =             { fg = colors.blue }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
-		TSConstant =                { link = "Constant" }, -- For constants
-		TSConstBuiltin =            { fg = colors.orange }, -- For constant that are built in the language: `nil` in Lua.
-		TSConstMacro =              { fg = colors.cyan }, -- For constants that are defined by macros: `NULL` in C.
-		TSError =                   { fg = colors.error }, -- For syntax/parser errors.
-		TSException =               { fg = colors.red }, -- For exception related keywords.
-		TSField =                   { fg = colors.fg }, -- For fields.
-		TSFloat =                   { fg = colors.orange }, -- For floats.
-		TSFunction =                { link = "Function" }, -- For fuction (calls and definitions).
-		TSFuncBuiltin =             { link = "Function" }, -- For builtin functions: `table.insert` in Lua.
-		TSFuncMacro =               { fg = colors.blue }, -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
-		TSInclude =                 { fg = colors.cyan }, -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
-		TSKeyword =                 { link = "Statement" }, -- For keywords that don't fall in previous categories.
-		TSKeywordFunction =         { link = "Statement" }, -- For keywords used to define a fuction.
-		TSKeywordOperator =			{ fg = colors.purple }, -- Unary and binary operators that are English words: `and`, `or` in Python; `sizeof` in C.
-		TSKeywordReturn =			{ fg = colors.cyan }, -- return keyword
-		TSLabel =                   { fg = colors.red }, -- For labels: `label:` in C and `:label:` in Lua.
-		TSMethod =                  { link = "Function" }, -- For method calls and definitions.
-		TSNamespace =               { fg = colors.yellow }, -- For identifiers referring to modules and namespaces.
-		TSNumber =                  { fg = colors.orange }, -- For all numbers
-		TSOperator =                { fg = colors.cyan }, -- For any operator: `+`, but also `->` and `*` in C.
-		TSParameter =               { fg = colors.paleblue }, -- For parameters of a function.
-		TSParameterReference =      { fg = colors.paleblue }, -- For references to parameters of a function.
-		TSProperty =                { fg = colors.gray }, -- Same as `TSField`,accesing for struct members in C.
-		TSPunctDelimiter =          { fg = colors.cyan }, -- For delimiters ie: `.`
-		TSPunctBracket =            { fg = colors.cyan }, -- For brackets and parens.
-		TSPunctSpecial =            { fg = colors.cyan }, -- For special punctutation that does not fall in the catagories before.
-		TSRepeat =                  { link = "Keyword" }, -- For keywords related to loops.
-	    TSString =                  { link = "String" }, -- For strings.
-		TSStringRegex =             { fg = colors.yellow }, -- For regexes.
-		TSStringEscape =            { fg = colors.text }, -- For escape characters within a string.
-		TSSymbol =                  { fg = colors.yellow }, -- For identifiers referring to symbols or atoms.
-		TSStrong =					{ fg = colors.paleblue, bold = true }, -- Text to be represented in bold.
-		TSType =                    { fg = colors.purple }, -- For types.
-		TSTypeBuiltin =             { fg = colors.red }, -- For builtin types.
-		TSTag =                     { fg = colors.red }, -- Tags like html tag names.
-		TSTagDelimiter =            { fg = colors.cyan }, -- Tag delimiter like `<` `>` `/`
-		TSTagAttribute =			{ fg = colors.gray }, -- HTML tag attributes.
-		TSText =                    { fg = colors.fg }, -- For strings considered text in a markup language.
-		TSTextReference =           { fg = colors.yellow }, -- FIXME
-		TSVariable =                { link = "Identifier" }, -- Any variable name that does not have another highlight.
-		TSVariableBuiltin =         { link = "Identifier" }, -- Variable names that are defined by the languages, like `this` or `self`.
-		TSEmphasis =                { fg = colors.paleblue }, -- For text to be represented with emphasis.
-		TSUnderline =               { fg = colors.fg, underline = true }, -- For text to be represented with an underline.
-		-- TSStrike =                  { fg = colors.fg,, strikethrough = true}, -- For strikethrough text.
-		TSTitle =                   { fg = colors.title, bold = true }, -- Text that is part of a title.
-		TSLiteral =                 { fg = colors.fg }, -- Literal text.
-		TSURI =                     { fg = colors.link }, -- Any URI like a link or email.
-		TSMath =					{ fg = colors.blue }, -- Math environments like LaTeX's `$ ... $`
-		TSDanger =					{ fg = colors.error }, -- Text representation of a danger note.
-		--TSNone =                    { }, -- TODO: docs
-	}
-
-	return treesitter
-
+    return editor_hls
 end
 
-theme.loadLSP = function ()
-    -- Lsp highlight groups
+---parts of the editor that get loaded asynchronously
+M.async_highlights.editor = function ()
+    local editor_hls = {
+        NormalNC         = { bg = b.non_current_windows },
+        FloatBorder      = { fg = e.border, bg = b.floating_windows },
+        SpellBad         = { fg = m.red, italic = true, undercurl = true },
+        SpellCap         = { fg = m.blue, italic = true, undercurl = true },
+        SpellLocal       = { fg = m.cyan, italic = true, undercurl = true },
+        SpellRare        = { fg = m.purple, italic = true, undercurl = true },
+        Warnings         = { fg = m.yellow },
+        healthError      = { fg = l.error },
+        healthSuccess    = { fg = m.yellow },
+        healthWarning    = { fg = m.yellow },
+        Visual           = { fg = m.none, bg = e.selection },
+        VisualNOS        = { link = "Visual" }, -- Visual mode selection when vim is "Not Owning the Selection".
+        Directory        = { fg = m.blue },
+        MatchParen       = { fg = m.yellow, bold = true },
+        PmenuSel         = { fg = e.contrast, bg = e.accent }, -- Popup menu: selected item.
+        IncSearch        = { fg = e.title, bg = e.selection, underline = true },
+        Question         = { fg = m.yellow }, -- |hit-enter| prompt and yes/no questions
+        QuickFixLine     = { fg = e.highlight, bg = e.title, reverse = true },
+        Search           = { fg = e.title, bg = e.selection, bold = true },
+        MoreMsg          = { fg = e.accent },
+        Pmenu            = { fg = e.fg, bg = e.border }, -- popup menu
+        PmenuSbar        = { bg = e.active },
+        PmenuThumb       = { fg = e.fg },
+        WildMenu         = { fg = m.orange, bold = true }, -- current match in 'wildmenu' completion
+        -- ToolbarLine   = { fg = e.fg, bg = e.bg_alt },
+        -- ToolbarButton = { fg = e.fg, bold = true },
+        -- NormalMode       = { fg = e.disabled }, -- Normal mode message in the cmdline
+        -- InsertMode       = { link = "NormalMode" },
+        -- ReplacelMode     = { link = "NormalMode" },
+        -- VisualMode       = { link = "NormalMode" },
+        -- CommandMode      = { link = "NormalMode" },
+    }
 
-	local lsp = {
-		-- Nvim 0.6. and up
-		DiagnosticError =                       { fg = colors.error },
-		DiagnosticVirtualTextError = 			{ fg = colors.error },
-		DiagnosticFloatingError = 				{ fg = colors.error },
-		DiagnosticSignError = 					{ fg = colors.error, bg = colors.bg_sign },
-		DiagnosticUnderlineError = 				{ undercurl = true, sp = colors.error },
-		DiagnosticWarn =                     	{ fg = colors.yellow },
-		DiagnosticVirtualTextWarn  = 			{ fg = colors.yellow },
-		DiagnosticFloatingWarn = 				{ fg = colors.yellow },
-		DiagnosticSignWarn = 					{ fg = colors.yellow, bg = colors.bg_sign },
-		DiagnosticUnderlineWarn = 				{ undercurl = true, sp = colors.yellow },
-		DiagnosticInformation =                 { fg = colors.paleblue },
-		DiagnosticVirtualTextInfo = 			{ fg = colors.paleblue },
-		DiagnosticFloatingInfo = 				{ fg = colors.paleblue },
-		DiagnosticSignInfo = 					{ fg = colors.paleblue, bg = colors.bg_sign },
-		DiagnosticUnderlineInfo = 				{ undercurl = true, sp = colors.paleblue },
-		DiagnosticHint =                        { fg = colors.purple },
-		DiagnosticVirtualTextHint = 			{ fg = colors.purple },
-		DiagnosticFloatingHint = 				{ fg = colors.purple },
-		DiagnosticSignHint = 					{ fg = colors.purple, bg = colors.bg_sign },
-		DiagnosticUnderlineHint  = 				{ undercurl = true, sp = colors.purple },
-		LspReferenceText = 						{ bg = colors.selection }, -- used for highlighting "text" references
-		LspReferenceRead = 						{ link = "LspReferenceText" }, -- used for highlighting "read" references
-		LspReferenceWrite = 					{ link = "LspReferenceText" }, -- used for highlighting "write" references
-	}
+    if settings.disable.eob_lines then
+        editor_hls.EndOfBuffer = { fg = e.bg }
+    else
+        editor_hls.EndOfBuffer = { fg = e.disabled }
+    end
 
-	return lsp
-
+    return editor_hls
 end
 
-theme.loadPlugins = function()
-    -- Plugins highlight groups
+M.async_highlights.load_lsp = function ()
+    local lsp_hls = {
+        -- Nvim 0.6. and up
+        DiagnosticError            = { fg = l.error },
+        DiagnosticVirtualTextError = { fg = l.error },
+        DiagnosticFloatingError    = { fg = l.error },
+        DiagnosticSignError        = { fg = l.error, bg = e.bg_sign },
+        DiagnosticUnderlineError   = { undercurl = true, sp = l.error },
+        DiagnosticWarn             = { fg = l.warning },
+        DiagnosticVirtualTextWarn  = { fg = l.warning },
+        DiagnosticFloatingWarn     = { fg = l.warning },
+        DiagnosticSignWarn         = { fg = l.warning, bg = e.bg_sign },
+        DiagnosticUnderlineWarn    = { undercurl = true, sp = l.warning },
+        DiagnosticInformation      = { fg = l.info },
+        DiagnosticVirtualTextInfo  = { fg = l.info },
+        DiagnosticFloatingInfo     = { fg = l.info },
+        DiagnosticSignInfo         = { fg = l.info, bg = e.bg_sign },
+        DiagnosticUnderlineInfo    = { undercurl = true, sp = l.info },
+        DiagnosticHint             = { fg = l.hint },
+        DiagnosticVirtualTextHint  = { fg = l.hint },
+        DiagnosticFloatingHint     = { fg = l.hint },
+        DiagnosticSignHint         = { fg = l.hint, bg = e.bg_sign },
+        DiagnosticUnderlineHint    = { undercurl = true, sp = l.hint },
+        LspReferenceText           = { bg = e.selection }, -- used for highlighting "text" references
+        LspReferenceRead           = { link = "LspReferenceText" }, -- used for highlighting "read" references
+        LspReferenceWrite          = { link = "LspReferenceText" }, -- used for highlighting "write" references
 
-	local plugins = {
-		-- Diff
-		diffAdded =                             { fg = colors.green },
-		diffRemoved =                           { fg = colors.red },
-		diffChanged =                           { fg = colors.blue },
-		diffOldFile =                           { fg = colors.text },
-		diffNewFile =                           { fg = colors.title },
-		diffFile =                              { fg = colors.gray },
-		diffLine =                              { fg = colors.cyan },
-		diffIndexLine =                         { fg = colors.purple },
+    }
 
-		-- Symbols outline
-		FocusedSymbol = 						{ bg = colors.selection },
-		SymbolsOutlineConnector = 				{ fg = colors.border },
-
-		-- BufferLine
-		BufferLineIndicatorSelected =           { fg = colors.accent },
-		BufferLineFill =                        { bg = colors.bg },
-
-		-- Fern
-		FernBranchText =						{ fg = colors.blue },
-	}
-
-	-- Trouble
-	if config.plugins.trouble then
-		plugins.TroubleText =                        	{ fg = colors.text, bg = colors.sidebar }
-		plugins.TroubleCount =                       	{ fg = colors.purple, bg = colors.sidebar }
-		plugins.TroubleNormal =                      	{ fg = colors.fg, bg = colors.sidebar }
-		plugins.TroubleSignError = 						{ fg = colors.error, bg = colors.sidebar}
-		plugins.TroubleSignWarning = 					{ fg = colors.yellow, bg = colors.sidebar}
-		plugins.TroubleSignInformation = 				{ fg = colors.paleblue, bg = colors.sidebar}
-		plugins.TroubleSignHint = 						{ fg = colors.purple, bg = colors.sidebar}
-		plugins.TroubleFoldIcon = 						{ fg = colors.accent, bg = colors.sidebar }
-		plugins.TroubleIndent = 						{ fg = colors.border, bg = colors.sidebar }
-		plugins.TroubleLocation = 						{ fg = colors.disabled, bg = colors.sidebar }
-	end
-
-	-- Nvim-Cmp
-	if config.plugins.nvim_cmp then
-		plugins.CmpItemAbbrMatch =						{ fg = colors.paleblue, bold = true }
-		plugins.CmpItemKindText =						{ fg = colors.title }
-		plugins.CmpItemKindMethod =						{ fg = colors.blue }
-		plugins.CmpItemKindFunction =					{ fg = colors.blue }
-		plugins.CmpItemKindContructor =					{ fg = colors.purple }
-		plugins.CmpItemKindField =						{ fg = colors.cyan }
-		plugins.CmpItemKindVariable =					{ fg = colors.paleblue }
-		plugins.CmpItemKindConstant =					{ fg = colors.paleblue }
-		plugins.CmpItemKindClass =						{ fg = colors.yellow }
-		plugins.CmpItemKindInterface =					{ fg = colors.yellow }
-		plugins.CmpItemKindModule =						{ fg = colors.red }
-		plugins.CmpItemKindProperty =					{ fg = colors.purple }
-		plugins.CmpItemKindKeyword =					{ fg = colors.cyan }
-		plugins.CmpItemKindFile =						{ fg = colors.title }
-		plugins.CmpItemKindFolder =						{ fg = colors.title }
-		plugins.CmpItemKindSnippet =					{ fg = colors.green }
-	end
-
-	-- Neogit
-	if config.plugins.neogit then
-		plugins.NeogitBranch =                          { fg = colors.paleblue }
-		plugins.NeogitRemote =                          { fg = colors.purple }
-		plugins.NeogitHunkHeader =                      { fg = colors.fg, bg = colors.highlight }
-		plugins.NeogitHunkHeaderHighlight =             { fg = colors.blue, bg = colors.contrast }
-		plugins.NeogitDiffContextHighlight =            { fg = colors.text, bg = colors.contrast }
-		plugins.NeogitDiffDeleteHighlight =             { fg = colors.red }
-		plugins.NeogitDiffAddHighlight =                { fg = colors.green }
-	end
-
-	-- GitSigns
-	if config.plugins.gitsigns then
-		plugins.GitSignsAddNr =                         { fg = colors.green, bg =colors.bg_num } -- diff mode: Added line |diff.txt|
-		plugins.GitSignsAddLn =                         { fg = colors.green } -- diff mode: Added line |diff.txt|
-		plugins.GitSignsChangeNr =                      { fg = colors.blue, bg =colors.bg_num } -- diff mode: Changed line |diff.txt|
-		plugins.GitSignsChangeLn =                      { fg = colors.blue } -- diff mode: Changed line |diff.txt|
-		plugins.GitSignsDeleteNr =                      { fg = colors.red, bg =colors.bg_num } -- diff mode: Deleted line |diff.txt|
-		plugins.GitSignsDeleteLn =                      { fg = colors.red } -- diff mode: Deleted line |diff.txt|
-	end
-
-	-- GitGutter
-	if config.plugins.git_gutter then
-		plugins.GitGutterAdd =                          { fg = colors.green } -- diff mode: Added line |diff.txt|
-		plugins.GitGutterChange =                       { fg = colors.blue } -- diff mode: Changed line |diff.txt|
-		plugins.GitGutterDelete =                       { fg = colors.red } -- diff mode: Deleted line |diff.txt|
-	end
-
-	-- Telescope
-	if config.plugins.telescope then
-		plugins.TelescopeNormal =                       { fg = colors.fg, bg = colors.float }
-		plugins.TelescopePromptBorder =                 { fg = colors.border, bg = colors.float }
-		plugins.TelescopeResultsBorder =                { link = "TelescopePromptBorder" }
-		plugins.TelescopePreviewBorder =                { link = "TelescopePromptBorder" }
-		plugins.TelescopeSelectionCaret =               { fg = colors.green, bg = colors.selection }
-		plugins.TelescopeSelection =                    { fg = colors.green, bg = colors.selection }
-		plugins.TelescopeMultiSelection =               { fg = colors.yellow }
-		plugins.TelescopeMatching =                     { bold = true }
-	end
-
-	-- NvimTree
-	if config.plugins.nvim_tree then
-		plugins.NvimTreeNormal =						{ fg = colors.fg, bg = colors.sidebar }
-		plugins.NvimTreeNormalNC =						{ link = "NvimTreeNormal" }
-		plugins.NvimTreeRootFolder =                    { fg = colors.accent, bg = colors.sidebar }
-		plugins.NvimTreeFolderName=                     { fg = colors.blue, bold = true }
-		plugins.NvimTreeFolderIcon=                     { link = "NvimTreeFolderName" }
-		plugins.NvimTreeEmptyFolderName=                { fg = colors.gray }
-		plugins.NvimTreeOpenedFolderName=               { fg = colors.green, bold = true }
-		plugins.NvimTreeIndentMarker =                  { fg = colors.disabled }
-		plugins.NvimTreeGitDirty =                      { fg = colors.blue }
-		plugins.NvimTreeGitNew =                        { fg = colors.green }
-		plugins.NvimTreeGitStaged =                     { fg = colors.fg }
-		plugins.NvimTreeGitDeleted =                    { fg = colors.red }
-		plugins.NvimTreeOpenedFile =					{ link = "NvimTreeGitNew" }
-		plugins.NvimTreeImageFile =                     { fg = colors.yellow }
-		plugins.NvimTreeMarkdownFile =                  { fg = colors.pink }
-		plugins.NvimTreeExecFile =                      { link = "NvimTreeGitNew" }
-		plugins.NvimTreeSpecialFile =                   { fg = colors.purple }
-	end
-
-	-- Sidebar.nvim
-	if config.plugins.sidebar_nvim then
-		plugins.SidebarNvimNormal =						{ fg = colors.fg }
-		plugins.SidebarNvimSectionTitle	=				{ fg = colors.accent }
-		plugins.SidebarNvimSectionSeparator =			{ fg = colors.border }
-		plugins.SidebarNvimLabel =						{ fg = colors.gray }
-	end
-
-	-- LspSaga
-	if config.plugins.lsp_saga then
-		plugins.LspFloatWinNormal =                     { fg = colors.fg, bg = colors.float }
-		plugins.LspFloatWinBorder =                     { link = "FloatBorder" }
-		plugins.LspSagaDiagnosticBorder =				{ link = "FloatBorder" }
-		plugins.LspSagaDiagnosticHeader =				{ fg = colors.blue }
-		plugins.LspSagaDiagnosticTruncateLine =			{ link = "FloatBorder" }
-		plugins.LspLinesDiagBorder =					{ link = "FloatBorder" }
-		plugins.ProviderTruncateLine =					{ link = "FloatBorder" }
-		plugins.LspSagaShTruncateLine =					{ link = "FloatBorder" }
-		plugins.LspSagaDocTruncateLine =				{ link = "FloatBorder" }
-		plugins.LineDiagTruncateLine =					{ link = "FloatBorder" }
-		plugins.LspSagaBorderTitle =                    { fg = colors.blue }
-		plugins.LspSagaHoverBorder =                    { link = "FloatBorder" }
-		plugins.LspSagaRenameBorder =                   { link = "FloatBorder" }
-		plugins.LspSagaRenamePromptPrefix =             { fg = colors.green }
-		plugins.LspSagaDefPreviewBorder =               { link = "FloatBorder" }
-		plugins.LspSagaCodeActionTitle =                { fg = colors.paleblue }
-		plugins.LspSagaCodeActionContent =              { fg = colors.purple }
-		plugins.LspSagaCodeActionBorder =               { link = "FloatBorder" }
-		plugins.LspSagaCodeActionTruncateLine =			{ link = "FloatBorder" }
-		plugins.LspSagaSignatureHelpBorder =            { link = "FloatBorder" }
-		plugins.LspSagaFinderSelection =                { link = "LspSagaRenamePromptPrefix" }
-		plugins.LspSagaLspFinderBorder =				{ link = "FloatBorder" }
-		plugins.LspSagaAutoPreview =					{ link = "LspFloatWinBorder" }
-		plugins.ReferencesCount =                       { link = "LspSagaCodeActionContent" }
-		plugins.DefinitionCount =                       { link = "LspSagaCodeActionContent" }
-		plugins.DefinitionPreviewTitle =				{ link = "LspSagaRenamePromptPrefix" }
-		plugins.DefinitionIcon =                        { fg = colors.blue }
-		plugins.ReferencesIcon =                        { link = "DefinitionIcon" }
-		plugins.TargetWord =                            { fg = colors.cyan }
-	end
-
-	-- Nvim dap and dap-UI
-	if config.plugins.nvim_dap then
-		plugins.DapBreakpoint =                         { fg = colors.red }
-		plugins.DapStopped =                            { fg = colors.yellow }
-
-		plugins.DapUIFloatBorder =						{ fg = colors.border, bg = colors.bg }
-		plugins.DapUIDecoration =						{ fg = colors.blue }
-		-- plugins.DapUIVariable = 						{ fg = colors.fg }
-	end
-
-	-- nvim-navic
-	if config.plugins.nvim_navic then
-		plugins.NavicIconsFile =						{ fg = colors.title, bg = colors.selection }
-		plugins.NavicIconsModule =						{ link = "NavicIconsFile" }
-		plugins.NavicIconsNamespace =					{ fg = colors.yellow, bg = colors.selection }
-		plugins.NavicIconsPackage =						{ link = "NavicIconsFile" }
-		plugins.NavicIconsClass =						{ link = "NavicIconsModule" }
-		plugins.NavicIconsMethod =						{ fg = colors.blue, bg = colors.selection }
-		plugins.NavicIconsProperty =					{ fg = colors.purple, bg = colors.selection }
-		plugins.NavicIconsField =						{ fg = colors.cyan, bg = colors.selection }
-		plugins.NavicIconsConstructor =					{ link = "NavicIconsProperty"}
-		plugins.NavicIconsEnum =						{ link = "NavicIconsNamespace" }
-		plugins.NavicIconsInterface =					{ link = "NavicIconsModule" }
-		plugins.NavicIconsFunction =					{ link = "NavicIconsMethod" }
-		plugins.NavicIconsVariable =					{ fg = colors.paleblue, bg = colors.selection }
-		plugins.NavicIconsConstant =					{ link = "NavicIconsVariable" }
-		plugins.NavicIconsString =						{ fg = colors.orange, bg = colors.selection }
-		plugins.NavicIconsNumber =						{ link = "NavicIconsString" }
-		plugins.NavicIconsBoolean =						{ fg = colors.green, bg = colors.selection }
-		plugins.NavicIconsArray =						{ link = "NavicIconsString" }
-		plugins.NavicIconsObject =						{ link = "NavicIconsString" }
-		plugins.NavicIconsKey =							{ link = "NavicIconsField" }
-		plugins.NavicIconsNull =						{ fg = colors.red, bg = colors.selection }
-		plugins.NavicIconsEnumMember =					{ link = "NavicIconsNamespace" }
-		plugins.NavicIconsStruct =						{ link = "NavicIconsModule" }
-		plugins.NavicIconsEvent =						{ link = "NavicIconsNull" }
-		plugins.NavicIconsOperator =					{ link = "NavicIconsNull" }
-		plugins.NavicIconsTypeParameter =				{ link = "NavicIconsBoolean" }
-		plugins.NavicText =								{ fg = colors.fg, bg = colors.selection }
-		plugins.NavicSeparator =						{ link = "NavicText" }
-	end
-
-	-- WhichKey
-	if config.plugins.which_key then
-		plugins.WhichKey =                              { fg = colors.accent, bold = true }
-		plugins.WhichKeyGroup =                         { fg = colors.gray }
-		plugins.WhichKeyDesc =                          { fg = colors.fg, italic = true }
-		plugins.WhichKeySeparator =                     { fg = colors.red }
-		plugins.WhichKeyFloat =                         { bg = colors.float }
-	end
-
-	-- Hop
-	if config.plugins.hop then
-		plugins.HopNextKey =							{ fg = colors.accent, bold = true }
-		plugins.HopNextKey1 =							{ fg = colors.purple, bold = true }
-		plugins.HopNextKey2 =							{ fg = colors.blue }
-		plugins.HopUnmatched =							{ fg = colors.comments }
-	end
-
-	-- Sneak
-	if config.plugins.sneak then
-		plugins.Sneak =                                 { fg = colors.bg, bg = colors.accent }
-		plugins.SneakScope =                            { bg = colors.selection }
-	end
-
-	-- Indent Blankline
-	if config.plugins.indent_blankline then
-		plugins.IndentBlanklineChar =                   { fg = colors.border }
-		plugins.IndentBlanklineContextChar =            { fg = colors.disabled }
-	end
-
-	-- Illuminate
-	if config.plugins.nvim_illuminate then
-		plugins.illuminatedWord =						{ bg = colors.highight, italic = true }
-		plugins.illuminatedCurWord =					{ bg = colors.highight, underline = true }
-	end
-
-	if config.plugins.mini then
-
-		-- Mini
-		plugins.MiniCompletionActiveParameter = { underline = true }
-
-		plugins.MiniCursorword = { underline = true }
-		plugins.MiniCursorwordCurrent = { underline = true }
-
-		plugins.MiniIndentscopeSymbol = { fg = colors.cyan }
-		plugins.MiniIndentscopePrefix = { nocombine = true } -- Make it invisible
-
-		plugins.MiniJump = { fg = colors.bg, bg = colors.accent }
-
-		plugins.MiniJump2dSpot = { fg = colors.accent, bold = true, nocombine = true }
-
-		plugins.MiniStarterCurrent = { nocombine = true }
-		plugins.MiniStarterFooter = { fg = colors.green, italic = true }
-		plugins.MiniStarterHeader = { fg = colors.comments }
-		plugins.MiniStarterInactive = { link = "Comment" }
-		plugins.MiniStarterItem = { link = "Normal" }
-		plugins.MiniStarterItemBullet = { fg = colors.border }
-		plugins.MiniStarterItemPrefix = { fg = colors.yellow }
-		plugins.MiniStarterSection = {  fg = colors.cyan }
-		plugins.MiniStarterQuery = { fg = colors.paleblue }
-
-		plugins.MiniStatuslineDevinfo = { fg = colors.fg, bg = colors.active }
-		plugins.MiniStatuslineFileinfo = { link = "MiniStatuslineDevinfo" }
-		plugins.MiniStatuslineFilename = { fg = colors.disabled, bg = colors.bg }
-		plugins.MiniStatuslineInactive = { link = "MiniStatuslineFilename" }
-		plugins.MiniStatuslineModeCommand = { fg = colors.bg, bg = colors.yellow, bold = true }
-		plugins.MiniStatuslineModeInsert = { fg = colors.bg, bg = colors.green, bold = true }
-		plugins.MiniStatuslineModeNormal = { fg = colors.bg, bg = colors.accent, bold = true }
-		plugins.MiniStatuslineModeOther = { fg = colors.bg, bg = colors.cyan, bold = true }
-		plugins.MiniStatuslineModeReplace = { fg = colors.bg, bg = colors.red, bold = true }
-		plugins.MiniStatuslineModeVisual = { fg = colors.bg, bg = colors.purple, bold = true }
-
-		plugins.MiniSurround = { link = "IncSearch" }
-
-		plugins.MiniTablineCurrent = { fg = colors.bg, bg = colors.accent, bold = true }
-		plugins.MiniTablineFill = { link = "TabLineFill" }
-		plugins.MiniTablineHidden = { fg = colors.fg, bg = colors.bg }
-		plugins.MiniTablineModifiedCurrent = { fg = colors.accent, bg = colors.bg, bold = true }
-		plugins.MiniTablineModifiedHidden = { fg = colors.bg, bg = colors.fg }
-		plugins.MiniTablineModifiedVisible = { fg = colors.accent, bg = colors.bg }
-		plugins.MiniTablineTabpagesection = { fg = colors.title, bg = colors.selection, bold = true }
-		plugins.MiniTablineVisible = { fg = colors.bg, bg = colors.accent }
-
-		plugins.MiniTestEmphasis = { bold = true }
-		plugins.MiniTestFail = { fg = colors.red, bold = true }
-		plugins.MiniTestPass = { fg = colors.green, bold = true }
-
-		plugins.MiniTrailspace = { bg = colors.red }
-	end
-
-	return plugins
-
+    return lsp_hls
 end
 
-return theme
+---plugins that get loaded right away
+M.main_highlights.plugins = function ()
+    local plugin_hls = {
+        -- gitsigns.nvim
+        GitSignsAdd      = { fg = g.added, bg = e.bg_sign },
+        GitSignsChange   = { fg = g.modified, bg = e.bg_sign },
+        GitSignsDelete   = { fg = g.removed, bg = e.bg_sign },
+        GitSignsAddNr    = { fg = g.added, bg = e.bg_num },
+        GitSignsAddLn    = { fg = g.added },
+        GitSignsChangeNr = { fg = g.modified, bg =e.bg_num },
+        GitSignsChangeLn = { fg = g.modified },
+        GitSignsDeleteNr = { fg = g.removed, bg =e.bg_num },
+        GitSignsDeleteLn = { fg = g.removed },
+
+        -- dashboard.nvim
+        DashboardShortCut = { fg = m.red },
+        DashboardHeader   = { fg = e.comments },
+        DashboardCenter   = { fg = e.accent },
+        DashboardFooter   = { fg = m.yellow, italic = true },
+
+        -- indent-blankline.nvim
+        IndentBlanklineChar        = { fg = e.border },
+        IndentBlanklineContextChar = { fg = e.disabled },
+    }
+
+    return plugin_hls
+end
+
+---plugins that get loaded asynchronously
+M.async_highlights.plugins = function ()
+    local plugin_hls = {
+
+        -- trouble.nvim
+        TroubleText            = { fg = e.fg_alt, bg = b.sidebars },
+        TroubleCount           = { fg = m.purple, bg = b.sidebars },
+        TroubleNormal          = { fg = e.fg, bg = b.sidebars },
+        TroubleSignError       = { fg = l.error, bg = b.sidebars },
+        TroubleSignWarning     = { fg = m.yellow, bg = b.sidebars },
+        TroubleSignInformation = { fg = m.paleblue, bg = b.sidebars },
+        TroubleSignHint        = { fg = m.purple, bg = b.sidebars },
+        TroubleFoldIcon        = { fg = e.accent, bg = b.sidebars },
+        TroubleIndent          = { fg = e.border, bg = b.sidebars },
+        TroubleLocation        = { fg = e.disabled, bg = b.sidebars },
+
+        -- nvim-cmp
+        CmpItemAbbrMatch      = { fg = m.paleblue, bold = true },
+        CmpItemKindText       = { fg = e.title },
+        CmpItemKindMethod     = { fg = m.blue },
+        CmpItemKindFunction   = { fg = m.blue },
+        CmpItemKindContructor = { fg = m.purple },
+        CmpItemKindField      = { fg = m.cyan },
+        CmpItemKindVariable   = { fg = m.paleblue },
+        CmpItemKindConstant   = { fg = m.paleblue },
+        CmpItemKindClass      = { fg = m.yellow },
+        CmpItemKindInterface  = { fg = m.yellow },
+        CmpItemKindModule     = { fg = m.red },
+        CmpItemKindProperty   = { fg = m.purple },
+        CmpItemKindKeyword    = { fg = m.cyan },
+        CmpItemKindFile       = { fg = e.title },
+        CmpItemKindFolder     = { fg = e.title },
+        CmpItemKindSnippet    = { fg = m.yellow },
+
+        -- neogit
+        NeogitBranch               = { fg = m.paleblue },
+        NeogitRemote               = { fg = m.purple },
+        NeogitHunkHeader           = { fg = e.fg, bg = e.highlight },
+        NeogitHunkHeaderHighlight  = { fg = m.blue, bg = e.contrast },
+        NeogitDiffContextHighlight = { fg = e.fg_alt, bg = e.contrast },
+        NeogitDiffDeleteHighlight  = { fg = m.red },
+        NeogitDiffAddHighlight     = { fg = m.yellow },
+
+        -- telescope.nvim
+        TelescopeNormal         = { fg = e.fg, bg = b.floating_windows },
+        TelescopePromptBorder   = { fg = e.border, bg = b.floating_windows },
+        TelescopeResultsBorder  = { link = "TelescopePromptBorder" },
+        TelescopePreviewBorder  = { link = "TelescopePromptBorder" },
+        TelescopeSelectionCaret = { fg = m.yellow, bg = e.selection },
+        TelescopeSelection      = { fg = m.yellow, bg = e.selection },
+        TelescopeMultiSelection = { fg = m.yellow },
+        TelescopeMatching       = { bold = true },
+
+        -- nvim-tree
+        NvimTreeNormal           = { fg = e.fg, bg = b.sidebars },
+        NvimTreeNormalNC         = { link = "NvimTreeNormal" },
+        NvimTreeRootFolder       = { fg = e.accent, bg = b.sidebars },
+        NvimTreeFolderName       = { fg = m.blue, bold = true },
+        NvimTreeFolderIcon       = { link = "NvimTreeFolderName" },
+        NvimTreeEmptyFolderName  = { fg = m.gray },
+        NvimTreeOpenedFolderName = { fg = m.yellow, bold = true },
+        NvimTreeIndentMarker     = { fg = e.disabled },
+        NvimTreeGitDirty         = { fg = m.blue },
+        NvimTreeGitNew           = { fg = m.yellow },
+        NvimTreeGitStaged        = { fg = e.fg },
+        NvimTreeGitDeleted       = { fg = m.red },
+        NvimTreeOpenedFile       = { link = "NvimTreeGitNew" },
+        NvimTreeImageFile        = { fg = m.yellow },
+        NvimTreeMarkdownFile     = { fg = m.pink },
+        NvimTreeExecFile         = { link = "NvimTreeGitNew" },
+        NvimTreeSpecialFile      = { fg = m.purple },
+
+        -- which-key.nvim
+        WhichKey          = { fg = e.accent, bold = true },
+        WhichKeyGroup     = { fg = m.gray },
+        WhichKeyDesc      = { fg = e.fg, italic = true },
+        WhichKeySeparator = { fg = m.red },
+        WhichKeyFloat     = { bg = b.floating_windows },
+
+        -- nvim-dap
+        DapBreakpoint = { fg = m.red },
+        DapStopped    = { fg = m.yellow },
+
+        -- nvim-dap-ui
+        DapUIFloatBorder = { fg = e.border, bg = e.bg },
+        DapUIDecoration  = { fg = m.blue },
+        -- DapUIVariable    = { fg = e.fg },
+
+        -- hop.nvim
+        HopNextKey   = { fg = e.accent, bold = true },
+        HopNextKey1  = { fg = m.purple, bold = true },
+        HopNextKey2  = { fg = m.blue },
+        HopUnmatched = { fg = e.comments },
+
+        -- nvim sneak
+        Sneak      = { fg = e.bg, bg = e.accent },
+        SneakScope = { bg = e.selection },
+
+        -- vim illuminate
+        illuminatedWord    = { bg = colors.highight, italic = true },
+        illuminatedCurWord = { bg = colors.highight, underline = true },
+
+        -- lspsaga.nvim
+        -- LspFloatWinNormal             = { fg = e.fg, bg = b.floating_windows },
+        -- LspFloatWinBorder             = { link = "FloatBorder" },
+        -- LspSagaDiagnosticBorder       = { link = "FloatBorder" },
+        -- LspSagaDiagnosticHeader       = { fg = m.blue },
+        -- LspSagaDiagnosticTruncateLine = { link = "FloatBorder" },
+        -- LspLinesDiagBorder            = { link = "FloatBorder" },
+        -- ProviderTruncateLine          = { link = "FloatBorder" },
+        -- LspSagaShTruncateLine         = { link = "FloatBorder" },
+        -- LspSagaDocTruncateLine        = { link = "FloatBorder" },
+        -- LineDiagTruncateLine          = { link = "FloatBorder" },
+        -- LspSagaBorderTitle            = { fg = m.blue },
+        -- LspSagaHoverBorder            = { link = "FloatBorder" },
+        -- LspSagaRenameBorder           = { link = "FloatBorder" },
+        -- LspSagaRenamePromptPrefix     = { fg = m.yellow },
+        -- LspSagaDefPreviewBorder       = { link = "FloatBorder" },
+        -- LspSagaCodeActionTitle        = { fg = m.paleblue },
+        -- LspSagaCodeActionContent      = { fg = m.purple },
+        -- LspSagaCodeActionBorder       = { link = "FloatBorder" },
+        -- LspSagaCodeActionTruncateLine = { link = "FloatBorder" },
+        -- LspSagaSignatureHelpBorder    = { link = "FloatBorder" },
+        -- LspSagaFinderSelection        = { link = "LspSagaRenamePromptPrefix" },
+        -- LspSagaLspFinderBorder        = { link = "FloatBorder" },
+        -- LspSagaAutoPreview            = { link = "LspFloatWinBorder" },
+        -- ReferencesCount               = { link = "LspSagaCodeActionContent" },
+        -- DefinitionCount               = { link = "LspSagaCodeActionContent" },
+        -- DefinitionPreviewTitle        = { link = "LspSagaRenamePromptPrefix" },
+        -- DefinitionIcon                = { fg = m.blue },
+        -- ReferencesIcon                = { link = "DefinitionIcon" },
+        -- TargetWord                    = { fg = m.cyan }
+
+
+        -- nvim navic
+        -- NavicIconsFile          = { fg = e.title, bg = e.selection },
+        -- NavicIconsModule        = { link = "NavicIconsFile" },
+        -- NavicIconsNamespace     = { fg = m.yellow, bg = e.selection },
+        -- NavicIconsPackage       = { link = "NavicIconsFile" },
+        -- NavicIconsClass         = { link = "NavicIconsModule" },
+        -- NavicIconsMethod        = { fg = m.blue, bg = e.selection },
+        -- NavicIconsProperty      = { fg = m.purple, bg = e.selection },
+        -- NavicIconsField         = { fg = m.cyan, bg = e.selection },
+        -- NavicIconsConstructor   = { link = "NavicIconsProperty"},
+        -- NavicIconsEnum          = { link = "NavicIconsNamespace" },
+        -- NavicIconsInterface     = { link = "NavicIconsModule" },
+        -- NavicIconsFunction      = { link = "NavicIconsMethod" },
+        -- NavicIconsVariable      = { fg = m.paleblue, bg = e.selection },
+        -- NavicIconsConstant      = { link = "NavicIconsVariable" },
+        -- NavicIconsString        = { fg = m.orange, bg = e.selection },
+        -- NavicIconsNumber        = { link = "NavicIconsString" },
+        -- NavicIconsBoolean       = { fg = m.yellow, bg = e.selection },
+        -- NavicIconsArray         = { link = "NavicIconsString" },
+        -- NavicIconsObject        = { link = "NavicIconsString" },
+        -- NavicIconsKey           = { link = "NavicIconsField" },
+        -- NavicIconsNull          = { fg = m.red, bg = e.selection },
+        -- NavicIconsEnumMember    = { link = "NavicIconsNamespace" },
+        -- NavicIconsStruct        = { link = "NavicIconsModule" },
+        -- NavicIconsEvent         = { link = "NavicIconsNull" },
+        -- NavicIconsOperator      = { link = "NavicIconsNull" },
+        -- NavicIconsTypeParameter = { link = "NavicIconsBoolean" },
+        -- NavicText               = { fg = e.fg, bg = e.selection },
+        -- NavicSeparator          = { link = "NavicText" },
+
+        -- mini.nvim
+        -- MiniCompletionActiveParameter = { underline = true },
+        -- MiniCursorword                = { underline = true },
+        -- MiniCursorwordCurrent         = { underline = true },
+        -- MiniIndentscopeSymbol         = { fg = m.cyan },
+        -- MiniIndentscopePrefix         = { nocombine = true },
+        -- MiniJump                      = { fg = e.bg, bg = e.accent },
+        -- MiniJump2dSpot                = { fg = e.accent, bold = true, nocombine = true },
+        -- MiniStarterCurrent            = { nocombine = true },
+        -- MiniStarterFooter             = { fg = m.yellow, italic = true },
+        -- MiniStarterHeader             = { fg = e.comments },
+        -- MiniStarterInactive           = { link = "Comment" },
+        -- MiniStarterItem               = { link = "Normal" },
+        -- MiniStarterItemBullet         = { fg = e.border },
+        -- MiniStarterItemPrefix         = { fg = m.yellow },
+        -- MiniStarterSection            = {  fg = m.cyan },
+        -- MiniStarterQuery              = { fg = m.paleblue },
+        -- MiniStatuslineDevinfo         = { fg = e.fg, bg = e.active },
+        -- MiniStatuslineFileinfo        = { link = "MiniStatuslineDevinfo" },
+        -- MiniStatuslineFilename        = { fg = e.disabled, bg = e.bg },
+        -- MiniStatuslineInactive        = { link = "MiniStatuslineFilename" },
+        -- MiniStatuslineModeCommand     = { fg = e.bg, bg = m.yellow, bold = true },
+        -- MiniStatuslineModeInsert      = { fg = e.bg, bg = m.yellow, bold = true },
+        -- MiniStatuslineModeNormal      = { fg = e.bg, bg = e.accent, bold = true },
+        -- MiniStatuslineModeOther       = { fg = e.bg, bg = m.cyan, bold = true },
+        -- MiniStatuslineModeReplace     = { fg = e.bg, bg = m.red, bold = true },
+        -- MiniStatuslineModeVisual      = { fg = e.bg, bg = m.purple, bold = true },
+        -- MiniSurround                  = { link = "IncSearch" },
+        -- MiniTablineCurrent            = { fg = e.bg, bg = e.accent, bold = true },
+        -- MiniTablineFill               = { link = "TabLineFill" },
+        -- MiniTablineHidden             = { fg = e.fg, bg = e.bg },
+        -- MiniTablineModifiedCurrent    = { fg = e.accent, bg = e.bg, bold = true },
+        -- MiniTablineModifiedHidden     = { fg = e.bg, bg = e.fg },
+        -- MiniTablineModifiedVisible    = { fg = e.accent, bg = e.bg },
+        -- MiniTablineTabpagesection     = { fg = e.title, bg = e.selection, bold = true },
+        -- MiniTablineVisible            = { fg = e.bg, bg = e.accent },
+        -- MiniTestEmphasis              = { bold = true },
+        -- MiniTestFail                  = { fg = m.red, bold = true },
+        -- MiniTestPass                  = { fg = m.yellow, bold = true },
+        -- MiniTrailspace                = { bg = m.red },
+    }
+
+    return plugin_hls
+end
+
+---function for setting the terminal colors
+M.load_terminal = function ()
+    vim.g.terminal_color_0 = m.black
+    vim.g.terminal_color_1 = m.darkgreen
+    vim.g.terminal_color_2 = m.darkgreen
+    vim.g.terminal_color_3 = m.darkyellow
+    vim.g.terminal_color_4 = m.darkblue
+    vim.g.terminal_color_5 = m.darkpurple
+    vim.g.terminal_color_6 = m.darkcyan
+    vim.g.terminal_color_7 = m.white
+    vim.g.terminal_color_8 = e.disabled
+    vim.g.terminal_color_9 = m.red
+    vim.g.terminal_color_10 = m.yellow
+    vim.g.terminal_color_11 = m.yellow
+    vim.g.terminal_color_12 = m.blue
+    vim.g.terminal_color_13 = m.purple
+    vim.g.terminal_color_14 = m.cyan
+    vim.g.terminal_color_15 = m.white
+end
+
+return M

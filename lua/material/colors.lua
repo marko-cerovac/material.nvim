@@ -1,261 +1,218 @@
--- This file is used to define
--- the basic colors of the theme
--- and the style specific colors
+local settings = require "material.config".settings
 
-local config = require('material.config').settings
-
+---colots table
 local colors = {
-	-- Common colors
-	white =					'#EEFFFF',
-	gray =					'#717CB4',
-	black = 				'#000000',
-	red =   				'#F07178',
-	green = 				'#C3E88D',
-	yellow =				'#FFCB6B',
-	blue =  				'#82AAFF',
-	paleblue =				'#B0C9FF',
-	cyan =  				'#89DDFF',
-	purple =				'#C792EA',
-	orange =				'#F78C6C',
-	pink =  				'#FF9CAC',
+    ---main colors
+    main = {
+        white         = "#EEFFFF",
+        gray          = "#717CB4",
+        black         = "#000000",
+        red           = "#F07178",
+        green         = "#C3E88D",
+        yellow        = "#FFCB6B",
+        blue          = "#82AAFF",
+        paleblue      = "#B0C9FF",
+        cyan          = "#89DDFF",
+        purple        = "#C792EA",
+        orange        = "#F78C6C",
+        pink          = "#FF9CAC",
 
-	-- Dark colors
-	darkred =				'#DC6068',
-	darkgreen =				'#ABCF76',
-	darkyellow =			'#E6B455',
-	darkblue =				'#6E98EB',
-	darkcyan =				'#71C6E7',
-	darkpurple =			'#B480D6',
-	-- darkorange =			'#E2795B',
+        darkred       = "#DC6068",
+        darkgreen     = "#ABCF76",
+        darkyellow    = "#E6B455",
+        darkblue      = "#6E98EB",
+        darkcyan      = "#71C6E7",
+        darkpurple    = "#B480D6",
+        darkorange    = "#E2795B",
+    },
 
-	error =					'#FF5370',
-	link =					'#80CBC4',
-	cursor =				'#FFCC00',
-	title =					'#EEFFFF',
-	-- visual_alt = 			'#3B3D0E',
-
-	none =      			'NONE'
+    ---colors applied to the editor
+    editor = {
+        link   = "#80CBC4",
+        cursor = "#FFCC00",
+        title  = "#EEFFFF",
+    },
 }
+
+---git colors
+colors.git = {
+    added    = colors.main.green,
+    removed  = colors.main.red,
+    modified = colors.main.blue,
+}
+
+---lsp colors
+colors.lsp = {
+    error   = "#FF5370",
+    warning = colors.main.yellow,
+    info    = colors.main.paleblue,
+    hint    = colors.main.purple,
+}
+
+---syntax colors
+colors.syntax = {
+    variable = colors.editor.fg,
+    keyword  = colors.main.purple,
+    value    = colors.main.orange,
+    operator = colors.main.cyan,
+    fn       = colors.main.blue,
+    string   = colors.main.green,
+    type     = colors.main.purple,
+}
+
+---contrasted backgrounds
+colors.backgrounds = {
+    sidebars            = colors.editor.bg,
+    floating_windows    = colors.editor.bg,
+    line_numbers        = colors.editor.bg,
+    sign_column         = colors.editor.bg,
+    non_current_windows = colors.editor.bg,
+    cursor_line         = colors.editor.active,
+}
+
 
 -- Style specific colors
 
-if vim.g.material_style == 'darker' then
-	-- Darker theme style
+if vim.g.material_style == "darker" then
+    -- Darker theme style
 
-	if config.high_visibility.darker == true then
+    if settings.high_visibility.darker == true then
+        -- Darker theme style with high contrast
+        colors.editor.line_numbers = "#5C5C5C"
+        colors.syntax.comments     = "#757575"
+    else
+        -- default Darker theme style
+        colors.editor.line_numbers = "#424242"
+        colors.syntax.comments     = "#616161"
+    end
 
-		-- Darker theme style with high contrast
-		colors.comments =		'#757575'
-		colors.line_numbers =	'#5C5C5C'
-	else
-
-		-- default Darker theme style
-		colors.comments =		'#616161'
-		colors.line_numbers =	'#424242'
-
-	end
-
-    colors.bg =				'#212121'
-    colors.bg_alt =			'#1A1A1A'
-    colors.fg =				'#B0BEC5'
-    colors.text =			'#727272'
-    colors.selection = 		'#404040'
-    colors.contrast =		'#1A1A1A'
-    colors.active =			'#323232'
-    colors.border =			'#343434'
-    colors.highlight =		'#3F3F3F'
-    colors.disabled =		'#474747'
-    colors.accent =			'#FF9800'
+    colors.editor.bg        = "#212121"
+    colors.editor.bg_alt    = "#1A1A1A"
+    colors.editor.fg        = "#B0BEC5"
+    colors.editor.fg_alt    = "#727272"
+    colors.editor.selection = "#404040"
+    colors.editor.contrast  = "#1A1A1A"
+    colors.editor.active    = "#323232"
+    colors.editor.border    = "#343434"
+    colors.editor.highlight = "#3F3F3F"
+    colors.editor.disabled  = "#474747"
+    colors.editor.accent    = "#FF9800"
 
 
-elseif vim.g.material_style == 'lighter' then
-	-- Lighter theme style
+elseif vim.g.material_style == "lighter" then
+    -- Lighter theme style
 
-	if config.high_visibility.lighter == true then
+    if settings.high_visibility.lighter == true then
 
-		-- Lighter theme style with high contrast
-		colors.fg =				'#213B47' -- 20% darkened
-		colors.text =			'#61747D' -- 20% darkened
-		colors.comments =		'#778C96' -- 20% darkened
-		colors.selection = 		'#e2e9e9' -- 15% saturation, 10% lightness
-		colors.line_numbers =	'#B6BFC3' -- 10% darkened
-		colors.accent =			'#0089A1' -- 20% darkened
+        -- Lighter theme style with high contrast
+        colors.editor.fg           = "#213B47" -- 20% darkened
+        colors.editor.fg_alt       = "#61747D" -- 20% darkened
+        colors.editor.selection    = "#e2e9e9" -- 15% saturation, 10% lightness
+        colors.editor.line_numbers = "#B6BFC3" -- 10% darkened
+        colors.editor.accent       = "#0089A1" -- 20% darkened
+        colors.syntax.comments     = "#778C96" -- 20% darkened
 
-		colors.red =			'#B20602' -- 20% darkened
-		colors.green =			'#5E8526' -- 20% darkened
-		colors.yellow =			'#C37101' -- 20% darkened
-		colors.blue = 			'#2E4F85' -- 20% darkened
-		colors.paleblue =		'#54637D' -- 20% darkened
-		colors.cyan = 			'#067A82' -- 20% darkened
-		colors.purple =			'#491ACC' -- 20% darkened
-		colors.orange =			'#C43A14' -- 20% darkened
-		colors.pink = 			'#CC203D' -- 20% darkened
+        colors.main.red      = "#B20602" -- 20% darkened
+        colors.main.green    = "#5E8526" -- 20% darkened
+        colors.main.yellow   = "#C37101" -- 20% darkened
+        colors.main.blue     = "#2E4F85" -- 20% darkened
+        colors.main.paleblue = "#54637D" -- 20% darkened
+        colors.main.cyan     = "#067A82" -- 20% darkened
+        colors.main.purple   = "#491ACC" -- 20% darkened
+        colors.main.orange   = "#C43A14" -- 20% darkened
+        colors.main.pink     = "#CC203D" -- 20% darkened
 
-	else
+    else
 
-		-- default Lighter theme style
-		colors.fg =				'#546E7A'
-		colors.text =			'#94A7B0'
-		colors.comments =		'#AABFC9'
-		colors.selection = 		'#80CBC4'
-		colors.line_numbers	=	'#CFD8DC'
-		colors.accent =			'#00BCD4'
+        -- default Lighter theme style
+        colors.editor.fg           = "#546E7A"
+        colors.editor.fg_alt       = "#94A7B0"
+        colors.editor.selection    = "#80CBC4"
+        colors.editor.line_numbers = "#CFD8DC"
+        colors.editor.accent       = "#00BCD4"
+        colors.syntax.comments     = "#AABFC9"
 
-		colors.red =			'#E53935'
-		colors.green =			'#91B859'
-		colors.yellow =			'#F6A434'
-		colors.blue = 			'#6182B8'
-		colors.paleblue =		'#8796B0'
-		colors.cyan = 			'#39ADB5'
-		colors.purple =			'#7C4DFF'
-		colors.orange =			'#F76D47'
-		colors.pink = 			'#FF5370'
+        colors.main.red      = "#E53935"
+        colors.main.green    = "#91B859"
 
-	end
+        colors.main.yellow   = "#F6A434"
+        colors.main.blue     = "#6182B8"
+        colors.main.paleblue = "#8796B0"
+        colors.main.cyan     = "#39ADB5"
+        colors.main.purple   = "#7C4DFF"
+        colors.main.orange   = "#F76D47"
+        colors.main.pink     = "#FF5370"
 
-	colors.bg =				'#FAFAFA'
-	colors.bg_alt =			'#FFFFFF'
-	colors.contrast =		'#EEEEEE'
-	colors.active =			'#E7E7E8'
-	colors.border =			'#D3E1E8'
-	colors.highlight =		'#E7E7E8'
-	colors.disabled =		'#D2D4D5'
-	-- colors.visual_alt = 	'#F6F8B4'
-	colors.cursor =			'#272727'
+    end
 
-	colors.white =			'#FFFFFF'
-	colors.gray = 			'#717CB4'
-    colors.title = colors.black
+    colors.editor.bg        = "#FAFAFA"
+    colors.editor.bg_alt    = "#FFFFFF"
+    colors.editor.contrast  = "#EEEEEE"
+    colors.editor.active    = "#E7E7E8"
+    colors.editor.border    = "#D3E1E8"
+    colors.editor.highlight = "#E7E7E8"
+    colors.editor.disabled  = "#D2D4D5"
+    colors.editor.cursor    = "#272727"
+
+    colors.editor.white = "#FFFFFF"
+    colors.editor.gray  = "#717CB4"
+    colors.editor.title = colors.editor.black
 
 
-elseif vim.g.material_style == 'palenight' then
-	-- Palenight theme style
+elseif vim.g.material_style == "palenight" then
+    -- Palenight theme style
 
-	colors.bg =				'#292D3E'
-	colors.bg_alt =			'#1B1E2B'
-	colors.fg =				'#A6ACCD'
-	colors.text =			'#717CB4'
-	colors.comments =		'#676E95'
-	colors.selection =		'#444267'
-	colors.contrast =		'#202331'
-	colors.active =			'#414863'
-	colors.border =			'#364367'
-	colors.line_numbers =	'#3A3F58'
-	colors.highlight =		'#444267'
-	colors.disabled =		'#515772'
-	colors.accent =			'#AB47BC'
+    colors.editor.bg           = "#292D3E"
+    colors.editor.bg_alt       = "#1B1E2B"
+    colors.editor.fg           = "#A6ACCD"
+    colors.editor.fg_alt       = "#717CB4"
+    colors.editor.selection    = "#444267"
+    colors.editor.contrast     = "#202331"
+    colors.editor.active       = "#414863"
+    colors.editor.border       = "#364367"
+    colors.editor.line_numbers = "#3A3F58"
+    colors.editor.highlight    = "#444267"
+    colors.editor.disabled     = "#515772"
+    colors.editor.accent       = "#AB47BC"
+    colors.syntax.comments     = "#676E95"
 
-elseif vim.g.material_style == 'deep ocean' then
-	-- Deep Ocean theme style
+elseif vim.g.material_style == "deep ocean" then
+    -- Deep Ocean theme style
 
-	colors.bg =				'#0F111A'
-	colors.bg_alt =			'#090B10'
-	colors.fg =				'#A6ACCD'
-	colors.text =			'#717CB4'
-	colors.comments =		'#464B5D'
-	colors.selection = 		'#1F2233'
-	colors.contrast =		'#090B10'
-	colors.active =			'#1A1C25'
-	colors.border =			'#232637'
-	colors.line_numbers =	'#3B3F51'
-	colors.highlight =		'#1F2233'
-	colors.disabled =		'#464B5D'
-	colors.accent =			'#84FFFF'
+    colors.editor.bg           = "#0F111A"
+    colors.editor.bg_alt       = "#090B10"
+    colors.editor.fg           = "#A6ACCD"
+    colors.editor.fg_alt       = "#717CB4"
+    colors.editor.selection    = "#1F2233"
+    colors.editor.contrast     = "#090B10"
+    colors.editor.active       = "#1A1C25"
+    colors.editor.border       = "#232637"
+    colors.editor.line_numbers = "#3B3F51"
+    colors.editor.highlight    = "#1F2233"
+    colors.editor.disabled     = "#464B5D"
+    colors.editor.accent       = "#84FFFF"
+    colors.syntax.comments     = "#464B5D"
 
-else vim.g.material_style = 'oceanic'
-	-- Oceanic theme style
+else vim.g.material_style = "oceanic"
+    -- Oceanic theme style
 
-	colors.bg =				'#263238'
-	colors.bg_alt =			'#192227'
-	colors.fg =				'#B0BEC5'
-	colors.text =			'#607D8B'
-	colors.comments =		'#546E7A'
-	colors.selection =		'#464B5D'
-	colors.contrast =		'#1E272C'
-	colors.active =			'#314549'
-	colors.border =			'#37444C'
-	colors.line_numbers =	'#37474F'
-	colors.highlight =		'#425B67'
-	colors.disabled =		'#415967'
-	colors.accent =			'#009688'
+    colors.editor.bg           = "#263238"
+    colors.editor.bg_alt       = "#192227"
+    colors.editor.fg           = "#B0BEC5"
+    colors.editor.fg_alt       = "#607D8B"
+    colors.editor.selection    = "#464B5D"
+    colors.editor.contrast     = "#1E272C"
+    colors.editor.active       = "#314549"
+    colors.editor.border       = "#37444C"
+    colors.editor.line_numbers = "#37474F"
+    colors.editor.highlight    = "#425B67"
+    colors.editor.disabled     = "#415967"
+    colors.editor.accent       = "#009688"
+    colors.syntax.comments     = "#546E7A"
 
 end
 
--- Apply the disabled background setting
-if config.disable.background == true then
-	colors.bg = 'NONE'
-end
-
-if config.disable.borders == true then
-	colors.vsp = colors.bg
-end
-
--- Disable borders
-if config.disable.borders == true then
-	colors.vsp = colors.bg
-else
-	colors.vsp = colors.border
-end
-
--- Enable contrast sidebars
-if config.contrast.sidebars == true then
-	colors.sidebar = colors.bg_alt
-else
-	colors.sidebar = colors.bg
-end
-
--- Enable contrast floating windows
-if config.contrast.floating_windows == true then
-	colors.float = colors.bg_alt
-else
-	colors.float = colors.bg
-end
-
--- Enable contrast line numbers
-if config.contrast.line_numbers == true then
-	colors.bg_num = colors.bg_alt
-else
-	colors.bg_num = colors.bg
-end
-
--- Enable contrast sign column
-if config.contrast.sign_column == true then
-	colors.bg_sign = colors.bg_alt
-else
-	colors.bg_sign = colors.bg
-end
-
--- Enable contrast cursor line
-if config.contrast.cursor_line == true then
-	colors.bg_cur = colors.bg_alt
-else
-	colors.bg_cur = colors.active
-end
-
-if config.contrast.non_current_windows == true then
-	colors.bg_nc = colors.bg_alt
-else
-	colors.bg_nc = colors.bg
-end
-
--- Apply user defined colors
-if type(config.custom_colors) == "table" then
-	for key, value in pairs(config.custom_colors) do
-		-- If the color starts with a #
-		if string.sub(value, 1, 1) == "#" then
-			-- Hex override
-			colors[key] = value
-		-- IF it doesn't
-		else
-			-- If the color isn't already in the colors table
-			if not colors[value] then
-				error("Color " .. value .. " does not exist")
-			else
-			-- If it is, then link to it
-				colors[key] = colors[value]
-			end
-		end
-	end
-end
+-- apply conditional colors
+require "material.conditionals"
 
 return colors
