@@ -144,8 +144,6 @@ This is an example of the setup function with the default values:
         contrast = {
             sidebars = false,
             floating_windows = false,
-            line_numbers = false,
-            sign_column = false,
             cursor_line = false,
             non_current_windows = false,
             popup_menu = false
@@ -198,8 +196,6 @@ This is an example of the setup function with the default values:
           sign column, popup menu, cursor line and non current windows have
           a different background. Varable names are: - sidebars
                                                      - floating_windows
-                                                     - line_numbers
-                                                     - sign_column
                                                      - cursor_line
                                                      - non_current_windows
                                                      - popup_menu
@@ -254,8 +250,6 @@ Example config in Lua:
         contrast = {
             sidebars = true,
             floating_windows = false,
-            line_numbers = false,
-            sign_column = false,
             cursor_line = true,
             popup_menu = false
         },

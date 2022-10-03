@@ -6,8 +6,6 @@ local defaults = {
 		sidebars = false, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
 		floating_windows = false, -- Enable contrast for floating windows
 		cursor_line = false, -- Enable darker background for the cursor line
-		line_numbers = false, -- Enable contrast background for line numbers
-		sign_column = false, -- Enable contrast background the sign column
 		non_current_windows = false, -- Enable darker background for non-current windows
 		popup_menu = false, -- Enable lighter background for the popup menu
 	},

@@ -231,20 +231,6 @@ else
 	colors.float = colors.bg
 end
 
--- Enable contrast line numbers
-if config.contrast.line_numbers == true then
-	colors.bg_num = colors.bg_alt
-else
-	colors.bg_num = colors.bg
-end
-
--- Enable contrast sign column
-if config.contrast.sign_column == true then
-	colors.bg_sign = colors.bg_alt
-else
-	colors.bg_sign = colors.bg
-end
-
 -- Enable contrast cursor line
 if config.contrast.cursor_line == true then
 	colors.bg_cur = colors.bg_alt
