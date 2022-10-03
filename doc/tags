@@ -1,4 +1,3 @@
-material.nvim	material.nvim.txt	/*material.nvim*
 material-configuration	material.nvim.txt	/*material-configuration*
 material-examples	material.nvim.txt	/*material-examples*
 material-features	material.nvim.txt	/*material-features*
@@ -7,3 +6,4 @@ material-lualine-setup	material.nvim.txt	/*material-lualine-setup*
 material-mappings	material.nvim.txt	/*material-mappings*
 material-styles	material.nvim.txt	/*material-styles*
 material-usage	material.nvim.txt	/*material-usage*
+material.nvim	material.nvim.txt	/*material.nvim*

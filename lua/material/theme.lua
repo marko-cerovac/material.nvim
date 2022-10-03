@@ -77,11 +77,11 @@ theme.loadEditor = function ()
 		CursorIM =				{ fg = colors.bg_alt, bg = colors.cursor }, -- like Cursor, but used when in IME mode
 		Directory =				{ fg = colors.blue }, -- directory names (and other special names in listings)
 		DiffAdd =				{ fg = colors.green, reverse = true }, -- diff mode: Added line
-		GitSignsAdd =           { fg = colors.green, bg = colors.bg_sign }, -- diff mode: Added line |diff.txt|
+		GitSignsAdd =           { fg = colors.green }, -- diff mode: Added line |diff.txt|
 		DiffChange =			{ fg = colors.blue }, --  diff mode: Changed line
-		GitSignsChange =        { fg = colors.blue, bg = colors.bg_sign }, -- diff mode: Changed line |diff.txt|
+		GitSignsChange =        { fg = colors.blue }, -- diff mode: Changed line |diff.txt|
 		DiffDelete =			{ fg = colors.red, reverse = true }, -- diff mode: Deleted line
-		GitSignsDelete =        { fg = colors.red, bg = colors.bg_sign }, -- diff mode: Deleted line |diff.txt|
+		GitSignsDelete =        { fg = colors.red }, -- diff mode: Deleted line |diff.txt|
 		DiffText =				{ fg = colors.blue, reverse = true }, -- diff mode: Changed text within a changed line
 		ErrorMsg =				{ fg = colors.error }, -- error messages
 		Folded =				{ fg = colors.disabled, italic = true }, -- line used for closed folds
@@ -203,7 +203,7 @@ theme.loadTreeSitter = function ()
 		TSConstMacro =              { fg = colors.cyan }, -- For constants that are defined by macros: `NULL` in C.
 		TSError =                   { fg = colors.error }, -- For syntax/parser errors.
 		TSException =               { fg = colors.red }, -- For exception related keywords.
-		TSField =                   { fg = colors.fg }, -- For fields.
+		TSField =                   { fg = colors.text }, -- For fields.
 		TSFloat =                   { fg = colors.orange }, -- For floats.
 		TSFunction =                { link = "Function" }, -- For fuction (calls and definitions).
 		TSFuncBuiltin =             { link = "Function" }, -- For builtin functions: `table.insert` in Lua.
@@ -262,22 +262,22 @@ theme.loadLSP = function ()
 		DiagnosticError =                       { fg = colors.error },
 		DiagnosticVirtualTextError = 			{ fg = colors.error },
 		DiagnosticFloatingError = 				{ fg = colors.error },
-		DiagnosticSignError = 					{ fg = colors.error, bg = colors.bg_sign },
+		DiagnosticSignError = 					{ fg = colors.error },
 		DiagnosticUnderlineError = 				{ undercurl = true, sp = colors.error },
 		DiagnosticWarn =                     	{ fg = colors.yellow },
 		DiagnosticVirtualTextWarn  = 			{ fg = colors.yellow },
 		DiagnosticFloatingWarn = 				{ fg = colors.yellow },
-		DiagnosticSignWarn = 					{ fg = colors.yellow, bg = colors.bg_sign },
+		DiagnosticSignWarn = 					{ fg = colors.yellow },
 		DiagnosticUnderlineWarn = 				{ undercurl = true, sp = colors.yellow },
 		DiagnosticInformation =                 { fg = colors.paleblue },
 		DiagnosticVirtualTextInfo = 			{ fg = colors.paleblue },
 		DiagnosticFloatingInfo = 				{ fg = colors.paleblue },
-		DiagnosticSignInfo = 					{ fg = colors.paleblue, bg = colors.bg_sign },
+		DiagnosticSignInfo = 					{ fg = colors.paleblue },
 		DiagnosticUnderlineInfo = 				{ undercurl = true, sp = colors.paleblue },
 		DiagnosticHint =                        { fg = colors.purple },
 		DiagnosticVirtualTextHint = 			{ fg = colors.purple },
 		DiagnosticFloatingHint = 				{ fg = colors.purple },
-		DiagnosticSignHint = 					{ fg = colors.purple, bg = colors.bg_sign },
+		DiagnosticSignHint = 					{ fg = colors.purple },
 		DiagnosticUnderlineHint  = 				{ undercurl = true, sp = colors.purple },
 		LspReferenceText = 						{ bg = colors.selection }, -- used for highlighting "text" references
 		LspReferenceRead = 						{ link = "LspReferenceText" }, -- used for highlighting "read" references
@@ -361,11 +361,11 @@ theme.loadPlugins = function()
 
 	-- GitSigns
 	if config.plugins.gitsigns then
-		plugins.GitSignsAddNr =                         { fg = colors.green, bg =colors.bg_num } -- diff mode: Added line |diff.txt|
+		plugins.GitSignsAddNr =                         { fg = colors.green } -- diff mode: Added line |diff.txt|
 		plugins.GitSignsAddLn =                         { fg = colors.green } -- diff mode: Added line |diff.txt|
-		plugins.GitSignsChangeNr =                      { fg = colors.blue, bg =colors.bg_num } -- diff mode: Changed line |diff.txt|
+		plugins.GitSignsChangeNr =                      { fg = colors.blue } -- diff mode: Changed line |diff.txt|
 		plugins.GitSignsChangeLn =                      { fg = colors.blue } -- diff mode: Changed line |diff.txt|
-		plugins.GitSignsDeleteNr =                      { fg = colors.red, bg =colors.bg_num } -- diff mode: Deleted line |diff.txt|
+		plugins.GitSignsDeleteNr =                      { fg = colors.red } -- diff mode: Deleted line |diff.txt|
 		plugins.GitSignsDeleteLn =                      { fg = colors.red } -- diff mode: Deleted line |diff.txt|
 	end
 
