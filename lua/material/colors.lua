@@ -201,18 +201,22 @@ if type(config.custom_colors) == "table" then
 	end
 end
 
+-- Enable darker contrast for non-current windows
+-- This must be set first in order to affect border settings
+if config.contrast.non_current_windows == true then
+	colors.bg_nc = colors.bg_alt
+else
+	colors.bg_nc = colors.bg
+end
+
 -- Apply the disabled background setting
 if config.disable.background == true then
 	colors.bg = 'NONE'
 end
 
-if config.disable.borders == true then
-	colors.vsp = colors.bg
-end
-
 -- Disable borders
 if config.disable.borders == true then
-	colors.vsp = colors.bg
+	colors.vsp = colors.bg_nc
 else
 	colors.vsp = colors.border
 end
@@ -236,12 +240,6 @@ if config.contrast.cursor_line == true then
 	colors.bg_cur = colors.bg_alt
 else
 	colors.bg_cur = colors.active
-end
-
-if config.contrast.non_current_windows == true then
-	colors.bg_nc = colors.bg_alt
-else
-	colors.bg_nc = colors.bg
 end
 
 return colors

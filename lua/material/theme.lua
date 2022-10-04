@@ -138,7 +138,7 @@ theme.loadEditor = function ()
 		DashboardCenter =                       { fg = colors.accent },
 		DashboardFooter =                       { fg = colors.green, italic = true },
 
-		VertSplit =								{ fg = colors.vsp }, -- The column separating vertically split windows
+		VertSplit =								{ fg = colors.vsp, bg = colors.bg_nc }, -- The column separating vertically split windows
 		WinSeparator = 							{ fg = colors.vsp } -- Lines between window splits
 
 	}
@@ -162,7 +162,6 @@ theme.loadEditor = function ()
 		editor.PmenuSbar =				{ bg = colors.contrast } -- Popup menu: scrollbar.
 		editor.PmenuThumb =				{ bg = colors.selection } -- Popup menu: Thumb of the scrollbar.
 	end
-
 
 	return editor
 end
@@ -391,7 +390,7 @@ theme.loadPlugins = function()
 	-- NvimTree
 	if config.plugins.nvim_tree then
 		plugins.NvimTreeNormal =						{ fg = colors.fg, bg = colors.sidebar }
-		plugins.NvimTreeNormalNC =						{ link = "NvimTreeNormalNC" }
+		plugins.NvimTreeNormalNC =						{ link = "NvimTreeNormal" }
 		plugins.NvimTreeRootFolder =                    { fg = colors.accent }
 		plugins.NvimTreeFolderName=                     { fg = colors.blue, bold = true }
 		plugins.NvimTreeFolderIcon=                     { link = "NvimTreeFolderName" }
