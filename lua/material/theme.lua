@@ -203,7 +203,7 @@ theme.loadTreeSitter = function ()
 		TSConstMacro =              { fg = colors.cyan }, -- For constants that are defined by macros: `NULL` in C.
 		TSError =                   { fg = colors.error }, -- For syntax/parser errors.
 		TSException =               { fg = colors.red }, -- For exception related keywords.
-		TSField =                   { fg = colors.text }, -- For fields.
+		TSField =                   { fg = colors.fg }, -- For fields.
 		TSFloat =                   { fg = colors.orange }, -- For floats.
 		TSFunction =                { link = "Function" }, -- For fuction (calls and definitions).
 		TSFuncBuiltin =             { link = "Function" }, -- For builtin functions: `table.insert` in Lua.
@@ -391,7 +391,7 @@ theme.loadPlugins = function()
 	-- NvimTree
 	if config.plugins.nvim_tree then
 		plugins.NvimTreeNormal =						{ fg = colors.fg, bg = colors.sidebar }
-		plugins.NvimTreeNormalNC =						{ fg = colors.fg, bg = colors.bg_nc }
+		plugins.NvimTreeNormalNC =						{ link = "NvimTreeNormalNC" }
 		plugins.NvimTreeRootFolder =                    { fg = colors.accent }
 		plugins.NvimTreeFolderName=                     { fg = colors.blue, bold = true }
 		plugins.NvimTreeFolderIcon=                     { link = "NvimTreeFolderName" }
