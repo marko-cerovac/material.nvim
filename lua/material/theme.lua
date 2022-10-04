@@ -392,7 +392,7 @@ theme.loadPlugins = function()
 	if config.plugins.nvim_tree then
 		plugins.NvimTreeNormal =						{ fg = colors.fg, bg = colors.sidebar }
 		plugins.NvimTreeNormalNC =						{ fg = colors.fg, bg = colors.bg_nc }
-		plugins.NvimTreeRootFolder =                    { fg = colors.accent, bg = colors.sidebar }
+		plugins.NvimTreeRootFolder =                    { fg = colors.accent }
 		plugins.NvimTreeFolderName=                     { fg = colors.blue, bold = true }
 		plugins.NvimTreeFolderIcon=                     { link = "NvimTreeFolderName" }
 		plugins.NvimTreeEmptyFolderName=                { fg = colors.gray }
@@ -407,6 +407,7 @@ theme.loadPlugins = function()
 		plugins.NvimTreeMarkdownFile =                  { fg = colors.pink }
 		plugins.NvimTreeExecFile =                      { link = "NvimTreeGitNew" }
 		plugins.NvimTreeSpecialFile =                   { fg = colors.purple }
+		plugins.NvimTreeSignColumn =                    { link = "SignColumn" }
 	end
 
 	-- Sidebar.nvim
