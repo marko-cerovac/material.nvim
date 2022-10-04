@@ -391,7 +391,7 @@ theme.loadPlugins = function()
 	-- NvimTree
 	if config.plugins.nvim_tree then
 		plugins.NvimTreeNormal =						{ fg = colors.fg, bg = colors.sidebar }
-		plugins.NvimTreeNormalNC =						{ fg = colors.fg, bg = colors.bg_nc }
+		plugins.NvimTreeNormalNC =						{ link = "NvimTreeNormalNC" }
 		plugins.NvimTreeRootFolder =                    { fg = colors.accent }
 		plugins.NvimTreeFolderName=                     { fg = colors.blue, bold = true }
 		plugins.NvimTreeFolderIcon=                     { link = "NvimTreeFolderName" }
