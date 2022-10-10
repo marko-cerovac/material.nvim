@@ -13,6 +13,9 @@ local apply_user_styles = function (hl_group, user_settings)
     vim.tbl_extend("force", hl_group, user_settings)
 end
 
+-- apply conditional colors
+require "material.conditionals"
+
 local M = {}
 
 ---main highlight functions

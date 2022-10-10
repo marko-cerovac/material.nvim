@@ -202,7 +202,7 @@ else vim.g.material_style = "oceanic"
     colors.editor.selection    = "#395B65"
     colors.editor.border       = "#355058"
     colors.editor.line_numbers = "#426367"
-    colors.editor.useless      = "#354A51"-- highlight
+    colors.editor.highlight      = "#354A51"-- highlight
     colors.editor.disabled     = "#3E5F64"
     colors.editor.accent       = "#11bba3"
     colors.editor.contrast     = "#1E272C"
@@ -212,6 +212,6 @@ else vim.g.material_style = "oceanic"
 end
 
 -- apply conditional colors
-require "material.conditionals"
+-- require "material.conditionals"
 
 return colors

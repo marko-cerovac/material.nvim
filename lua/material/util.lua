@@ -74,12 +74,12 @@ local async
 local load_async = function()
     for _, fn in pairs(theme.async_highlights) do
         -- fn() returns a table of highlights to be applied
-        M.apply_highlights(fn())
+        apply_highlights(fn())
     end
 
     -- load terminal colors
     if not settings.disable.term_colors then
-        theme.loadTerminal();
+        theme.load_terminal();
     end
 
     -- load user defined higlights
@@ -110,11 +110,11 @@ M.load = function()
     -- apply highlights one by one
     for _, fn in pairs(theme.main_highlights) do
         -- fn() returns a table of highlights to be applied
-        M.apply_highlights(fn())
+        apply_highlights(fn())
     end
 
 	-- if async is enabled, send the function
-    if settings.async_loading == true then
+    if settings.async_loading then
         async:send()
     end
 end

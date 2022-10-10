@@ -24,7 +24,4 @@ end
 -- apply user defined colors
 if type(settings.custom_colors) == "function" then
     settings.override_colors(colors)
-else
-    vim.notify("Error in your material.nvim config", vim.log.levels.WARN)
-    vim.notify("custom_colors must be a function", vim.log.levels.WARN)
 end
