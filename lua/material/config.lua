@@ -2,14 +2,14 @@ local M = {}
 
 ---theme settings
 local defaults = {
-    use_treesitter = true, -- Use treesitter for syntax highlighting
+    use_treesitter = true,
     contrast = {
-        terminal = false, -- Enable darker background for the built-in terminal
-        sidebars = false, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
-        floating_windows = false, -- Enable contrast for floating windows
-        cursor_line = false, -- Enable darker background for the cursor line
-        non_current_windows = false, -- Enable darker background for non-current windows
-        filetypes = {} -- Select which windows get the contrast background
+        terminal = false,
+        sidebars = false,
+        floating_windows = false,
+        cursor_line = false,
+        non_current_windows = false,
+        filetypes = {}
     },
     styles = {
         comments = {},
@@ -21,20 +21,20 @@ local defaults = {
         types = {},
     },
     disable = {
-        colored_cursor = false, -- Disable the colored cursor
-        borders = false, -- Disable window split borders
-        background = false, -- Disable setting the background color
-        term_colors = false, -- Disable setting the terminal colors
-        eob_lines = false -- Make end-of-buffer lines invisible
+        colored_cursor = false,
+        borders = false,
+        background = false,
+        term_colors = false,
+        eob_lines = false
     },
     high_visibility = {
-        lighter = false, -- Higher contrast text for lighter style
-        darker = false -- Higher contrast text for darker style
+        lighter = false,
+        darker = false,
     },
-    lualine_style = "default", -- Lualine style ( can be "stealth" or "default" )
-    custom_colors = nil, -- define custom colors
-    custom_highlights = {}, -- define custom highlights
-    async_loading = true, -- Load parts of the theme asyncronously for faster startup
+    lualine_style = "default",
+    custom_colors = nil,
+    custom_highlights = {},
+    async_loading = true,
 }
 
 M.settings = defaults
