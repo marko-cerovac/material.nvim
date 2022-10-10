@@ -4,26 +4,26 @@ local settings = require "material.config".settings
 local colors = {
     ---main colors
     main = {
-        white         = "#EEFFFF",
-        gray          = "#717CB4",
-        black         = "#000000",
-        red           = "#F07178",
-        green         = "#C3E88D",
-        yellow        = "#FFCB6B",
-        blue          = "#82AAFF",
-        paleblue      = "#B0C9FF",
-        cyan          = "#89DDFF",
-        purple        = "#C792EA",
-        orange        = "#F78C6C",
-        pink          = "#FF9CAC",
+        white      = "#EEFFFF",
+        gray       = "#717CB4",
+        black      = "#000000",
+        red        = "#F07178",
+        green      = "#C3E88D",
+        yellow     = "#FFCB6B",
+        blue       = "#82AAFF",
+        paleblue   = "#B0C9FF",
+        cyan       = "#89DDFF",
+        purple     = "#C792EA",
+        orange     = "#F78C6C",
+        pink       = "#FF9CAC",
 
-        darkred       = "#DC6068",
-        darkgreen     = "#ABCF76",
-        darkyellow    = "#E6B455",
-        darkblue      = "#6E98EB",
-        darkcyan      = "#71C6E7",
-        darkpurple    = "#B480D6",
-        darkorange    = "#E2795B",
+        darkred    = "#DC6068",
+        darkgreen  = "#ABCF76",
+        darkyellow = "#E6B455",
+        darkblue   = "#6E98EB",
+        darkcyan   = "#71C6E7",
+        darkpurple = "#B480D6",
+        darkorange = "#E2795B",
     },
 
     ---colors applied to the editor
@@ -64,8 +64,6 @@ colors.syntax = {
 colors.backgrounds = {
     sidebars            = colors.editor.bg,
     floating_windows    = colors.editor.bg,
-    line_numbers        = colors.editor.bg,
-    sign_column         = colors.editor.bg,
     non_current_windows = colors.editor.bg,
     cursor_line         = colors.editor.active,
 }
@@ -196,18 +194,19 @@ elseif vim.g.material_style == "deep ocean" then
 else vim.g.material_style = "oceanic"
     -- Oceanic theme style
 
-    colors.editor.bg           = "#263238"
-    colors.editor.bg_alt       = "#192227"
-    colors.editor.fg           = "#B0BEC5"
-    colors.editor.fg_alt       = "#607D8B"
-    colors.editor.selection    = "#464B5D"
+    colors.editor.bg           = "#25363B"
+    colors.editor.bg_alt       = "#1C2C30"
+    colors.editor.fg           = "#B0BEC5" -- keep the old one
+    -- colors.editor.fg           = "#ADD8DE" -- keep the old one
+    colors.editor.fg_alt       = "#7C9EAD"
+    colors.editor.selection    = "#395B65"
+    colors.editor.border       = "#355058"
+    colors.editor.line_numbers = "#426367"
+    colors.editor.useless      = "#354A51"-- highlight
+    colors.editor.disabled     = "#3E5F64"
+    colors.editor.accent       = "#11bba3"
     colors.editor.contrast     = "#1E272C"
     colors.editor.active       = "#314549"
-    colors.editor.border       = "#37444C"
-    colors.editor.line_numbers = "#37474F"
-    colors.editor.highlight    = "#425B67"
-    colors.editor.disabled     = "#415967"
-    colors.editor.accent       = "#009688"
     colors.syntax.comments     = "#546E7A"
 
 end

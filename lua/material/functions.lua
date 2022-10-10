@@ -1,56 +1,62 @@
-local config = require('material.config').settings
+local settings = require('material.config').settings
+
+local M = {}
 
 -- Define style_switch
 if vim.g.material_style_switch == nil then
     vim.g.material_style_switch = 0
 end
 
-local set_lualine = function ()
-	local has_lualine, lualine = pcall(require, "lualine")
-	if has_lualine then
-		lualine.setup {
-			options = {
-				theme = "auto"
-			}
-		}
-	end
+---checks if the user uses lualine and then sets the lualine theme
+local set_lualine = function()
+    local has_lualine, lualine = pcall(require, "lualine")
+    if has_lualine then
+        lualine.setup {
+            options = {
+                theme = "auto"
+            }
+        }
+    end
 end
 
--- Change_style takes a style name as a parameter and switches to that style
-local change_style = function (style)
-	set_lualine()
-	vim.g.material_style = style
-	print("Material style: ", style)
-	vim.cmd "colorscheme material"
- end
-
--- Toggle_style takes no parameters toggles the style on every function call
-local toggle_style = function ()
-	local switch = { "darker", "lighter", "palenight", "oceanic", "deep ocean" }
-	vim.g.material_style_switch = (vim.g.material_style_switch % table.getn(switch)) + 1
-	change_style(switch[vim.g.material_style_switch])
+---switch to a given style
+---@param style string name of the style to switch to
+M.change_style = function(style)
+    set_lualine()
+    vim.g.material_style = style
+    print("Material style: ", style)
+    vim.cmd "colorscheme material"
 end
 
-local toggle_eob = function ()
-	if config.disable.eob_lines == true then
-		config.disable.eob_lines = false
-	else
-		config.disable.eob_lines = true
-	end
-
-	local editor = require("material.theme").loadEditor()
-	require("material.util").highlight( "EndOfBuffer", editor.EndOfBuffer)
+---toggle between styles
+M.toggle_style = function()
+    local styles = {
+        "darker",
+        "lighter",
+        "palenight",
+        "oceanic",
+        "deep ocean"
+    }
+    M.style_iterator = (M.style_iterator % (#styles)) + 1
+    M.change_style(styles[M.style_iterator])
 end
 
-local find_style = function ()
-	require "material.telescope_switcher".find()
+---toggle the end-of-buffer lines (~)
+M.toggle_eob = function()
+    local colors = require("material.colors").editor
+
+    settings.disable.eob_lines = not settings.disable.eob_lines
+
+    if settings.disable.eob_lines then
+        vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = colors.bg })
+    else
+        vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = colors.disabled })
+    end
 end
 
-return {
-	set_lualine = set_lualine,
-	change_style = change_style,
-	toggle_style = toggle_style,
-	toggle_eob = toggle_eob,
-	find_style = find_style
-}
+---use telescope to change the style
+M.find_style = function()
+    require("material.telescope_styles").find()
+end
 
+return M

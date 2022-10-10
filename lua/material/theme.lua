@@ -1,5 +1,6 @@
-local colors = require "material.colors"
+local colors   = require "material.colors"
 local settings = require "material.config".settings
+local styles   = settings.styles
 
 local m = colors.main
 local e = colors.editor
@@ -7,7 +8,10 @@ local g = colors.git
 local l = colors.lsp
 local s = colors.syntax
 local b = colors.backgrounds
-local i = settings.italics
+
+local apply_user_styles = function (hl_group, user_settings)
+    vim.tbl_extend("force", hl_group, user_settings)
+end
 
 local M = {}
 
@@ -37,13 +41,13 @@ if settings.use_treesitter then
             -- TSString             = { link = "String" },
             -- TSVariable           = { link = "Identifier" },
             -- TSVariableBuiltin    = { link = "Identifier" },
-            TSComment            = { fg = s.comments, italic = i.comments },
-            TSConditional        = { fg = s.keyword, italic = i.keywords },
-            TSFunction           = { fg = s.fn, italic = i.functions },
+            TSComment            = { fg = s.comments },
+            TSConditional        = { fg = s.keyword },
+            TSFunction           = { fg = s.fn },
             TSMethod             = { link = "TSFunction" },
             TSConstructor        = { link = "TSFunction" },
             TSFuncMacro          = { link = "TSFunction" },
-            TSFuncBuiltin        = { fg = s.fn, italic = i.functions },
+            TSFuncBuiltin        = { fg = s.fn },
             TSNumber             = { fg = s.value },
             TSBoolean            = { link = "TSNumber" },
             TSCharacter          = { link = "TSNumber" },
@@ -53,17 +57,17 @@ if settings.use_treesitter then
             TSConstant           = { fg = m.yellow },
             TSKeyword            = { fg = m.cyan },
             TSKeywordFunction    = { fg = m.cyan },
-            TSRepeat             = { fg = s.keyword, italic = i.keywords },
-            TSString             = { fg = s.string, italic = i.strings },
-            TSVariable           = { fg = e.fg, italic = i.variables },
+            TSKeywordOperator    = { fg = m.purple },
+            TSKeywordReturn      = { fg = m.cyan },
+            TSRepeat             = { fg = s.keyword },
+            TSString             = { fg = s.string },
+            TSVariable           = { fg = e.fg },
             TSVariableBuiltin    = { link = "TSVariable" },
             TSAttribute          = { fg = m.yellow },
             TSError              = { fg = l.error },
             TSException          = { fg = m.red },
             TSField              = { fg = e.fg },
             TSInclude            = { fg = m.cyan },
-            TSKeywordOperator    = { fg = m.purple },
-            TSKeywordReturn      = { fg = m.cyan },
             TSLabel              = { fg = m.red },
             TSNamespace          = { fg = m.yellow },
             TSOperator           = { fg = s.operator },
@@ -94,8 +98,17 @@ if settings.use_treesitter then
             TSMath               = { fg = m.blue },
             TSDanger             = { fg = l.error },
             --TSNone             = { },
-
         }
+
+        -- apply the user set styles for these groups
+        apply_user_styles(treesitter_hls.TSComment, styles.comments)
+        apply_user_styles(treesitter_hls.TSConditional, styles.keywords)
+        apply_user_styles(treesitter_hls.TSFunction, styles.functions)
+        apply_user_styles(treesitter_hls.TSFuncBuiltin, styles.functions)
+        apply_user_styles(treesitter_hls.TSRepeat, styles.keywords)
+        apply_user_styles(treesitter_hls.TSString, styles.strings)
+        apply_user_styles(treesitter_hls.TSVariable, styles.variables)
+        apply_user_styles(treesitter_hls.TSType, styles.types)
 
         return treesitter_hls
     end
@@ -105,13 +118,13 @@ else
     ---regular Vim syntax highlights
     M.main_highlights.syntax = function ()
         local syntax_hls = {
-            Comment        = { fg = s.comments, italic = i.comments },
-            Conditional    = { fg = s.keyword, italic = i.keywords },
-            Function       = { fg = s.fn, italic = i.functions },
-            Identifier     = { fg = e.fg, italic = i.variables },
-            Keyword        = { fg = s.keyword, italic = i.keywords },
-            Repeat         = { fg = s.keyword, italic = i.keywords },
-            String         = { fg = s.string, italic = i.strings },
+            Comment        = { fg = s.comments },
+            Conditional    = { fg = s.keyword },
+            Function       = { fg = s.fn },
+            Identifier     = { fg = e.fg },
+            Keyword        = { fg = s.keyword },
+            Repeat         = { fg = s.keyword },
+            String         = { fg = s.string },
             Type           = { fg = s.type },
             StorageClass   = { fg = m.cyan }, -- static, register, volatile, etc.
             Structure      = { fg = s.type },
@@ -146,6 +159,16 @@ else
             htmlH3         = { fg = m.green, bold = true },
         }
 
+        -- apply the user set styles for these groups
+        apply_user_styles(syntax_hls.Comment, styles.comments)
+        apply_user_styles(syntax_hls.Conditional, styles.keywords)
+        apply_user_styles(syntax_hls.Function, styles.functions)
+        apply_user_styles(syntax_hls.Identifier, styles.variables)
+        apply_user_styles(syntax_hls.Keyword, styles.keywords)
+        apply_user_styles(syntax_hls.Repeat, styles.keywords)
+        apply_user_styles(syntax_hls.String, styles.strings)
+        apply_user_styles(syntax_hls.Type, styles.types)
+
         return syntax_hls
     end
 
@@ -154,7 +177,7 @@ end
 M.main_highlights.editor = function ()
     local editor_hls = {
         Normal           = { fg = e.fg, bg = e.bg },
-        NormalFloat      = { fg = e.fg, bg = b.floating_windows },
+        NormalFloat      = { fg = e.fg, bg = b._windows },
         NormalContrast   = { fg = e.fg, bg = e.bg_alt }, -- a help group for contrast fileypes
         ColorColumn      = { fg = m.none, bg = e.active },
         Conceal          = { fg = e.disabled },
@@ -163,15 +186,15 @@ M.main_highlights.editor = function ()
         ErrorMsg         = { fg = l.error },
         Folded           = { fg = e.disabled, italic = true },
         FoldColumn       = { fg = m.blue },
-        LineNr           = { fg = e.line_numbers, bg = e.bg_num },
-        CursorLineNr     = { fg = e.accent, bg = e.bg_num },
+        LineNr           = { fg = e.line_numbers },
+        CursorLineNr     = { fg = e.accent },
         DiffAdd          = { fg = g.added, reverse = true },
         DiffChange       = { fg = g.modified },
         DiffDelete       = { fg = g.removed, reverse = true },
         DiffText         = { fg = g.modified, reverse = true },
         ModeMsg          = { fg = e.accent }, -- 'showmode' message (e.g., "-- INSERT -- ")
         NonText          = { fg = e.disabled },
-        SignColumn       = { fg = e.fg, bg = e.bg_sign },
+        SignColumn       = { fg = e.fg },
         SpecialKey       = { fg = m.purple },
         StatusLine       = { fg = e.fg, bg = e.active },
         StatusLineNC     = { fg = e.disabled, bg = e.bg },
@@ -183,7 +206,7 @@ M.main_highlights.editor = function ()
         Title            = { fg = e.title, bold = true },
         WarningMsg       = { fg = m.yellow },
         Whitespace       = { fg = e.disabled },
-        CursorLine       = { fg = m.none, bg = e.bg_cur },
+        CursorLine       = { fg = m.none, bg = b.cursor_line },
         CursorColumn     = { link = "CursorLine" },
     }
 
@@ -194,7 +217,7 @@ end
 M.async_highlights.editor = function ()
     local editor_hls = {
         NormalNC         = { bg = b.non_current_windows },
-        FloatBorder      = { fg = e.border, bg = b.floating_windows },
+        FloatBorder      = { fg = e.border, bg = b._windows },
         SpellBad         = { fg = m.red, italic = true, undercurl = true },
         SpellCap         = { fg = m.blue, italic = true, undercurl = true },
         SpellLocal       = { fg = m.cyan, italic = true, undercurl = true },
@@ -241,27 +264,26 @@ M.async_highlights.load_lsp = function ()
         DiagnosticError            = { fg = l.error },
         DiagnosticVirtualTextError = { fg = l.error },
         DiagnosticFloatingError    = { fg = l.error },
-        DiagnosticSignError        = { fg = l.error, bg = e.bg_sign },
+        DiagnosticSignError        = { fg = l.error },
         DiagnosticUnderlineError   = { undercurl = true, sp = l.error },
         DiagnosticWarn             = { fg = l.warning },
         DiagnosticVirtualTextWarn  = { fg = l.warning },
         DiagnosticFloatingWarn     = { fg = l.warning },
-        DiagnosticSignWarn         = { fg = l.warning, bg = e.bg_sign },
+        DiagnosticSignWarn         = { fg = l.warning },
         DiagnosticUnderlineWarn    = { undercurl = true, sp = l.warning },
         DiagnosticInformation      = { fg = l.info },
         DiagnosticVirtualTextInfo  = { fg = l.info },
         DiagnosticFloatingInfo     = { fg = l.info },
-        DiagnosticSignInfo         = { fg = l.info, bg = e.bg_sign },
+        DiagnosticSignInfo         = { fg = l.info },
         DiagnosticUnderlineInfo    = { undercurl = true, sp = l.info },
         DiagnosticHint             = { fg = l.hint },
         DiagnosticVirtualTextHint  = { fg = l.hint },
         DiagnosticFloatingHint     = { fg = l.hint },
-        DiagnosticSignHint         = { fg = l.hint, bg = e.bg_sign },
+        DiagnosticSignHint         = { fg = l.hint },
         DiagnosticUnderlineHint    = { undercurl = true, sp = l.hint },
         LspReferenceText           = { bg = e.selection }, -- used for highlighting "text" references
         LspReferenceRead           = { link = "LspReferenceText" }, -- used for highlighting "read" references
         LspReferenceWrite          = { link = "LspReferenceText" }, -- used for highlighting "write" references
-
     }
 
     return lsp_hls
@@ -271,10 +293,10 @@ end
 M.main_highlights.plugins = function ()
     local plugin_hls = {
         -- gitsigns.nvim
-        GitSignsAdd      = { fg = g.added, bg = e.bg_sign },
-        GitSignsChange   = { fg = g.modified, bg = e.bg_sign },
-        GitSignsDelete   = { fg = g.removed, bg = e.bg_sign },
-        GitSignsAddNr    = { fg = g.added, bg = e.bg_num },
+        GitSignsAdd      = { fg = g.added },
+        GitSignsChange   = { fg = g.modified },
+        GitSignsDelete   = { fg = g.removed },
+        GitSignsAddNr    = { fg = g.added },
         GitSignsAddLn    = { fg = g.added },
         GitSignsChangeNr = { fg = g.modified, bg =e.bg_num },
         GitSignsChangeLn = { fg = g.modified },
@@ -313,21 +335,25 @@ M.async_highlights.plugins = function ()
 
         -- nvim-cmp
         CmpItemAbbrMatch      = { fg = m.paleblue, bold = true },
-        CmpItemKindText       = { fg = e.title },
-        CmpItemKindMethod     = { fg = m.blue },
-        CmpItemKindFunction   = { fg = m.blue },
-        CmpItemKindContructor = { fg = m.purple },
+        CmpItemKindText       = { fg = s.comments },
+        CmpItemKindMethod     = { fg = s.fn },
+        CmpItemKindFunction   = { fg = s.fn },
+        CmpItemKindContructor = { fg = s.fn },
         CmpItemKindField      = { fg = m.cyan },
         CmpItemKindVariable   = { fg = m.paleblue },
-        CmpItemKindConstant   = { fg = m.paleblue },
-        CmpItemKindClass      = { fg = m.yellow },
-        CmpItemKindInterface  = { fg = m.yellow },
-        CmpItemKindModule     = { fg = m.red },
-        CmpItemKindProperty   = { fg = m.purple },
-        CmpItemKindKeyword    = { fg = m.cyan },
+        CmpItemKindConstant   = { fg = m.yellow },
+        CmpItemKindClass      = { fg = s.type },
+        CmpItemKindInterface  = { fg = s.type },
+        CmpItemKindModule     = { fg = m.orange },
+        CmpItemKindProperty   = { fg = s.text },
+        CmpItemKindKeyword    = { fg = s.keyword },
         CmpItemKindFile       = { fg = e.title },
         CmpItemKindFolder     = { fg = e.title },
-        CmpItemKindSnippet    = { fg = m.yellow },
+        CmpItemKindSnippet    = { fg = m.green },
+        CmpItemEnum           = { fg = s.type }, -- TODO
+        CmpItemEnumMember     = { fg = m.cyan }, -- TODO
+        CmpItemOperator       = { fg = s.operator }, -- TODO
+        CmpItemReference      = { fg = e.fg_alt }, -- TODO
 
         -- neogit
         NeogitBranch               = { fg = m.paleblue },
@@ -339,8 +365,8 @@ M.async_highlights.plugins = function ()
         NeogitDiffAddHighlight     = { fg = m.yellow },
 
         -- telescope.nvim
-        TelescopeNormal         = { fg = e.fg, bg = b.floating_windows },
-        TelescopePromptBorder   = { fg = e.border, bg = b.floating_windows },
+        TelescopeNormal         = { fg = e.fg, bg = b._windows },
+        TelescopePromptBorder   = { fg = e.border, bg = b._windows },
         TelescopeResultsBorder  = { link = "TelescopePromptBorder" },
         TelescopePreviewBorder  = { link = "TelescopePromptBorder" },
         TelescopeSelectionCaret = { fg = m.yellow, bg = e.selection },
@@ -372,7 +398,7 @@ M.async_highlights.plugins = function ()
         WhichKeyGroup     = { fg = m.gray },
         WhichKeyDesc      = { fg = e.fg, italic = true },
         WhichKeySeparator = { fg = m.red },
-        WhichKeyFloat     = { bg = b.floating_windows },
+        WhichKeyFloat     = { bg = b._windows },
 
         -- nvim-dap
         DapBreakpoint = { fg = m.red },
@@ -398,7 +424,7 @@ M.async_highlights.plugins = function ()
         illuminatedCurWord = { bg = colors.highight, underline = true },
 
         -- lspsaga.nvim
-        -- LspFloatWinNormal             = { fg = e.fg, bg = b.floating_windows },
+        -- LspFloatWinNormal             = { fg = e.fg, bg = b._windows },
         -- LspFloatWinBorder             = { link = "FloatBorder" },
         -- LspSagaDiagnosticBorder       = { link = "FloatBorder" },
         -- LspSagaDiagnosticHeader       = { fg = m.blue },

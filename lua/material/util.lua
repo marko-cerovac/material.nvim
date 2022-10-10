@@ -38,8 +38,8 @@ local prepare_environment = function()
 end
 
 ---give darker background to given filetypes or buftypes
----@param filetypes table names of filetypes to apply contrast to
-local apply_contrast = function(filetypes)
+---@param contrast_settings table names of filetypes to apply contrast to
+local apply_contrast = function(contrast_settings)
     local group = vim.api.nvim_create_augroup("Material", { clear = true })
 
     -- clean up autogroups if the theme is not material
@@ -49,19 +49,21 @@ local apply_contrast = function(filetypes)
         end
     end, group = group })
 
-    for _, sidebar in ipairs(filetypes) do
-        if sidebar == "terminal" then
-            vim.api.nvim_create_autocmd("TermOpen", {
-                command = "setlocal winhighlight=Normal:NormalContrast,SignColumn:NormalContrast",
-                group   = group,
-            })
-        else
-            vim.api.nvim_create_autocmd("FileType", {
-                pattern = sidebar,
-                command = "setlocal winhighlight=Normal:NormalContrast,SignColumn:SignColumnFloat",
-                group   = group,
-            })
-        end
+    -- apply contrast to the built-in terminal
+    if contrast_settings.terminal then
+        vim.api.nvim_create_autocmd("TermOpen", {
+            command = "setlocal winhighlight=Normal:NormalContrast,SignColumn:NormalContrast",
+            group   = group,
+        })
+    end
+
+    -- apply contrast to filetypes
+    for _, sidebar in ipairs(contrast_settings.filetypes) do
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = sidebar,
+            command = "setlocal winhighlight=Normal:NormalContrast,SignColumn:SignColumnFloat",
+            group   = group,
+        })
     end
 end
 
@@ -85,8 +87,8 @@ local load_async = function()
         apply_highlights(settings.cusom_highlights)
     end
 
-    -- apply contrast to user defined filetypes
-    apply_contrast(settings.contrast.filetypes)
+    -- apply contrast to the terminal and user defined filetypes
+    apply_contrast(settings.contrast)
 
     -- if this function gets called asyncronously, this closure is needed
     if (async) then
