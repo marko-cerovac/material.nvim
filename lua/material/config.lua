@@ -2,7 +2,6 @@ local M = {}
 
 ---theme settings
 local defaults = {
-    use_treesitter = true,
     contrast = {
         terminal = false,
         sidebars = false,

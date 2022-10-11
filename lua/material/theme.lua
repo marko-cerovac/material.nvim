@@ -24,154 +24,120 @@ M.main_highlights = {}
 ---async highlight functions
 M.async_highlights = {}
 
+---regular Vim syntax highlights
+M.main_highlights.syntax = function ()
+    local syntax_hls = {
+        Comment        = { fg = s.comments },
+        Conditional    = { fg = s.keyword },
+        Function       = { fg = s.fn },
+        Identifier     = { fg = e.fg },
+        Keyword        = { fg = s.keyword },
+        Repeat         = { fg = s.keyword },
+        String         = { fg = s.string },
+        Type           = { fg = s.type },
+        StorageClass   = { fg = m.cyan }, -- static, register, volatile, etc.
+        Structure      = { fg = s.type },
+        SpecialComment = { link = "Comment" }, -- special things inside a comment
+        Constant       = { fg = m.yellow },
+        Number         = { fg = s.value },
+        Character      = { link = "Number" },
+        Boolean        = { link = "Number" },
+        Float          = { link = "Number" },
+        Statement      = { fg = m.cyan },
+        Label          = { fg = s.keyword }, -- case, default, etc.
+        Operator       = { fg = s.operator },
+        Exception      = { fg = m.red },
+        Macro          = { fg = m.cyan },
+        Include        = { link = "Macro" },
+        -- Define         = { link = "Macro" },
+        PreProc     = { link = "Macro" },
+        -- PreCondit   = { link = "Macro" },
+        -- Typedef        = { link = "Operator" },
+        Special        = { fg = m.red },
+        SpecialChar    = { fg = e.disabled },
+        Tag            = { fg = m.red },
+        Delimiter      = { fg = s.operator }, -- ;
+        Debug          = { fg = m.red },
+        htmlLink       = { fg = e.link, underline = true },
+        -- htmlH1         = { fg = m.cyan, bold = true },
+        -- htmlH2         = { fg = m.red, bold = true },
+        -- htmlH3         = { fg = m.green, bold = true },
+    }
 
-if settings.use_treesitter then
+    -- apply the user set styles for these groups
+    apply_user_styles(syntax_hls.Comment, styles.comments)
+    apply_user_styles(syntax_hls.Conditional, styles.keywords)
+    apply_user_styles(syntax_hls.Function, styles.functions)
+    apply_user_styles(syntax_hls.Identifier, styles.variables)
+    apply_user_styles(syntax_hls.Keyword, styles.keywords)
+    apply_user_styles(syntax_hls.Repeat, styles.keywords)
+    apply_user_styles(syntax_hls.String, styles.strings)
+    apply_user_styles(syntax_hls.Type, styles.types)
 
-    ---treesitter highlights
-    M.main_highlights.treesitter = function ()
-        local treesitter_hls = {
-            -- TSComment            = { link = "Comment" },
-            -- TSConditional        = { link = "Keyword" },
-            -- TSFunction           = { link = "Function" },
-            -- TSFuncBuiltin        = { link = "Function" },
-            -- TSBoolean            = { link = "Boolean" },
-            -- TSCharacter          = { link = "Character" },
-            -- TSConstant           = { link = "Constant" },
-            -- TSKeyword            = { link = "Statement" },
-            -- TSKeywordFunction    = { link = "Statement" },
-            -- TSMethod             = { link = "Function" },
-            -- TSRepeat             = { link = "Keyword" },
-            -- TSString             = { link = "String" },
-            -- TSVariable           = { link = "Identifier" },
-            -- TSVariableBuiltin    = { link = "Identifier" },
-            TSComment            = { fg = s.comments },
-            TSConditional        = { fg = s.keyword },
-            TSFunction           = { fg = s.fn },
-            TSMethod             = { link = "TSFunction" },
-            TSConstructor        = { link = "TSFunction" },
-            TSFuncMacro          = { link = "TSFunction" },
-            TSFuncBuiltin        = { fg = s.fn },
-            TSNumber             = { fg = s.value },
-            TSBoolean            = { link = "TSNumber" },
-            TSCharacter          = { link = "TSNumber" },
-            TSFloat              = { link = "TSNumber" },
-            TSConstBuiltin       = { link = "TSNumber" },
-            TSConstMacro         = { link = "TSNumber" },
-            TSConstant           = { fg = m.yellow },
-            TSKeyword            = { fg = m.cyan },
-            TSKeywordFunction    = { fg = m.cyan },
-            TSKeywordOperator    = { fg = m.purple },
-            TSKeywordReturn      = { fg = m.cyan },
-            TSRepeat             = { fg = s.keyword },
-            TSString             = { fg = s.string },
-            TSVariable           = { fg = e.fg },
-            TSVariableBuiltin    = { link = "TSVariable" },
-            TSAttribute          = { fg = m.yellow },
-            TSError              = { fg = l.error },
-            TSException          = { fg = m.red },
-            TSField              = { fg = e.fg },
-            TSInclude            = { fg = m.cyan },
-            TSLabel              = { fg = m.red },
-            TSNamespace          = { fg = m.yellow },
-            TSOperator           = { fg = s.operator },
-            TSParameter          = { fg = m.paleblue },
-            TSParameterReference = { fg = m.paleblue },
-            TSProperty           = { fg = m.gray },
-            TSPunctDelimiter     = { fg = m.cyan }, -- TODO change color
-            TSPunctBracket       = { fg = m.cyan },
-            TSPunctSpecial       = { fg = m.cyan }, -- TODO update color
-            TSStringRegex        = { fg = m.yellow },
-            TSStringEscape       = { fg = e.fg_alt },
-            TSSymbol             = { fg = m.yellow },
-            TSStrong             = { fg = m.paleblue, bold = true },
-            TSType               = { fg = s.type },
-            TSTypeBuiltin        = { link = "TSType" },
-            TSTag                = { fg = m.red },
-            TSTagDelimiter       = { fg = m.cyan },
-            TSTagAttribute       = { fg = m.gray },
-            TSText               = { fg = e.fg },
-            TSTextReference      = { fg = m.yellow },
-            TSEmphasis           = { fg = m.paleblue },
-            TSUnderline          = { fg = e.fg, underline = true },
-            TSDebug              = { fg = m.red },
-            -- TSStrike          = { fg = e.fg,, strikethrough = true},
-            TSTitle              = { fg = e.title, bold = true },
-            TSLiteral            = { fg = e.fg },
-            TSURI                = { fg = e.link },
-            TSMath               = { fg = m.blue },
-            TSDanger             = { fg = l.error },
-            --TSNone             = { },
-        }
-
-        -- apply the user set styles for these groups
-        apply_user_styles(treesitter_hls.TSComment, styles.comments)
-        apply_user_styles(treesitter_hls.TSConditional, styles.keywords)
-        apply_user_styles(treesitter_hls.TSFunction, styles.functions)
-        apply_user_styles(treesitter_hls.TSFuncBuiltin, styles.functions)
-        apply_user_styles(treesitter_hls.TSRepeat, styles.keywords)
-        apply_user_styles(treesitter_hls.TSString, styles.strings)
-        apply_user_styles(treesitter_hls.TSVariable, styles.variables)
-        apply_user_styles(treesitter_hls.TSType, styles.types)
-
-        return treesitter_hls
-    end
-
-else
-
-    ---regular Vim syntax highlights
-    M.main_highlights.syntax = function ()
-        local syntax_hls = {
-            Comment        = { fg = s.comments },
-            Conditional    = { fg = s.keyword },
-            Function       = { fg = s.fn },
-            Identifier     = { fg = e.fg },
-            Keyword        = { fg = s.keyword },
-            Repeat         = { fg = s.keyword },
-            String         = { fg = s.string },
-            Type           = { fg = s.type },
-            StorageClass   = { fg = m.cyan }, -- static, register, volatile, etc.
-            Structure      = { fg = s.type },
-            SpecialComment = { link = "Comment" }, -- special things inside a comment
-            Constant       = { fg = m.yellow },
-            Number         = { fg = s.value },
-            Character      = { link = "Number" },
-            Boolean        = { link = "Number" },
-            Float          = { link = "Number" },
-            Statement      = { fg = m.cyan },
-            Label          = { fg = s.keyword }, -- case, default, etc.
-            Operator       = { fg = s.operator },
-            Exception      = { fg = m.red },
-            Macro          = { fg = m.cyan },
-            Include        = { link = "Macro" },
-            Define         = { link = "Macro" },
-            -- PreProc     = { link = "Macro" },
-            -- PreCondit   = { link = "Macro" },
-            Typedef        = { link = "Operator" },
-            Special        = { fg = m.red },
-            SpecialChar    = { fg = e.disabled },
-            Tag            = { fg = m.red },
-            Delimiter      = { fg = s.operator }, -- ;
-            Debug          = { fg = m.red },
-            htmlLink       = { fg = e.link, underline = true },
-            htmlH1         = { fg = m.cyan, bold = true },
-            htmlH2         = { fg = m.red, bold = true },
-            htmlH3         = { fg = m.green, bold = true },
-        }
-
-        -- apply the user set styles for these groups
-        apply_user_styles(syntax_hls.Comment, styles.comments)
-        apply_user_styles(syntax_hls.Conditional, styles.keywords)
-        apply_user_styles(syntax_hls.Function, styles.functions)
-        apply_user_styles(syntax_hls.Identifier, styles.variables)
-        apply_user_styles(syntax_hls.Keyword, styles.keywords)
-        apply_user_styles(syntax_hls.Repeat, styles.keywords)
-        apply_user_styles(syntax_hls.String, styles.strings)
-        apply_user_styles(syntax_hls.Type, styles.types)
-
-        return syntax_hls
-    end
-
+    return syntax_hls
 end
+
+---treesitter highlights
+M.main_highlights.treesitter = function ()
+    local treesitter_hls = {
+        TSFuncBuiltin        = { link = "Function" },
+        TSKeywordFunction    = { link = "Statement" },
+        TSVariable           = { link = "Identifier" },
+        TSVariableBuiltin    = { link = "Identifier" },
+
+        TSConstructor        = { link = "TSFunction" },
+        TSFuncMacro          = { link = "TSFunction" },
+        TSConstMacro         = { link = "TSNumber" },
+        -- TSConstMacro         = { fg = m.cyan },
+        TSInclude            = { link = "Include" },
+        TSKeywordOperator    = { fg = m.purple },
+        TSCharacterSpecial   = { fg = e.disabled },
+        TSKeywordReturn      = { fg = m.cyan },
+        TSAttribute          = { fg = m.yellow },
+        TSError              = { fg = l.error },
+        TSException          = { fg = m.red },
+        -- TSField              = { fg = e.fg }, -- TODO give a new color
+        TSLabel              = { fg = m.red },
+        TSNamespace          = { fg = m.yellow },
+        TSOperator           = { fg = s.operator },
+        TSParameter          = { fg = m.paleblue },
+        -- TSParameterReference = { fg = m.paleblue },
+        TSProperty           = { fg = m.gray },
+        -- TSPunctDelimiter     = { fg = m.cyan }, -- TODO change color
+        -- TSPunctBracket       = { fg = m.cyan },
+        -- TSPunctSpecial       = { fg = m.cyan }, -- TODO update color
+        TSStringRegex        = { fg = m.yellow },
+        TSStringEscape       = { fg = e.fg_alt },
+        -- TSSymbol             = { fg = m.yellow },
+        TSStrong             = { fg = m.paleblue, bold = true },
+        TSTag                = { fg = m.red },
+        TSTagDelimiter       = { fg = m.cyan },
+        TSTagAttribute       = { fg = m.gray },
+        TSText               = { fg = e.fg },
+        TSTextReference      = { fg = m.yellow },
+        TSEmphasis           = { fg = m.paleblue },
+        TSUnderline          = { fg = e.fg, underline = true },
+        TSDebug              = { fg = m.red },
+        -- TSStrike          = { fg = e.fg,, strikethrough = true},
+        TSURI                = { fg = e.link },
+        TSMath               = { fg = m.blue },
+        TSDanger             = { fg = l.error },
+        --TSNone             = { },
+    }
+
+    -- apply the user set styles for these groups
+    -- apply_user_styles(treesitter_hls.TSComment, styles.comments)
+    -- apply_user_styles(treesitter_hls.TSConditional, styles.keywords)
+    -- apply_user_styles(treesitter_hls.TSFunction, styles.functions)
+    -- apply_user_styles(treesitter_hls.TSFuncBuiltin, styles.functions)
+    -- apply_user_styles(treesitter_hls.TSRepeat, styles.keywords)
+    -- apply_user_styles(treesitter_hls.TSString, styles.strings)
+    -- apply_user_styles(treesitter_hls.TSVariable, styles.variables)
+    -- apply_user_styles(treesitter_hls.TSType, styles.types)
+
+    return treesitter_hls
+end
+
 ---parts of the editor that get loaded right away
 M.main_highlights.editor = function ()
     local editor_hls = {
