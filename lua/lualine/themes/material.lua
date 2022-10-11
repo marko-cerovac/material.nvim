@@ -1,5 +1,5 @@
 local colors = require "material.colors"
-local config = require("material.config").settings
+local style = require "material.config".settings.lualine_style
 
 local m = colors.main
 local e = colors.editor
@@ -7,7 +7,7 @@ local s = colors.syntax
 
 local M = {}
 
-if config.lualine_style == "stealth" then
+if style == "stealth" then
 
     M.normal = {
         a = { fg = e.accent, bg = e.highlight },

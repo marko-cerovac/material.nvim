@@ -2,10 +2,7 @@ local settings = require('material.config').settings
 
 local M = {}
 
--- Define style_switch
-if vim.g.material_style_switch == nil then
-    vim.g.material_style_switch = 0
-end
+M.style_iterator = 0
 
 ---checks if the user uses lualine and then sets the lualine theme
 local set_lualine = function()

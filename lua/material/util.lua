@@ -13,9 +13,13 @@ end
 
 ---prepare environment
 local prepare_environment = function()
+    if vim.g.colors_name then
+        vim.cmd "hi clear"
+    end
+
     vim.g.colors_name     = "material"
     vim.opt.termguicolors = true
-    vim.cmd "hi clear"
+
 
     if vim.fn.exists "syntax_on" then
         vim.cmd "syntax reset"

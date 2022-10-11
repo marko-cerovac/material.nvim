@@ -152,10 +152,6 @@ else
             Tag            = { fg = m.red },
             Delimiter      = { fg = s.operator }, -- ;
             Debug          = { fg = m.red },
-            Ignore         = { fg = e.disabled },
-            Underlined     = { fg = e.links, underline = true },
-            Error          = { fg = l.error, bold = true },
-            Todo           = { fg = m.yellow, bold = true },
             htmlLink       = { fg = e.link, underline = true },
             htmlH1         = { fg = m.cyan, bold = true },
             htmlH2         = { fg = m.red, bold = true },
@@ -180,7 +176,7 @@ end
 M.main_highlights.editor = function ()
     local editor_hls = {
         Normal           = { fg = e.fg, bg = e.bg },
-        NormalFloat      = { fg = e.fg, bg = b._windows },
+        NormalFloat      = { fg = e.fg, bg = b.floating_windows },
         NormalContrast   = { fg = e.fg, bg = e.bg_alt }, -- a help group for contrast fileypes
         ColorColumn      = { fg = m.none, bg = e.active },
         Conceal          = { fg = e.disabled },
@@ -211,6 +207,10 @@ M.main_highlights.editor = function ()
         Whitespace       = { fg = e.disabled },
         CursorLine       = { fg = m.none, bg = b.cursor_line },
         CursorColumn     = { link = "CursorLine" },
+        Todo             = { fg = m.yellow, bold = true },
+        Ignore           = { fg = e.disabled },
+        Underlined       = { fg = e.links, underline = true },
+        Error            = { fg = l.error, bold = true },
     }
 
     return editor_hls
@@ -220,7 +220,7 @@ end
 M.async_highlights.editor = function ()
     local editor_hls = {
         NormalNC         = { bg = b.non_current_windows },
-        FloatBorder      = { fg = e.border, bg = b._windows },
+        FloatBorder      = { fg = e.border, bg = b.floating_windows },
         SpellBad         = { fg = m.red, italic = true, undercurl = true },
         SpellCap         = { fg = m.blue, italic = true, undercurl = true },
         SpellLocal       = { fg = m.cyan, italic = true, undercurl = true },
@@ -243,6 +243,8 @@ M.async_highlights.editor = function ()
         PmenuSbar        = { bg = e.active },
         PmenuThumb       = { fg = e.fg },
         WildMenu         = { fg = m.orange, bold = true }, -- current match in 'wildmenu' completion
+        VertSplit        = { fg = e.vsplit },
+        WinSeparator     = { fg = e.vsplit },
         -- ToolbarLine   = { fg = e.fg, bg = e.bg_alt },
         -- ToolbarButton = { fg = e.fg, bold = true },
         -- NormalMode       = { fg = e.disabled }, -- Normal mode message in the cmdline
@@ -261,28 +263,37 @@ M.async_highlights.editor = function ()
     return editor_hls
 end
 
+-- these should be loaded right away because
+-- some plugins like lualine.nvim inherit the colors
+M.main_highlights.load_lsp = function ()
+    local lsp_hls = {
+        DiagnosticError        = { fg = l.error },
+        DiagnosticWarn         = { fg = l.warning },
+        DiagnosticInformation  = { fg = l.info },
+        DiagnosticHint         = { fg = l.hint },
+    }
+
+    return lsp_hls
+end
+
 M.async_highlights.load_lsp = function ()
     local lsp_hls = {
         -- Nvim 0.6. and up
-        DiagnosticError            = { fg = l.error },
-        DiagnosticVirtualTextError = { fg = l.error },
-        DiagnosticFloatingError    = { fg = l.error },
-        DiagnosticSignError        = { fg = l.error },
+        DiagnosticVirtualTextError = { link = "DiagnosticError" },
+        DiagnosticFloatingError    = { link = "DiagnosticError" },
+        DiagnosticSignError        = { link = "DiagnosticError" },
         DiagnosticUnderlineError   = { undercurl = true, sp = l.error },
-        DiagnosticWarn             = { fg = l.warning },
-        DiagnosticVirtualTextWarn  = { fg = l.warning },
-        DiagnosticFloatingWarn     = { fg = l.warning },
-        DiagnosticSignWarn         = { fg = l.warning },
+        DiagnosticVirtualTextWarn  = { link = "DiagnosticWarn" },
+        DiagnosticFloatingWarn     = { link = "DiagnosticWarn" },
+        DiagnosticSignWarn         = { link = "DiagnosticWarn" },
         DiagnosticUnderlineWarn    = { undercurl = true, sp = l.warning },
-        DiagnosticInformation      = { fg = l.info },
-        DiagnosticVirtualTextInfo  = { fg = l.info },
-        DiagnosticFloatingInfo     = { fg = l.info },
-        DiagnosticSignInfo         = { fg = l.info },
+        DiagnosticVirtualTextInfo  = { link = "DiagnosticInfo" },
+        DiagnosticFloatingInfo     = { link = "DiagnosticInfo" },
+        DiagnosticSignInfo         = { link = "DiagnosticInfo" },
         DiagnosticUnderlineInfo    = { undercurl = true, sp = l.info },
-        DiagnosticHint             = { fg = l.hint },
-        DiagnosticVirtualTextHint  = { fg = l.hint },
-        DiagnosticFloatingHint     = { fg = l.hint },
-        DiagnosticSignHint         = { fg = l.hint },
+        DiagnosticVirtualTextHint  = { link = "DiagnosticHint" },
+        DiagnosticFloatingHint     = { link = "DiagnosticHint" },
+        DiagnosticSignHint         = { link = "DiagnosticHint" },
         DiagnosticUnderlineHint    = { undercurl = true, sp = l.hint },
         LspReferenceText           = { bg = e.selection }, -- used for highlighting "text" references
         LspReferenceRead           = { link = "LspReferenceText" }, -- used for highlighting "read" references
@@ -368,12 +379,12 @@ M.async_highlights.plugins = function ()
         NeogitDiffAddHighlight     = { fg = m.yellow },
 
         -- telescope.nvim
-        TelescopeNormal         = { fg = e.fg, bg = b._windows },
-        TelescopePromptBorder   = { fg = e.border, bg = b._windows },
+        TelescopeNormal         = { fg = e.fg, bg = b.floating_windows },
+        TelescopePromptBorder   = { fg = e.border, bg = b.floating_windows },
         TelescopeResultsBorder  = { link = "TelescopePromptBorder" },
         TelescopePreviewBorder  = { link = "TelescopePromptBorder" },
-        TelescopeSelectionCaret = { fg = m.yellow, bg = e.selection },
-        TelescopeSelection      = { fg = m.yellow, bg = e.selection },
+        TelescopeSelectionCaret = { fg = m.green, bg = e.selection },
+        TelescopeSelection      = { fg = m.green, bg = e.selection },
         TelescopeMultiSelection = { fg = m.yellow },
         TelescopeMatching       = { bold = true },
 
@@ -401,7 +412,7 @@ M.async_highlights.plugins = function ()
         WhichKeyGroup     = { fg = m.gray },
         WhichKeyDesc      = { fg = e.fg, italic = true },
         WhichKeySeparator = { fg = m.red },
-        WhichKeyFloat     = { bg = b._windows },
+        WhichKeyFloat     = { bg = b.floating_windows },
 
         -- nvim-dap
         DapBreakpoint = { fg = m.red },
@@ -427,7 +438,7 @@ M.async_highlights.plugins = function ()
         illuminatedCurWord = { bg = colors.highight, underline = true },
 
         -- lspsaga.nvim
-        -- LspFloatWinNormal             = { fg = e.fg, bg = b._windows },
+        -- LspFloatWinNormal             = { fg = e.fg, bg = b.floating_windows },
         -- LspFloatWinBorder             = { link = "FloatBorder" },
         -- LspSagaDiagnosticBorder       = { link = "FloatBorder" },
         -- LspSagaDiagnosticHeader       = { fg = m.blue },
