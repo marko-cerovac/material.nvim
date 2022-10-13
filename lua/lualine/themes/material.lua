@@ -1,5 +1,5 @@
 local colors = require "material.colors"
-local style = require "material.config".settings.lualine_style
+local style = require "material.util.config".settings.lualine_style
 
 local m = colors.main
 local e = colors.editor

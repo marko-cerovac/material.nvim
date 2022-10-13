@@ -15,4 +15,4 @@
 -- Author:                  Marko Cerovac -> marko.cerovac16@gmail.com
 -- Website:                 https://github.com/marko-cerovac/material.nvim
 
-return { setup = require("material.config").setup }
+return { setup = require "material.util.config".setup }

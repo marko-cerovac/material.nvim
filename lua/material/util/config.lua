@@ -5,8 +5,8 @@ local defaults = {
     contrast = {
         terminal = false,
         sidebars = false,
-        floating_windows = false,
         cursor_line = false,
+        floating_windows = false,
         non_current_windows = false,
         filetypes = {}
     },
@@ -33,6 +33,7 @@ local defaults = {
     lualine_style = "default",
     custom_colors = nil,
     custom_highlights = {},
+    plugins = {},
     async_loading = true,
 }
 

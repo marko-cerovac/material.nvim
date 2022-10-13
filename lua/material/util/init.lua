@@ -1,13 +1,13 @@
-local theme    = require "material.theme"
-local settings = require "material.config".settings
+local highlights = require "material.highlights"
+local settings   = require "material.util..config".settings
 
 local M = {}
 
 ---apply highlights for a given table
 ---@param highlights table highlight group names and their values
 local apply_highlights = function(highlights)
-    for group, values in pairs(highlights) do
-        vim.api.nvim_set_hl(0, group, values)
+    for name, values in pairs(highlights) do
+        vim.api.nvim_set_hl(0, name, values)
     end
 end
 
@@ -76,14 +76,14 @@ local async
 
 ---loads highlights asynchronously
 local load_async = function()
-    for _, fn in pairs(theme.async_highlights) do
+    for _, fn in pairs(highlights.async_highlights) do
         -- fn() returns a table of highlights to be applied
         apply_highlights(fn())
     end
 
     -- load terminal colors
     if not settings.disable.term_colors then
-        theme.load_terminal();
+        highlights.load_terminal();
     end
 
     -- load user defined higlights
@@ -112,7 +112,7 @@ M.load = function()
     end
 
     -- apply highlights one by one
-    for _, fn in pairs(theme.main_highlights) do
+    for _, fn in pairs(highlights.main_highlights) do
         -- fn() returns a table of highlights to be applied
         apply_highlights(fn())
     end

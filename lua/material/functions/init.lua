@@ -1,4 +1,4 @@
-local settings = require('material.config').settings
+local settings = require "material.util.config".settings
 
 local M = {}
 
@@ -53,7 +53,7 @@ end
 
 ---use telescope to change the style
 M.find_style = function()
-    require("material.telescope_styles").find()
+    require("material.functions.telescope_styles").find()
 end
 
 return M

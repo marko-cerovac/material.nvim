@@ -1,5 +1,5 @@
 local colors   = require "material.colors"
-local settings = require "material.config".settings
+local settings = require "material.util.config".settings
 local disabled = settings.disable
 
 -- disable the background
@@ -21,7 +21,12 @@ for k, v in pairs(settings.contrast) do
     end
 end
 
+-- fix the cursorline color
+if not settings.contrast.cursor_line then
+    colors.backgrounds.cursor_line = colors.editor.active
+end
+
 -- apply user defined colors
 if type(settings.custom_colors) == "function" then
-    settings.override_colors(colors)
+    colors = settings.override_colors(colors)
 end

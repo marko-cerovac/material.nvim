@@ -1,4 +1,4 @@
-local settings = require "material.config".settings
+local high_visibility = require "material.util.config".settings.high_visibility
 
 ---colots table
 local colors = {
@@ -68,13 +68,12 @@ colors.backgrounds = {
     cursor_line         = colors.editor.active,
 }
 
-
 -- Style specific colors
 
 if vim.g.material_style == "darker" then
     -- Darker theme style
 
-    if settings.high_visibility.darker == true then
+    if high_visibility.darker == true then
         -- Darker theme style with high contrast
         colors.editor.line_numbers = "#5C5C5C"
         colors.syntax.comments     = "#757575"
@@ -100,7 +99,7 @@ if vim.g.material_style == "darker" then
 elseif vim.g.material_style == "lighter" then
     -- Lighter theme style
 
-    if settings.high_visibility.lighter == true then
+    if high_visibility.lighter == true then
 
         -- Lighter theme style with high contrast
         colors.editor.fg           = "#213B47" -- 20% darkened
@@ -202,7 +201,7 @@ else vim.g.material_style = "oceanic"
     colors.editor.selection    = "#395B65"
     colors.editor.border       = "#355058"
     colors.editor.line_numbers = "#426367"
-    colors.editor.highlight      = "#354A51"-- highlight
+    colors.editor.highlight    = "#354A51"-- highlight
     colors.editor.disabled     = "#3E5F64"
     colors.editor.accent       = "#11bba3"
     colors.editor.contrast     = "#1E272C"
@@ -210,8 +209,5 @@ else vim.g.material_style = "oceanic"
     colors.syntax.comments     = "#546E7A"
 
 end
-
--- apply conditional colors
--- require "material.conditionals"
 
 return colors
