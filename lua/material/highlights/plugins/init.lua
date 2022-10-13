@@ -10,12 +10,17 @@ M.async_highlights = {}
 
 for plugin, is_enabled in pairs(enabled_plugins) do
     if is_enabled then
-        local plugin_table = require("material.highlights.plugins." .. plugin)
+        local ok, table = pcall(require, "material.highlights.plugins." .. plugin)
 
-        if plugin_table.async then
-            M.async_highlights[plugin] = plugin_table.load
+        if not ok then
+            vim.notify("material.nvim: plugin " .. plugin .. " doesn't exist", vim.log.levels.WARN)
+            vim.notify("material.nvim: please check your config for spelling errors", vim.log.levels.WARN)
         else
-            M.main_highlights[plugin] = plugin_table.load
+            if table.async then
+                M.async_highlights[plugin] = table.load
+            else
+                M.main_highlights[plugin] = table.load
+            end
         end
     end
 end

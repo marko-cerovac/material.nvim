@@ -95,7 +95,9 @@ M.main_highlights.treesitter = function()
         TSFuncMacro        = { link = "TSFunction" },
         TSConstMacro       = { link = "TSNumber" },
         -- TSConstMacro         = { fg = m.cyan },
-        TSInclude          = { link = "Include" },
+        TSInclude          = { link = "Macro" },
+        TSDefine           = { link = "Macro" },
+        TSPreProc          = { link = "Macro" },
         TSKeyword          = { fg = m.cyan },
         TSKeywordOperator  = { fg = m.purple },
         TSKeywordReturn    = { fg = m.cyan },
@@ -115,6 +117,7 @@ M.main_highlights.treesitter = function()
         -- TSPunctSpecial       = { fg = m.cyan }, -- TODO update color
         TSStringRegex      = { fg = m.yellow },
         TSStringEscape     = { fg = e.fg_alt },
+        TSStorageClass     = { link = "StorageClass" },
         -- TSSymbol             = { fg = m.yellow },
         TSStrong           = { fg = m.paleblue, bold = true },
         TSTag              = { fg = m.red },

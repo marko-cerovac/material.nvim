@@ -1,14 +1,20 @@
 # TODO
 
-    -[ ] update treesitter colors
-         idea: define slightly lighter purple for user defined classes and types, and use the regular purple for built-in types
+## color improvements
 
-    -[ ] add a second treesitter color for TSField and a third for function parameters
+- [ ] update treesitter colors
+     idea: define slightly lighter purple for user defined classes and types, and use the regular purple for built-in types
 
-    -[x] update cmp colors to match built in syntax colors
+- [ ] add a second treesitter color for TSField and a third for function parameters
 
-    -[x] check which built-in editor highlights are not needed
+- [ ] add special background for LspReferenceText
 
-    -[ ] add special background for LspReferenceText
+## highlight improvements
 
-    -[ ] add sepparate modules for plugins
+- [x] update cmp colors to match built in syntax colors
+
+- [x] check which built-in editor highlights are not needed
+
+## plugin improvements
+
+- [x] add sepparate modules for plugins
