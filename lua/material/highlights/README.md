@@ -1,6 +1,6 @@
 # Highlights module
 
-This module is used for applying highlights to all groups that the theme supports
+This module is used for applying highlights to all groups that are supported by the theme.
 Built-in editor highlights get applied in the init.lua module (as well as treesitter and lsp highlights).
 Plugin highlights get applied in the plugins submodule.
 
