@@ -10,7 +10,10 @@ M.async_highlights = {}
 
 for plugin, is_enabled in pairs(enabled_plugins) do
     if is_enabled then
-        local ok, table = pcall(require, "material.highlights.plugins." .. plugin)
+        local module = "material.highlights.plugins." .. plugin
+        -- if the module is already loaded, reload it
+        package.loaded[module] = nil
+        local ok, table = pcall(require, module)
 
         if not ok then
             vim.notify("material.nvim: plugin " .. plugin .. " doesn't exist", vim.log.levels.WARN)

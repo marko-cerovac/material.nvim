@@ -2,8 +2,7 @@
 
 ## color improvements
 
-- [ ] update treesitter colors
-     idea: define slightly lighter purple for user defined classes and types, and use the regular purple for built-in types
+- [ ] update treesitter colors to differentiate built-in types, and user defined types
 
 - [ ] add a second treesitter color for TSField and a third for function parameters
 
@@ -17,4 +16,4 @@
 
 ## plugin improvements
 
-- [x] add sepparate modules for plugins
+- [x] add a submodule system for plugins

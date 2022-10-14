@@ -1,5 +1,5 @@
 local highlights = require "material.highlights"
-local settings   = require "material.util..config".settings
+local settings   = require "material.util.config".settings
 
 local M = {}
 

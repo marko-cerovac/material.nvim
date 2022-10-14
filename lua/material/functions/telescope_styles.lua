@@ -22,6 +22,7 @@ local center_prompt = {
 local function enter(prompt_bufnr)
 	local selected = action_state.get_selected_entry()
 	vim.g.material_style = selected[1]
+    require"material.util".clear_theme()
 	vim.cmd "colorscheme material"
 	actions.close(prompt_bufnr)
 end
