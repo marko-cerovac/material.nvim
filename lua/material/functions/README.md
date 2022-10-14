@@ -1,8 +1,7 @@
 # Functions module
 
-This module is home to some usefull functions that the user might call
+This module is home to some usefull functions that the user might call.
 
-files:
 ## init.lua
  Exposes the following functions to the user:
  + change_style(desired_style: string)
@@ -11,5 +10,5 @@ files:
  + find_style()
 
  ## telesscope_styles.lua
- Used for the **find_style() function.
+ Used for the **find_style()** function.
  Defines the telescope prompt for switching styles.
