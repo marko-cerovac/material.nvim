@@ -28,5 +28,5 @@ end
 
 -- apply user defined colors
 if type(settings.custom_colors) == "function" then
-    colors = settings.override_colors(colors)
+    settings.custom_colors(colors)
 end
