@@ -1,8 +1,10 @@
 # Plugins module
 
 This module contains various plugins that the theme supprts.
-Every plugin is located in a file that has the same name as the plugin.
-(for example nvim-cmp.lua or telescope.lua)
+Every plugin is located in a file that has the same name as the plugin
+(for example nvim-cmp.lua or telescope.lua).
+
+
 Those files are modules that return a table. 
 Each table consists of two items:
 + **load()** function
