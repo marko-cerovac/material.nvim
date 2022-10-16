@@ -50,7 +50,7 @@ M.main_highlights.syntax = function()
         -- PreProc        = { link = "Macro" },
         -- PreCondit   = { link = "Macro" },
         -- Typedef        = { link = "Operator" },
-        Special        = { fg = m.red },
+        Special        = { fg = m.cyan },
         SpecialChar    = { fg = e.disabled },
         Tag            = { fg = m.red },
         Delimiter      = { fg = s.operator }, -- ;
@@ -79,13 +79,13 @@ end
 ---treesitter highlights
 M.main_highlights.treesitter = function()
     local treesitter_hls = {
-        --[[ TSComment            = { link = "Comment" },
-        TSConditional        = { link = "Conditional" },
-        TSFunction           = { link = "Function" },
-        TSRepeat             = { link = "Repeat" },
-        TSString             = { link = "String" },
-        TSVariable           = { link = "Identifier" },
-        TSType               = { link = "Type" }, ]]
+        -- TSComment            = { link = "Comment" },
+        -- TSConditional        = { link = "Conditional" },
+        -- TSFunction           = { link = "Function" },
+        -- TSRepeat             = { link = "Repeat" },
+        -- TSString             = { link = "String" },
+        -- TSVariable           = { link = "Identifier" },
+        -- TSType               = { link = "Type" },
 
         TSFuncBuiltin     = { link = "Function" },
         TSKeywordFunction = { link = "Statement" },
@@ -93,7 +93,7 @@ M.main_highlights.treesitter = function()
 
         TSConstructor      = { link = "TSFunction" },
         TSFuncMacro        = { link = "TSFunction" },
-        TSConstMacro         = { link = "Macro" },
+        TSConstMacro       = { link = "Macro" },
         TSInclude          = { link = "Macro" },
         -- TSDefine           = { link = "Macro" },
         TSPreProc          = { link = "Macro" },

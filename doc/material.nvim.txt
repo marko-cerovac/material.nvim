@@ -142,25 +142,21 @@ This is an example of the setup function with the default values:
 
     require('material').setup({
         contrast = {
+            terminal = false,
             sidebars = false,
-            floating_windows = false,
-            line_numbers = false,
-            sign_column = false,
             cursor_line = false,
+            floating_windows = false,
             non_current_windows = false,
-            popup_menu = false
+            filetypes = {}
         },
-        italics = {
-            comments = false,
-            strings = false,
-            keywords = false,
-            functions = false,
-            variables = false
-        },
-        contrast_filetypes = {},
-        high_visibility = {
-            lighter = false,
-            darker = false
+        styles = {
+            comments = {},
+            strings = {},
+            keywords = {},
+            functions = {},
+            variables = {},
+            operators = {},
+            types = {},
         },
         disable = {
             colored_cursor = false,
@@ -168,54 +164,36 @@ This is an example of the setup function with the default values:
             background = false,
             term_colors = false,
             eob_lines = false
-        }
-        lualine_style = 'default',
-        async_loading = true,
+        },
+        high_visibility = {
+            lighter = false,
+            darker = false,
+        },
+        lualine_style = "default",
+        custom_colors = nil,
         custom_highlights = {},
-        plugins = {
-            trouble = true,
-            nvim_cmp = true,
-            neogit = true,
-            gitsigns = true,
-            git_gutter = true,
-            telescope = true,
-            nvim_tree = true,
-            sidebar_nvim = true,
-            lsp_saga = true,
-            nvim_dap = true,
-            nvim_navic = true,
-            which_key = true,
-            sneak = true,
-            hop = true,
-            indent_blankline = true,
-            nvim_illuminate = true,
-            mini = true,
-        }
+        plugins = {},
+        async_loading = true,
     })
 
     + contrast {table}
-          Make sidebars (like nvim-tree), floating windows, line numbers,
-          sign column, popup menu, cursor line and non current windows have
-          a different background. Varable names are: - sidebars
-                                                     - floating_windows
-                                                     - line_numbers
-                                                     - sign_column
-                                                     - cursor_line
-                                                     - non_current_windows
-                                                     - popup_menu
+          Make sidebars (like nvim-tree or troubl.nvim), floating windows,
+          terminal, cursor line, non current windows
+          or specific filetypes have a different background.
+          Varable names are: - sidebars
+                             - floating_windows
+                             - cursor_line
+                             - non_current_windows
+                             - filetype
         These can be set to true or false
 
-    + italics  {table}
-          Select which code objects are italic: -comments
-                                                -strings
-                                                -keywords
-                                                -functions
-                                                -variables
+    + style  {table}
+          Apply styles to syntax objects: -comments
+                                          -strings
+                                          -keywords
+                                          -functions
+                                          -variables
          Set the desired value to true to make it italic
-
-    + contrast_filetypes  {table}
-          Pass in filetype names of windows to make their background darker (contrasted)
-          example: "terminal", "qf", "packer" ...
 
     + high_visibility  {table}
           Set the darker or lighter variable to true in this table to give
@@ -229,7 +207,7 @@ This is an example of the setup function with the default values:
     + lualine_style {string}
           Choose between two styles for lualine. can be "default" or "stealth"
 
-    + async_loading {bool}
+    + async_loading  {bool}
           Load parts of the theme asyncronously for faster startup
           (turned on by default)
     
@@ -237,9 +215,11 @@ This is an example of the setup function with the default values:
           If you want to change or set a certain highlight group to a value,
           you can pass the group name and the color values in this table
 
+    + custom_colors  {function}
+          If you want to change some built-in colors, do in this function
+
     + plugins  {table}
-          If you don't use a specific plugin, or don't want the theme to set
-          the highlights for it, you can disable it in this table.
+          To apply the theme to a plugin, set it in this table
 
 ================================================================================
 5. Examples                                         *material-examples*

@@ -2,8 +2,6 @@ local settings = require "material.util.config".settings
 
 local M = {}
 
-M.style_iterator = 0
-
 ---checks if the user uses lualine and then sets the lualine theme
 local set_lualine = function()
     local has_lualine, lualine = pcall(require, "lualine")
@@ -27,6 +25,9 @@ end
 
 ---toggle between styles
 M.toggle_style = function()
+    if vim.g.material_style_iterator == nil then
+        vim.g.material_style_iterator = 0
+    end
     local styles = {
         "darker",
         "lighter",
@@ -34,8 +35,8 @@ M.toggle_style = function()
         "oceanic",
         "deep ocean"
     }
-    M.style_iterator = (M.style_iterator % (#styles)) + 1
-    M.change_style(styles[M.style_iterator])
+    vim.g.material_style_iterator = (vim.g.material_style_iterator % (#styles)) + 1
+    M.change_style(styles[vim.g.material_style_iterator])
 end
 
 ---toggle the end-of-buffer lines (~)
