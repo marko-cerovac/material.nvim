@@ -1,9 +1,12 @@
-local actions = require "telescope.actions"
+local pickers      = require "telescope.pickers"
+local finders      = require "telescope.finders"
+local sorters      = require "telescope.sorters"
+local actions      = require "telescope.actions"
 local action_state = require "telescope.actions.state"
-local pickers = require "telescope.pickers"
-local finders = require "telescope.finders"
-local sorters = require "telescope.sorters"
 
+local M = {}
+
+---table that defines the look and layout of the prompt
 local center_prompt = {
 	layout_strategy = "vertical",
 	layout_config = {
@@ -14,13 +17,17 @@ local center_prompt = {
 	sorting_strategy = "ascending",
 }
 
+---takes the current entry and switches to that style
+---@param prompt_bufnr number buffer number of the prompt
 local function enter(prompt_bufnr)
 	local selected = action_state.get_selected_entry()
 	vim.g.material_style = selected[1]
+    require"material.util".clear_theme()
 	vim.cmd "colorscheme material"
 	actions.close(prompt_bufnr)
 end
 
+---options to call telescope with
 local opts = {
 	finder = finders.new_table {
 		"darker",
@@ -40,9 +47,10 @@ local opts = {
 	end
 }
 
-local find = function ()
+---find styles using telesope
+M.find = function ()
 	local colors = pickers.new(center_prompt, opts)
 	colors:find()
 end
 
-return {find = find}
+return M

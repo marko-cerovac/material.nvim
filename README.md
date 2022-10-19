@@ -93,10 +93,6 @@ added to NeoVim like built-in [LSP](https://github.com/neovim/nvim-lspconfig) an
 ## ⚓ Installation
 
 Install via your favourite package manager:
-```vim
-" If you are using Vim-Plug
-Plug 'marko-cerovac/material.nvim'
-```
 
 ```lua
 -- If you are using Packer
@@ -106,10 +102,6 @@ use 'marko-cerovac/material.nvim'
 ## 🐬 Usage
 
 Enable the colorscheme:
-```vim
-"Vim-Script:
-colorscheme material
-```
 
 ```lua
 --Lua:
@@ -129,10 +121,6 @@ For a comlete guide on usage and configuration of the theme, see ```:help materi
     + deep ocean
 
 Set the desired style using:
-```vim
-"Vim-Script:
-let g:material_style = "darker"
-```
 
 ```lua
 --Lua:
@@ -140,41 +128,47 @@ vim.g.material_style = "deep ocean"
 ```
 
 The configuration of different options is done trough a setup function
-```vim
-lua << EOF
-require('material').setup()
-EOF
-```
 
 This is an example of the function with the default values
 ```lua
 require('material').setup({
 
     contrast = {
+        terminal = false, -- Enable contrast for the built-in terminal
         sidebars = false, -- Enable contrast for sidebar-like windows ( for example Nvim-Tree )
         floating_windows = false, -- Enable contrast for floating windows
         cursor_line = false, -- Enable darker background for the cursor line
         non_current_windows = false, -- Enable darker background for non-current windows
-        popup_menu = false, -- Enable lighter background for the popup menu
+        filetypes = {}, -- Specify which filetypes get the contrasted (darker) background
     },
 
-    italics = {
-        comments = false, -- Enable italic comments
-        keywords = false, -- Enable italic keywords
-        functions = false, -- Enable italic functions
-        strings = false, -- Enable italic strings
-        variables = false -- Enable italic variables
-    },
+    styles = { -- Give comments style such as bold, italic, underline etc.
+        comments = { --[[ italic = true ]] },
+        strings = { --[[ bold = true ]] },
+        keywords = { --[[ underline = true ]] },
+        functions = { --[[ bold = true, undercurl = true ]] },
+        variables = {},
+        operators = {},
+        types = {},
+    }
 
-    contrast_filetypes = { -- Specify which filetypes get the contrasted (darker) background
-        "terminal", -- Darker terminal background
-        "packer", -- Darker packer background
-        "qf" -- Darker qf list background
-    },
-
-    high_visibility = {
-        lighter = false, -- Enable higher contrast text for lighter style
-        darker = false -- Enable higher contrast text for darker style
+    plugins = { -- Uncomment the plugins that you use to highlight them
+        -- Available plugins:
+        -- "dap",
+        -- "dashboard",
+        -- "gitsigns",
+        -- "hop",
+        -- "indent-blankline",
+        -- "lspsaga",
+        -- "mini",
+        -- "neogit",
+        -- "nvim-cmp",
+        -- "nvim-navic",
+        -- "nvim-tree",
+        -- "sneak",
+        -- "telescope",
+        -- "trouble",
+        -- "which-key",
     },
 
     disable = {
@@ -185,50 +179,35 @@ require('material').setup({
         eob_lines = false -- Hide the end-of-buffer lines
     },
 
+    high_visibility = {
+        lighter = false, -- Enable higher contrast text for lighter style
+        darker = false -- Enable higher contrast text for darker style
+    },
+
     lualine_style = "default", -- Lualine style ( can be 'stealth' or 'default' )
 
     async_loading = true, -- Load parts of the theme asyncronously for faster startup (turned on by default)
 
-    custom_highlights = {}, -- Overwrite highlights with your own
+    custom_colors = nil, -- If you want to everride the default colors, set this to a function
 
-    plugins = { -- Here, you can disable(set to false) plugins that you don't use or don't want to apply the theme to
-        trouble = true,
-        nvim_cmp = true,
-        neogit = true,
-        gitsigns = true,
-        git_gutter = true,
-        telescope = true,
-        nvim_tree = true,
-        sidebar_nvim = true,
-        lsp_saga = true,
-        nvim_dap = true,
-        nvim_navic = true,
-        which_key = true,
-        sneak = true,
-        hop = true,
-        indent_blankline = true,
-        nvim_illuminate = true,
-        mini = true,
-    }
+    custom_highlights = {}, -- Overwrite highlights with your own
 })
 ```
 
 After passing the configuration to a setup function, make sure to enable the colorscheme:
-
-```vim
-colorscheme material
-```
-
 ```lua
 vim.cmd 'colorscheme material'
 ```
 
-This is an example of overwriting the default highlights (most users will never need to do this)
+This is an example of overwriting the default highlights and colors (most users will never need to do this)
 ```lua
-require('material').setup{
+local material = require 'material'
+local colors = require 'material.colors'
+
+material.setup{
     custom_highlights = {
         LineNr = { bg = '#FF0000' }
-        CursorLine = { fg = '#0000FF', underline = true },
+        CursorLine = { fg = colors.editor.constrast , underline = true },
 
         -- This is a list of possible values
         YourHighlightGroup = {
@@ -245,7 +224,16 @@ require('material').setup{
             reverse = false, -- reverse the fg and bg colors
             link = "SomeOtherGroup" -- link to some other highlight group
         }
-    }
+    },
+
+    -- Custom colors must be a function that takes in the default colors table as
+    -- a paramter, and then modifies them.
+    -- To se the available colors, see lua/material/colors/init.lua
+    custom_colors = function(colors)
+        colors.editor.bg = "#SOME_COLOR",
+        colors.main.purple = "#SOME_COLOR",
+        colors.lsp.error = "#SOME_COLOR",
+    end
 }
 ```
 

@@ -1,37 +1,41 @@
-local colors = require('material.colors')
+local colors = require "material.colors"
 
-local material = {}
+local m = colors.main
+local e = colors.editor
+local s = colors.syntax
 
-material.normal = {
-	a = {fg = colors.accent, bg = colors.highlight},
-	b = {fg = colors.title, bg = colors.bg_alt},
-	c = {fg = colors.comments, bg = colors.bg},
+local M = {}
+
+M.normal = {
+    a = { fg = e.accent, bg = e.highlight },
+    b = { fg = e.title, bg = e.bg_alt },
+    c = { fg = s.comments, bg = e.bg },
 }
 
-material.insert = {
-	a = {fg = colors.green, bg = colors.highlight},
-	b = {fg = colors.title, bg = colors.bg_alt},
+M.insert = {
+    a = { fg = m.green, bg = e.highlight },
+    b = { fg = e.title, bg = e.bg_alt },
 }
 
-material.visual = {
-	a = {fg = colors.purple, bg = colors.highlight},
-	b = {fg = colors.title, bg = colors.bg_alt},
+M.visual = {
+    a = { fg = m.purple, bg = e.highlight },
+    b = { fg = e.title, bg = e.bg_alt },
 }
 
-material.replace = {
-	a = {fg = colors.red, bg = colors.highlight},
-	b = {fg = colors.title, bg = colors.bg_alt},
+M.replace = {
+    a = { fg = m.red, bg = e.highlight },
+    b = { fg = e.title, bg = e.bg_alt },
 }
 
-material.command = {
-	a = {fg = colors.yellow, bg = colors.highlight},
-	b = {fg = colors.title, bg = colors.bg_alt},
+M.command = {
+    a = { fg = m.yellow, bg = e.highlight },
+    b = { fg = e.title, bg = e.bg_alt },
 }
 
-material.inactive = {
-  a = {fg = colors.disabled, bg = colors.bg},
-  b = {fg = colors.disabled, bg = colors.bg},
-  c = {fg = colors.disabled, bg = colors.bg}
+M.inactive = {
+    a = { fg = e.disabled, bg = e.bg },
+    b = { fg = e.disabled, bg = e.bg },
+    c = { fg = e.disabled, bg = e.bg }
 }
 
-return material
+return M

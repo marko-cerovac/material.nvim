@@ -1,76 +1,80 @@
-local colors = require('material.colors')
-local config = require('material.config').options
+local colors = require "material.colors"
+local style = require "material.util.config".settings.lualine_style
 
-local material = {}
+local m = colors.main
+local e = colors.editor
+local s = colors.syntax
 
-if config.lualine_style == 'stealth' then
+local M = {}
 
-	material.normal = {
-		a = {fg = colors.accent, bg = colors.highlight},
-		b = {fg = colors.title, bg = colors.bg_alt},
-		c = {fg = colors.comments, bg = colors.bg},
-	}
+if style == "stealth" then
 
-	material.insert = {
-		a = {fg = colors.green, bg = colors.highlight},
-		b = {fg = colors.title, bg = colors.bg_alt},
-	}
+    M.normal = {
+        a = { fg = e.accent, bg = e.highlight },
+        b = { fg = e.title, bg = e.bg_alt },
+        c = { fg = s.comments, bg = e.bg },
+    }
 
-	material.visual = {
-		a = {fg = colors.purple, bg = colors.highlight},
-		b = {fg = colors.title, bg = colors.bg_alt},
-	}
+    M.insert = {
+        a = { fg = m.green, bg = e.highlight },
+        b = { fg = e.title, bg = e.bg_alt },
+    }
 
-	material.replace = {
-		a = {fg = colors.red, bg = colors.highlight},
-		b = {fg = colors.title, bg = colors.bg_alt},
-	}
+    M.visual = {
+        a = { fg = m.purple, bg = e.highlight },
+        b = { fg = e.title, bg = e.bg_alt },
+    }
 
-	material.command = {
-		a = {fg = colors.yellow, bg = colors.highlight},
-		b = {fg = colors.title, bg = colors.bg_alt},
-	}
+    M.replace = {
+        a = { fg = m.red, bg = e.highlight },
+        b = { fg = e.title, bg = e.bg_alt },
+    }
 
-	material.inactive = {
-	  a = {fg = colors.disabled, bg = colors.bg},
-	  b = {fg = colors.disabled, bg = colors.bg},
-	  c = {fg = colors.disabled, bg = colors.bg}
-	}
+    M.command = {
+        a = { fg = m.yellow, bg = e.highlight },
+        b = { fg = e.title, bg = e.bg_alt },
+    }
+
+    M.inactive = {
+        a = { fg = e.disabled, bg = e.bg },
+        b = { fg = e.disabled, bg = e.bg },
+        c = { fg = e.disabled, bg = e.bg }
+    }
 
 else
 
-	material.normal = {
-		a = {fg = colors.bg, bg = colors.accent, gui = 'bold'},
-		b = {fg = colors.title, bg = colors.bg_alt},
-		c = {fg = colors.fg, bg = colors.selection},
-	}
+    M.normal = {
+        a = { fg = e.bg, bg = e.accent, gui = "bold" },
+        b = { fg = e.title, bg = e.bg_alt },
+        c = { fg = e.fg, bg = e.selection },
+    }
 
-	material.insert = {
-		a = {fg = colors.bg, bg = colors.green, gui = 'bold'},
-		b = {fg = colors.title, bg = colors.bg_alt},
-	}
+    M.insert = {
+        a = { fg = e.bg, bg = m.green, gui = "bold" },
+        b = { fg = e.title, bg = e.bg_alt },
+    }
 
-	material.visual = {
-		a = {fg = colors.bg, bg = colors.purple, gui = 'bold'},
-		b = {fg = colors.title, bg = colors.bg_alt},
-	}
+    M.visual = {
+        a = { fg = e.bg, bg = m.purple, gui = "bold" },
+        b = { fg = e.title, bg = e.bg_alt },
+    }
 
-	material.replace = {
-		a = {fg = colors.bg, bg = colors.red, gui = 'bold'},
-		b = {fg = colors.title, bg = colors.bg_alt},
-	}
+    M.replace = {
+        a = { fg = e.bg, bg = m.red, gui = "bold" },
+        b = { fg = e.title, bg = e.bg_alt },
+    }
 
-	material.command = {
-		a = {fg = colors.bg, bg = colors.yellow, gui = 'bold'},
-		b = {fg = colors.title, bg = colors.bg_alt},
-	}
+    M.command = {
+        a = { fg = e.bg, bg = m.yellow, gui = "bold" },
+        b = { fg = e.title, bg = e.bg_alt },
+    }
 
-	material.inactive = {
-	  a = {fg = colors.disabled, bg = colors.bg},
-	  b = {fg = colors.disabled, bg = colors.bg},
-	  c = {fg = colors.disabled, bg = colors.bg}
-	}
+    M.inactive = {
+        a = { fg = e.disabled, bg = e.bg },
+        b = { fg = e.disabled, bg = e.bg },
+        c = { fg = e.disabled, bg = e.bg }
+    }
 
 end
 
-return material
+return M
