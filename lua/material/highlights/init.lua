@@ -147,8 +147,10 @@ M.main_highlights.editor = function()
         LineNr           = { fg = e.line_numbers },
         CursorLineNr     = { fg = e.accent },
         DiffAdd          = { fg = g.added, reverse = true },
+        DiffAdded        = { fg = g.added },
         DiffChange       = { fg = g.modified },
         DiffDelete       = { fg = g.removed, reverse = true },
+        DiffRemoved      = { fg = g.removed },
         DiffText         = { fg = g.modified, reverse = true },
         ModeMsg          = { fg = e.accent }, -- 'showmode' message (e.g., "-- INSERT -- ")
         NonText          = { fg = e.disabled },
