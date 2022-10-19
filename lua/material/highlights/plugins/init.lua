@@ -8,7 +8,7 @@ M.main_highlights = {}
 ---async highlight functions
 M.async_highlights = {}
 
-for _, plugin in pairs(enabled_plugins) do
+for _, plugin in ipairs(enabled_plugins) do
     local module = "material.highlights.plugins." .. plugin
     -- if the module is already loaded, reload it
     package.loaded[module] = nil

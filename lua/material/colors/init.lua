@@ -74,7 +74,7 @@ colors.backgrounds = {
 if vim.g.material_style == "darker" then
     -- Darker theme style
 
-    if high_visibility.darker == true then
+    if high_visibility.darker then
         -- Darker theme style with high contrast
         colors.editor.line_numbers = "#5C5C5C"
         colors.syntax.comments     = "#757575"
@@ -100,7 +100,7 @@ if vim.g.material_style == "darker" then
 elseif vim.g.material_style == "lighter" then
     -- Lighter theme style
 
-    if high_visibility.lighter == true then
+    if high_visibility.lighter then
 
         -- Lighter theme style with high contrast
         colors.editor.fg           = "#213B47" -- 20% darkened
