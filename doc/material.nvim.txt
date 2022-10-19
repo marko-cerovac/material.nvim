@@ -158,6 +158,7 @@ This is an example of the setup function with the default values:
             operators = {},
             types = {},
         },
+        plugins = {},
         disable = {
             colored_cursor = false,
             borders = false,
@@ -172,7 +173,6 @@ This is an example of the setup function with the default values:
         lualine_style = "default",
         custom_colors = nil,
         custom_highlights = {},
-        plugins = {},
         async_loading = true,
     })
 
@@ -220,6 +220,22 @@ This is an example of the setup function with the default values:
 
     + plugins  {table}
           To apply the theme to a plugin, set it in this table
+          Available plugins:
+            - dap
+            - dashboard
+            - gitsigns
+            - hop
+            - indent-blankline
+            - lspsaga
+            - mini
+            - neogit
+            - nvim-cmp
+            - nvim-navic
+            - nvim-tree
+            - sneak
+            - telescope
+            - trouble
+            - which-key
 
 ================================================================================
 5. Examples                                         *material-examples*
@@ -234,23 +250,28 @@ Example config in Lua:
         contrast = {
             sidebars = true,
             floating_windows = false,
-            line_numbers = false,
-            sign_column = false,
             cursor_line = true,
             popup_menu = false
+            filetypes = {
+                "qf",
+                "packer",
+                "dapui_breakpoints",
+            }
         },
-        italics = {
-            comments = true,
-            strings = false,
-            keywords = false,
-            functions = true,
-            variables = false
-        },
-        contrast_filetypes = {
-            "terminal",
-            "packer",
-            "qf",
-        },
+        plugins = {
+           "dap"
+           "gitsigns",
+           "indent-blankline",
+           "neogit",
+           "nvim-cmp",
+           "nvim-tree",
+           "telescope",
+           "which-key",
+        }
+        styles = {
+            comments = { italic = true },
+            functions = { italic = true },
+        }
         disable = {
             borders = true,
             background = false,
@@ -274,8 +295,16 @@ require('material').setup({
     ...
 })
 
-Just put the name of the highlight group as the name of a table, and pass in
-the values for fg, bg, gui, guisp
+If you want to override the default colors, set custom_colors to a function
+that takes in the colors table as a parameter, and then modify them.
+To see the available colors, check lua/material/colors/init.lua
+
+require('material').setup({
+    custom_colors = function(colors)
+        colors.editor.bg = "#SOME_COLOR",
+        colors.main.blue = "#SOME_COLOR",
+    end
+})
 
 ================================================================================
 6. Lualine setup                                   *material-lualine-setup*

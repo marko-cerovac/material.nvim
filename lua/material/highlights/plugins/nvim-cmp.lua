@@ -27,7 +27,7 @@ M.load = function()
         CmpItemEnum           = { fg = s.type }, -- TODO
         CmpItemEnumMember     = { fg = m.cyan }, -- TODO
         CmpItemOperator       = { fg = s.operator }, -- TODO
-        CmpItemReference      = { fg = e.fg_alt }, -- TODO
+        CmpItemReference      = { fg = e.fg_dark }, -- TODO
 
     }
 

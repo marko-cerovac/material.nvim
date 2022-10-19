@@ -30,6 +30,7 @@ local defaults = {
         lighter = false,
         darker = false,
     },
+    -- smart_syntax = true,
     lualine_style = "default",
     custom_colors = nil,
     custom_highlights = {},

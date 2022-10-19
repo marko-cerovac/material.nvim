@@ -11,7 +11,7 @@ M.load = function()
         NeogitRemote               = { fg = m.purple },
         NeogitHunkHeader           = { fg = e.fg, bg = e.highlight },
         NeogitHunkHeaderHighlight  = { fg = m.blue, bg = e.contrast },
-        NeogitDiffContextHighlight = { fg = e.fg_alt, bg = e.contrast },
+        NeogitDiffContextHighlight = { fg = e.fg_dark, bg = e.contrast },
         NeogitDiffDeleteHighlight  = { fg = m.red },
         NeogitDiffAddHighlight     = { fg = m.yellow },
     }

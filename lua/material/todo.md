@@ -14,6 +14,44 @@
 
 - [x] check which built-in editor highlights are not needed
 
+- [ ] use the new treesitter highlights:
++ @todo
++ @type
++ @type.definition
++ @debug
++ @field
++ @float
++ @label
++ @macro
++ @define
++ @method
++ @number
++ @repeat
++ @boolean
++ @comment
++ @include
++ @keyword
++ @preproc
++ @constant
++ @constant.builtin
++ @constant.macro
++ @constructor
++ @function
++ @function.builtin
++ @function.macro
++ @operator
++ @character
++ @character.special
++ @exception
++ @parameter
++ @conditional
++ @punctuation
++ @string
++ @string.escape
++ @storageclass
++ @text.underline
++ @property
+
 ## plugin improvements
 
 - [x] add a submodule system for plugins

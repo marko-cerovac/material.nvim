@@ -15,7 +15,7 @@ local colors = {
         cyan       = "#89DDFF",
         purple     = "#C792EA",
         orange     = "#F78C6C",
-        pink       = "#FF9CAC",
+        -- pink       = "#FF9CAC",
 
         darkred    = "#DC6068",
         darkgreen  = "#ABCF76",
@@ -52,6 +52,7 @@ colors.lsp = {
 ---syntax colors
 colors.syntax = {
     variable = colors.editor.fg,
+    field    = colors.editor.fg,
     keyword  = colors.main.purple,
     value    = colors.main.orange,
     operator = colors.main.cyan,
@@ -80,13 +81,13 @@ if vim.g.material_style == "darker" then
     else
         -- default Darker theme style
         colors.editor.line_numbers = "#424242"
-        colors.syntax.comments     = "#616161"
+        colors.syntax.comments     = "#515151"
     end
 
     colors.editor.bg        = "#212121"
     colors.editor.bg_alt    = "#1A1A1A"
     colors.editor.fg        = "#B0BEC5"
-    colors.editor.fg_alt    = "#727272"
+    colors.editor.fg_dark   = "#8C8B8B"
     colors.editor.selection = "#404040"
     colors.editor.contrast  = "#1A1A1A"
     colors.editor.active    = "#323232"
@@ -103,7 +104,7 @@ elseif vim.g.material_style == "lighter" then
 
         -- Lighter theme style with high contrast
         colors.editor.fg           = "#213B47" -- 20% darkened
-        colors.editor.fg_alt       = "#61747D" -- 20% darkened
+        colors.editor.fg_dark       = "#61747D" -- 20% darkened
         colors.editor.selection    = "#e2e9e9" -- 15% saturation, 10% lightness
         colors.editor.line_numbers = "#B6BFC3" -- 10% darkened
         colors.editor.accent       = "#0089A1" -- 20% darkened
@@ -123,7 +124,7 @@ elseif vim.g.material_style == "lighter" then
 
         -- default Lighter theme style
         colors.editor.fg           = "#546E7A"
-        colors.editor.fg_alt       = "#94A7B0"
+        colors.editor.fg_dark       = "#94A7B0"
         colors.editor.selection    = "#80CBC4"
         colors.editor.line_numbers = "#CFD8DC"
         colors.editor.accent       = "#00BCD4"
@@ -162,7 +163,7 @@ elseif vim.g.material_style == "palenight" then
     colors.editor.bg           = "#292D3E"
     colors.editor.bg_alt       = "#1B1E2B"
     colors.editor.fg           = "#A6ACCD"
-    colors.editor.fg_alt       = "#717CB4"
+    colors.editor.fg_dark      = "#717CB4"
     colors.editor.selection    = "#444267"
     colors.editor.contrast     = "#202331"
     colors.editor.active       = "#414863"
@@ -179,7 +180,8 @@ elseif vim.g.material_style == "deep ocean" then
     colors.editor.bg           = "#0F111A"
     colors.editor.bg_alt       = "#090B10"
     colors.editor.fg           = "#A6ACCD"
-    colors.editor.fg_alt       = "#717CB4"
+    -- colors.editor.fg_darker    = "#8DA3CA" -- TODO
+    colors.editor.fg_dark      = "#717CB4"
     colors.editor.selection    = "#1F2233"
     colors.editor.contrast     = "#090B10"
     colors.editor.active       = "#1A1C25"
@@ -197,7 +199,7 @@ else vim.g.material_style = "oceanic"
     colors.editor.bg_alt       = "#1C2C30"
     colors.editor.fg           = "#B0BEC5" -- keep the old one
     -- colors.editor.fg           = "#ADD8DE" -- keep the old one
-    colors.editor.fg_alt       = "#7C9EAD"
+    colors.editor.fg_dark       = "#7C9EAD"
     colors.editor.selection    = "#395B65"
     colors.editor.border       = "#355058"
     colors.editor.line_numbers = "#426367"

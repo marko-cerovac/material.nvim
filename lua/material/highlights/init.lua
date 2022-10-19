@@ -3,6 +3,9 @@ local settings = require "material.util.config".settings
 local plugins  = require "material.highlights.plugins"
 local styles   = settings.styles
 
+-- apply conditional colors
+colors = require "material.colors.conditionals"
+
 local m = colors.main
 local e = colors.editor
 local g = colors.git
@@ -10,8 +13,6 @@ local l = colors.lsp
 local s = colors.syntax
 local b = colors.backgrounds
 
--- apply conditional colors
-require "material.colors.conditionals"
 
 local M = {}
 
@@ -79,59 +80,52 @@ end
 ---treesitter highlights
 M.main_highlights.treesitter = function()
     local treesitter_hls = {
-        -- TSComment            = { link = "Comment" },
-        -- TSConditional        = { link = "Conditional" },
-        -- TSFunction           = { link = "Function" },
-        -- TSRepeat             = { link = "Repeat" },
-        -- TSString             = { link = "String" },
-        -- TSVariable           = { link = "Identifier" },
-        -- TSType               = { link = "Type" },
+        ["@type"]                  = { fg = s.type },
+        ["@type.builtin"]          = { fg = s.type },
 
-        TSFuncBuiltin     = { link = "Function" },
-        TSKeywordFunction = { link = "Statement" },
-        TSVariableBuiltin = { link = "Identifier" },
+        -- ["@variable"]              = { link = "Identifier" },
+        ["@variable.builtin"]      = { link = "Identifier" },
+        ["@field"]                 = { fg = e.fg_dark },
+        -- ["@parameter"]             = { fg = s.variable }, -- TODO
 
-        TSConstructor      = { link = "TSFunction" },
-        TSFuncMacro        = { link = "TSFunction" },
-        TSConstMacro       = { link = "Macro" },
-        TSInclude          = { link = "Macro" },
-        -- TSDefine           = { link = "Macro" },
-        TSPreProc          = { link = "Macro" },
-        TSKeyword          = { fg = m.cyan },
-        TSKeywordOperator  = { fg = m.purple },
-        TSKeywordReturn    = { fg = m.cyan },
-        TSCharacterSpecial = { fg = e.disabled },
-        TSAttribute        = { fg = m.yellow },
-        TSError            = { fg = l.error },
-        TSException        = { fg = m.red },
-        -- TSField              = { fg = e.fg }, -- TODO give a new color
-        TSLabel            = { fg = m.red },
-        TSNamespace        = { fg = m.yellow },
-        TSOperator         = { fg = s.operator },
-        TSParameter        = { fg = m.paleblue },
-        -- TSParameterReference = { fg = m.paleblue },
-        TSProperty         = { fg = m.gray },
-        -- TSPunctDelimiter     = { fg = m.cyan }, -- TODO change color
-        -- TSPunctBracket       = { fg = m.cyan },
-        -- TSPunctSpecial       = { fg = m.cyan }, -- TODO update color
-        TSStringRegex      = { fg = m.yellow },
-        TSStringEscape     = { fg = e.fg_alt },
-        TSStorageClass     = { link = "StorageClass" },
-        -- TSSymbol             = { fg = m.yellow },
-        TSStrong           = { fg = m.paleblue, bold = true },
-        TSTag              = { fg = m.red },
-        TSTagDelimiter     = { fg = m.cyan },
-        TSTagAttribute     = { fg = m.gray },
-        TSText             = { fg = e.fg },
-        TSTextReference    = { fg = m.yellow },
-        TSEmphasis         = { fg = m.paleblue },
-        TSUnderline        = { fg = e.fg, underline = true },
-        TSDebug            = { fg = m.red },
-        -- TSStrike          = { fg = e.fg,, strikethrough = true},
-        TSURI              = { fg = e.link },
-        TSMath             = { fg = m.blue },
-        TSDanger           = { fg = l.error },
-        --TSNone             = { },
+        ["@function.builtin"]      = { fg = s.fn },
+        ["@function.macro"]        = { link = "Function" },
+        ["@constructor"]           = { link = "Function" },
+
+        ["@keyword"]               = { fg = m.cyan },
+
+        ["@constant"]              = { fg = m.yellow },
+        ["@constant.builtin"]      = { fg = m.yellow },
+        ["@constant.macro"]        = { fg = m.cyan },
+
+        ["@preproc"]               = { fg = m.cyan },
+        ["@macro"]                 = { fg = m.cyan },
+        ["@namespace"]             = { fg = m.yellow },
+
+        ["@string.escape"]         = { fg = e.fg_dark },
+        ["@string.regex"]          = { fg = m.yellow },
+        ["@string.special"]        = { fg = e.fg_dark },
+
+        -- ["@structure"]             = { fg = s.type },
+        -- ["@storageclass"]          = { fg = m.cyan },
+
+        -- ["@label"]                 = {},
+        ["@punctuation"]           = { fg = m.cyan },
+        ["@punctuation.delimiter"] = { fg = m.cyan },
+        -- ["@punctuation.bracket"]   = { fg = m.cyan },
+        -- ["@punctuation.special"]   = { fg = m.cyan },
+        -- ["@text.underline"]        = { underline = true },
+        -- ["@text.emphasis"]         = { bold = true, underline = true },
+        -- ["@text.strong"]           = { bold = true },
+        ["@text.title"]            = { fg = e.title },
+        -- ["@text.literal"]          = {},
+        ["@text.uri"]              = { fg = e.link },
+        -- ["@text.warning"]          = { fg = l.warning },
+        -- ["@text.danger"]           = { fg = l.error },
+        ["@tag"]                        = { fg = m.red },
+        ["@tag.delimiter"]              = { fg = m.cyan },
+        ["@tag.attribute"]              = { fg = m.purple },
+        ["@todo"]                  = { fg = colors.yellow },
     }
 
     return treesitter_hls
@@ -208,7 +202,7 @@ M.async_highlights.editor = function()
         PmenuSbar     = { bg = e.active },
         PmenuThumb    = { fg = e.fg },
         WildMenu      = { fg = m.orange, bold = true }, -- current match in 'wildmenu' completion
-        VertSplit     = { fg = e.vsplit },
+        -- VertSplit     = { fg = e.vsplit },
         WinSeparator  = { fg = e.vsplit },
         -- ToolbarLine   = { fg = e.fg, bg = e.bg_alt },
         -- ToolbarButton = { fg = e.fg, bold = true },

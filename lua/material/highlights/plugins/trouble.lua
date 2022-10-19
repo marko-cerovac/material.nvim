@@ -9,7 +9,7 @@ local M = {}
 
 M.load = function()
     local plugin_hls = {
-        TroubleText            = { fg = e.fg_alt, bg = b.sidebars },
+        TroubleText            = { fg = e.fg_dark, bg = b.sidebars },
         TroubleCount           = { fg = m.purple, bg = b.sidebars },
         TroubleNormal          = { fg = e.fg, bg = b.sidebars },
         TroubleSignError       = { fg = l.error, bg = b.sidebars },

@@ -121,6 +121,13 @@ M.load = function()
     if settings.async_loading then
         async:send()
     end
+
+    -- DONT FORGET TO REMOVE *****************************************************
+    if settings.italics then
+        vim.notify ("Material.nvim had breaking changes", vim.log.levels.WARN)
+        vim.notify ("See the new config in the README", vim.log.levels.WARN)
+    end
+    -- DONT FORGET TO REMOVE *****************************************************
 end
 
 return M

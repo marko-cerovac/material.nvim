@@ -26,7 +26,13 @@ if not settings.contrast.cursor_line then
     colors.backgrounds.cursor_line = colors.editor.active
 end
 
+--[[ if settings.smart_syntax then
+    colors.syntax.field = colors.editor.fg_dark
+end ]]
+
 -- apply user defined colors
 if type(settings.custom_colors) == "function" then
     settings.custom_colors(colors)
 end
+
+return colors
