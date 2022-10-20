@@ -87,8 +87,8 @@ local load_async = function()
     end
 
     -- load user defined higlights
-    if type(settings.cusom_highlights) == "table" then
-        apply_highlights(settings.cusom_highlights)
+    if type(settings.custom_highlights) == "table" then
+        apply_highlights(settings.custom_highlights)
     end
 
     -- apply contrast to the terminal and user defined filetypes
