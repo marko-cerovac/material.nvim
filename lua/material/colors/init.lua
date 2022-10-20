@@ -124,7 +124,7 @@ elseif vim.g.material_style == "lighter" then
 
         -- default Lighter theme style
         colors.editor.fg           = "#546E7A"
-        colors.editor.fg_dark       = "#94A7B0"
+        colors.editor.fg_dark      = "#94A7B0"
         colors.editor.selection    = "#80CBC4"
         colors.editor.line_numbers = "#CFD8DC"
         colors.editor.accent       = "#00BCD4"

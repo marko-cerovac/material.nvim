@@ -147,10 +147,8 @@ M.main_highlights.editor = function()
         LineNr           = { fg = e.line_numbers },
         CursorLineNr     = { fg = e.accent },
         DiffAdd          = { fg = g.added, reverse = true },
-        -- DiffAdded        = { fg = g.added, reverse = true },
         DiffChange       = { fg = g.modified },
         DiffDelete       = { fg = g.removed, reverse = true },
-        -- DiffRemoved      = { fg = g.removed, reverse = true },
         DiffText         = { fg = g.modified, reverse = true },
         ModeMsg          = { fg = e.accent }, -- 'showmode' message (e.g., "-- INSERT -- ")
         NonText          = { fg = e.disabled },
@@ -206,6 +204,8 @@ M.async_highlights.editor = function()
         WildMenu      = { fg = m.orange, bold = true }, -- current match in 'wildmenu' completion
         -- VertSplit     = { fg = e.vsplit },
         WinSeparator  = { fg = e.vsplit },
+        DiffAdded     = { fg = g.added, reverse = true },
+        DiffRemoved   = { fg = g.removed, reverse = true },
         -- ToolbarLine   = { fg = e.fg, bg = e.bg_alt },
         -- ToolbarButton = { fg = e.fg, bold = true },
         -- NormalMode       = { fg = e.disabled }, -- Normal mode message in the cmdline
