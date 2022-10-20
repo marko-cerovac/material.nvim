@@ -38,29 +38,7 @@ added to NeoVim like built-in [LSP](https://github.com/neovim/nvim-lspconfig) an
 
 
 
-+ Supported plugins:
-    + [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
-    + [LSP Diagnostics](https://neovim.io/doc/user/lsp.html)
-    + [Lsp Saga](https://github.com/glepnir/lspsaga.nvim)
-    + [Nvim-Cmp](https://github.com/hrsh7th/nvim-cmp)
-    + [LSP Trouble](https://github.com/folke/lsp-trouble.nvim)
-    + [Git Gutter](https://github.com/airblade/vim-gitgutter)
-    + [git-messenger](https://github.com/rhysd/git-messenger.vim)
-    + [Git Signs](https://github.com/lewis6991/gitsigns.nvim)
-    + [Telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
-    + [Nvim-Tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
-    + [NERDTree](https://github.com/preservim/nerdtree)
-    + [Indent-Blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
-    + [vim-which-key](https://github.com/liuchengxu/vim-which-key)
-    + [WhichKey.nvim](https://github.com/folke/which-key.nvim)
-    + [Dashboard](https://github.com/glepnir/dashboard-nvim)
-    + [BufferLine](https://github.com/akinsho/nvim-bufferline.lua)
-    + [Lualine](https://github.com/hoob3rt/lualine.nvim)
-    + [Neogit](https://github.com/TimUntersberger/neogit)
-    + [vim-sneak](https://github.com/justinmk/vim-sneak)
-    + [nvim-dap](https://github.com/mfussenegger/nvim-dap)
-    + [vim-illuminate](https://github.com/RRethy/vim-illuminate)
-    + [mini.nvim](https://github.com/echasnovski/mini.nvim)
++ Many supported plugins
 
 + Ability to change background on sidebar-like windows like Nvim-Tree, Packer, terminal etc.
 
