@@ -104,7 +104,7 @@ elseif vim.g.material_style == "lighter" then
 
         -- Lighter theme style with high contrast
         colors.editor.fg           = "#213B47" -- 20% darkened
-        colors.editor.fg_dark       = "#61747D" -- 20% darkened
+        colors.editor.fg_dark      = "#61747D" -- 20% darkened
         colors.editor.selection    = "#e2e9e9" -- 15% saturation, 10% lightness
         colors.editor.line_numbers = "#B6BFC3" -- 10% darkened
         colors.editor.accent       = "#0089A1" -- 20% darkened

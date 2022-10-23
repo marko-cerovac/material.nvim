@@ -79,56 +79,95 @@ end
 
 ---treesitter highlights
 M.main_highlights.treesitter = function()
-    local treesitter_hls = {
-        ["@type"]                  = { fg = s.type },
-        ["@type.builtin"]          = { fg = s.type },
 
-        -- ["@variable"]              = { link = "Identifier" },
-        ["@variable.builtin"]      = { link = "Identifier" },
-        ["@field"]                 = { fg = e.fg_dark },
-        -- ["@parameter"]             = { fg = s.variable }, -- TODO
+    if vim.fn.has("nvim-0.8.0") == 1 then
+        local treesitter_hls = {
+            ["@type"]         = { fg = s.type },
+            ["@type.builtin"] = { fg = s.type },
 
-        ["@function.builtin"]      = { fg = s.fn },
-        ["@function.macro"]        = { link = "Function" },
-        ["@constructor"]           = { link = "Function" },
+            -- ["@variable"]              = { link = "Identifier" },
+            ["@variable.builtin"] = { link = "Identifier" },
+            ["@field"]            = { fg = e.fg_dark },
+            -- ["@parameter"]             = { fg = s.variable }, -- TODO
 
-        ["@keyword"]               = { fg = m.cyan },
+            ["@function.builtin"] = { fg = s.fn },
+            ["@function.macro"]   = { link = "Function" },
+            ["@constructor"]      = { link = "Function" },
 
-        ["@constant"]              = { fg = m.yellow },
-        ["@constant.builtin"]      = { fg = m.yellow },
-        ["@constant.macro"]        = { fg = m.cyan },
+            ["@keyword"] = { fg = m.cyan },
 
-        ["@preproc"]               = { fg = m.cyan },
-        ["@macro"]                 = { fg = m.cyan },
-        ["@namespace"]             = { fg = m.yellow },
+            ["@constant"]         = { fg = m.yellow },
+            ["@constant.builtin"] = { fg = m.yellow },
+            ["@constant.macro"]   = { fg = m.cyan },
 
-        ["@string.escape"]         = { fg = e.fg_dark },
-        ["@string.regex"]          = { fg = m.yellow },
-        ["@string.special"]        = { fg = e.fg_dark },
+            ["@preproc"]   = { fg = m.cyan },
+            ["@macro"]     = { fg = m.cyan },
+            ["@namespace"] = { fg = m.yellow },
 
-        -- ["@structure"]             = { fg = s.type },
-        -- ["@storageclass"]          = { fg = m.cyan },
+            ["@string.escape"]  = { fg = e.fg_dark },
+            ["@string.regex"]   = { fg = m.yellow },
+            ["@string.special"] = { fg = e.fg_dark },
 
-        -- ["@label"]                 = {},
-        ["@punctuation"]           = { fg = m.cyan },
-        ["@punctuation.delimiter"] = { fg = m.cyan },
-        -- ["@punctuation.bracket"]   = { fg = m.cyan },
-        -- ["@punctuation.special"]   = { fg = m.cyan },
-        -- ["@text.underline"]        = { underline = true },
-        -- ["@text.emphasis"]         = { bold = true, underline = true },
-        -- ["@text.strong"]           = { bold = true },
-        ["@text.title"]            = { fg = e.title },
-        -- ["@text.literal"]          = {},
-        ["@text.uri"]              = { fg = e.link },
-        -- ["@text.warning"]          = { fg = l.warning },
-        -- ["@text.danger"]           = { fg = l.error },
-        ["@tag"]                        = { fg = m.red },
-        ["@tag.delimiter"]              = { fg = m.cyan },
-        ["@tag.attribute"]              = { fg = m.purple },
-        ["@todo"]                  = { fg = colors.yellow },
-    }
+            -- ["@structure"]             = { fg = s.type },
+            -- ["@storageclass"]          = { fg = m.cyan },
 
-    return treesitter_hls
+            -- ["@label"]                 = {},
+            ["@punctuation"]           = { fg = m.cyan },
+            ["@punctuation.delimiter"] = { fg = m.cyan },
+            -- ["@punctuation.bracket"]   = { fg = m.cyan },
+            -- ["@punctuation.special"]   = { fg = m.cyan },
+            -- ["@text.underline"]        = { underline = true },
+            -- ["@text.emphasis"]         = { bold = true, underline = true },
+            -- ["@text.strong"]           = { bold = true },
+            ["@text.title"]            = { fg = e.title },
+            -- ["@text.literal"]          = {},
+            ["@text.uri"]              = { fg = e.link },
+            -- ["@text.warning"]          = { fg = l.warning },
+            -- ["@text.danger"]           = { fg = l.error },
+            ["@tag"]                   = { fg = m.red },
+            ["@tag.delimiter"]         = { fg = m.cyan },
+            ["@tag.attribute"]         = { fg = m.purple },
+            ["@todo"]                  = { fg = colors.yellow },
+        }
+
+        return treesitter_hls
+    else
+        local treesitter_hls = {
+            TSType        = { fg = s.type },
+            TSTypeBuiltin = { fg = s.type },
+
+            TSVariableBuiltin = { link = "Identifier" },
+            TSField           = { fg = e.fg_dark },
+
+            TSFuncBuiltin = { fg = s.fn },
+            TSFuncMacro   = { link = "Function" },
+            TSConstructor = { link = "Function" },
+
+            TSKeyword = { fg = m.cyan },
+
+            TSConstant        = { fg = m.yellow },
+            TSConstantBuiltin = { fg = m.yellow },
+            TSConstantMacro   = { fg = m.cyan },
+
+            TSMacro     = { fg = m.cyan },
+            TSNamespace = { fg = m.yellow },
+
+            TSStringEscape  = { fg = e.fg_dark },
+            TSStringRegex   = { fg = m.yellow },
+            TSStringSpecial = { fg = e.fg_dark },
+
+            TSPunct          = { fg = m.cyan },
+            TSPunctDelimiter = { fg = m.cyan },
+            TSPunctBracket   = { fg = e.title },
+            TSURI            = { fg = e.link },
+            TSTag            = { fg = m.red },
+            TSTagDelimiter   = { fg = m.cyan },
+            TSTagAttribute   = { fg = m.purple },
+            TSTodo           = { fg = colors.yellow },
+        }
+
+        return treesitter_hls
+    end
 end
 
 ---parts of the editor that get loaded right away
