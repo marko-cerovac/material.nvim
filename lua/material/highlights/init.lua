@@ -108,6 +108,10 @@ M.main_highlights.treesitter = function()
             ["@string.regex"]   = { fg = m.yellow },
             ["@string.special"] = { fg = e.fg_dark },
 
+            ["@text.diff.add"]    = { link = "DiffAdd" },
+            ["@text.diff.delete"] = { link = "DiffDelete" },
+            ["@attribute"]        = { link = "DiffChange" },
+
             -- ["@structure"]             = { fg = s.type },
             -- ["@storageclass"]          = { fg = m.cyan },
 
@@ -185,10 +189,10 @@ M.main_highlights.editor = function()
         FoldColumn       = { fg = m.blue },
         LineNr           = { fg = e.line_numbers },
         CursorLineNr     = { fg = e.accent },
-        DiffAdd          = { fg = g.added, reverse = true },
+        DiffAdd          = { fg = g.added },
         DiffChange       = { fg = g.modified },
-        DiffDelete       = { fg = g.removed, reverse = true },
-        DiffText         = { fg = g.modified, reverse = true },
+        DiffDelete       = { fg = g.removed },
+        DiffText         = { fg = g.modified },
         ModeMsg          = { fg = e.accent }, -- 'showmode' message (e.g., "-- INSERT -- ")
         NonText          = { fg = e.disabled },
         SignColumn       = { fg = e.fg },
@@ -243,8 +247,8 @@ M.async_highlights.editor = function()
         WildMenu      = { fg = m.orange, bold = true }, -- current match in 'wildmenu' completion
         -- VertSplit     = { fg = e.vsplit },
         WinSeparator  = { fg = e.vsplit },
-        diffAdded     = { fg = g.added, reverse = true },
-        diffRemoved   = { fg = g.removed, reverse = true },
+        diffAdded     = { fg = g.added },
+        diffRemoved   = { fg = g.removed },
         -- ToolbarLine   = { fg = e.fg, bg = e.bg_alt },
         -- ToolbarButton = { fg = e.fg, bold = true },
         -- NormalMode       = { fg = e.disabled }, -- Normal mode message in the cmdline
