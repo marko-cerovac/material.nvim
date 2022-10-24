@@ -32,41 +32,11 @@ local colors = {
         cursor = "#FFCC00",
         title  = "#EEFFFF",
     },
-}
 
----git colors
-colors.git = {
-    added    = colors.main.green,
-    removed  = colors.main.red,
-    modified = colors.main.blue,
-}
-
----lsp colors
-colors.lsp = {
-    error   = "#FF5370",
-    warning = colors.main.yellow,
-    info    = colors.main.paleblue,
-    hint    = colors.main.purple,
-}
-
----syntax colors
-colors.syntax = {
-    variable = colors.editor.fg,
-    field    = colors.editor.fg,
-    keyword  = colors.main.purple,
-    value    = colors.main.orange,
-    operator = colors.main.cyan,
-    fn       = colors.main.blue,
-    string   = colors.main.green,
-    type     = colors.main.purple,
-}
-
----contrasted backgrounds
-colors.backgrounds = {
-    sidebars            = colors.editor.bg,
-    floating_windows    = colors.editor.bg,
-    non_current_windows = colors.editor.bg,
-    cursor_line         = colors.editor.active,
+    syntax = {},
+    git = {},
+    lsp = {},
+    backgrounds = {},
 }
 
 -- Style specific colors
@@ -211,5 +181,32 @@ else vim.g.material_style = "oceanic"
     colors.syntax.comments     = "#546E7A"
 
 end
+
+---syntax colors
+colors.syntax.variable = colors.editor.fg
+colors.syntax.field    = colors.editor.fg
+colors.syntax.keyword  = colors.main.purple
+colors.syntax.value    = colors.main.orange
+colors.syntax.operator = colors.main.cyan
+colors.syntax.fn       = colors.main.blue
+colors.syntax.string   = colors.main.green
+colors.syntax.type     = colors.main.purple
+
+---git colors
+colors.git.added    = colors.main.green
+colors.git.removed  = colors.main.red
+colors.git.modified = colors.main.blue
+
+---lsp colors
+colors.lsp.error   = "#FF5370"
+colors.lsp.warning = colors.main.yellow
+colors.lsp.info    = colors.main.paleblue
+colors.lsp.hint    = colors.main.purple
+
+---contrasted backgrounds
+colors.backgrounds.sidebars            = colors.editor.bg
+colors.backgrounds.floating_windows    = colors.editor.bg
+colors.backgrounds.non_current_windows = colors.editor.bg
+colors.backgrounds.cursor_line         = colors.editor.active
 
 return colors
