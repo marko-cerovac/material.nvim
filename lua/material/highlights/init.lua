@@ -108,6 +108,10 @@ M.main_highlights.treesitter = function()
             ["@string.regex"]   = { fg = m.yellow },
             ["@string.special"] = { fg = e.fg_dark },
 
+            ["@text.diff.add"]    = { link = "DiffAdd" },
+            ["@text.diff.delete"] = { link = "DiffDelete" },
+            ["@attribute"]        = { link = "DiffChange" },
+
             -- ["@structure"]             = { fg = s.type },
             -- ["@storageclass"]          = { fg = m.cyan },
 
