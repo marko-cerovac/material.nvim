@@ -33,9 +33,12 @@ local colors = {
         title  = "#EEFFFF",
     },
 
+    lsp = {
+        error = "#FF5370",
+    },
+
     syntax = {},
     git = {},
-    lsp = {},
     backgrounds = {},
 }
 
@@ -198,7 +201,6 @@ colors.git.removed  = colors.main.red
 colors.git.modified = colors.main.blue
 
 ---lsp colors
-colors.lsp.error   = "#FF5370"
 colors.lsp.warning = colors.main.yellow
 colors.lsp.info    = colors.main.paleblue
 colors.lsp.hint    = colors.main.purple

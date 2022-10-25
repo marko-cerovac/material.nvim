@@ -25,6 +25,7 @@ M.load = function()
         NvimTreeMarkdownFile     = { fg = m.pink },
         NvimTreeExecFile         = { link = "NvimTreeGitNew" },
         NvimTreeSpecialFile      = { fg = m.purple },
+        NvimTreeWinSeparator     = { link = "WinSeparator" },
     }
 
     return plugin_hls

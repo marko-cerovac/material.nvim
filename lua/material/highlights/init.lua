@@ -89,6 +89,7 @@ M.main_highlights.treesitter = function()
             ["@variable.builtin"] = { link = "Identifier" },
             ["@field"]            = { fg = e.fg_dark },
             -- ["@parameter"]             = { fg = s.variable }, -- TODO
+            ["@symbol"]           = { fg = m.yellow },
 
             ["@function.builtin"] = { fg = s.fn },
             ["@function.macro"]   = { link = "Function" },
@@ -142,6 +143,7 @@ M.main_highlights.treesitter = function()
 
             TSVariableBuiltin = { link = "Identifier" },
             TSField           = { fg = e.fg_dark },
+            TSSymbol          = { fg = m.yellow },
 
             TSFuncBuiltin = { fg = s.fn },
             TSFuncMacro   = { link = "Function" },
@@ -245,7 +247,7 @@ M.async_highlights.editor = function()
         PmenuSbar     = { bg = e.active },
         PmenuThumb    = { fg = e.fg },
         WildMenu      = { fg = m.orange, bold = true }, -- current match in 'wildmenu' completion
-        -- VertSplit     = { fg = e.vsplit },
+        VertSplit     = { fg = e.vsplit },
         WinSeparator  = { fg = e.vsplit },
         diffAdded     = { fg = g.added, reverse = true },
         diffRemoved   = { fg = g.removed, reverse = true },
