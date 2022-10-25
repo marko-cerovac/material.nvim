@@ -128,7 +128,7 @@ require('material').setup({
         variables = {},
         operators = {},
         types = {},
-    }
+    },
 
     plugins = { -- Uncomment the plugins that you use to highlight them
         -- Available plugins:
