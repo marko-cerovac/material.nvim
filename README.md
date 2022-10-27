@@ -208,9 +208,9 @@ material.setup{
     -- a paramter, and then modifies them.
     -- To se the available colors, see lua/material/colors/init.lua
     custom_colors = function(colors)
-        colors.editor.bg = "#SOME_COLOR",
-        colors.main.purple = "#SOME_COLOR",
-        colors.lsp.error = "#SOME_COLOR",
+        colors.editor.bg = "#SOME_COLOR"
+        colors.main.purple = "#SOME_COLOR"
+        colors.lsp.error = "#SOME_COLOR"
     end
 }
 ```
