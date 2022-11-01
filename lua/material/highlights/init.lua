@@ -13,7 +13,6 @@ local l = colors.lsp
 local s = colors.syntax
 local b = colors.backgrounds
 
-
 local M = {}
 
 ---main highlight functions
@@ -92,7 +91,7 @@ M.main_highlights.treesitter = function()
             ["@symbol"]           = { fg = m.yellow },
 
             ["@function.builtin"] = { fg = s.fn },
-            ["@function.macro"]   = { link = "Function" },
+            -- ["@function.macro"]   = { link = "Function" },
             ["@constructor"]      = { link = "Function" },
 
             ["@keyword"] = { fg = m.cyan },
@@ -127,12 +126,13 @@ M.main_highlights.treesitter = function()
             ["@text.title"]            = { fg = e.title },
             -- ["@text.literal"]          = {},
             ["@text.uri"]              = { fg = e.link },
+            ["@text.todo"]             = { fg = m.yellow }, -- TODO
+            ["@text.note"]             = { fg = m.yellow },
             -- ["@text.warning"]          = { fg = l.warning },
             -- ["@text.danger"]           = { fg = l.error },
             ["@tag"]                   = { fg = m.red },
             ["@tag.delimiter"]         = { fg = m.cyan },
             ["@tag.attribute"]         = { fg = m.purple },
-            ["@todo"]                  = { fg = colors.yellow },
         }
 
         return treesitter_hls
