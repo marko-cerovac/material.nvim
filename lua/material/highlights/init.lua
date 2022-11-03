@@ -304,6 +304,7 @@ M.async_highlights.load_lsp = function()
         LspReferenceText           = { bg = e.selection }, -- used for highlighting "text" references
         LspReferenceRead           = { link = "LspReferenceText" }, -- used for highlighting "read" references
         LspReferenceWrite          = { link = "LspReferenceText" }, -- used for highlighting "write" references
+        LspCodeLens                = { link = "DiagnosticHint" },
     }
 
     return lsp_hls
