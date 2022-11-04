@@ -92,7 +92,7 @@ M.main_highlights.treesitter = function()
 
             ["@function.builtin"] = { fg = s.fn },
             -- ["@function.macro"]   = { link = "Function" },
-            ["@constructor"]      = { link = "Function" },
+            ["@constructor"]      = { fg = m.blue },
 
             ["@keyword"] = { fg = m.cyan },
 
@@ -115,7 +115,7 @@ M.main_highlights.treesitter = function()
             -- ["@structure"]             = { fg = s.type },
             -- ["@storageclass"]          = { fg = m.cyan },
 
-            -- ["@label"]                 = {},
+            ["@label"]                 = { fg = m.yellow },
             ["@punctuation"]           = { fg = m.cyan },
             ["@punctuation.delimiter"] = { fg = m.cyan },
             -- ["@punctuation.bracket"]   = { fg = m.cyan },
@@ -123,11 +123,12 @@ M.main_highlights.treesitter = function()
             -- ["@text.underline"]        = { underline = true },
             -- ["@text.emphasis"]         = { bold = true, underline = true },
             -- ["@text.strong"]           = { bold = true },
-            ["@text.title"]            = { fg = e.title },
-            -- ["@text.literal"]          = {},
+            ["@text.title"]            = { fg = m.cyan, bold = true },
+            ["@text.literal"]          = { fg = m.green },
             ["@text.uri"]              = { fg = e.link },
-            ["@text.todo"]             = { fg = m.yellow }, -- TODO
             ["@text.note"]             = { fg = m.yellow },
+            ["@text.environment"]      = { fg = m.red },
+            ["@text.environment.name"]      = { fg = m.red },
             -- ["@text.warning"]          = { fg = l.warning },
             -- ["@text.danger"]           = { fg = l.error },
             ["@tag"]                   = { fg = m.red },
@@ -206,7 +207,7 @@ M.main_highlights.editor = function()
         TabLineFill      = { fg = e.fg },
         TablineSel       = { fg = e.bg, bg = e.accent },
         Tabline          = { fg = e.fg },
-        Title            = { fg = e.title, bold = true },
+        Title            = { fg = m.cyan, bold = true },
         WarningMsg       = { fg = m.yellow },
         Whitespace       = { fg = e.disabled },
         CursorLine       = { bg = b.cursor_line },
