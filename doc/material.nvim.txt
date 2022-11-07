@@ -232,6 +232,7 @@ This is an example of the setup function with the default values:
             - nvim-cmp
             - nvim-navic
             - nvim-tree
+            - nvim-web-devicons
             - sneak
             - telescope
             - trouble
@@ -265,6 +266,7 @@ Example config in Lua:
            "neogit",
            "nvim-cmp",
            "nvim-tree",
+           "nvim-web-devicons",
            "telescope",
            "which-key",
         }

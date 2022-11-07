@@ -86,13 +86,13 @@ local load_async = function()
         highlights.load_terminal();
     end
 
+    -- apply contrast to the terminal and user defined filetypes
+    apply_contrast(settings.contrast)
+
     -- load user defined higlights
     if type(settings.custom_highlights) == "table" then
         apply_highlights(settings.custom_highlights)
     end
-
-    -- apply contrast to the terminal and user defined filetypes
-    apply_contrast(settings.contrast)
 
     -- if this function gets called asyncronously, this closure is needed
     if (async) then
