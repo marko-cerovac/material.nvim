@@ -198,7 +198,7 @@ material.setup{
             underline = false, -- make group underlined
             undercurl = false, -- make group undercurled
             underdot = false, -- make group underdotted
-            underdash = false -- make group underdotted
+            underdash = false -- make group underslashed
             striketrough = false, -- make group striked trough
             reverse = false, -- reverse the fg and bg colors
             link = "SomeOtherGroup" -- link to some other highlight group
