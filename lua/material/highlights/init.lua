@@ -250,8 +250,8 @@ M.async_highlights.editor = function()
         WildMenu      = { fg = m.orange, bold = true }, -- current match in 'wildmenu' completion
         VertSplit     = { fg = e.vsplit },
         WinSeparator  = { fg = e.vsplit },
-        diffAdded     = { fg = g.added, reverse = true },
-        diffRemoved   = { fg = g.removed, reverse = true },
+        diffAdded     = { fg = g.added },
+        diffRemoved   = { fg = g.removed },
         -- ToolbarLine   = { fg = e.fg, bg = e.bg_alt },
         -- ToolbarButton = { fg = e.fg, bold = true },
         -- NormalMode       = { fg = e.disabled }, -- Normal mode message in the cmdline
