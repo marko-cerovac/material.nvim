@@ -252,7 +252,7 @@ Example config in Lua:
             sidebars = true,
             floating_windows = false,
             cursor_line = true,
-            popup_menu = false
+            popup_menu = false,
             filetypes = {
                 "qf",
                 "packer",
@@ -260,7 +260,7 @@ Example config in Lua:
             }
         },
         plugins = {
-           "dap"
+           "dap",
            "gitsigns",
            "indent-blankline",
            "neogit",
@@ -269,11 +269,11 @@ Example config in Lua:
            "nvim-web-devicons",
            "telescope",
            "which-key",
-        }
+        },
         styles = {
             comments = { italic = true },
             functions = { italic = true },
-        }
+        },
         disable = {
             borders = true,
             background = false,
