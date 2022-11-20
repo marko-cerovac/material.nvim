@@ -107,8 +107,6 @@ M.load = function()
     -- schedule the async function if async is enabled
     if settings.async_loading then
         async = vim.loop.new_async(vim.schedule_wrap(load_async))
-    else
-        load_async()
     end
 
     -- apply highlights one by one
@@ -120,6 +118,8 @@ M.load = function()
 	-- if async is enabled, send the function
     if settings.async_loading then
         async:send()
+    else
+        load_async()
     end
 
     -- DONT FORGET TO REMOVE *****************************************************
