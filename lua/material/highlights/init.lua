@@ -87,7 +87,7 @@ M.main_highlights.treesitter = function()
             -- ["@variable"]              = { link = "Identifier" },
             ["@variable.builtin"] = { link = "Identifier" },
             ["@field"]            = { fg = e.fg_dark },
-            ["@property"]            = { fg = e.fg_dark },
+            ["@property"]         = { fg = e.fg_dark },
             -- ["@parameter"]             = { fg = s.variable }, -- TODO
             ["@symbol"]           = { fg = m.yellow },
 
