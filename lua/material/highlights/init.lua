@@ -24,7 +24,7 @@ M.async_highlights = {}
 ---regular Vim syntax highlights
 M.main_highlights.syntax = function()
     local syntax_hls = {
-        Identifier     = { fg = e.fg },
+        Identifier     = { fg = s.identifier },
         Comment        = { fg = s.comments },
         Keyword        = { fg = s.keyword },
         Conditional    = { fg = s.keyword },
@@ -32,7 +32,7 @@ M.main_highlights.syntax = function()
         Repeat         = { fg = s.keyword },
         String         = { fg = s.string },
         Type           = { fg = s.type },
-        StorageClass   = { fg = m.cyan }, -- static, register, volatile, etc.
+        StorageClass   = { fg = s.storage }, -- static, register, volatile, etc.
         Structure      = { fg = s.type },
         SpecialComment = { link = "Comment" }, -- special things inside a comment
         Constant       = { fg = m.yellow },
@@ -51,7 +51,7 @@ M.main_highlights.syntax = function()
         -- PreCondit   = { link = "Macro" },
         -- Typedef        = { link = "Operator" },
         Special        = { fg = m.cyan },
-        SpecialChar    = { fg = e.disabled },
+        SpecialChar    = { fg = s.keyword },
         Tag            = { fg = m.red },
         Delimiter      = { fg = s.operator }, -- ;
         Debug          = { fg = m.red },
@@ -85,8 +85,8 @@ M.main_highlights.treesitter = function()
             ["@type.builtin"] = { fg = s.type },
 
             -- ["@variable"]              = { link = "Identifier" },
-            ["@variable.builtin"] = { link = "Identifier" },
-            ["@field"]            = { fg = e.fg_dark },
+            ["@variable.builtin"] = { fg = s.keyword },
+            ["@field"]            = { fg = s.field },
             ["@property"]         = { fg = e.fg_dark },
             -- ["@parameter"]             = { fg = s.variable }, -- TODO
             ["@symbol"]           = { fg = m.yellow },
@@ -95,7 +95,7 @@ M.main_highlights.treesitter = function()
             -- ["@function.macro"]   = { link = "Function" },
             ["@constructor"]      = { fg = m.blue },
 
-            ["@keyword"] = { fg = m.cyan },
+            ["@keyword"] = { fg = e.fg },
 
             ["@constant"]         = { fg = m.yellow },
             ["@constant.builtin"] = { fg = m.yellow },
