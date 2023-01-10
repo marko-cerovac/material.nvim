@@ -51,7 +51,7 @@ M.main_highlights.syntax = function()
         -- PreCondit   = { link = "Macro" },
         -- Typedef        = { link = "Operator" },
         Special        = { fg = m.cyan },
-        SpecialChar    = { fg = e.disabled },
+        SpecialChar    = { fg = m.red },
         Tag            = { fg = m.red },
         Delimiter      = { fg = s.operator }, -- ;
         Debug          = { fg = m.red },
