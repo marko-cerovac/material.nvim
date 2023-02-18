@@ -207,7 +207,7 @@ material.setup{
 
     -- Custom colors must be a function that takes in the default colors table as
     -- a paramter, and then modifies them.
-    -- To se the available colors, see lua/material/colors/init.lua
+    -- To see the available colors, see lua/material/colors/init.lua
     custom_colors = function(colors)
         colors.editor.bg = "#SOME_COLOR"
         colors.main.purple = "#SOME_COLOR"
