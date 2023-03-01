@@ -185,7 +185,7 @@ local colors = require 'material.colors'
 
 material.setup{
     custom_highlights = {
-        LineNr = { bg = '#FF0000' }
+        LineNr = { bg = '#FF0000' },
         CursorLine = { fg = colors.editor.constrast , underline = true },
 
         -- This is a list of possible values
@@ -198,7 +198,7 @@ material.setup{
             underline = false, -- make group underlined
             undercurl = false, -- make group undercurled
             underdot = false, -- make group underdotted
-            underdash = false -- make group underslashed
+            underdash = false, -- make group underslashed
             striketrough = false, -- make group striked trough
             reverse = false, -- reverse the fg and bg colors
             link = "SomeOtherGroup" -- link to some other highlight group
