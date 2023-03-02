@@ -1,6 +1,6 @@
 local high_visibility = require "material.util.config".settings.high_visibility
 
----colots table
+---colors table
 local colors = {
     ---main colors
     main = {

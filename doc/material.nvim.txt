@@ -229,6 +229,7 @@ This is an example of the setup function with the default values:
             - lspsaga
             - mini
             - neogit
+            - neorg
             - nvim-cmp
             - nvim-navic
             - nvim-tree

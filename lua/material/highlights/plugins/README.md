@@ -43,7 +43,7 @@ local b = colors.backgrounds
 
 local M = {}
 
-M.load = funtion()
+M.load = function()
     local plugin_hls = {
         -- HighlightName = { values },
         -- HighlightName = { values },

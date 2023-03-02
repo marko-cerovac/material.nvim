@@ -122,8 +122,8 @@ M.main_highlights.treesitter = function()
             -- ["@punctuation.bracket"]   = { fg = m.cyan },
             -- ["@punctuation.special"]   = { fg = m.cyan },
             -- ["@text.underline"]        = { underline = true },
-            -- ["@text.emphasis"]         = { bold = true, underline = true },
-            -- ["@text.strong"]           = { bold = true },
+            ["@text.emphasis"]         = { italic = true },
+            ["@text.strong"]           = { bold = true },
             ["@text.title"]            = { fg = m.cyan, bold = true },
             ["@text.literal"]          = { fg = m.green },
             ["@text.uri"]              = { fg = e.link },
@@ -240,10 +240,10 @@ M.async_highlights.editor = function()
         Directory     = { fg = m.blue },
         MatchParen    = { fg = m.yellow, bold = true },
         PmenuSel      = { fg = e.contrast, bg = e.accent }, -- Popup menu: selected item.
-        IncSearch     = { fg = e.title, bg = e.selection, underline = true },
+        IncSearch     = { fg = e.title, underline = true, reverse = true },
         Question      = { fg = m.yellow }, -- |hit-enter| prompt and yes/no questions
         QuickFixLine  = { fg = e.highlight, bg = e.title, reverse = true },
-        Search        = { fg = e.title, bg = e.selection, bold = true },
+        Search        = { fg = e.title, bold = true, reverse = true },
         MoreMsg       = { fg = e.accent },
         Pmenu         = { fg = e.fg, bg = e.border }, -- popup menu
         PmenuSbar     = { bg = e.active },
