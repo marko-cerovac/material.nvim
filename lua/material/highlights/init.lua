@@ -88,7 +88,7 @@ M.main_highlights.treesitter = function()
             ["@variable.builtin"] = { link = "Identifier" },
             ["@field"]            = { fg = e.fg_dark },
             ["@property"]         = { fg = e.fg_dark },
-            -- ["@parameter"]             = { fg = s.variable }, -- TODO
+            ["@parameter"]        = { link = "Identifier" }, -- TODO
             ["@symbol"]           = { fg = m.yellow },
 
             ["@function.builtin"] = { fg = s.fn },
@@ -189,7 +189,7 @@ M.main_highlights.editor = function()
         Cursor           = { fg = e.bg_alt, bg = e.cursor },
         CursorIM         = { link = "Cursor" }, -- like Cursor, but used when in IME mode
         ErrorMsg         = { fg = l.error },
-        Folded           = { fg = e.disabled, italic = true },
+        Folded           = { fg = e.disabled, bg = e.bg_alt, italic = true },
         FoldColumn       = { fg = m.blue },
         LineNr           = { fg = e.line_numbers },
         CursorLineNr     = { fg = e.accent },
@@ -307,6 +307,16 @@ M.async_highlights.load_lsp = function()
         LspReferenceRead           = { link = "LspReferenceText" }, -- used for highlighting "read" references
         LspReferenceWrite          = { link = "LspReferenceText" }, -- used for highlighting "write" references
         LspCodeLens                = { link = "DiagnosticHint" },
+
+        ["@lsp.type.enum"]       = { link = "@type" },
+        ["@lsp.type.keyword"]    = { link = "@keyword" },
+        ["@lsp.type.interface"]  = { link = "Identifier" },
+        ["@lsp.type.namespace"]  = { link = "@namespace" },
+        ["@lsp.type.parameter"]  = { link = "@parameter" },
+        ["@lsp.type.property"]   = { link = "@property" },
+
+        ["@lsp.typemod.function.defaultLibrary"] = { link = "@function.builtin" },
+        ["@lsp.typemod.variable.defaultLibrary"] = { link = "@variable.builtin" },
     }
 
     return lsp_hls
