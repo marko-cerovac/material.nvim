@@ -19,7 +19,7 @@ end
 M.change_style = function(style)
     set_lualine()
     vim.g.material_style = style
-    print("Material style: ", style)
+    -- print("Material style: ", style)
     vim.cmd "colorscheme material"
 end
 
