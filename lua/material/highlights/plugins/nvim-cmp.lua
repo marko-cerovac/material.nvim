@@ -8,7 +8,10 @@ local M = {}
 
 M.load = function()
     local plugin_hls = {
-        CmpItemAbbrMatch      = { fg = m.paleblue, bold = true },
+        CmpItemAbbr           = { fg = e.fg },
+        CmpItemMenu           = { fg = e.disabled },
+        CmpItemAbbrMatch      = { fg = e.accent, bold = true },
+
         CmpItemKindText       = { fg = s.comments },
         CmpItemKindMethod     = { fg = s.fn },
         CmpItemKindFunction   = { fg = s.fn },

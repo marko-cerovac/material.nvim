@@ -170,9 +170,9 @@ else vim.g.material_style = "oceanic"
 
     colors.editor.bg           = "#25363B"
     colors.editor.bg_alt       = "#1C2C30"
-    colors.editor.fg           = "#B0BEC5" -- keep the old one
-    -- colors.editor.fg           = "#ADD8DE" -- keep the old one
-    colors.editor.fg_dark       = "#7C9EAD"
+    colors.editor.fg           = "#B0BEC5"
+    -- colors.editor.fg_dark      = "#7C9EAD"
+    colors.editor.fg_dark      = "#4B504F"
     colors.editor.selection    = "#395B65"
     colors.editor.border       = "#355058"
     colors.editor.line_numbers = "#426367"

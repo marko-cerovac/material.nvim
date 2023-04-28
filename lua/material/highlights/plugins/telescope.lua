@@ -8,12 +8,16 @@ local M = {}
 
 M.load = function()
     local plugin_hls = {
-        TelescopeNormal         = { fg = e.fg, bg = b.floating_windows },
+        TelescopeNormal         = { fg = e.disabled, bg = b.floating_windows },
         TelescopePromptBorder   = { fg = e.border, bg = b.floating_windows },
         TelescopeResultsBorder  = { link = "TelescopePromptBorder" },
         TelescopePreviewBorder  = { link = "TelescopePromptBorder" },
-        TelescopeSelectionCaret = { fg = m.green, bg = e.selection },
-        TelescopeSelection      = { fg = m.green, bg = e.selection },
+        TelescopePromptTitle   = { fg = e.disabled, bg = b.floating_windows },
+        TelescopeResultsTitle  = { link = "TelescopePromptTitle" },
+        TelescopePreviewTitle  = { link = "TelescopePromptTitle" },
+        TelescopePreviewDirectory = { fg = e.fg_dark },
+        TelescopeSelectionCaret = { fg = e.title, bg = e.active },
+        TelescopeSelection      = { fg = e.title, bg = e.active },
         TelescopeMultiSelection = { fg = m.yellow },
         TelescopeMatching       = { bold = true },
     }

@@ -81,8 +81,9 @@ M.main_highlights.treesitter = function()
 
     if vim.fn.has("nvim-0.8.0") == 1 then
         local treesitter_hls = {
-            ["@type"]         = { fg = s.type },
-            ["@type.builtin"] = { fg = s.type },
+            ["@type"]           = { fg = s.type },
+            ["@type.builtin"]   = { fg = s.type },
+            ["@type.qualifier"] = { fg = m.cyan },
 
             -- ["@variable"]              = { link = "Identifier" },
             ["@variable.builtin"] = { link = "Identifier" },
@@ -239,13 +240,13 @@ M.async_highlights.editor = function()
         VisualNOS     = { link = "Visual" }, -- Visual mode selection when vim is "Not Owning the Selection".
         Directory     = { fg = m.blue },
         MatchParen    = { fg = m.yellow, bold = true },
-        PmenuSel      = { fg = e.contrast, bg = e.accent }, -- Popup menu: selected item.
         IncSearch     = { fg = e.title, underline = true, reverse = true },
         Question      = { fg = m.yellow }, -- |hit-enter| prompt and yes/no questions
         QuickFixLine  = { fg = e.highlight, bg = e.title, reverse = true },
         Search        = { fg = e.title, bold = true, reverse = true },
         MoreMsg       = { fg = e.accent },
         Pmenu         = { fg = e.fg, bg = e.border }, -- popup menu
+        PmenuSel      = { fg = e.contrast, bg = e.accent }, -- Popup menu: selected item.
         PmenuSbar     = { bg = e.active },
         PmenuThumb    = { fg = e.fg },
         WildMenu      = { fg = m.orange, bold = true }, -- current match in 'wildmenu' completion
@@ -309,6 +310,7 @@ M.async_highlights.load_lsp = function()
         LspCodeLens                = { link = "DiagnosticHint" },
 
         ["@lsp.type.enum"]       = { link = "@type" },
+        ['@lsp.type.class']      = { link = "@type" },
         ["@lsp.type.keyword"]    = { link = "@keyword" },
         ["@lsp.type.interface"]  = { link = "Identifier" },
         ["@lsp.type.namespace"]  = { link = "@namespace" },
@@ -317,6 +319,24 @@ M.async_highlights.load_lsp = function()
 
         ["@lsp.typemod.function.defaultLibrary"] = { link = "@function.builtin" },
         ["@lsp.typemod.variable.defaultLibrary"] = { link = "@variable.builtin" },
+
+        --[[
+          ['@lsp.type.namespace'] = '@namespace',
+          ['@lsp.type.type'] = '@type',
+          ['@lsp.type.class'] = '@type',
+          ['@lsp.type.enum'] = '@type',
+          ['@lsp.type.interface'] = '@type',
+          ['@lsp.type.struct'] = '@structure',
+          ['@lsp.type.parameter'] = '@parameter',
+          ['@lsp.type.variable'] = '@variable',
+          ['@lsp.type.property'] = '@property',
+          ['@lsp.type.enumMember'] = '@constant',
+          ['@lsp.type.function'] = '@function',
+          ['@lsp.type.method'] = '@method',
+          ['@lsp.type.macro'] = '@macro',
+          ['@lsp.type.decorator'] = '@function',
+        ]]
+
     }
 
     return lsp_hls
