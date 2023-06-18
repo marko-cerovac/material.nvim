@@ -8,7 +8,8 @@ local M = {}
 
 M.load = function()
     local plugin_hls = {
-        TelescopeNormal         = { fg = e.disabled, bg = b.floating_windows },
+        TelescopeNormal         = { fg = e.fg, bg = b.floating_windows },
+        -- TelescopeNormal         = { fg = e.disabled, bg = b.floating_windows },
         TelescopePromptBorder   = { fg = e.border, bg = b.floating_windows },
         TelescopeResultsBorder  = { link = "TelescopePromptBorder" },
         TelescopePreviewBorder  = { link = "TelescopePromptBorder" },
