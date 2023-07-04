@@ -20,7 +20,6 @@ local prepare_environment = function()
     vim.g.colors_name     = "material"
     vim.opt.termguicolors = true
 
-
     if vim.fn.exists "syntax_on" then
         vim.cmd "syntax reset"
     end

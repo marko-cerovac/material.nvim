@@ -136,6 +136,7 @@ M.main_highlights.treesitter = function()
             ["@tag"]                   = { fg = m.red },
             ["@tag.delimiter"]         = { fg = m.cyan },
             ["@tag.attribute"]         = { fg = m.purple },
+            TreesitterContext          = { bg = m.bg_alt },
         }
 
         return treesitter_hls
