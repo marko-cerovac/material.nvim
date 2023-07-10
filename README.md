@@ -168,7 +168,7 @@ require('material').setup({
 
     async_loading = true, -- Load parts of the theme asyncronously for faster startup (turned on by default)
 
-    custom_colors = nil, -- If you want to everride the default colors, set this to a function
+    custom_colors = nil, -- If you want to override the default colors, set this to a function
 
     custom_highlights = {}, -- Overwrite highlights with your own
 })
