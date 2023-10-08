@@ -217,6 +217,20 @@ material.setup{
 }
 ```
 
+To enable transparency, it is suggested you disable the theme background from 
+the settings above. That way, your terminal's background will be used instead. 
+
+```lua
+require('material').setup({
+    -- ... other settings
+    disable = {
+        -- ... other settings
+        background = true, 
+    },
+})
+```
+
+
 To enable the lualine themes, first set the theme in your lualine settings to `auto` or `material`
 ```lua
 require('lualine').setup {
