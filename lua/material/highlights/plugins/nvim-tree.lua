@@ -8,10 +8,10 @@ local M = {}
 
 M.load = function()
     local plugin_hls = {
-        NvimTreeNormal           = { fg = e.fg, bg = b.sidebars },
+        NvimTreeNormal           = { fg = m.white, bg = b.sidebars },
         NvimTreeNormalNC         = { link = "NvimTreeNormal" },
         NvimTreeRootFolder       = { fg = e.accent, bg = b.sidebars },
-        NvimTreeFolderName       = { fg = m.blue, bold = true },
+        NvimTreeFolderName       = { fg = e.fg, bold = true },
         NvimTreeFolderIcon       = { link = "NvimTreeFolderName" },
         NvimTreeEmptyFolderName  = { fg = m.gray },
         NvimTreeOpenedFolderName = { fg = m.yellow, bold = true },
@@ -27,6 +27,10 @@ M.load = function()
         NvimTreeSpecialFile      = { fg = m.purple },
         NvimTreeWinSeparator     = { link = "WinSeparator" },
     }
+
+    if vim.g.material_style == "hybrid" then
+        plugin_hls.NvimTreeGitDirty = { fg = m.white, italic = true }
+    end
 
     return plugin_hls
 end
