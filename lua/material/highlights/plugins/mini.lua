@@ -10,7 +10,7 @@ M.load = function()
         MiniCompletionActiveParameter = { underline = true },
         MiniCursorword                = { underline = true },
         MiniCursorwordCurrent         = { underline = true },
-        MiniIndentscopeSymbol         = { fg = m.cyan },
+        MiniIndentscopeSymbol         = { fg = e.border },
         MiniIndentscopePrefix         = { nocombine = true },
         MiniJump                      = { fg = e.bg, bg = e.accent },
         MiniJump2dSpot                = { fg = e.accent, bold = true, nocombine = true },

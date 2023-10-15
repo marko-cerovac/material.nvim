@@ -134,6 +134,7 @@ require('material').setup({
         -- Available plugins:
         -- "dap",
         -- "dashboard",
+        -- "flash"
         -- "gitsigns",
         -- "hop",
         -- "indent-blankline",
