@@ -231,6 +231,7 @@ This is an example of the setup function with the default values:
             - mini
             - neogit
             - neorg
+            - noice
             - nvim-cmp
             - nvim-navic
             - nvim-tree

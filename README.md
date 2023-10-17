@@ -142,6 +142,7 @@ require('material').setup({
         -- "mini",
         -- "neogit",
         -- "neorg",
+        -- "noice"
         -- "nvim-cmp",
         -- "nvim-navic",
         -- "nvim-tree",
