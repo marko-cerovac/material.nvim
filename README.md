@@ -134,6 +134,7 @@ require('material').setup({
         -- Available plugins:
         -- "dap",
         -- "dashboard",
+        -- "eyeliner",
         -- "fidget"
         -- "flash"
         -- "gitsigns",

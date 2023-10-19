@@ -223,6 +223,7 @@ This is an example of the setup function with the default values:
           Available plugins:
             - dap
             - dashboard
+            - eyeliner
             - fidget
             - flash
             - gitsigns
