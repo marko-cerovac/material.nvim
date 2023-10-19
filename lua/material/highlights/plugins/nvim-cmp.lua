@@ -11,7 +11,7 @@ M.load = function()
         CmpItemAbbr           = { fg = e.fg },
         CmpItemMenu           = { fg = e.disabled },
         CmpItemAbbrMatch      = { fg = e.accent, bold = true },
-        CmpItemAbbrMatchFuzzy = { fg = e.fg, style = { "bold" } },
+        CmpItemAbbrMatchFuzzy = { fg = e.fg, bold = true },
 
         CmpItemKind              = { fg = m.blue },
         CmpItemKindText          = { fg = s.comments },
@@ -33,7 +33,7 @@ M.load = function()
         CmpItemKindFolder        = { fg = e.title },
         CmpItemKindSnippet       = { fg = m.green },
         CmpItemKindEvent         = { fg = m.blue },
-        CmpItemKindTypeParameter = { fg = m.blue }
+        CmpItemKindTypeParameter = { fg = m.blue },
         CmpItemKindCopilot       = { fg = m.darkcyan },
         CmpItemKindColor         = { fg = m.red },
         CmpItemKindEnum          = { fg = s.type }, -- TODO
