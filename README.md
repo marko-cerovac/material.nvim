@@ -137,6 +137,7 @@ require('material').setup({
         -- "fidget"
         -- "flash"
         -- "gitsigns",
+        -- "harpoon",
         -- "hop",
         -- "indent-blankline",
         -- "lspsaga",

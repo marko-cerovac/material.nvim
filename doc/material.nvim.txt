@@ -226,6 +226,7 @@ This is an example of the setup function with the default values:
             - fidget
             - flash
             - gitsigns
+            - harpoon
             - hop
             - indent-blankline
             - lspsaga
