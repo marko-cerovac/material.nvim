@@ -141,6 +141,7 @@ require('material').setup({
         -- "lspsaga",
         -- "mini",
         -- "neogit",
+        -- "neotest",
         -- "neorg",
         -- "nvim-cmp",
         -- "nvim-navic",
