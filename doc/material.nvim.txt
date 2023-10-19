@@ -239,6 +239,7 @@ This is an example of the setup function with the default values:
             - nvim-navic
             - nvim-tree
             - nvim-web-devicons
+            - rainbow-delimiters
             - sneak
             - telescope
             - trouble

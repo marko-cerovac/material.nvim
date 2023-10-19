@@ -150,6 +150,7 @@ require('material').setup({
         -- "nvim-navic",
         -- "nvim-tree",
         -- "nvim-web-devicons",
+        -- "rainbow-delimiters",
         -- "sneak",
         -- "telescope",
         -- "trouble",
