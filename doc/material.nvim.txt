@@ -228,6 +228,7 @@ This is an example of the setup function with the default values:
             - gitsigns
             - harpoon
             - hop
+            - illuminate
             - indent-blankline
             - lspsaga
             - mini

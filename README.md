@@ -139,6 +139,7 @@ require('material').setup({
         -- "gitsigns",
         -- "harpoon",
         -- "hop",
+        -- "illuminate",
         -- "indent-blankline",
         -- "lspsaga",
         -- "mini",
