@@ -145,6 +145,7 @@ elseif vim.g.material_style == "palenight" then
     colors.editor.highlight    = "#444267"
     colors.editor.disabled     = "#515772"
     colors.editor.accent       = "#AB47BC"
+    colors.editor.none         = "NONE"
     colors.syntax.comments     = "#676E95"
 
 elseif vim.g.material_style == "deep ocean" then
