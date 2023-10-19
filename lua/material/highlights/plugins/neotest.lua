@@ -8,9 +8,9 @@ local M = {}
 M.load = function()
     local plugin_hls = {
         NeotestPassed = { fg = m.green },
-        NeotestFailed = { fg = m.red },
+        NeotestFailed = { link = "DiagnosticError" },
         NeotestRunning = { fg = m.yellow },
-        NeotestSkipped = { fg = m.blue },
+        NeotestSkipped = { link = "DiagnosticHint" },
         NeotestTest = { fg = e.fg },
         NeotestNamespace = { fg = m.purple },
         NeotestFocused = { style = { "bold", "underline" } },
