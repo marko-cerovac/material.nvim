@@ -11,26 +11,35 @@ M.load = function()
         CmpItemAbbr           = { fg = e.fg },
         CmpItemMenu           = { fg = e.disabled },
         CmpItemAbbrMatch      = { fg = e.accent, bold = true },
+        CmpItemAbbrMatchFuzzy = { fg = e.fg, style = { "bold" } },
 
-        CmpItemKindText       = { fg = s.comments },
-        CmpItemKindMethod     = { fg = s.fn },
-        CmpItemKindFunction   = { fg = s.fn },
-        CmpItemKindContructor = { fg = s.fn },
-        CmpItemKindField      = { fg = m.cyan },
-        CmpItemKindVariable   = { fg = m.paleblue },
-        CmpItemKindConstant   = { fg = m.yellow },
-        CmpItemKindClass      = { fg = s.type },
-        CmpItemKindInterface  = { fg = s.type },
-        CmpItemKindModule     = { fg = m.orange },
-        CmpItemKindProperty   = { fg = s.text },
-        CmpItemKindKeyword    = { fg = s.keyword },
-        CmpItemKindFile       = { fg = e.title },
-        CmpItemKindFolder     = { fg = e.title },
-        CmpItemKindSnippet    = { fg = m.green },
-        CmpItemEnum           = { fg = s.type }, -- TODO
-        CmpItemEnumMember     = { fg = m.cyan }, -- TODO
-        CmpItemOperator       = { fg = s.operator }, -- TODO
-        CmpItemReference      = { fg = e.fg_dark }, -- TODO
+        CmpItemKind              = { fg = m.blue },
+        CmpItemKindText          = { fg = s.comments },
+        CmpItemKindMethod        = { fg = s.fn },
+        CmpItemKindFunction      = { fg = s.fn },
+        CmpItemKindContructor    = { fg = s.fn },
+        CmpItemKindField         = { fg = m.cyan },
+        CmpItemKindVariable      = { fg = m.paleblue },
+        CmpItemKindValue         = { fg = m.paleblue },
+        CmpItemKindConstant      = { fg = m.yellow },
+        CmpItemKindClass         = { fg = s.type },
+        CmpItemKindStruct        = { fg = s.type },
+        CmpItemKindInterface     = { fg = s.type },
+        CmpItemKindModule        = { fg = m.orange },
+        CmpItemKindProperty      = { fg = s.text },
+        CmpItemKindKeyword       = { fg = s.keyword },
+        CmpItemKindUnit          = { fg = m.green },
+        CmpItemKindFile          = { fg = e.title },
+        CmpItemKindFolder        = { fg = e.title },
+        CmpItemKindSnippet       = { fg = m.green },
+        CmpItemKindEvent         = { fg = m.blue },
+        CmpItemKindTypeParameter = { fg = m.blue }
+        CmpItemKindCopilot       = { fg = m.darkcyan },
+        CmpItemKindColor         = { fg = m.red },
+        CmpItemKindEnum          = { fg = s.type }, -- TODO
+        CmpItemEnumMember        = { fg = m.cyan }, -- TODO
+        CmpItemKindOperator      = { fg = s.operator }, -- TODO
+        CmpItemKindReference     = { fg = e.fg_dark }, -- TODO
 
     }
 
