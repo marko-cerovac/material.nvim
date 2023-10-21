@@ -6,8 +6,11 @@ local M = {}
 
 M.load = function()
     local plugin_hls = {
-        FlashMatch = { bg = e.visual },
-        FlashLabel = { bg = e.accent, reverse = true },
+
+        FlashBackdrop = { fg = e.disabled },
+        FlashMatch = { bg = e.selection, fg = e.fg },
+        FlashLabel = {fg = e.bg, bg = e.accent, bold = true },
+        FlashCurrent = { fg = e.title }
     }
 
     return plugin_hls
