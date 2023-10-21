@@ -9,8 +9,9 @@ M.load = function()
     local plugin_hls = {
         NoiceCmdlineIcon              = { fg = m.paleblue },
         NoiceCmdlineIconLua           = { fg = m.blue },
-        NoiceCmdlinePopupBorder       = { fg = e.border },
         NoiceCmdlineIconSearch        = { fg = m.paleblue },
+        NoiceCmdlinePopupTitle        = { fg = e.paleblue },
+        NoiceCmdlinePopupBorder       = { fg = e.border },
         NoiceCmdlinePopupBorderSearch = { fg = e.border },
         NoiceConfirmBorder            = { fg = e.border },
     }
