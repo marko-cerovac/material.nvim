@@ -134,19 +134,25 @@ require('material').setup({
         -- Available plugins:
         -- "dap",
         -- "dashboard",
+        -- "eyeliner",
+        -- "fidget"
         -- "flash"
         -- "gitsigns",
+        -- "harpoon",
         -- "hop",
+        -- "illuminate",
         -- "indent-blankline",
         -- "lspsaga",
         -- "mini",
         -- "neogit",
+        -- "neotest",
         -- "neorg",
         -- "noice"
         -- "nvim-cmp",
         -- "nvim-navic",
         -- "nvim-tree",
         -- "nvim-web-devicons",
+        -- "rainbow-delimiters",
         -- "sneak",
         -- "telescope",
         -- "trouble",

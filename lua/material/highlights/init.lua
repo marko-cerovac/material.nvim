@@ -97,6 +97,7 @@ M.main_highlights.treesitter = function()
             ["@constructor"]      = { fg = m.blue },
 
             ["@keyword"] = { fg = m.cyan },
+            ["@keyword.coroutine"] = { fg = m.cyan, italic = true },
 
             ["@constant"]         = { fg = m.yellow },
             ["@constant.builtin"] = { fg = m.yellow },
@@ -136,6 +137,8 @@ M.main_highlights.treesitter = function()
             ["@tag"]                    = { fg = m.red },
             ["@tag.delimiter"]          = { fg = m.cyan },
             ["@tag.attribute"]          = { fg = m.purple },
+            ["@define"]                 = { link = "@preproc" },
+            ["@operator"]               = { link = "Operator" },
             TreesitterContext           = { bg = e.contrast },
             TreesitterContextLineNumber = { fg = e.line_numbers, bg = e.contrast },
         }
@@ -309,35 +312,39 @@ M.async_highlights.load_lsp = function()
         LspReferenceText           = { bg = e.selection }, -- used for highlighting "text" references
         LspReferenceRead           = { link = "LspReferenceText" }, -- used for highlighting "read" references
         LspReferenceWrite          = { link = "LspReferenceText" }, -- used for highlighting "write" references
-        LspCodeLens                = { link = "DiagnosticHint" },
+        LspCodeLens                = { italic = true, fg = l.hint, sp = l.hint },
+        LspInlayHint               = { italic = true, fg = l.hint, sp = l.hint },
 
+		    ["@lsp.type.builtinType"] = { link = "@type.builtin" },
+		    ["@lsp.type.comment"] = { link = "@comment" },
+        ["@lsp.type.boolean"] = { link = "@boolean" },
         ["@lsp.type.enum"]       = { link = "@type" },
-        ['@lsp.type.class']      = { link = "@type" },
-        ["@lsp.type.keyword"]    = { link = "@keyword" },
+        ["@lsp.type.enumMember"] = { link = "@constant" },
+        ["@lsp.type.escapeSequence"] = { link = "@string.escape" },
+        ["@lsp.type.formatSpecifier"] = { link = "@punctuation" },
         ["@lsp.type.interface"]  = { link = "Identifier" },
+        ["@lsp.type.keyword"]    = { link = "@keyword" },
         ["@lsp.type.namespace"]  = { link = "@namespace" },
-        ["@lsp.type.parameter"]  = { link = "@parameter" },
-        ["@lsp.type.property"]   = { link = "@property" },
-
+        ["@lsp.type.number"] = { link = "@number" },
+        ["@lsp.type.operator"] = { link = "@operator" },
+        ["@lsp.type.parameter"] = { link = "@parameter" },
+        ["@lsp.type.property"] = { link = "@property" },
+        ["@lsp.type.selfKeyword"] = { link = "@variable.builtin" },
+        ["@lsp.type.typeAlias"] = { link = "@type" },
+        ["@lsp.type.unresolvedReference"] = { link = "@error" },
+        ["@lsp.typemod.class.defaultLibrary"] = { link = "@type.builtin" },
+        ["@lsp.typemod.enum.defaultLibrary"] = { link = "@type.builtin" },
+        ["@lsp.typemod.enumMember.defaultLibrary"] = { link = "@constant.builtin" },
         ["@lsp.typemod.function.defaultLibrary"] = { link = "@function.builtin" },
+        ["@lsp.typemod.keyword.async"] = { link = "@keyword.coroutine" },
+        ["@lsp.typemod.macro.defaultLibrary"] = { link = "@function.builtin" },
+        ["@lsp.typemod.method.defaultLibrary"] = { link = "@function.builtin" },
+        ["@lsp.typemod.operator.injected"] = { link = "@operator" },
+        ["@lsp.typemod.string.injected"] = { link = "@string" },
+        ["@lsp.typemod.type.defaultLibrary"] = { link = "@type.builtin" },
         ["@lsp.typemod.variable.defaultLibrary"] = { link = "@variable.builtin" },
-
-        --[[
-          ['@lsp.type.namespace'] = '@namespace',
-          ['@lsp.type.type'] = '@type',
-          ['@lsp.type.class'] = '@type',
-          ['@lsp.type.enum'] = '@type',
-          ['@lsp.type.interface'] = '@type',
-          ['@lsp.type.struct'] = '@structure',
-          ['@lsp.type.parameter'] = '@parameter',
-          ['@lsp.type.variable'] = '@variable',
-          ['@lsp.type.property'] = '@property',
-          ['@lsp.type.enumMember'] = '@constant',
-          ['@lsp.type.function'] = '@function',
-          ['@lsp.type.method'] = '@method',
-          ['@lsp.type.macro'] = '@macro',
-          ['@lsp.type.decorator'] = '@function',
-        ]]
+        ["@lsp.typemod.variable.injected"] = { link = "@variable" },
+        ['@lsp.type.class']      = { link = "@type" },
 
     }
 
