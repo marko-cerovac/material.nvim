@@ -24,7 +24,7 @@ M.async_highlights = {}
 ---regular Vim syntax highlights
 M.main_highlights.syntax = function()
     local syntax_hls = {
-        Identifier     = { fg = e.fg },
+        Identifier     = { fg = s.variable },
         Comment        = { fg = s.comments },
         Keyword        = { fg = s.keyword },
         Conditional    = { fg = s.keyword },
@@ -49,7 +49,7 @@ M.main_highlights.syntax = function()
         -- Define         = { link = "Macro" },
         -- PreProc        = { link = "Macro" },
         -- PreCondit   = { link = "Macro" },
-        -- Typedef        = { link = "Operator" },
+        Typedef        = { fg = m.red },
         Special        = { fg = m.cyan },
         SpecialChar    = { fg = m.red },
         Tag            = { fg = m.red },
@@ -223,6 +223,16 @@ M.main_highlights.editor = function()
         Ignore           = { fg = e.disabled },
         Underlined       = { fg = e.links, underline = true },
         Error            = { fg = l.error, bold = true },
+
+        -- color highlights
+        Black  = { fg = m.black },
+        Red    = { fg = m.red },
+        Green  = { fg = m.green },
+        Yellow = { fg = m.yellow },
+        Blue   = { fg = m.blue },
+        Cyan   = { fg = m.cyan },
+        Purple = { fg = m.purple },
+        Orange = { fg = m.orange },
     }
 
     return editor_hls
@@ -324,6 +334,7 @@ M.async_highlights.load_lsp = function()
         ["@lsp.type.formatSpecifier"]              = { link = "@punctuation" },
         ["@lsp.type.interface"]                    = { link = "Identifier" },
         ["@lsp.type.keyword"]                      = { link = "@keyword" },
+        ['@lsp.type.class']                        = { link = "@type" },
         ["@lsp.type.namespace"]                    = { link = "@namespace" },
         ["@lsp.type.number"]                       = { link = "@number" },
         ["@lsp.type.operator"]                     = { link = "@operator" },
@@ -344,7 +355,6 @@ M.async_highlights.load_lsp = function()
         ["@lsp.typemod.type.defaultLibrary"]       = { link = "@type.builtin" },
         ["@lsp.typemod.variable.defaultLibrary"]   = { link = "@variable.builtin" },
         ["@lsp.typemod.variable.injected"]         = { link = "@variable" },
-        ['@lsp.type.class']                        = { link = "@type" },
 
     }
 
