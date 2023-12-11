@@ -135,8 +135,8 @@ require('material').setup({
         -- "dap",
         -- "dashboard",
         -- "eyeliner",
-        -- "fidget"
-        -- "flash"
+        -- "fidget",
+        -- "flash",
         -- "gitsigns",
         -- "harpoon",
         -- "hop",
