@@ -193,6 +193,7 @@ M.main_highlights.editor = function()
         ColorColumn      = { fg = m.none, bg = e.active },
         Conceal          = { fg = e.disabled },
         Cursor           = { fg = e.bg_alt, bg = e.cursor },
+        TermCursor       = { link = "Cursor" }, -- cursor for the terminal
         CursorIM         = { link = "Cursor" }, -- like Cursor, but used when in IME mode
         ErrorMsg         = { fg = l.error },
         Folded           = { fg = e.disabled, bg = e.bg_alt, italic = true },

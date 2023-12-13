@@ -235,6 +235,7 @@ This is an example of the setup function with the default values:
             - mini
             - neogit
             - neotest
+            - neo-tree
             - neorg
             - noice
             - nvim-cmp
