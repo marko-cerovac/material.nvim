@@ -135,8 +135,8 @@ require('material').setup({
         -- "dap",
         -- "dashboard",
         -- "eyeliner",
-        -- "fidget"
-        -- "flash"
+        -- "fidget",
+        -- "flash",
         -- "gitsigns",
         -- "harpoon",
         -- "hop",
@@ -148,7 +148,7 @@ require('material').setup({
         -- "neotest",
         -- "neo-tree",
         -- "neorg",
-        -- "noice"
+        -- "noice",
         -- "nvim-cmp",
         -- "nvim-navic",
         -- "nvim-tree",
