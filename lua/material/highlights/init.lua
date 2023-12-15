@@ -81,23 +81,42 @@ M.main_highlights.treesitter = function()
 
     if vim.fn.has("nvim-0.8.0") == 1 then
         local treesitter_hls = {
-            ["@type"]           = { fg = s.type },
-            ["@type.builtin"]   = { fg = s.type },
-            ["@type.qualifier"] = { fg = m.cyan },
+            ["@comment"]          = { link = "Comment" },
+            ["@error"]            = { link = "Error" },
 
-            -- ["@variable"]              = { link = "Identifier" },
+            ["@type"]             = { fg = s.type },
+            ["@type.builtin"]     = { fg = s.type },
+            ["@type.definition"]  = { fg = m.type },
+            ["@type.qualifier"]   = { fg = m.cyan },
+
+            ["@variable"]         = { link = "Identifier" },
             ["@variable.builtin"] = { link = "Identifier" },
             ["@field"]            = { fg = e.fg_dark },
             ["@property"]         = { fg = e.fg_dark },
             ["@parameter"]        = { link = "Identifier" }, -- TODO
             ["@symbol"]           = { fg = m.yellow },
 
-            ["@function.builtin"] = { fg = s.fn },
-            -- ["@function.macro"]   = { link = "Function" },
+            ["@function"]         = { link = "Function" },
+            ["@function.call"]    = { link = "Function" },
+            ["@function.builtin"] = { link = "Function" },
+            ["@function.macro"]   = { link = "Function" },
+
+            ["@method"]           = { link = "Function" },
+            ["@method.call"]      = { link = "Function" },
+
             ["@constructor"]      = { fg = m.blue },
 
             ["@keyword"]           = { fg = m.cyan },
             ["@keyword.coroutine"] = { fg = m.cyan, italic = true },
+            ["@keyword.operator"]  = { link = "@keyword" },
+            ["@keyword.return"]    = { link = "@keyword" },
+            ["@keyword.function"]  = { link = "@keyword" },
+            ["@keyword.export"]    = { link = "@keyword" },
+
+            ["@conditional"]       = { link = "Conditional" },
+            ["@repeat"]            = { link = "Repeat" },
+            ["@include"]           = { link = "Include" },
+            ["@exception"]         = { link = "Exception" },
 
             ["@constant"]         = { fg = m.yellow },
             ["@constant.builtin"] = { fg = m.yellow },
@@ -107,9 +126,13 @@ M.main_highlights.treesitter = function()
             ["@macro"]     = { fg = m.cyan },
             ["@namespace"] = { fg = m.yellow },
 
+            ["@string"]         = { link = "String" },
             ["@string.escape"]  = { fg = e.fg_dark },
             ["@string.regex"]   = { fg = m.yellow },
             ["@string.special"] = { fg = e.fg_dark },
+
+            ["@character"] = { link = "Character" },
+		        ["@character.special"] = { link = "SpecialChar" },
 
             ["@text.diff.add"]    = { link = "DiffAdd" },
             ["@text.diff.delete"] = { link = "DiffDelete" },
@@ -121,8 +144,8 @@ M.main_highlights.treesitter = function()
             ["@label"]                  = { fg = m.yellow },
             ["@punctuation"]            = { fg = m.cyan },
             ["@punctuation.delimiter"]  = { fg = m.cyan },
-            -- ["@punctuation.bracket"]    = { fg = m.cyan },
-            -- ["@punctuation.special"]    = { fg = m.cyan },
+            ["@punctuation.bracket"]    = { fg = m.cyan },
+            ["@punctuation.special"]    = { fg = m.cyan },
             -- ["@text.underline"]         = { underline = true },
             ["@text.emphasis"]          = { italic = true },
             ["@text.strong"]            = { bold = true },
@@ -132,8 +155,8 @@ M.main_highlights.treesitter = function()
             ["@text.note"]              = { fg = m.yellow },
             ["@text.environment"]       = { fg = m.red },
             ["@text.environment.name"]  = { fg = m.red },
-            -- ["@text.warning"]           = { fg = l.warning },
-            -- ["@text.danger"]            = { fg = l.error },
+            ["@text.warning"]           = { fg = l.warning },
+            ["@text.danger"]            = { fg = l.error },
             ["@tag"]                    = { fg = m.red },
             ["@tag.delimiter"]          = { fg = m.cyan },
             ["@tag.attribute"]          = { fg = m.purple },
@@ -141,6 +164,10 @@ M.main_highlights.treesitter = function()
             ["@operator"]               = { link = "Operator" },
             TreesitterContext           = { bg = e.contrast },
             TreesitterContextLineNumber = { fg = e.line_numbers, bg = e.contrast },
+
+            ["@boolean"]                = { link = "Boolean" },
+            ["@number"]                 = { link = "Number" },
+            ["@float"]                  = { link = "Float" },
         }
 
         return treesitter_hls
