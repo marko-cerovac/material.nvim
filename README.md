@@ -158,6 +158,7 @@ require('material').setup({
         -- "telescope",
         -- "trouble",
         -- "which-key",
+        -- "nvim-notify",
     },
 
     disable = {
