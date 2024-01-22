@@ -84,25 +84,30 @@ M.main_highlights.treesitter = function()
             ["@comment"]          = { link = "Comment" },
             ["@error"]            = { link = "Error" },
 
+            ["@comment.error"]    = { fg = s.comments, bg = l.error },
+            ["@comment.warning"]  = { fg = s.comments, bg = l.warning },
+            ["@comment.note"]     = { fg = s.comments, bg = l.info },
+
             ["@type"]             = { fg = s.type },
             ["@type.builtin"]     = { fg = s.type },
             ["@type.definition"]  = { fg = m.type },
             ["@type.qualifier"]   = { fg = m.cyan },
 
-            ["@variable"]         = { link = "Identifier" },
-            ["@variable.builtin"] = { link = "Identifier" },
-            ["@field"]            = { fg = e.fg_dark },
-            ["@property"]         = { fg = e.fg_dark },
-            ["@parameter"]        = { link = "Identifier" }, -- TODO
-            ["@symbol"]           = { fg = m.yellow },
+            ["@variable"]           = { link = "Identifier" },
+            ["@variable.builtin"]   = { link = "Identifier" },
+            ["@field"]              = { fg = e.fg_dark },
+            ["@property"]           = { fg = e.fg_dark },
+            ["@variable.parameter"] = { link = "Identifier" },
+            ["@variable.member"]    = { link = "Identifier" }, -- Fields
+            ["@string.special.symbol"] = { fg = m.yellow },
 
             ["@function"]         = { link = "Function" },
             ["@function.call"]    = { link = "Function" },
             ["@function.builtin"] = { link = "Function" },
             ["@function.macro"]   = { link = "Function" },
 
-            ["@method"]           = { link = "Function" },
-            ["@method.call"]      = { link = "Function" },
+            ["@function.method"]      = { link = "Function" },
+            ["@function.method.call"] = { link = "Function" },
 
             ["@constructor"]      = { fg = m.blue },
 
@@ -113,62 +118,114 @@ M.main_highlights.treesitter = function()
             ["@keyword.function"]  = { link = "@keyword" },
             ["@keyword.export"]    = { link = "@keyword" },
 
-            ["@conditional"]       = { link = "Conditional" },
-            ["@repeat"]            = { link = "Repeat" },
-            ["@include"]           = { link = "Include" },
-            ["@exception"]         = { link = "Exception" },
+            ["@keyword.conditional"]       = { link = "Conditional" },
+            ["@keyword.repeat"]            = { link = "Repeat" },
+            ["@keyword.import"]            = { link = "Include" },
+            ["@keyword.exception"]         = { link = "Exception" },
 
             ["@constant"]         = { fg = m.yellow },
             ["@constant.builtin"] = { fg = m.yellow },
             ["@constant.macro"]   = { fg = m.cyan },
 
-            ["@preproc"]   = { fg = m.cyan },
+            ["@keyword.directive"] = { fg = m.cyan },
             ["@macro"]     = { fg = m.cyan },
-            ["@namespace"] = { fg = m.yellow },
+            ["@module"] = { fg = m.yellow },
 
             ["@string"]         = { link = "String" },
             ["@string.escape"]  = { fg = e.fg_dark },
-            ["@string.regex"]   = { fg = m.yellow },
+            ["@string.regexp"]   = { fg = m.yellow },
             ["@string.special"] = { fg = e.fg_dark },
 
             ["@character"] = { link = "Character" },
 		        ["@character.special"] = { link = "SpecialChar" },
 
-            ["@text.diff.add"]    = { link = "DiffAdd" },
-            ["@text.diff.delete"] = { link = "DiffDelete" },
+            ["@diff.plus"]        = { link = "DiffAdd" },
+            ["@diff.minus"]       = { link = "DiffDelete" },
+            ["@diff.delta"]       = { link = "DiffChange" },
             ["@attribute"]        = { link = "DiffChange" },
 
             -- ["@structure"]             = { fg = s.type },
-            -- ["@storageclass"]          = { fg = m.cyan },
+            ["@keyword.storage"]          = { fg = m.cyan },
 
             ["@label"]                  = { fg = m.yellow },
             ["@punctuation"]            = { fg = m.cyan },
             ["@punctuation.delimiter"]  = { fg = m.cyan },
             ["@punctuation.bracket"]    = { fg = m.cyan },
             ["@punctuation.special"]    = { fg = m.cyan },
-            -- ["@text.underline"]         = { underline = true },
-            ["@text.emphasis"]          = { italic = true },
-            ["@text.strong"]            = { bold = true },
-            ["@text.title"]             = { fg = m.cyan, bold = true },
-            ["@text.literal"]           = { fg = m.green },
-            ["@text.uri"]               = { fg = e.link },
-            ["@text.note"]              = { fg = m.yellow },
-            ["@text.environment"]       = { fg = m.red },
-            ["@text.environment.name"]  = { fg = m.red },
-            ["@text.warning"]           = { fg = l.warning },
-            ["@text.danger"]            = { fg = l.error },
-            ["@tag"]                    = { fg = m.red },
-            ["@tag.delimiter"]          = { fg = m.cyan },
-            ["@tag.attribute"]          = { fg = m.purple },
-            ["@define"]                 = { link = "@preproc" },
-            ["@operator"]               = { link = "Operator" },
-            TreesitterContext           = { bg = e.contrast },
-            TreesitterContextLineNumber = { fg = e.line_numbers, bg = e.contrast },
+            ["@markup.underline"]         = { underline = true },
+            ["@markup.emphasis"]          = { italic = true },
+            ["@markup.strong"]            = { bold = true },
+            -- ["@markup.strikethrough"]     = { style = { "strikethrough" } },
+            ["@markup.title"]             = { fg = m.cyan, bold = true },
+            ["@markup.literal"]           = { fg = m.green },
+            ["@markup.link"]              = { link = "Tag" }, -- text references, footnotes, citations, etc.
+            ["@markup.link.url"]          = { fg = e.link }, -- urls, links and emails
+            ["@markup.math"]              = { fg = m.blue }, -- e.g. LaTeX math
+            ["@markup.raw"]               = { fg = m.purple }, -- e.g. inline `code` in Markdown
+            ["@markup.list"]              = { link = "Special" },
+            ["@markup.list.checked"]      = { fg = m.green }, -- checkboxes
+            ["@markup.list.unchecked"]    = { fg = s.text },
+            ["@markup.environment"]       = { fg = m.red },
+            ["@markup.environment.name"]  = { fg = m.red },
+            ["@markup.warning"]           = { fg = l.warning },
+            ["@markup.danger"]            = { fg = l.error },
+            ["@tag"]                       = { fg = m.red },
+            ["@tag.delimiter"]             = { fg = m.cyan },
+            ["@tag.attribute"]             = { fg = m.purple },
+            ["@keyword.directive.define"] = { link = "@keyword.directive" },
+            ["@operator"]                  = { link = "Operator" },
+            TreesitterContext              = { bg = e.contrast },
+            TreesitterContextLineNumber    = { fg = e.line_numbers, bg = e.contrast },
 
             ["@boolean"]                = { link = "Boolean" },
             ["@number"]                 = { link = "Number" },
-            ["@float"]                  = { link = "Float" },
+            ["@number.float"]           = { link = "Float" },
         }
+
+        -- Legacy highlights, for backward compatibility
+        treesitter_hls["@parameter"] = treesitter_hls["@variable.parameter"]
+        treesitter_hls["@field"] = treesitter_hls["@variable.member"]
+        treesitter_hls["@namespace"] = treesitter_hls["@module"]
+        treesitter_hls["@float"] = treesitter_hls["number.float"]
+        treesitter_hls["@symbol"] = treesitter_hls["@string.special.symbol"]
+        treesitter_hls["@string.regex"] = treesitter_hls["@string.regexp"]
+
+        treesitter_hls["@text"] = treesitter_hls["@markup"]
+        treesitter_hls["@text.strong"] = treesitter_hls["@markup.strong"]
+        treesitter_hls["@text.emphasis"] = treesitter_hls["@markup.italic"]
+        treesitter_hls["@text.underline"] = treesitter_hls["@markup.underline"]
+        treesitter_hls["@text.strike"] = treesitter_hls["@markup.strikethrough"]
+        treesitter_hls["@text.uri"] = treesitter_hls["@markup.link.url"]
+        treesitter_hls["@text.math"] = treesitter_hls["@markup.math"]
+        treesitter_hls["@text.environment"] = treesitter_hls["@markup.environment"]
+        treesitter_hls["@text.environment.name"] = treesitter_hls["@markup.environment.name"]
+
+        treesitter_hls["@text.title"] = treesitter_hls["@markup.heading"]
+        treesitter_hls["@text.literal"] = treesitter_hls["@markup.raw"]
+        treesitter_hls["@text.reference"] = treesitter_hls["@markup.link"]
+
+        treesitter_hls["@text.todo.checked"] = treesitter_hls["@markup.list.checked"]
+        treesitter_hls["@text.todo.unchecked"] = treesitter_hls["@markup.list.unchecked"]
+
+        -- @text.todo is now for todo comments, not todo notes like in markdown
+        treesitter_hls["@text.todo"] = treesitter_hls["comment.warning"]
+        treesitter_hls["@text.warning"] = treesitter_hls["comment.warning"]
+        treesitter_hls["@text.note"] = treesitter_hls["comment.note"]
+        treesitter_hls["@text.danger"] = treesitter_hls["comment.error"]
+
+        treesitter_hls["@method"] = treesitter_hls["@function.method"]
+        treesitter_hls["@method.call"] = treesitter_hls["@function.method.call"]
+
+        treesitter_hls["@text.diff.add"] = treesitter_hls["@diff.plus"]
+        treesitter_hls["@text.diff.delete"] = treesitter_hls["@diff.minus"]
+
+        treesitter_hls["@define"] = treesitter_hls["@keyword.directive.define"]
+        treesitter_hls["@preproc"] = treesitter_hls["@keyword.directive"]
+        treesitter_hls["@storageclass"] = treesitter_hls["@keyword.storage"]
+        treesitter_hls["@conditional"] = treesitter_hls["@keyword.conditional"]
+        treesitter_hls["exception"] = treesitter_hls["@keyword.exception"]
+        treesitter_hls["@include"] = treesitter_hls["@keyword.import"]
+        treesitter_hls["@repeat"] = treesitter_hls["@keyword.repeat"]
 
         return treesitter_hls
     else
@@ -363,10 +420,10 @@ M.async_highlights.load_lsp = function()
         ["@lsp.type.interface"]                    = { link = "Identifier" },
         ["@lsp.type.keyword"]                      = { link = "@keyword" },
         ['@lsp.type.class']                        = { link = "@type" },
-        ["@lsp.type.namespace"]                    = { link = "@namespace" },
+        ["@lsp.type.namespace"]                    = { link = "@module" },
         ["@lsp.type.number"]                       = { link = "@number" },
         ["@lsp.type.operator"]                     = { link = "@operator" },
-        ["@lsp.type.parameter"]                    = { link = "@parameter" },
+        ["@lsp.type.parameter"]                    = { link = "@variable.parameter" },
         ["@lsp.type.property"]                     = { link = "@property" },
         ["@lsp.type.selfKeyword"]                  = { link = "@variable.builtin" },
         ["@lsp.type.typeAlias"]                    = { link = "@type" },
