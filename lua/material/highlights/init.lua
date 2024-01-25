@@ -342,8 +342,11 @@ M.async_highlights.editor = function()
         MatchParen    = { fg = m.yellow, bold = true },
         Question      = { fg = m.yellow }, -- |hit-enter| prompt and yes/no questions
         QuickFixLine  = { fg = e.highlight, bg = e.title, reverse = true },
-        Search        = { fg = e.title, bg = e.selection, bold = true },
-        IncSearch     = { fg = e.title, bg = e.selection, underline = true },
+        -- Search        = { fg = e.title, bg = e.selection, bold = true },
+        -- IncSearch     = { fg = e.title, bg = e.selection, underline = true },
+        Search        = { fg = e.bg, bg = e.title },
+        IncSearch     = { fg = e.bg, bg = e.title, bold = true },
+        CurSearch     = { fg = e.bg, bg = m.yellow, bold = true },
         MoreMsg       = { fg = e.accent },
         Pmenu         = { fg = e.fg, bg = e.border }, -- popup menu
         PmenuSel      = { fg = e.contrast, bg = e.accent }, -- Popup menu: selected item.

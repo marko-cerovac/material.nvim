@@ -127,7 +127,7 @@ elseif vim.g.material_style == "lighter" then
 
     colors.editor.white = "#FFFFFF"
     colors.editor.gray  = "#717CB4"
-    colors.editor.title = colors.editor.black
+    colors.editor.title = colors.main.black
 
 
 elseif vim.g.material_style == "palenight" then
