@@ -324,7 +324,7 @@ M.async_highlights.load_lsp = function()
         LspReferenceRead           = { link = "LspReferenceText" }, -- used for highlighting "read" references
         LspReferenceWrite          = { link = "LspReferenceText" }, -- used for highlighting "write" references
         LspCodeLens                = { italic = true, fg = l.hint, sp = l.hint },
-        LspInlayHint               = { italic = true, fg = l.hint, sp = l.hint },
+        LspInlayHint               = { italic = true, fg = s.comments },
 
         ["@lsp.type.builtinType"]                  = { link = "@type.builtin" },
         ["@lsp.type.comment"]                      = { link = "@comment" },
