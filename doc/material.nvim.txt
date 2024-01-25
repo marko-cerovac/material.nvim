@@ -247,6 +247,7 @@ This is an example of the setup function with the default values:
             - telescope
             - trouble
             - which-key
+            - nvim-notify
 
 ================================================================================
 5. Examples                                         *material-examples*
