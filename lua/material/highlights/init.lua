@@ -81,11 +81,13 @@ M.main_highlights.treesitter = function()
 
     if vim.fn.has("nvim-0.8.0") == 1 then
         local treesitter_hls = {
-            ["@comment"]          = { link = "Comment" },
             ["@error"]            = { link = "Error" },
 
+            ["@comment"]          = { link = "Comment" },
+            ["@comment.todo"]     = { link = "Comment" },
             ["@comment.error"]    = { fg = s.comments, bg = l.error },
             ["@comment.warning"]  = { fg = s.comments, bg = l.warning },
+            ["@comment.hint"]     = { fg = s.comments, bg = l.hint },
             ["@comment.note"]     = { fg = s.comments, bg = l.info },
 
             ["@type"]             = { fg = s.type },
