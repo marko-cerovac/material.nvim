@@ -157,6 +157,7 @@ M.main_highlights.treesitter = function()
             ["@markup.strong"]            = { bold = true },
             -- ["@markup.strikethrough"]     = { style = { "strikethrough" } },
             ["@markup.title"]             = { fg = m.cyan, bold = true },
+            ["@markup.heading"]           = { fg = m.cyan, bold = true },
             ["@markup.literal"]           = { fg = m.green },
             ["@markup.link"]              = { link = "Tag" }, -- text references, footnotes, citations, etc.
             ["@markup.link.url"]          = { fg = e.link }, -- urls, links and emails
