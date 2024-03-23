@@ -16,7 +16,22 @@ local apply_highlights = function(extra_highlights)
         if type(values) == "table" then
             hl_val = values
         elseif type(values) == "function" then
-            hl_val = values(copy_colors, copy_highlights)
+            ret = values(copy_colors, copy_highlights)
+            if type(ret) == "table" then
+                hl_val = ret
+            else
+                vim.notify_once("highlight function for highlight-group '" ..
+                    name .. "' returned '" .. type(ret) .. "', expected table",
+                    vim.log.levels.ERROR,
+                    { title = "material.nvim" }
+                )
+            end
+        else
+            vim.notify_once("cannot create custom highlight '" .. name ..
+                "' from value of type '" .. type(values) .. "'",
+                vim.log.levels.ERROR,
+                { title = "material.nvim" }
+            )
         end
         vim.api.nvim_set_hl(0, name, hl_val)
     end
