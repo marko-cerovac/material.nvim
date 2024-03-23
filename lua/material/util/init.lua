@@ -1,13 +1,24 @@
 local highlights = require "material.highlights"
+local colors = require "material.colors"
 local settings   = require "material.util.config".settings
 
 local M = {}
 
 ---apply highlights for a given table
----@param highlights table highlight group names and their values
-local apply_highlights = function(highlights)
-    for name, values in pairs(highlights) do
-        vim.api.nvim_set_hl(0, name, values)
+---@param extra_highlights table highlight group names and their values
+local apply_highlights = function(extra_highlights)
+    -- To prevent the user accidentally modifying global settings this way
+    local copy_colors = vim.deepcopy(colors)
+    local copy_highlights = vim.deepcopy(highlights)
+
+    for name, values in pairs(extra_highlights) do
+        local hl_val = {}
+        if type(values) == "table" then
+            hl_val = values
+        elseif type(values) == "function" then
+            hl_val = values(copy_colors, copy_highlights)
+        end
+        vim.api.nvim_set_hl(0, name, hl_val)
     end
 end
 
