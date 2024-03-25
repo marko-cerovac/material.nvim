@@ -450,9 +450,9 @@ M.async_highlights.load_lsp = function()
 
     if settings.contrast.lsp_virtual_text then
         lsp_hls.DiagnosticVirtualTextError = { fg = l.error, bg = functions.darken(l.error, 0.1, e.bg) }
-        lsp_hls.DiagnosticVirtualTextWarn  = { fg = l.error, bg = functions.darken(l.warning, 0.1, e.bg) }
-        lsp_hls.DiagnosticVirtualTextInfo  = { fg = l.error, bg = functions.darken(l.info, 0.1, e.bg) }
-        lsp_hls.DiagnosticVirtualTextHint  = { fg = l.error, bg = functions.darken(l.hint, 0.1, e.bg) }
+        lsp_hls.DiagnosticVirtualTextWarn  = { fg = l.warning, bg = functions.darken(l.warning, 0.1, e.bg) }
+        lsp_hls.DiagnosticVirtualTextInfo  = { fg = l.info, bg = functions.darken(l.info, 0.1, e.bg) }
+        lsp_hls.DiagnosticVirtualTextHint  = { fg = l.hint, bg = functions.darken(l.hint, 0.1, e.bg) }
     else
         lsp_hls.DiagnosticVirtualTextError = { link = "DiagnosticError" }
         lsp_hls.DiagnosticVirtualTextWarn  = { link = "DiagnosticWarn" }
