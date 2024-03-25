@@ -146,6 +146,7 @@ This is an example of the setup function with the default values:
             sidebars = false,
             cursor_line = false,
             floating_windows = false,
+            lsp_virtual_text = false,
             non_current_windows = false,
             filetypes = {}
         },
@@ -183,6 +184,7 @@ This is an example of the setup function with the default values:
           Varable names are: - sidebars
                              - floating_windows
                              - cursor_line
+                             - lsp_virtual_text
                              - non_current_windows
                              - filetype
         These can be set to true or false
