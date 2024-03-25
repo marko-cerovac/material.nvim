@@ -7,6 +7,7 @@ local defaults = {
         sidebars = false,
         cursor_line = false,
         floating_windows = false,
+        lsp_virtual_text = false,
         non_current_windows = false,
         filetypes = {}
     },

@@ -1,7 +1,8 @@
-local colors   = require "material.colors"
-local settings = require "material.util.config".settings
-local plugins  = require "material.highlights.plugins"
-local styles   = settings.styles
+local colors    = require "material.colors"
+local settings  = require "material.util.config".settings
+local plugins   = require "material.highlights.plugins"
+local functions = require "material.functions"
+local styles    = settings.styles
 
 -- apply conditional colors
 colors = require "material.colors.conditionals"
@@ -394,19 +395,16 @@ end
 M.async_highlights.load_lsp = function()
     local lsp_hls = {
         -- Nvim 0.6. and up
-        DiagnosticVirtualTextError = { link = "DiagnosticError" },
+
         DiagnosticFloatingError    = { link = "DiagnosticError" },
         DiagnosticSignError        = { link = "DiagnosticError" },
         DiagnosticUnderlineError   = { undercurl = true, sp = l.error },
-        DiagnosticVirtualTextWarn  = { link = "DiagnosticWarn" },
         DiagnosticFloatingWarn     = { link = "DiagnosticWarn" },
         DiagnosticSignWarn         = { link = "DiagnosticWarn" },
         DiagnosticUnderlineWarn    = { undercurl = true, sp = l.warning },
-        DiagnosticVirtualTextInfo  = { link = "DiagnosticInfo" },
         DiagnosticFloatingInfo     = { link = "DiagnosticInfo" },
         DiagnosticSignInfo         = { link = "DiagnosticInfo" },
         DiagnosticUnderlineInfo    = { undercurl = true, sp = l.info },
-        DiagnosticVirtualTextHint  = { link = "DiagnosticHint" },
         DiagnosticFloatingHint     = { link = "DiagnosticHint" },
         DiagnosticSignHint         = { link = "DiagnosticHint" },
         DiagnosticUnderlineHint    = { undercurl = true, sp = l.hint },
@@ -415,6 +413,7 @@ M.async_highlights.load_lsp = function()
         LspReferenceWrite          = { link = "LspReferenceText" }, -- used for highlighting "write" references
         LspCodeLens                = { italic = true, fg = l.hint, sp = l.hint },
         LspInlayHint               = { italic = true, fg = s.comments },
+        LspInfoBorder              = { fg = e.border },
 
         ["@lsp.type.builtinType"]                  = { link = "@type.builtin" },
         ["@lsp.type.comment"]                      = { link = "@comment" },
@@ -448,6 +447,18 @@ M.async_highlights.load_lsp = function()
         ["@lsp.typemod.variable.injected"]         = { link = "@variable" },
 
     }
+
+    if settings.contrast.lsp_virtual_text then
+        lsp_hls.DiagnosticVirtualTextError = { fg = l.error, bg = functions.darken(l.error, 0.1, e.bg) }
+        lsp_hls.DiagnosticVirtualTextWarn  = { fg = l.error, bg = functions.darken(l.warning, 0.1, e.bg) }
+        lsp_hls.DiagnosticVirtualTextInfo  = { fg = l.error, bg = functions.darken(l.info, 0.1, e.bg) }
+        lsp_hls.DiagnosticVirtualTextHint  = { fg = l.error, bg = functions.darken(l.hint, 0.1, e.bg) }
+    else
+        lsp_hls.DiagnosticVirtualTextError = { link = "DiagnosticError" }
+        lsp_hls.DiagnosticVirtualTextWarn  = { link = "DiagnosticWarn" }
+        lsp_hls.DiagnosticVirtualTextInfo  = { link = "DiagnosticInfo" }
+        lsp_hls.DiagnosticVirtualTextHint  = { link = "DiagnosticHint" }
+    end
 
     return lsp_hls
 end
