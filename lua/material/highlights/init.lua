@@ -337,7 +337,7 @@ M.async_highlights.editor = function()
         SpellRare     = { fg = m.purple, italic = true, undercurl = true },
         Warnings      = { fg = m.yellow },
         healthError   = { fg = l.error },
-        healthSuccess = { fg = m.yellow },
+        healthSuccess = { fg = m.green },
         healthWarning = { fg = m.yellow },
         Visual        = { fg = m.none, bg = e.selection },
         VisualNOS     = { link = "Visual" }, -- Visual mode selection when vim is "Not Owning the Selection".
