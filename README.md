@@ -200,6 +200,22 @@ material.setup{
         LineNr = { bg = '#FF0000' },
         CursorLine = { fg = colors.editor.constrast , underline = true },
 
+        -- Dynamically override highlight groups with functions to ensure colors are
+        -- updated when changing styles at runtime
+        TabLine = function(colors, _)
+            return {
+                fg = colors.main.gray,
+                italic = true,
+            }
+        end,
+        TabLineSel = function(_, highlights)
+            return vim.tbl_extend(
+                "force",
+                highlights.main_highlights.editor()["TabLineSel"],
+                { bold = true }
+            )
+        end,
+
         -- This is a list of possible values
         YourHighlightGroup = {
             fg = "#SOME_COLOR", -- foreground color

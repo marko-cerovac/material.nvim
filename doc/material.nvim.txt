@@ -305,7 +305,17 @@ require('material').setup({
     ...
     custom_highlights = {
         Function = { fg = "#00FF00", bg = "#FF0000", italic = true },
-        TelescopePromptBorder = { fg = "#0A0A0A", bg = "#000000", bold = true }
+        TelescopePromptBorder = { fg = "#0A0A0A", bg = "#000000", bold = true },
+        TabLine = function(colors, _)
+            return { fg = colors.main.gray, italic = true, }
+        end,
+        TabLineSel = function(_, highlights)
+            return vim.tbl_extend(
+                "force",
+                highlights.main_highlights.editor()["TabLineSel"],
+                { bold = true }
+            )
+        end
     }
     ...
 })
