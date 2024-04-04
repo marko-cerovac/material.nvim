@@ -97,11 +97,11 @@ M.main_highlights.treesitter = function()
             ["@type.qualifier"]   = { fg = m.cyan },
 
             ["@variable"]           = { link = "Identifier" },
-            ["@variable.builtin"]   = { link = "Identifier" },
-            ["@field"]              = { fg = e.fg_dark },
+            ["@variable.builtin"]   = { link = "@keyword" },
+            -- ["@field"]              = { fg = e.fg_dark },
             ["@property"]           = { fg = e.fg_dark },
             ["@variable.parameter"] = { link = "Identifier" },
-            ["@variable.member"]    = { link = "Identifier" }, -- Fields
+            ["@variable.member"]    = { fg = e.fg_dark }, -- Fields
             ["@string.special.symbol"] = { fg = m.yellow },
 
             ["@function"]         = { link = "Function" },
