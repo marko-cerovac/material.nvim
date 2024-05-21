@@ -1,0 +1,35 @@
+---
+name: Push to Luarocks
+
+on:
+  push:
+    tags:
+      - '*'
+  release: 
+    types:
+      - created # Triggered by release-please
+  pull_request: # Tests a local luarocks install without publishing on PRs
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  luarocks-upload:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Required to count the commits
+      - name: Get Version
+        # Tags created by GitHub releases don't trigger push: tags workflows
+        # So we have to determine the tag manually.
+        run: echo "LUAROCKS_VERSION=$(git describe --abbrev=0 --tags)" >> $GITHUB_ENV
+      - name: LuaRocks Upload
+        uses: nvim-neorocks/luarocks-tag-release@v5
+        env:
+          LUAROCKS_API_KEY: ${{ secrets.LUAROCKS_API_KEY }}
+        with:
+          version: ${{ env.LUAROCKS_VERSION }}
+          labels: |
+            neovim
+            colorscheme
+            material
+            treesitter
