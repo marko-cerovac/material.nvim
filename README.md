@@ -87,7 +87,7 @@ vim.cmd 'colorscheme material'
 ```
 
 
-For a comlete guide on usage and configuration of the theme, see ```:help material.nvim```.
+For a complete guide on usage and configuration of the theme, see ```:help material.nvim```.
 
 ## ⚙️ Configuration
 
@@ -166,7 +166,7 @@ require('material').setup({
 
     disable = {
         colored_cursor = false, -- Disable the colored cursor
-        borders = false, -- Disable borders between verticaly split windows
+        borders = false, -- Disable borders between vertically split windows
         background = false, -- Prevent the theme from setting the background (NeoVim then uses your terminal background)
         term_colors = false, -- Prevent the theme from setting terminal colors
         eob_lines = false -- Hide the end-of-buffer lines
@@ -179,7 +179,7 @@ require('material').setup({
 
     lualine_style = "default", -- Lualine style ( can be 'stealth' or 'default' )
 
-    async_loading = true, -- Load parts of the theme asyncronously for faster startup (turned on by default)
+    async_loading = true, -- Load parts of the theme asynchronously for faster startup (turned on by default)
 
     custom_colors = nil, -- If you want to override the default colors, set this to a function
 
@@ -236,7 +236,7 @@ material.setup{
     },
 
     -- Custom colors must be a function that takes in the default colors table as
-    -- a paramter, and then modifies them.
+    -- a parameter, and then modifies them.
     -- To see the available colors, see lua/material/colors/init.lua
     custom_colors = function(colors)
         colors.editor.bg = "#SOME_COLOR"
