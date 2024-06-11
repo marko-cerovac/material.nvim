@@ -73,6 +73,11 @@ added to NeoVim like built-in [LSP](https://github.com/neovim/nvim-lspconfig) an
 Install via your favourite package manager:
 
 ```lua
+-- If you are using Lazy
+require('lazy').setup({
+    'marko-cerovac/material.nvim'
+}, opts)
+
 -- If you are using Pckr
 require('pckr').add({
     'marko-cerovac/material.nvim'
