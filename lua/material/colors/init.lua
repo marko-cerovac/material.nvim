@@ -193,7 +193,6 @@ colors.syntax.keyword  = colors.main.purple
 colors.syntax.value    = colors.main.orange
 colors.syntax.operator = colors.main.cyan
 colors.syntax.fn       = colors.main.blue
-colors.syntax.parameter = colors.main.darkorange
 colors.syntax.string   = colors.main.green
 colors.syntax.type     = colors.main.purple
 

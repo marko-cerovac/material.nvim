@@ -26,7 +26,6 @@ M.async_highlights = {}
 M.main_highlights.syntax = function()
     local syntax_hls = {
         Identifier     = { fg = s.variable },
-        Parameter      = { fg = s.parameter },
         Comment        = { fg = s.comments },
         Keyword        = { fg = s.keyword },
         Conditional    = { fg = s.keyword },
@@ -68,7 +67,6 @@ M.main_highlights.syntax = function()
     syntax_hls.Conditional  = vim.tbl_extend("keep", syntax_hls.Conditional, styles.keywords)
     syntax_hls.Function     = vim.tbl_extend("keep", syntax_hls.Function, styles.functions)
     syntax_hls.Identifier   = vim.tbl_extend("keep", syntax_hls.Identifier, styles.variables)
-    syntax_hls.Parameter    = vim.tbl_extend("keep", syntax_hls.Parameter, styles.parameters)
     syntax_hls.Keyword      = vim.tbl_extend("keep", syntax_hls.Keyword, styles.keywords)
     syntax_hls.Repeat       = vim.tbl_extend("keep", syntax_hls.Repeat, styles.keywords)
     syntax_hls.String       = vim.tbl_extend("keep", syntax_hls.String, styles.strings)
@@ -102,7 +100,7 @@ M.main_highlights.treesitter = function()
             ["@variable.builtin"]   = { link = "@keyword" },
             -- ["@field"]              = { fg = e.fg_dark },
             ["@property"]           = { fg = e.fg_dark },
-            ["@variable.parameter"] = { fg = s.parameter },
+            ["@variable.parameter"] = { link = "Identifier" },
             ["@variable.member"]    = { fg = e.fg_dark }, -- Fields
             ["@string.special.symbol"] = { fg = m.yellow },
 
