@@ -16,7 +16,6 @@ local defaults = {
         strings = {},
         keywords = {},
         functions = {},
-        parameters = {},
         variables = {},
         operators = {},
         types = {},
