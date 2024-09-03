@@ -113,6 +113,8 @@ local load_async = function()
     -- load user defined higlights
     if type(settings.custom_highlights) == "table" then
         apply_highlights(settings.custom_highlights)
+    elseif type(settings.custom_highlights) == "function" then
+        apply_highlights(settings.custom_highlights(colors))
     end
 
     -- if this function gets called asyncronously, this closure is needed
