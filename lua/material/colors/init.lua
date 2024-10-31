@@ -211,6 +211,7 @@ colors.lsp.hint    = colors.main.purple
 colors.backgrounds.sidebars            = colors.editor.bg
 colors.backgrounds.floating_windows    = colors.editor.bg
 colors.backgrounds.non_current_windows = colors.editor.bg
+colors.backgrounds.bg_blend            = colors.editor.bg -- backup used for blending backgrounds (issue: #212)
 colors.backgrounds.cursor_line         = colors.editor.active
 
 return colors
