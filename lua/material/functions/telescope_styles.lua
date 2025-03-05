@@ -3,7 +3,7 @@ local M = {}
 
 if not ok then
 	M.find = function()
-		local styles = { "darker", "lighter", "deep ocean", "oceanic", "palenight" }
+		local styles = { "darker", "lighter", "deep ocean", "oceanic", "palenight", "design colors" }
 		vim.ui.select(styles, { prompt = "Material" }, function(style)
 			vim.g.material_style = style
 			vim.cmd("colorscheme material")

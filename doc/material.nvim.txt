@@ -101,6 +101,11 @@ CONTENTS
         contrast, but there is an option to increase the contrast of this
         style for those that want more visibilty.
 
+    + Design Colors:~
+        This style is based on the MaterialDesignColors theme. It tends
+        toward high contrast, vivid colors within material palette. It has
+        a gray background and orange accent color.
+
     The styles are set by setting the global variable 'material_style' to the
     desired style name
     
