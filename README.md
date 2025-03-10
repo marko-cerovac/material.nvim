@@ -104,6 +104,7 @@ For a complete guide on usage and configuration of the theme, see ```:help mater
     + oceanic
     + palenight
     + deep ocean
+    + design colors
 
 Set the desired style using:
 

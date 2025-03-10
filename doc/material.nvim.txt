@@ -29,6 +29,7 @@ CONTENTS
                                          -palenight
                                          -darker
                                          -lighter
+                                         -design colors
 
     + A wide array of supported plugins like: -TreeSitter
                                               -LSP Diagnostics
@@ -138,6 +139,7 @@ The theme style is set using a global variable called material_style
                               -palenight
                               -lighter
                               -darker
+                              -design colors
 
 All other options are passed to a setup function
 
