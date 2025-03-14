@@ -10,14 +10,14 @@
 ![Lua](https://img.shields.io/badge/lua-%232C2D72.svg?style=for-the-badge&logo=lua&logoColor=white)
 
 
-The original [Material](https://material-theme.site) theme now available for [NeoVim](https://neovim.io/)
+[NeoVim](https://neovim.io/) colorscheme based on [Material](https://www.material-theme.dev/) theme colors.
 
 ---
 
 </div>
 
 ## 🔱 Info
-A port of [Material](https://material-theme.site) colorscheme for NeoVim written in Lua
+A colorscheme for NeoVim that takes inspiration from the original [Material](https://www.material-theme.dev/) theme.
 
 Material.nvim is meant to be a fast and modern colorscheme written in Lua that supports a lot of the new features
 added to NeoVim like built-in [LSP](https://github.com/neovim/nvim-lspconfig) and [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
