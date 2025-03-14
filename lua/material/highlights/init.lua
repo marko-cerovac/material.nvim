@@ -73,6 +73,7 @@ M.main_highlights.syntax = function()
     syntax_hls.Type         = vim.tbl_extend("keep", syntax_hls.Type, styles.types)
     syntax_hls.Structure    = vim.tbl_extend("keep", syntax_hls.Structure, styles.types)
     syntax_hls.StorageClass = vim.tbl_extend("keep", syntax_hls.StorageClass, styles.keywords)
+    syntax_hls.Include      = vim.tbl_extend("keep", syntax_hls.Include, styles.keywords)
 
     return syntax_hls
 end
