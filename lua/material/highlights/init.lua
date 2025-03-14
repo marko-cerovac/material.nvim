@@ -231,6 +231,9 @@ M.main_highlights.treesitter = function()
         treesitter_hls["@include"] = treesitter_hls["@keyword.import"]
         treesitter_hls["@repeat"] = treesitter_hls["@keyword.repeat"]
 
+        treesitter_hls["@keyword"]  = vim.tbl_extend("keep", treesitter_hls["@keyword"], styles.keywords)
+        treesitter_hls["@keyword.directive"]  = vim.tbl_extend("keep", treesitter_hls["@keyword.directive"], styles.keywords)
+
         return treesitter_hls
     else
         local treesitter_hls = {
