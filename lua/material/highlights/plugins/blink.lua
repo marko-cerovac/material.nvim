@@ -18,7 +18,8 @@ M.load = function()
         -- BlinkCmpScrollBarThumb               = {},
         -- BlinkCmpScrollBarGutter              = {},
         BlinkCmpLabel                        = { fg = e.fg },
-        BlinkCmpLabelDeprecated              = { fg = e.fg, strikethrough = true },
+        -- TODO: set this in nvim-cmp as well
+        -- BlinkCmpLabelDeprecated              = { fg = e.fg, strikethrough = true },
         BlinkCmpLabelMatch                   = { fg = e.accent, bold = true },
         BlinkCmpLabelDetail                  = { link = "BlinkCmpLabel" },
         BlinkCmpLabelDescription             = { link = "BlinkCmpLabel" },
