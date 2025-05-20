@@ -140,6 +140,7 @@ require('material').setup({
 
     plugins = { -- Uncomment the plugins that you use to highlight them
         -- Available plugins:
+        -- "blink",
         -- "coc",
         -- "colorful-winsep",
         -- "dap",
@@ -154,13 +155,14 @@ require('material').setup({
         -- "indent-blankline",
         -- "lspsaga",
         -- "mini",
-        -- "neogit",
-        -- "neotest",
         -- "neo-tree",
+        -- "neogit",
         -- "neorg",
+        -- "neotest",
         -- "noice",
         -- "nvim-cmp",
         -- "nvim-navic",
+        -- "nvim-notify",
         -- "nvim-tree",
         -- "nvim-web-devicons",
         -- "rainbow-delimiters",
@@ -168,7 +170,6 @@ require('material').setup({
         -- "telescope",
         -- "trouble",
         -- "which-key",
-        -- "nvim-notify",
     },
 
     disable = {

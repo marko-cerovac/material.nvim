@@ -223,6 +223,7 @@ This is an example of the setup function with the default values:
     + plugins  {table}
           To apply the theme to a plugin, set it in this table
           Available plugins:
+            - blink
             - coc
             - colorful-winsep
             - dap
