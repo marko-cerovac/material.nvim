@@ -16,11 +16,6 @@ for k, v in pairs(settings.contrast) do
     end
 end
 
--- fix the cursorline color
-if not settings.contrast.cursor_line then
-    colors.backgrounds.cursor_line = colors.editor.active
-end
-
 --[[ if settings.smart_syntax then
     colors.syntax.field = colors.editor.fg_dark
 end ]]
@@ -33,6 +28,11 @@ if disabled.background then
     for k, _ in pairs(settings.contrast) do
         colors.backgrounds[k] = "NONE"
     end
+end
+
+-- fix the cursorline color
+if not settings.contrast.cursor_line then
+    colors.backgrounds.cursor_line = colors.editor.active
 end
 
 -- apply user defined colors
