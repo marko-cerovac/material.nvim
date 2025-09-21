@@ -292,9 +292,9 @@ M.main_highlights.editor = function()
         FoldColumn       = { fg = m.blue },
         LineNr           = { fg = e.line_numbers },
         CursorLineNr     = { fg = e.accent },
-        DiffAdd          = { fg = g.added, reverse = true },
-        DiffChange       = { fg = g.modified },
-        DiffDelete       = { fg = g.removed, reverse = true },
+        DiffAdd          = { bg = functions.darken(g.added, 0.2, b.bg_blend) },
+        DiffChange       = { bg = functions.darken(g.modified, 0.2, b.bg_blend) },
+        DiffDelete       = { bg = functions.darken(g.removed, 0.2, b.bg_blend )},
         DiffText         = { fg = g.modified, reverse = true },
         ModeMsg          = { fg = e.accent }, -- 'showmode' message (e.g., "-- INSERT -- ")
         NonText          = { fg = e.disabled },

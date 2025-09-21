@@ -55,7 +55,7 @@ local prepare_environment = function()
     if not settings.disable.colored_cursor then
         vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20,a:Cursor/Cursor"
         local exit_group  = vim.api.nvim_create_augroup("MaterialExit", { clear = true })
-        vim.api.nvim_create_autocmd("ExitPre", {
+        vim.api.nvim_create_autocmd({"ExitPre", "ColorSchemePre"}, {
             command = "autocmd ExitPre * set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20",
             group   = exit_group
         })
