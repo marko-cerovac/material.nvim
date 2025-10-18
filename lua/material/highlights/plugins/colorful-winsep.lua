@@ -1,16 +1,16 @@
 local colors = require "material.colors"
 
-local fg = colors.editor.selection
-local bg = colors.editor.bg
+local e = colors.editor
 
 local M = {}
 
 M.load = function()
     local plugin_hls = {
-        NvimSeparator = {
-            fg = fg,
-            bg = bg,
+        ColorfulWinSep = {
+            fg = e.selection,
+            bg = e.bg,
         },
+        NvimSeparator = { link = "ColorfulWinSep"}
     }
 
     return plugin_hls
