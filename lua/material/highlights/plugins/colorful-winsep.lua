@@ -7,7 +7,7 @@ local M = {}
 M.load = function()
     local plugin_hls = {
         ColorfulWinSep = {
-            fg = e.selection,
+            fg = e.accent,
             bg = e.bg,
         },
         NvimSeparator = { link = "ColorfulWinSep"}
