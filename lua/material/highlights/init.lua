@@ -98,7 +98,7 @@ M.main_highlights.treesitter = function()
             ["@type.qualifier"]   = { fg = m.cyan },
 
             ["@variable"]           = { link = "Identifier" },
-            ["@variable.builtin"]   = { link = "@keyword" },
+            ["@variable.builtin"]   = { link = "Keyword" },
             -- ["@field"]              = { fg = e.fg_dark },
             ["@property"]           = { fg = e.fg_dark },
             ["@variable.parameter"] = { link = "Identifier" },
@@ -115,12 +115,12 @@ M.main_highlights.treesitter = function()
 
             ["@constructor"]      = { fg = m.blue },
 
-            ["@keyword"]           = { fg = m.cyan },
-            ["@keyword.coroutine"] = { fg = m.cyan, italic = true },
-            ["@keyword.operator"]  = { link = "@keyword" },
-            ["@keyword.return"]    = { link = "@keyword" },
-            ["@keyword.function"]  = { link = "@keyword" },
-            ["@keyword.export"]    = { link = "@keyword" },
+            ["@keyword"]           = { link = "Keyword" },
+            ["@keyword.coroutine"] = { link = "Keyword" },
+            ["@keyword.operator"]  = { link = "Keyword" },
+            ["@keyword.return"]    = { link = "Keyword" },
+            ["@keyword.function"]  = { link = "Keyword" },
+            ["@keyword.export"]    = { link = "Keyword" },
 
             ["@keyword.conditional"]       = { link = "Conditional" },
             ["@keyword.repeat"]            = { link = "Repeat" },
